@@ -228,7 +228,7 @@ In this task, you will provision a virtual machine (VM) in Azure. The VM image u
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/lab-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-9. It will take approximately 15 minutes for the VM to finish provisioning. You move on to the next task while you wait.
+9. It will take approximately 15 minutes for the VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 5: Create SQL Server 2008 R2 virtual machine
 
