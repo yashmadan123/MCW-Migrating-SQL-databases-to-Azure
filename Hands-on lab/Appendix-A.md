@@ -6,7 +6,7 @@ This appendix provides the steps to manually provision and configure the resourc
 
 - [Appendix A: Lab environment setup](#appendix-a-lab-environment-setup)
   - [Task 1: Create virtual network](#task-1-create-virtual-network)
-    - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
+  - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
   - [Task 4: Create the JumpBox VM](#task-4-create-the-jumpbox-vm)
   - [Task 5: Create SQL Server 2008 R2 virtual machine](#task-5-create-sql-server-2008-r2-virtual-machine)
@@ -78,7 +78,7 @@ In this task, you will create and configure a virtual network (VNet) which will 
 
 11. Select **OK**.
 
-### Task 2: Create VPN gateway
+## Task 2: Create VPN gateway
 
 1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource**, enter "virtual network gateway" into the Search the Marketplace box, and select **Virtual network gateway** from the results.
 
@@ -294,7 +294,7 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/sql-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-9. It will take approximately 10 minutes for the SQL VM to finish provisioning. You move on to the next task while you wait.
+9. It will take approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 6: Create Azure Database Migration Service
 
