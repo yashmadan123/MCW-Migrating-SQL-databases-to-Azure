@@ -50,10 +50,6 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 - Azure virtual network gateway
 - Azure Blob Storage account
 
-## Azure solutions
-
-Data Modernization to Azure
-
 ## Related references
 
 - [MCW](https://github.com/Microsoft/MCW)
