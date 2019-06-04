@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+June 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -168,7 +168,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 In this whiteboard design session, you will work in a group to develop a plan for migrating on-premises VMs and SQL Server 2008 R2 databases into a combination of IaaS and PaaS services in Azure. You will provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and the managed database offerings in Azure. You will then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal or no down-time. Finally, you will provide guidance on how to enable some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
 
-At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business critical applications and databases.
+At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business-critical applications and databases.
 
 ## Step 1: Review the customer case study
 
@@ -196,9 +196,9 @@ Molly Fischer, the CIO of Tailspin Toys, stated that the response to adding onli
 
 Compounding this problem is the release schedule for new versions of their most popular games. They have a target schedule of releasing a new version every 12 - 18 months, which means adding new VMs and a database server for each new version they release, while also maintaining the services for all previous game versions. This has resulted in rising rental equipment costs, as well as a steadily increasing workload on their already overburdened staff. Internally, they have discussed end-of-life scenarios for older game versions, but the number of players remains high for many of their older games, so no decisions have been made about when to end support for those games.
 
-Tailspin Toys indicated that their current hardware rental agreement ends in three months and is hoping to avoid signing another contract by migrating their existing VMs into Azure. They understand three months is a short timeframe, but believe a lift-and-shift approach of their gaming service VMs might be possible if they dedicate the appropriate resources. They already have VM images for each of their games which could be used in the process. They would like to know more about what a lift-and-shirt might involve so they can plan resource allocation accordingly. They are also interested in learning more f this approach could be used to allow them to better scale the VM and database deployments on a per game basis. Currently, they use the same number of VMs and databases for each game and version but have frequently run into issues hosting more gamers for popular games. They would like the ability to scale up to meet demand on new releases and more popular games, while also being able to scale down for older and less popular games. They would also like to investigate the possibility of globally distributing their gaming services to address latency issues reported by gamers accessing their services from other locations around the world.
+Tailspin Toys indicated that their current hardware rental agreement ends in three months and they're hoping to avoid signing another contract by migrating their existing VMs into Azure. They understand three months is a short timeframe, but believe a lift-and-shift approach of their gaming service VMs might be possible if they dedicate the appropriate resources. They already have VM images for each of their games which could be used in the process. They would like to know more about what a lift-and-shift might involve so they can plan resource allocation accordingly. They are also interested in learning more if this approach could be used to allow them to better scale the VM and database deployments on a per game basis. Currently, they use the same number of VMs and databases for each game and version, but have frequently run into issues hosting more gamers for popular games. They would like the ability to scale up to meet demand on new releases and more popular games, while also being able to scale down for older and less popular games. They would also like to investigate the possibility of globally distributing their gaming services to address latency issues reported by gamers accessing their services from other locations around the world.
 
-Of great concern to leadership team at Tailspin Toys is the rapidly approaching end of support date for SQL Server 2008 R2. For their databases, they are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure. They lack any employees with true database administration skills, so they feel this would be a good first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read that the Service Broker feature of SQL Server is not available in Azure. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
+Of great concern to the leadership team at Tailspin Toys is the rapidly approaching end of support date for SQL Server 2008 R2. For their databases, they are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure. They lack any employees with true database administration skills, so they feel this would be a good first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read that the Service Broker feature of SQL Server is not available in Azure. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
 
 In addition to their gaming services, Tailspin Toys is also interested in migrating their data warehouse and its associated services to the cloud. They currently host their data warehouse on a dedicated SQL Server 2008 R2 instance. The data warehouse is currently around 20TB in size and is growing at a rate of about 250GB per month. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e. data on the behavior of players, such as their interaction with games and with other players). Code embedded in the gaming software transmits data to the gaming databases. That telemetry data is loaded hourly using SQL Server Integration Services (SSIS) packages. Using the data in their data warehouse, they build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They also noted that their customer service personnel and developers connect to the data warehouse for various activities.
 
@@ -212,7 +212,7 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 ### Customer needs
 
-1. We want to migrate all our gaming services infrastructure into the cloud, using PaaS services where possible. We would like to know if this can be accomplished in a three month time period to avoid renewing our equipment rental contract.
+1. We want to migrate all our gaming services infrastructure into the cloud, using PaaS services where possible. We would like to know if this can be accomplished in a three-month time period to avoid renewing our equipment rental contract.
 
 2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like know more about:
 
@@ -273,7 +273,7 @@ Directions: With all participants at your table, respond to the following questi
 
 3. Is it possible to migrate their gaming services within a three-month time period?
 
-4. What should be included in the POC?
+4. What should be included in the PoC?
 
 *Game databases*
 
@@ -440,7 +440,7 @@ The primary audience is the business decision makers and technology decision mak
 
 1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
-    After running the Microsoft Data Migration Assistant assessments against their gaming databases, Tailspin Toys found that Azure SQL Database Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service, with no required changes to their databases. This can help to to shift their focus back to game development, and not have to spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
+    After running the Microsoft Data Migration Assistant assessments against their gaming databases, Tailspin Toys found that Azure SQL Database Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service, with no required changes to their databases. This can help to shift their focus back to game development, and not have to spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
 
     ![Possible target architecture](media/target-architecture.png "Target architecture")
 
@@ -519,7 +519,7 @@ The primary audience is the business decision makers and technology decision mak
 
     - **Service-Level Agreement**: Both IaaS and PaaS provide high, industry standard SLAs. The PaaS option guarantees a 99.99% SLA. IaaS guarantees a 99.95% SLA for infrastructure, meaning they may need to implement additional mechanisms to ensure availability their databases.
 
-    - **Time to move to Azure**: SQL Server on an Azure VM will be an exact match of their environment, so migration from on-premises to Azure SQL VMs would be no different than moving their on-premises databases to another on-premises database server. SQL Managed Instance also enables extremely easy migration. However, there might be some changes that they would need to apply before they can migrate migrate to a managed instance. SQL DB can be a good target, but there are more feature and compatibility concerns, so this could be the slowest option, depending on the on-premises databases.
+    - **Time to move to Azure**: SQL Server on an Azure VM will be an exact match of their environment, so migration from on-premises to Azure SQL VMs would be no different than moving their on-premises databases to another on-premises database server. SQL Managed Instance also enables extremely easy migration. However, there might be some changes that they would need to apply before they can migrate to a managed instance. SQL DB can be a good target, but there are more feature and compatibility concerns, so this could be the slowest option, depending on the on-premises databases.
 
 2. From the options for hosting SQL databases in Azure, which would you recommend for hosting their gaming databases and why do you think that the best choice? What pricing tier would you recommend?
 
@@ -671,7 +671,7 @@ The primary audience is the business decision makers and technology decision mak
 
     *Azure SQL Database Managed Instance (SQL MI)*
 
-    SQL MI is a fully-managed PaaS SQL Server Database Engine Instance hosted in Azure that provides *near* 100% compatibility with on-premises SQL Server database instances. Unlike SQL DB, it does not use a isolated multi-tenant model, but instead provides a native virtual network (VNet) implementation that addresses many common isolation and security concerns of on-premises SQL Server customers. As such, it is the best PaaS option for migrating existing SQL Server databases to the cloud.
+    SQL MI is a fully-managed PaaS SQL Server Database Engine Instance hosted in Azure that provides *near* 100% compatibility with on-premises SQL Server database instances. Unlike SQL DB, it does not use an isolated multi-tenant model, but instead provides a native virtual network (VNet) implementation that addresses many common isolation and security concerns of on-premises SQL Server customers. As such, it is the best PaaS option for migrating existing SQL Server databases to the cloud.
 
     The managed instance model allows existing SQL Server customers to lift-and-shift their on-premises applications to the cloud with minimal application and database changes. As a deployment option of Azure SQL Database, it preserves all the PaaS capabilities that drastically reduce management overhead and TCO. While the majority of on-premises SQL features are supported, there are some features, like Filestream, that are not available. Unlike SQL DB, SQL MI does support distributed transactions, SQL Agent jobs, .NET CLR integration, and Service broker.
 
