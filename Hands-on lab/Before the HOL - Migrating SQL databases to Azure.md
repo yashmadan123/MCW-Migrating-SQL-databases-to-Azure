@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-May 2019
+June 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -91,13 +91,13 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 - A virtual network gateway, associated with the Gateway subnet
 - A route table
 - Azure SQL Database Managed Instance (SQL MI), added to the ManagedInstance subnet
-- A JumpBox with Visual Studio 2019 Community edition and SQL Server Management Studio (SSMS installed, added to the Management subnet
+- A JumpBox with Visual Studio 2019 Community edition and SQL Server Management Studio (SSMS installed, added to the Management subnet)
 - A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet
 - Azure Database Migration Service (DMS)
 - Azure App Service Plan and App Service (Web App)
 - Azure Blob Storage account
 
-> You can review the steps to manually provision the lab resources in [Appendix A](./Appendix-A).
+>**Note**: You can review the steps to manually provision the lab resources in [Appendix A](./Appendix-A).
 
 1. Before running the ARM template, it is beneficial to quickly verify that you will be able to provision SQL MI in your subscription. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
 
@@ -111,9 +111,9 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 
     ![A message is displayed stating that SQL MI creation not available in the selected subscription.](media/sql-mi-creation-not-available.png "SQL MI creation not available")
 
-    > **NOTE**: If you see the message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance) before proceeding with the following steps.
+    > **Note**: If you see the message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance) before proceeding with the following steps.
 
-4. You are now ready to begin the ARM template deployment. To open a custom deployment screen in the Azure portal select the Deploy to Azure button below:
+4. You are now ready to begin the ARM template deployment. To open a custom deployment screen in the Azure portal, select the Deploy to Azure button below:
 
     <a href ="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FMigrating-SQL-databases-to-Azure%2Fmaster%2FHands-on%20lab%2Flab-files%2FARM-template%2Fazure-deploy.json" target="_blank" title="Deploy to Azure">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -124,7 +124,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
     - **Subscription**: Select the subscription you are using for this hands-on lab.
     - **Resource group**: Select the hands-on-lab-SUFFIX resource group from the dropdown list.
     - **Location**: Select the location you used for the hands-on-lab-SUFFIX resource group.
-    - **Managed Instance Name**: Accept the default value, **sqlmi**. **NOTE**: The actual name must be globally unique, so a unique string will be generated from your Resource Group and appended to the name during provisioning.
+    - **Managed Instance Name**: Accept the default value, **sqlmi**. **Note**: The actual name must be globally unique, so a unique string will be generated from your Resource Group and appended to the name during provisioning.
     - **Admin Username**: Accept the default value, **sqlmiuser**.
     - **Admin Password**: Accept the default value, **Password.1234567890**.
     - **V Cores**: Accept the default value, **16**.
@@ -135,7 +135,7 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
 
 6. Select **Purchase** to start provisioning the JumpBox VM and SQL Managed Instance.
 
-    > **NOTE**: The deployment of the custom ARM template can take over 6 hours due to the inclusion of SQL MI. However, the deployment of most of the resources will complete within a few minutes. The JumpBox and SQL Server 2008 R2 VMs should complete in about 15 minutes.
+    > **Note**: The deployment of the custom ARM template can take over 6 hours due to the inclusion of SQL MI. However, the deployment of most of the resources will complete within a few minutes. The JumpBox and SQL Server 2008 R2 VMs should complete in about 15 minutes.
 
 7. You can monitor the progress of the deployment by navigating to the hands-on-lab-SUFFIX resource group in the Azure portal, and then selecting **Deployments** from the left-hand menu. The deployment will be named **Microsoft.Template**. Select that to view the progress of each item in the template.
 
