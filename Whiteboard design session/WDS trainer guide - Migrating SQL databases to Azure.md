@@ -482,9 +482,9 @@ The primary audience is the business decision makers and technology decision mak
 
     The Tailspin Toys team would need to have dedicated resources assigned to the migration project. They would also benefit from bringing in a Microsoft partner with experience in performing large cloud migrations to help speed up the process, and improve their chances of meeting such a tight timeline.
 
-4. What should be included in the POC?
+4. What should be included in the PoC?
 
-    For the POC, we should include the following:
+    For the PoC, we should include the following:
 
     - All assets required for a hosting a single game in Azure
 
