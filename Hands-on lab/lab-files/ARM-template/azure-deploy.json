@@ -570,7 +570,7 @@
             "properties": {
                 "securityRules": [
                     {
-                        "name": "allow_management_inbound",
+                        "name": "management",
                         "properties": {
                             "description": "Allow inbound management traffic",
                             "protocol": "Tcp",
@@ -583,38 +583,70 @@
                                 "1452"
                             ],
                             "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
+                            "destinationAddressPrefix": "[variables('subnetPrefix')]",
                             "access": "Allow",
                             "priority": 100,
                             "direction": "Inbound"
                         }
                     },
                     {
-                        "name": "allow_misubnet_inbound",
+                        "name": "mi_subnet",
                         "properties": {
                             "description": "Allow inbound traffic inside the subnet",
                             "protocol": "*",
                             "sourcePortRange": "*",
                             "destinationPortRange": "*",
                             "sourceAddressPrefix": "[variables('subnetPrefix')]",
-                            "destinationAddressPrefix": "*",
+                            "destinationAddressPrefix": "[variables('subnetPrefix')]",
                             "access": "Allow",
                             "priority": 200,
                             "direction": "Inbound"
                         }
                     },
                     {
-                        "name": "allow_health_probe_inbound",
+                        "name": "health_probe",
                         "properties": {
                             "description": "Allow health probe",
                             "protocol": "*",
                             "sourcePortRange": "*",
                             "destinationPortRange": "*",
                             "sourceAddressPrefix": "AzureLoadBalancer",
-                            "destinationAddressPrefix": "*",
+                            "destinationAddressPrefix": "[variables('subnetPrefix')]",
                             "access": "Allow",
                             "priority": 300,
                             "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "management",
+                        "properties": {
+                            "description": "Allow outbound management traffic",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRanges": [
+                                "80",
+                                "443",
+                                "12000"
+                            ],
+                            "sourceAddressPrefix": "[variables('subnetPrefix')]",
+                            "destinationAddressPrefix": "AzureCloud",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Outbound"
+                        }
+                    },
+                    {
+                        "name": "mi_subnet",
+                        "properties": {
+                            "description": "Allow outbound traffic inside the subnet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "[variables('subnetPrefix')]",
+                            "destinationAddressPrefix": "[variables('subnetPrefix')]",
+                            "access": "Allow",
+                            "priority": 200,
+                            "direction": "Outbound"
                         }
                     },
                     {
@@ -671,38 +703,6 @@
                             "access": "Deny",
                             "priority": 4096,
                             "direction": "Inbound"
-                        }
-                    },
-                    {
-                        "name": "allow_management_outbound",
-                        "properties": {
-                            "description": "Allow outbound management traffic",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRanges": [
-                                "80",
-                                "443",
-                                "12000"
-                            ],
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Outbound"
-                        }
-                    },
-                    {
-                        "name": "allow_misubnet_outbound",
-                        "properties": {
-                            "description": "Allow outbound traffic inside the subnet",
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "*",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "[variables('subnetPrefix')]",
-                            "access": "Allow",
-                            "priority": 200,
-                            "direction": "Outbound"
                         }
                     },
                     {
