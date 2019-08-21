@@ -618,7 +618,7 @@
                         }
                     },
                     {
-                        "name": "management",
+                        "name": "management_out",
                         "properties": {
                             "description": "Allow outbound management traffic",
                             "protocol": "Tcp",
@@ -636,7 +636,7 @@
                         }
                     },
                     {
-                        "name": "mi_subnet",
+                        "name": "mi_subnet_out",
                         "properties": {
                             "description": "Allow outbound traffic inside the subnet",
                             "protocol": "*",
