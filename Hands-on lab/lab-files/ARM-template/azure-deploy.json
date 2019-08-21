@@ -1325,20 +1325,6 @@
                         }
                     },
                     {
-                        "name": "deny_all_inbound",
-                        "properties": {
-                            "description": "Deny all other inbound traffic",
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "*",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Deny",
-                            "priority": 4096,
-                            "direction": "Inbound"
-                        }
-                    },
-                    {
                         "name": "management_out",
                         "properties": {
                             "description": "Allow outbound management traffic",
@@ -1367,20 +1353,6 @@
                             "destinationAddressPrefix": "[variables('subnetPrefix')]",
                             "access": "Allow",
                             "priority": 200,
-                            "direction": "Outbound"
-                        }
-                    },
-                    {
-                        "name": "deny_all_outbound",
-                        "properties": {
-                            "description": "Deny all other outbound traffic",
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "*",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Deny",
-                            "priority": 4096,
                             "direction": "Outbound"
                         }
                     }
