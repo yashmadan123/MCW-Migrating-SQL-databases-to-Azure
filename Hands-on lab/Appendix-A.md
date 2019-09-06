@@ -150,7 +150,7 @@ In this task, you will create an Azure SQL Managed Instance.
     - **Enable public endpoint**: Leave this box unchecked.
     - **Resource group**: Select **hands-on-lab-SUFFIX** from the list.
     - **Use this instance as a Failover Group secondary**: This box should remain unchecked.
-    - **Pricing tier**: Select this, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **8** and the Storage to **32**, and then select **Apply**
+    - **Pricing tier**: Select this, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **8** and the Storage to **32**, and then select **Apply**.
 
     ![On the Configure performance blade, Business Critical is selected, Gen5 is selected, and the vCores are set to 8 and the Storage size is set to 64.](media/sql-mi-configure-performance.png "Configure performance")
 
