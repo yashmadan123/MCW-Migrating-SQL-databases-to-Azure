@@ -340,7 +340,7 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
 Duration: 60 minutes
 
-In this exercise, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration you will target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
+In this exercise, you will use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. Tailspin Toys mentioned the importance of their gamer information web application in driving revenue, so for this migration an online migration will be performed to reduce downtime. You will also target the [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
 
@@ -403,9 +403,11 @@ In this task, you will use the SQL Server Configuration Manager to update the se
 
     ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
+7. Close the SQL Server Configuration Manager.
+
 ### Task 3: Create backup of TailspinToys database
 
-To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you will create a backup of the `TailspinToys` database using SSMS, and write it to the SMB network share you created in the previous task. The backup file needs to include a checksum, so you will add that during the backup steps.
+To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you will create a backup of the `TailspinToys` database using SSMS, and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you created in a previous task. The backup file needs to include a checksum, so you will add that during the backup steps.
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
@@ -431,15 +433,15 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
     ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
 
-7. In the Location Database Files dialog, select the `C:\dma-backups` folder, enter `TailspinToys.bak` into the File name field, and then select **OK**.
+7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter `TailspinToys.bak` into the File name field, and then select **OK**.
 
     ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
 
 8. Select **OK** to close the Select Backup Destination dialog.
 
-9. In the Back Up Database dialog, select the **Media Options** in the Select a page pane, and then set the following:
+9. In the Back Up Database dialog, select **Media Options** in the Select a page pane, and then set the following:
 
-    - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**
+    - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**.
     - Under Reliability, check the box for **Perform checksum before writing to media**. This is require by DMS when using the backup to restore the database to SQL MI.
 
     ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
@@ -472,7 +474,7 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
     ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, you will retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** with your unique identifier:
+5. At the prompt, you will retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** in the resource group name with your unique identifier:
 
     ```powershell
     az sql mi list --resource-group hands-on-lab-SUFFIX
@@ -482,10 +484,10 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
     ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-7. Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** with your unique identifier:
+7. Next, you will enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which you will use to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** in the resource group name with your unique identifier:
 
     ```powershell
-    az vm list-ip-addresses -g hands-on-lab-SUFFIX -n SqlServer2008
+    az vm list-ip-addresses -g hands-on-lab-SUFFIX -n SqlServer2008 --output table
     ```
 
 8. Within the output of the command above, locate and copy the value of the `ipAddress` property within the `publicIpAddresses` object. Paste the value into a text editor, such as Notepad.exe, for later reference.
@@ -496,11 +498,11 @@ In this task, you will use the Azure Cloud shell to retrieve the information nec
 
 ### Task 5: Create a service principal
 
-In this task, you will use the Azure Cloud Shell to create an Azure Active Directory (Azure AD) application and service principal (SP) that will provide DMS access to Azure SQL MI. You will grant the SP permissions to the hands-on-lab-SUFFIX resource group.
+In this task, you will use the Azure Cloud Shell to create an Azure Active Directory (Azure AD) application and service principal (SP) that will provide DMS access to Azure SQL MI. You will grant the SP permissions to the hands-on-lab-SUFFIX resource group and your subscription.
 
 > **IMPORTANT**: You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this task.
 
-1. Next, you will issue a command to create a service principal named **tailspin-toys** and assign it contributor permissions to your **hands-on-lab-SUFFIX** resource group.
+1. Next at the Cloud Shell prompt, you will issue a command to create a service principal named **tailspin-toys** and assign it contributor permissions to your **hands-on-lab-SUFFIX** resource group.
 
 2. First, you need to retrieve your subscription ID. Enter the following at the Cloud Shell prompt:
 
@@ -567,8 +569,8 @@ In this task, you will create a new online data migration project in DMS for the
 
     - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `13.66.228.107`.
     - **Authentication type**: Select SQL Authentication.
-    - **Username**: Enter **WorkshopUser**.
-    - **Password**: Enter **Password.1234567890**.
+    - **Username**: Enter **WorkshopUser**
+    - **Password**: Enter **Password.1234567890**
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
     ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
@@ -596,7 +598,7 @@ In this task, you will create a new online data migration project in DMS for the
 
 11. On the Migration Wizard **Configure migration settings** blade, enter the following configuration:
 
-    - **Network share location**: Enter `\\SQLSERVER2008\dms-backups`. This is the path of the SMB network share you created during the before the hands-on lab exercises.
+    - **Network share location**: Enter `\\SQLSERVER2008\dms-backups`. This is the path of the SMB network share you created previously.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQLSERVER2008\sqlmiuser`
     - **Password**: Enter Password.1234567890
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
@@ -618,13 +620,13 @@ In this task, you will create a new online data migration project in DMS for the
 
     ![On the Migration job blade, the Refresh button is highlighted, and a status of Full backup uploading is displayed and highlighted.](media/dms-migration-wizard-status-running.png "Migration status")
 
-16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log files uploading**. When that status appears, move on to the next task.
+16. Continue selecting **Refresh** every 5-10 seconds, until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
-    ![In the migration monitoring window, a status of Log files uploading is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
+    ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
 ### Task 7: Perform migration cutover
 
-Since you performed the migration as an "online data migration," the migration wizard will continue to monitor the SMB network share for newly added log files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you will add a record to one of the database tables, backup the logs, and complete the migration of the `TailspinToys` database by cutting over to the SQL MI database.
+Since you performed the migration as an "online data migration," the migration wizard will continue to monitor the SMB network share for newly added log backup files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you will add a record to one of the database tables, backup the logs, and complete the migration of the `TailspinToys` database by cutting over to the SQL MI database.
 
 1. In the migration status window in the Azure portal and select **TailspinToys** under database name to view further details about the database migration.
 
@@ -689,6 +691,8 @@ Since you performed the migration as an "online data migration," the migration w
 13. You will be given a progress bar below the Apply button in the Complete cutover dialog. When the migration is complete, you will see the status as **Completed**.
 
     ![A status of Completed is displayed in the Complete cutover dialog.](media/dms-migration-wizard-complete-cutover-completed.png "Migration Wizard")
+
+    > **NOTE**: If after a few minutes the progress bar has not moved, you can proceed to the next step, and monitor the cutover progress on the TailspinToysMigration blade by selecting refresh.
 
 14. Close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the TailspinToys blade. This will return you to the TailspinToysMigration blade. Select **Refresh**, and you should see a status of **Completed** from the TailspinToys database.
 
@@ -801,7 +805,7 @@ In this task, you will create an RDP connection to the JumpBox VM, and then usin
 
     ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
 
-    > **IMPORTANT**: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a log file path.
+    > **IMPORTANT**: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
 
 15. Open the `C:\hands-on-lab` folder, and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
 
