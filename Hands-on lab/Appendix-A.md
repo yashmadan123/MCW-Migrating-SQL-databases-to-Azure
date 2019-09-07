@@ -13,10 +13,8 @@ This appendix provides the steps to manually provision and configure the resourc
   - [Task 6: Create Azure Database Migration Service](#task-6-create-azure-database-migration-service)
   - [Task 7: Provision a Web App](#task-7-provision-a-web-app)
   - [Task 8: Create an Azure Blob Storage account](#task-8-create-an-azure-blob-storage-account)
-  - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
-  - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
-  - [Task 11: Open port 1433 on SqlServer2008 VM network security group](#task-11-open-port-1433-on-sqlserver2008-vm-network-security-group)
-  - [Task 12: Connect to SqlServer2008 VM](#task-12-connect-to-sqlserver2008-vm)
+  - [Task 9: Open port 1433 on SqlServer2008 VM network security group](#task-9-open-port-1433-on-sqlserver2008-vm-network-security-group)
+  - [Task 10: Connect to SqlServer2008 VM](#task-10-connect-to-sqlserver2008-vm)
 
 > **IMPORTANT**: Many Azure resources require unique names. Throughout these steps you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -364,74 +362,7 @@ In this task, you will provision an App Service (Web app), which will be used fo
 
     ![On the Review + create blade, the Validation passed message is displayed at the top.](media/storage-create-account-review.png "Create storage account")
 
-## Task 9: Connect to the JumpBox
-
-In this task, you will create an RDP connection to your JumpBox virtual machine (VM), and disable Internet Explorer Enhanced Security Configuration.
-
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the Azure navigation pane, and select the hands-on-lab-SUFFIX resource group from the list.
-
-    ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
-
-2. In the list of resources for your resource group, select the JumpBox VM.
-
-    ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted.](./media/resource-group-resources-jumpbox.png "JumpBox in resource group list")
-
-3. On your JumpBox VM blade, select **Connect** from the top menu.
-
-    ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-jumpbox.png "Connect to JumpBox VM")
-
-4. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
-
-    ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine.png "Connect to virtual machine")
-
-5. Select **Connect** on the Remote Desktop Connection dialog.
-
-    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection.png "Remote Desktop Connection dialog")
-
-6. Enter the following credentials when prompted, and then select **OK**:
-
-    - **User name**: sqlmiuser
-    - **Password**: Password.1234567890
-
-    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
-
-7. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
-
-    ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
-
-8. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
-
-9. Select **Local Server**, then select **On** next to **IE Enhanced Security Configuration**.
-
-    ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-manager-ie-enhanced-security-configuration.png "Server Manager")
-
-10. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under both Administrators and Users, and then select **OK**.
-
-    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
-
-11. Close the Server Manager, but leave the connection to the JumpBox open for the next task.
-
-## Task 10: Install required software on the JumpBox
-
-In this task, you will install SQL Server Management Studio (SSMS) on the JumpBox.
-
-1. First, you will install SSMS on the JumpBox. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio 18.x** link to download the latest version of SSMS.
-
-    ![The Download SQL Server Management Studio 18.x link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
-
-    > **NOTE**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
-
-2. Run the downloaded installer.
-
-3. On the Welcome screen, select **Install** to begin the installation.
-
-    ![The Install button is highlighted on the SSMS installation welcome screen.](media/ssms-install.png "Install SSMS")
-
-4. Select **Close** when the installation completes.
-
-    ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
-
-## Task 11: Open port 1433 on SqlServer2008 VM network security group
+## Task 9: Open port 1433 on SqlServer2008 VM network security group
 
 In this task, you will open port 1433 on the network security group associated with the SqlServer2008 VM to allow external communication with SQL Server.
 
@@ -459,7 +390,7 @@ In this task, you will open port 1433 on the network security group associated w
 
 5. Select **Add**. Remain on the SqlServer2008 VM blade for the next step.
 
-## Task 12: Connect to SqlServer2008 VM
+## Task 10: Connect to SqlServer2008 VM
 
 In this task, you will open an RDP connection to the SqlServer2008 VM, disable Internet Explorer Enhanced Security Configuration, and add a firewall rule to open port 1433 to inbound TCP traffic. You will also install Data Migration Assistant (DMA).
 
