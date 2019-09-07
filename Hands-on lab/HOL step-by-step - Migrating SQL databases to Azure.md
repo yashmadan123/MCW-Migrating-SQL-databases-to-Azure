@@ -135,7 +135,7 @@ Before you begin the assessments, you need to restore a copy of the `TailspinToy
 
 6. Once logged into the SqlServer2008 VM, download a [backup of the TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
 
-7. Next, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
+7. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
     ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
@@ -244,6 +244,7 @@ In this task, you will use the Microsoft Data Migration Assistant (DMA) to perfo
 
     - **Project type**: Select Assessment.
     - **Project name**: Enter ToAzureSqlDb.
+    - **Assessment type**: Select Database Engine.
     - **Source server type**: Select SQL Server.
     - **Target server type**: Select Azure SQL Database.
 
@@ -294,6 +295,7 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
     - **Project type**: Select Assessment.
     - **Project name**: Enter ToSqlMi.
+    - **Assessment type**: Select Database Engine.
     - **Source server type**: Select SQL Server.
     - **Target server type**: Select Azure SQL Database Managed Instance.
 
@@ -332,7 +334,7 @@ With one PaaS offering ruled out due to feature parity, you will now perform a s
 
     >**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it will not impact the migration of the `TailspinToys` database to SQL MI.
 
-10. The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with near 100% compatibility, including the features that prevented them from using Azure SQL Database.
+10. The database, including the cross-database references and Service broker features, can be migrated as is. This provides the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications to not use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with *near 100% compatibility*, including the features that prevented them from using Azure SQL Database.
 
 ## Exercise 2: Migrate the database to SQL MI
 
@@ -1025,7 +1027,7 @@ In this task, you will look at the [SQL Data Discovery and Classification](https
 11. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
     ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
-    
+
     >**Note**: This feature is still in preview.  If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery & Classification tile again to see the results.
 
 12. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
@@ -1318,6 +1320,8 @@ In this exercise, you will de-provision all Azure resources that were created in
 ### Task 1: Delete Azure resource groups
 
 1. In the Azure portal, select **Resource groups** from the left-hand menu, and locate and delete the **hands-on-lab-SUFFIX** following resource group.
+
+    > **NOTE**: Deleting a resource group containing SQL MI does not always work the first time, resulting in a few networking components (route table, SQL MI NSG, and VNet) remaining in the resource group after the first delete attempt. In this case, wait for the first process to complete, and then attempt to delete the resource group a second time.
 
 ### Task 2: Delete the tailspin-toys service principal
 
