@@ -11,6 +11,6 @@ function Disable-InternetExplorerESC {
 Disable-InternetExplorerESC
 
 # Download and install SQL Server Management Studio
-Invoke-WebRequest 'https://go.microsoft.com/fwlink/?linkid=2088649' -OutFile 'C:\SSMS-Setup.exe'
-$pathArgs = {C:\SSMS-Setup.exe /S /v/qn}
+Invoke-WebRequest 'https://go.microsoft.com/fwlink/?linkid=2099720' -OutFile 'C:\SSMS-Setup.exe'
+$pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs log.txt}
 Invoke-Command -ScriptBlock $pathArgs
