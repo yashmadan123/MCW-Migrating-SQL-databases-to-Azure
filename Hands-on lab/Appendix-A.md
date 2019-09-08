@@ -13,8 +13,8 @@ This appendix provides the steps to manually provision and configure the resourc
   - [Task 6: Create Azure Database Migration Service](#task-6-create-azure-database-migration-service)
   - [Task 7: Provision a Web App](#task-7-provision-a-web-app)
   - [Task 8: Create an Azure Blob Storage account](#task-8-create-an-azure-blob-storage-account)
-    - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
-    - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
+  - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
+  - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Open port 1433 on SqlServer2008 VM network security group](#task-11-open-port-1433-on-sqlserver2008-vm-network-security-group)
   - [Task 12: Connect to SqlServer2008 VM](#task-12-connect-to-sqlserver2008-vm)
 
@@ -364,7 +364,7 @@ In this task, you will provision an App Service (Web app), which will be used fo
 
     ![On the Review + create blade, the Validation passed message is displayed at the top.](media/storage-create-account-review.png "Create storage account")
 
-### Task 9: Connect to the JumpBox
+## Task 9: Connect to the JumpBox
 
 In this task, you will create an RDP connection to your JumpBox virtual machine (VM), and disable Internet Explorer Enhanced Security Configuration.
 
@@ -413,7 +413,7 @@ In this task, you will create an RDP connection to your JumpBox virtual machine 
 
 11. Close the Server Manager, but leave the connection to the JumpBox open for the next task.
 
-### Task 10: Install required software on the JumpBox
+## Task 10: Install required software on the JumpBox
 
 In this task, you will install SQL Server Management Studio (SSMS) on the JumpBox.
 
