@@ -88,7 +88,7 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 1. We want to migrate all our gaming services infrastructure into the cloud, using PaaS services where possible. We would like to know if this can be accomplished in a three-month time period to avoid renewing our equipment rental contract.
 
-2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like know more about:
+2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like to know more about:
 
     - Adding the ability to scale out the data warehouse to serve more requests
     - The upgrade path for our SSIS packages, SSAS cubes and SSRS reports
