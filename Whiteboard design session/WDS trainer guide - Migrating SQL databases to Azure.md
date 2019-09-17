@@ -214,7 +214,7 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 1. We want to migrate all our gaming services infrastructure into the cloud, using PaaS services where possible. We would like to know if this can be accomplished in a three-month time period to avoid renewing our equipment rental contract.
 
-2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like know more about:
+2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like to know more about:
 
     - Adding the ability to scale out the data warehouse to serve more requests
     - The upgrade path for our SSIS packages, SSAS cubes and SSRS reports
@@ -647,7 +647,7 @@ The primary audience is the business decision makers and technology decision mak
 
     For their gaming databases, they should configure auto-failover groups for the Azure SQL Database Managed Instances. By using auto-failover groups with an automatic failover policy, any outage that impacts one or several of the databases in the group results in automatic failover. In addition, auto-failover groups provide read-write and read-only listener end-points that remain unchanged during fail-overs. Whether you use manual or automatic failover activation, failover switches all secondary databases in the group to primary. After the database failover is completed, the DNS record is automatically updated to redirect the endpoints to the new region.
 
-    > **NOTE**: Auto-failover groups for Managed Instance is currently in public preview. For customers who object to using a *preview* feature, a manual failover process would need to be implemented. This could involve setting up transactional replication to another SQL MI in a different region. VNet peering would need to be established between the virtual networks.
+    > **Note**: Auto-failover groups for Managed Instance is currently in public preview. For customers who object to using a *preview* feature, a manual failover process would need to be implemented. This could involve setting up transactional replication to another SQL MI in a different region. VNet peering would need to be established between the virtual networks.
 
     For their data warehouse, they should use the geo-restore recovery pattern to achieve the lowest possible RTO and RPO. They would use geo-restore to recover the catalog and tenant databases from automatically maintained geo-redundant backups into an alternate recovery region. After the outage is resolved, they would use geo-replication to repatriate changed databases to their original region.
 
@@ -693,9 +693,9 @@ The primary audience is the business decision makers and technology decision mak
 
     DEA guides you through running A/B testing by completing three steps:
 
-    1. **Capture**: The first step of SQL Server A/B testing is to capture a trace on your source server. Trace files capture the entire query workload on that server.
-    2. **Replay**: The second step of SQL Server A/B testing is to replay the trace file that was captured on your target servers, and then collect extensive traces from the replay for analysis.
-    3. **Analysis**: The final step is to generate an analysis report by using the replay traces. The analysis report can help you gain insight into the implications of the proposed change.
+    - **Capture**: The first step of SQL Server A/B testing is to capture a trace on your source server. Trace files capture the entire query workload on that server.
+    - **Replay**: The second step of SQL Server A/B testing is to replay the trace file that was captured on your target servers, and then collect extensive traces from the replay for analysis.
+    - **Analysis**: The final step is to generate an analysis report by using the replay traces. The analysis report can help you gain insight into the implications of the proposed change.
 
     Using the analysis metrics provided by DEA, customers who are upgrading from an earlier version of SQL Server (starting with 2005) to a more recent version can identify compatibility errors, degraded queries and query plans, and other workload comparison data. The comparison data can lead to a higher confidence and a more successful upgrade experience.
 
