@@ -6,6 +6,7 @@ To facilitate online gameplay, they host gaming services on-premises using rente
 
 Tailspin Toys is hoping that migrating their services from on-premises to the cloud.  They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to better understand what the overall architecture might look after migrating to the cloud.
 
+September 2019
 
 ## Target audience
 
@@ -13,7 +14,7 @@ Tailspin Toys is hoping that migrating their services from on-premises to the cl
 - SQL/Database developers
 - Application developers
 
-## Abstract
+## Abstracts
 
 ### Workshop
 
@@ -52,3 +53,16 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 ## Related references
 
 - [MCW](https://github.com/Microsoft/MCW)
+
+## Help & Support
+
+We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
+
+***Having trouble?***
+- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
+- Next, submit an issue with a detailed description of the problem.
+- Please do not submit pull requests. Our authors will review open issues and submit pull requests, as needed, for approval.  
+
+If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
+
+### Please allow 5 - 10 business days for review and resolution of issues.
