@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-September 2019
+October 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -29,7 +29,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 - [Migrating SQL databases to Azure before the hands-on lab setup guide](#migrating-sql-databases-to-azure-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Provision a resource group](#task-1-provision-a-resource-group)
+    - [Task 1: Create a resource group](#task-1-create-a-resource-group)
     - [Task 2: Register the Microsoft DataMigration resource provider](#task-2-register-the-microsoft-datamigration-resource-provider)
     - [Task 3: Run ARM template to provision lab resources](#task-3-run-arm-template-to-provision-lab-resources)
 
@@ -47,13 +47,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 Duration: 15 minutes
 
-In this exercise, you will set up your environment for use in the rest of the hands-on lab. You should follow all steps provided *before* attending the Hands-on lab.
+In this exercise, you set up your environment for use in the rest of the hands-on lab. You should follow all steps provided *before* attending the Hands-on lab.
 
-> **Important**: Many Azure resources require unique names. Throughout these steps you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
+> **Important**: Many Azure resources require unique names. Throughout these steps, the word "SUFFIX" appears as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
-### Task 1: Provision a resource group
+### Task 1: Create a resource group
 
-In this task, you will create an Azure resource group which will serve as a container for the resources used throughout this lab.
+In this task, you create an Azure resource group that serves as a container for the resources used throughout this lab.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups**, select **+Add**, then enter the following in the Create an empty resource group blade:
 
@@ -85,21 +85,21 @@ In this task, you will register the `Microsoft.DataMigration` resource provider 
 
 ### Task 3: Run ARM template to provision lab resources
 
-In this task, you will run an Azure Resource Manager (ARM) template to deploy the resources required for this hands-on lab. The components will be deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. In addition to the provisioning of resources, the ARM template will also execute PowerShell scripts on each of the VMs to install software and configure the servers. The resources created by the ARM template include:
+In this task, you run an Azure Resource Manager (ARM) template to deploy the resources required for this hands-on lab. The components are deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. In addition to creating resources, the ARM template also executes PowerShell scripts on each of the VMs to install software and configure the servers. The resources created by the ARM template include:
 
 - A virtual network with three subnets, ManagedInstance, Management, and a Gateway subnet
 - A virtual network gateway, associated with the Gateway subnet
 - A route table
 - Azure SQL Database Managed Instance (SQL MI), added to the ManagedInstance subnet
-- A JumpBox with Visual Studio 2019 Community edition and SQL Server Management Studio (SSMS installed, added to the Management subnet)
+- A JumpBox with Visual Studio 2019 Community Edition and SQL Server Management Studio (SSMS installed, added to the Management subnet)
 - A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet
 - Azure Database Migration Service (DMS)
 - Azure App Service Plan and App Service (Web App)
 - Azure Blob Storage account
 
->**Note**: You can review the steps to manually provision the lab resources in [Appendix A](./Appendix-A.md).
+>**Note**: You can review the steps to manually provision and configure the lab resources in [Appendix A](./Appendix-A.md).
 
-1. Before running the ARM template, it is beneficial to quickly verify that you will be able to provision SQL MI in your subscription. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
+1. Before running the ARM template, it is beneficial to quickly verify that you can provision SQL MI in your subscription. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
 
     ![+Create a resource is selected in the Azure navigation pane, and "sql managed instance" is entered into the Search the Marketplace box. Azure SQL Managed Instance is selected in the results.](media/create-resource-sql-mi.png "Create SQL Managed Instance")
 
@@ -124,20 +124,20 @@ In this task, you will run an Azure Resource Manager (ARM) template to deploy th
     - **Subscription**: Select the subscription you are using for this hands-on lab.
     - **Resource group**: Select the hands-on-lab-SUFFIX resource group from the dropdown list.
     - **Location**: Select the location you used for the hands-on-lab-SUFFIX resource group.
-    - **Managed Instance Name**: Accept the default value, **sqlmi**. **Note**: The actual name must be globally unique, so a unique string will be generated from your Resource Group and appended to the name during provisioning.
+    - **Managed Instance Name**: Accept the default value, **sqlmi**. **Note**: The actual name must be globally unique, so a unique string is generated from your Resource Group and appended to the name during provisioning.
     - **Admin Username**: Accept the default value, **sqlmiuser**.
     - **Admin Password**: Accept the default value, **Password.1234567890**.
     - **V Cores**: Accept the default value, **16**.
     - **Storage Size in GB**: Accept the default value, **32**.
     - Check the box to agree to the Azure Marketplace terms and conditions.
 
-    ![The Custom deployment blade displays, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")
+    ![The Custom deployment blade is displayed, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")
 
 6. Select **Purchase** to start provisioning the JumpBox VM and SQL Managed Instance.
 
-    > **Note**: The deployment of the custom ARM template can take over 6 hours due to the inclusion of SQL MI. However, the deployment of most of the resources will complete within a few minutes. The JumpBox and SQL Server 2008 R2 VMs should complete in about 15 minutes.
+    > **Note**: The deployment of the custom ARM template can take over 6 hours due to the inclusion of SQL MI. However, the deployment of most of the resources completes within a few minutes. The JumpBox and SQL Server 2008 R2 VMs should complete in about 15 minutes.
 
-7. You can monitor the progress of the deployment by navigating to the hands-on-lab-SUFFIX resource group in the Azure portal, and then selecting **Deployments** from the left-hand menu. The deployment will be named **Microsoft.Template**. Select that to view the progress of each item in the template.
+7. You can monitor the progress of the deployment by navigating to the hands-on-lab-SUFFIX resource group in the Azure portal, and then selecting **Deployments** from the left-hand menu. The deployment is named **Microsoft.Template**. Select that to view the progress of each item in the template.
 
     ![The Deployments menu item is selected in the left-hand menu of the hands-on-lab-SUFFIX resource group and the Microsoft.Template deployment is highlighted.](media/resource-group-deployments.png "Resource group deployments")
 
