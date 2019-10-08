@@ -2,6 +2,8 @@
 
 This appendix provides the steps to manually provision and configure the resources created by the ARM template used in the before the hands-on lab guide.
 
+October 2019
+
 **Contents**:
 
 - [Appendix A: Manual resource deployment and setup](#appendix-a-manual-resource-deployment-and-setup)
