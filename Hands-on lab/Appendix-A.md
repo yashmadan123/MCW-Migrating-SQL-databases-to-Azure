@@ -1,10 +1,10 @@
-# Appendix A: Lab environment setup
+# Appendix A: Manual resource deployment and setup
 
 This appendix provides the steps to manually provision and configure the resources created by the ARM template used in the before the hands-on lab guide.
 
 **Contents**:
 
-- [Appendix A: Lab environment setup](#appendix-a-lab-environment-setup)
+- [Appendix A: Manual resource deployment and setup](#appendix-a-manual-resource-deployment-and-setup)
   - [Task 1: Create virtual network](#task-1-create-virtual-network)
   - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
