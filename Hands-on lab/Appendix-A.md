@@ -1,10 +1,12 @@
-# Appendix A: Lab environment setup
+# Appendix A: Manual resource deployment and setup
 
 This appendix provides the steps to manually provision and configure the resources created by the ARM template used in the before the hands-on lab guide.
 
+October 2019
+
 **Contents**:
 
-- [Appendix A: Lab environment setup](#appendix-a-lab-environment-setup)
+- [Appendix A: Manual resource deployment and setup](#appendix-a-manual-resource-deployment-and-setup)
   - [Task 1: Create virtual network](#task-1-create-virtual-network)
   - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
@@ -166,7 +168,7 @@ In this task, you will create an Azure SQL Managed Instance.
 
 6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
 
-    > **Note**: Provisioning of SQL Managed Instance can take 6+ hours, if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process.
+    > **Note**: Provisioning of SQL Managed Instance can take 6+ hours, if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 7 hours, you may need to submit a support ticket to request assistance in completing the setup.
 
 ## Task 4: Create the JumpBox VM
 
