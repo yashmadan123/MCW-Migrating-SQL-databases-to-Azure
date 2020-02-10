@@ -399,7 +399,15 @@
                             },
                             "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-                            }
+                            },
+                            "delegations":[
+                                {                                    
+                                    "name": "[concat('dlg-', variables('uniqueManagedInstanceName'))]",
+                                    "properties": {
+                                        "serviceName": "Microsoft.Sql/managedInstances"
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
