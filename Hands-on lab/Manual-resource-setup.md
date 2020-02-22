@@ -1,14 +1,14 @@
 # Manual resource deployment and setup guide
 
-This guide provides step-by-step instructions to manually provision and configure the resources created by the ARM template referenced in the before the hands-on lab guide.
+This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
 February 2020
 
 **Contents**:
 
 - [Manual resource deployment and setup guide](#manual-resource-deployment-and-setup-guide)
-  - [Task 1: Create virtual network](#task-1-create-virtual-network)
-  - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
+  - [Task 1: Create a virtual network](#task-1-create-a-virtual-network)
+  - [Task 2: Create a VPN gateway](#task-2-create-a-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
   - [Task 4: Create the JumpBox VM](#task-4-create-the-jumpbox-vm)
   - [Task 5: Create SQL Server 2008 R2 virtual machine](#task-5-create-sql-server-2008-r2-virtual-machine)
@@ -18,13 +18,13 @@ February 2020
   - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
-    - [Task 12: Configure the TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-tailspintoys-database-on-the-sqlserver2008-vm)
+  - [Task 12: Configure the TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-tailspintoys-database-on-the-sqlserver2008-vm)
 
-> **Important**: Many Azure resources require unique names. Throughout these steps you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
+> **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
-## Task 1: Create virtual network
+## Task 1: Create a virtual network
 
-In this task, you will create and configure a virtual network (VNet) which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associated the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
+In this task, you create and configure a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -72,7 +72,7 @@ In this task, you will create and configure a virtual network (VNet) which will 
     - **Service endpoints**: Leave set to 0 selected.
     - **Subnet delegation**: Leave set to none.
 
-    ![On the Add subnet blade, Management is entered into the name field and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
+    ![On the Add subnet blade, Management is entered into the name field, and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
 
 9. Select **OK**.
 
@@ -80,15 +80,15 @@ In this task, you will create and configure a virtual network (VNet) which will 
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-11. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints and Subnet delegation set to their default values.
+11. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
-    > **Note**: The default address range creates a gateway subnet with a CIDR block of /24. This provide enough IP addresses to accommodate additional future configuration requirements.
+    > **Note**: The default address range creates a gateway subnet with a CIDR block of /24. This provides enough IP addresses to accommodate additional future configuration requirements.
 
 12. Select **OK**.
 
-## Task 2: Create VPN gateway
+## Task 2: Create a VPN gateway
 
 In this task, you set up a Virtual Network Gateway.
 
@@ -98,7 +98,7 @@ In this task, you set up a Virtual Network Gateway.
 
 2. Enter "virtual network gateway" into the Search the Marketplace box, and select **Virtual network gateway** from the results.
 
-    !["Virtual network gateway" is entered into the Search the Marketplace box, and Virtual network gateway is highlighted in the results.](media/create-resource-virtual-network-gateway.png "Create resource")
+    !["Virtual network gateway" is entered into the Search the Marketplace box, and Virtual network gateway is highlighted in the results.](media/create-resource-virtual-network-gateway.png "Create a resource")
 
 3. Select **Create** on the Virtual network gateway blade.
 
@@ -139,7 +139,7 @@ In this task, you set up a Virtual Network Gateway.
 
 ## Task 3: Provision SQL MI
 
-In this task, you will create an Azure SQL Managed Instance.
+In this task, you create an Azure SQL Managed Instance.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -166,7 +166,7 @@ In this task, you will create an Azure SQL Managed Instance.
         - **Region**: Select the region you are using for resources in this hands-on lab.
         - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **16** and the Storage to **32**, and then select **Apply**.
 
-        ![On the Configure performance blade, Business Critical is selected, Gen5 is selected, and the vCores are set to 8 and the Storage size is set to 64.](media/sql-mi-configure-performance.png "Configure performance")
+        ![On the Configure performance blade, Business Critical is selected, Gen5 is selected, and the vCores are set to 16, and the Storage size is set to 32.](media/sql-mi-configure-performance.png "Configure performance")
 
     - Administrator account:
 
@@ -198,11 +198,11 @@ In this task, you will create an Azure SQL Managed Instance.
 
 7. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
 
-    > **Note**: Provisioning of SQL Managed Instance can take 6+ hours, if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 7 hours, you may need to submit a support ticket to request assistance in completing the setup.
+    > **Note**: Provisioning of SQL Managed Instance can take 6+ hours if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 7 hours, you may need to submit a support ticket to request assistance in completing the setup.
 
 ## Task 4: Create the JumpBox VM
 
-In this task, you will provision a virtual machine (VM) in Azure. The VM image used will have Visual Studio Community 2019 installed.
+In this task, you provision a virtual machine (VM) in Azure. The VM image used has the latest version of Visual Studio Community 2019 installed.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -212,11 +212,11 @@ In this task, you will provision a virtual machine (VM) in Azure. The VM image u
 
     !["Visual studio 2019" is entered into the Search the Marketplace box. Visual Studio 2019 Latest is selected in the search results.](./media/create-resource-visual-studio-vm.png "Create Visual Studio 2019 virtual machine")
 
-3. On the Visual Studio 2019 blade, select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)** from the Select a software plan drop down list and then select **Create**.
+3. On the Visual Studio 2019 blade, select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)** from the Select a software plan drop-down list and then select **Create**.
 
     ![Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64) is highlighted in the Select a software plan list on the Visual Studio 2019 blade.](media/visual-studio-create.png "Visual Studio 2019")
 
-4. On the Create a virtual machine **Basics** tab, set the following configuration:
+4. On the Create a virtual machine **Basics** tab set the following configuration:
 
     - Project details:
 
@@ -269,11 +269,11 @@ In this task, you will provision a virtual machine (VM) in Azure. The VM image u
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/lab-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-10. It will take approximately 15 minutes for the VM to finish provisioning. You can move on to the next task while you wait.
+10. It takes approximately 15 minutes for the VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 5: Create SQL Server 2008 R2 virtual machine
 
-In this task, you will provision another virtual machine (VM) in Azure which will host your "on-premises" instance of SQL Server 2008 R2. The VM will use the SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2 image.
+In this task, you provision another virtual machine (VM) in Azure, which will host your "on-premises" instance of SQL Server 2008 R2. The VM uses the SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2 image.
 
 > **Note**: An older version of Windows Server is being used because SQL Server 2008 R2 is not supported on Windows Server 2016.
 
@@ -287,7 +287,7 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
 
     ![The SQL Server 2008 R2 SP3 on Windows Server 2008 R2 blade is displayed with the standard edition selected for the software plan. The Create button highlighted.](media/create-resource-sql-server-2008-r2.png "Create SQL Server 2008 R2 Resource")
 
-4. On the Create a virtual machine **Basics** tab, set the following configuration:
+4. On the Create a virtual machine **Basics** tab set the following configuration:
 
    - Project Details:
 
@@ -358,11 +358,11 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/sql-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-12. It will take approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
+12. It takes approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 6: Create Azure Database Migration Service
 
-In this task, you will provision an instance of the Azure Database Migration Service (DMS).
+In this task, you provision an instance of the Azure Database Migration Service (DMS).
 
 > **Important**: This service requires that you have registered the `Microsoft.DataMigration` resource provider within your subscription in Azure. You can find the steps to complete this in the Before the HOL guide.
 
@@ -404,7 +404,7 @@ In this task, you will provision an instance of the Azure Database Migration Ser
 
 ## Task 7: Provision a Web App
 
-In this task, you will provision an App Service (Web app), which will be used for hosting the Tailspin Toys web application.
+In this task, you provision an App Service (Web app), which will be used for hosting the Tailspin Toys web application.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -446,9 +446,11 @@ In this task, you will provision an App Service (Web app), which will be used fo
 
     ![The Create Web App Review and Create tab is displayed.](media/create-web-app-review-and-create-tab.png "Create Web App Review and Create tab")
 
-7. It will take a few minutes for the Web App creation to complete. You can move on to the next task while you wait.
+7. It takes a few minutes for the Web App creation to complete. You can move on to the next task while you wait.
 
 ## Task 8: Create an Azure Blob Storage account
+
+In this task, you create an Azure Storage account.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -484,7 +486,7 @@ In this task, you will provision an App Service (Web app), which will be used fo
 
 ## Task 9: Connect to the JumpBox
 
-In this task, you will create an RDP connection to your JumpBox virtual machine (VM), and disable Internet Explorer Enhanced Security Configuration.
+In this task, you create an RDP connection to your JumpBox virtual machine (VM) and disable Internet Explorer Enhanced Security Configuration.
 
 > **Note**: You do not need to wait for SQL MI to finish provisioning to complete the remaining tasks.
 
@@ -494,7 +496,7 @@ In this task, you will create an RDP connection to your JumpBox virtual machine 
 
 2. Select the hands-on-lab-SUFFIX resource group from the list.
 
-    ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
 3. In the list of resources for your resource group, select the JumpBox VM.
 
@@ -537,7 +539,7 @@ In this task, you will create an RDP connection to your JumpBox virtual machine 
 
 ## Task 10: Install required software on the JumpBox
 
-In this task, you will install SQL Server Management Studio (SSMS) on the JumpBox.
+In this task, you install SQL Server Management Studio (SSMS) on the JumpBox.
 
 1. First, you will install SSMS on the JumpBox. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
 
@@ -557,7 +559,7 @@ In this task, you will install SQL Server Management Studio (SSMS) on the JumpBo
 
 ## Task 11: Connect to SqlServer2008 VM
 
-In this task, you will open an RDP connection to the SqlServer2008 VM, disable Internet Explorer Enhanced Security Configuration, and add a firewall rule to open port 1433 to inbound TCP traffic. You will also install Data Migration Assistant (DMA).
+In this task, you open an RDP connection to the SqlServer2008 VM, disable Internet Explorer Enhanced Security Configuration, and add a firewall rule to open port 1433 to inbound TCP traffic. You also install the Microsoft Data Migration Assistant (DMA).
 
 1. As you did for the JumpBox, navigate to the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** on the top menu.
 
@@ -596,7 +598,7 @@ In this task, you will open an RDP connection to the SqlServer2008 VM, disable I
 
 10. Right-click on **Inbound Rules** and then select **New Rule** from the context menu.
 
-    ![Inbound Rules is selected and New Rule is highlighted in the context menu.](media/windows-firewall-with-advanced-security-new-inbound-rule.png "New Rule")
+    ![Inbound Rules is selected, and New Rule is highlighted in the context menu.](media/windows-firewall-with-advanced-security-new-inbound-rule.png "New Rule")
 
 11. In the New Inbound Rule Wizard, under Rule Type, select **Port**, then select **Next**.
 
@@ -606,7 +608,7 @@ In this task, you will open an RDP connection to the SqlServer2008 VM, disable I
 
     ![Protocol and Ports is selected on the left side of the New Inbound Rule Wizard, and 1433 is in the Specific local ports box, which is selected on the right.](media/windows-2008-new-inbound-rule-wizard-protocol-and-ports.png "Select a specific local port")
 
-13. In the Action dialog, select **Allow the connection**, and then select **Next**.
+13. In the Action dialog, select **Allow the connection** and then select **Next**.
 
     ![Action is selected on the left side of the New Inbound Rule Wizard, and Allow the connection is selected on the right.](media/windows-2008-new-inbound-rule-wizard-action.png "Specify the action")
 
@@ -620,7 +622,7 @@ In this task, you will open an RDP connection to the SqlServer2008 VM, disable I
 
 16. Close the Server Manager.
 
-17. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM, and then selecting the **Download** button.
+17. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
 
     ![The Download button is highlighted on the Data Migration Assistant download page.](media/dma-download.png "Download Data Migration Assistant")
 
@@ -628,7 +630,7 @@ In this task, you will open an RDP connection to the SqlServer2008 VM, disable I
 
 18. Run the downloaded installer.
 
-19. Select **Next** on each of the screens, accepting to the license terms and privacy policy in the process.
+19. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
 
 20. Select **Install** on the Privacy Policy screen to begin the installation.
 
@@ -636,7 +638,7 @@ In this task, you will open an RDP connection to the SqlServer2008 VM, disable I
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
-### Task 12: Configure the TailspinToys database on the SqlServer2008 VM
+## Task 12: Configure the TailspinToys database on the SqlServer2008 VM
 
 In this task, you restore and configure the `TailspinToys` database on the SQL Server 2008 R2 instance.
 
@@ -654,7 +656,7 @@ In this task, you restore and configure the `TailspinToys` database on the SQL S
 
     ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (...) button to the right of the Device box.
+5. You will now restore the `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
     ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
