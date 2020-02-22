@@ -31,7 +31,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
-    - [Task 1: Restore the TailspinToys database on the SqlServer2008 VM](#task-1-restore-the-tailspintoys-database-on-the-sqlserver2008-vm)
+    - [Task 1: Configure the TailspinToys database on the SqlServer2008 VM](#task-1-configure-the-tailspintoys-database-on-the-sqlserver2008-vm)
     - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
     - [Task 3: Perform assessment for migration to Azure SQL Database Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-database-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
@@ -57,9 +57,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 6: Enable Dynamic Data Masking](#exercise-6-enable-dynamic-data-masking)
     - [Task 1: Enable DDM on credit card numbers](#task-1-enable-ddm-on-credit-card-numbers)
     - [Task 2: Apply DDM to email addresses](#task-2-apply-ddm-to-email-addresses)
-  - [Exercise 7: Use online secondary for read-only queries](#exercise-7-use-online-secondary-for-read-only-queries)
-    - [Task 1: View Leaderboard report in TailspinToys web application](#task-1-view-leaderboard-report-in-tailspintoys-web-application)
-    - [Task 2: Update read only connection string](#task-2-update-read-only-connection-string)
     - [Task 3: Reload Leaderboard report in the Tailspin Toys web app](#task-3-reload-leaderboard-report-in-the-tailspin-toys-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete Azure resource groups](#task-1-delete-azure-resource-groups)
@@ -102,137 +99,83 @@ In SQL MI, several features of Azure SQL Database are examined. Advanced Data Se
 
 ## Exercise 1: Perform database assessments
 
-Duration: 30 minutes
+Duration: 15 minutes
 
 In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perform assessments on the `TailspinToys` database. You create two assessments, one for a migration to Azure SQL Database, and then a second for SQL MI. These assessments provide reports about any feature parity, and compatibility issues between the on-premises database and the Azure managed SQL database service options.
 
 > DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the [Data Migration Assistant documentation](https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current).
 
-### Task 1: Restore the TailspinToys database on the SqlServer2008 VM
+### Task 1: Configure the TailspinToys database on the SqlServer2008 VM
 
-Before you begin the assessments, you need to restore a copy of the `TailspinToys` database in your SQL Server 2008 R2 instance. In this task, you create an RDP connection to the SqlServer2008 VM and then restore the `TailspinToys` database onto the SQL Server 2008 R2 instance using a backup provided by Tailspin Toys.
+In this task, you do some configuration the `TailspinToys` database on the SQL Server 2008 R2 instance.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your **SqlServer2008** VM by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and selecting the **SqlServer2008** VM from the list of resources. On the SqlServer2008 Virtual Machine's **Overview** blade, select **Connect** on the top menu.
+1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+
+    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+
+2. Select the hands-on-lab-SUFFIX resource group from the list.
+
+    ![Resource groups is selected in the Azure navigation pane and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+3. In the list of resources for your resource group, select the SqlServer2008 VM.
+
+4. On the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** on the top menu, as you've done previously.
 
     ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-sqlserver2008.png "Connect to SqlServer2008 VM")
 
-2. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
+5. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
 
-3. Select **Connect** on the Remote Desktop Connection dialog.
+6. Select **Connect** on the Remote Desktop Connection dialog.
 
     ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
 
-4. Enter the following credentials when prompted, and then select **OK**:
+7. Enter the following credentials when prompted, and then select **OK**:
 
-    - **Username**: sqlmiuser
+    - **User name**: sqlmiuser
     - **Password**: Password.1234567890
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
-5. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+8. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
 
     ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-6. Once logged into the SqlServer2008 VM, download a [backup of the TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
-
-7. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
+9. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
     ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-8. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+10. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
     ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-9. Once connected, right-click **Databases** under SQLSERVER2008 in the Object Explorer, and then select **Restore Database** from the context menu.
-
-    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
-
-10. You will now restore the `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (...) button to the right of the Device box.
-
-    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
-
-11. In the **Select backup devices** dialog that appears, select **Add**.
-
-    ![In the Select backup devices dialog, the Add button is highlighted.](media/ssms-restore-database-select-devices.png "Select backup devices")
-
-12. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `TailspinToys.bak` file, select that file, and then select **OK**.
-
-    ![In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
-
-13. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `TailspinToys` database.
-
-    ![The completed Restore Database dialog is displayed, with the TailSpinToys database specified as the target.](media/ssms-restore-database.png "Restore Database")
-
-14. Select **OK** to start the restore.
-
-15. Select **OK** in the dialog when the database restore is complete.
-
-    ![A dialog is displayed with a message that the database TailspinToys was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
-
-16. Next, you execute a script in SSMS, which resets the `sa` password, enables mixed mode authentication, enables Service broker, creates the `WorkshopUser` account, and changes the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+11. Once connected, select **New Query** from the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-17. Copy and paste the SQL script below into the new query window:
+12. Next, you execute a script in SSMS, which enables Service broker and changes the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+
+13. Copy and paste the SQL script below into the new query window:
 
     ```sql
     USE master;
     GO
 
-    -- SET the sa password
-    ALTER LOGIN [sa] WITH PASSWORD=N'Password.1234567980';
-    GO
-
-    -- Enable Service Broker on the database
-    ALTER DATABASE TailspinToys SET ENABLE_BROKER WITH ROLLBACK immediate;
-    GO
-
-    -- Enable Mixed Mode Authentication
-    EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
-    N'Software\Microsoft\MSSQLServer\MSSQLServer', N'LoginMode', REG_DWORD, 2;
-    GO
-
-    -- Create a login and user named WorkshopUser
-    CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
-    GO
-
-    EXEC sp_addsrvrolemember
-        @loginame = N'WorkshopUser',
-        @rolename = N'sysadmin';
-    GO
-
-    USE TailspinToys;
-    GO
-
-    IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
-    BEGIN
-        CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
-        EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
-    END;
-    GO
-
-    -- Update the recovery model of the database to FULL
-    ALTER DATABASE TailspinToys SET RECOVERY FULL;
+    -- Update the recovery model of the database to FULL and enable Service Broker
+    ALTER DATABASE TailspinToys SET
+    RECOVERY FULL,
+    ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
     GO
     ```
 
-18. To run the script, select **Execute** from the SSMS toolbar.
+14. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
-
-19. For Mixed Mode Authentication and the new `sa` password to take effect, you must restart the SQL Server (MSSQLSERVER) Service on the SqlServer2008 VM. To do this, you can use SSMS. Right-click the SQLSERVER2008 instance in the SSMS Object Explorer, and then select **Restart** from the context menu.
-
-    ![In the SSMS Object Explorer, the context menu for the SQLSERVER2008 instance is displayed, and Restart is highlighted.](media/ssms-object-explorer-restart-sqlserver2008.png "Object Explorer")
-
-20. When prompted about restarting the MSSQLSERVER service, select **Yes**. The service takes a few seconds to restart.
-
-    ![The Yes button is highlighted on the dialog asking if you are sure you want to restart the MSSQLSERVER service.](media/ssms-restart-service.png "Restart MSSQLSERVER service")
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the SqlServer2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
 
     ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
