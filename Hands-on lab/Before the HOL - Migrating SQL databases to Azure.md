@@ -111,7 +111,7 @@ In this task, you run an Azure Resource Manager (ARM) template to create the res
 - Azure App Service Plan and App Service (Web App)
 - Azure Blob Storage account
 
->**Note**: You can review the steps to manually provision and configure the lab resources in [Appendix A](./Appendix-A.md).
+>**Note**: You can review the steps to manually provision and configure the lab resources in the [Manual resource setup guide](./Manual-resource-setup.md).
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 

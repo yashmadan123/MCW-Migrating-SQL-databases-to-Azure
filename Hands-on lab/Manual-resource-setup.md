@@ -1,12 +1,12 @@
-# Appendix A: Manual resource deployment and setup
+# Manual resource deployment and setup guide
 
-This appendix provides the steps to manually provision and configure the resources created by the ARM template used in the before the hands-on lab guide.
+This guide provides step-by-step instructions to manually provision and configure the resources created by the ARM template referenced in the before the hands-on lab guide.
 
-October 2019
+February 2020
 
 **Contents**:
 
-- [Appendix A: Manual resource deployment and setup](#appendix-a-manual-resource-deployment-and-setup)
+- [Manual resource deployment and setup guide](#manual-resource-deployment-and-setup-guide)
   - [Task 1: Create virtual network](#task-1-create-virtual-network)
   - [Task 2: Create VPN gateway](#task-2-create-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
@@ -26,15 +26,19 @@ October 2019
 
 In this task, you will create and configure a virtual network (VNet) which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associated the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
 
-1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "virtual network" into the Search the Marketplace box, and then select **Virtual Network** from the results.
+1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
+
+    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
+
+2. Enter "virtual network" into the Search the Marketplace box, and then select **Virtual Network** from the results.
 
     ![+Create a resource is highlighted in the Azure navigation pane, and "virtual Network" is entered into the Search the Marketplace box. Virtual Network is selected in the results.](media/create-resource-vnet.png "Create virtual Network")
 
-2. Select **Create** on the Virtual Network blade.
+3. Select **Create** on the Virtual Network blade.
 
     ![The Create button is highlighted on the Virtual Network blade.](media/vnet-create.png "Create Virtual Network")
 
-3. On the Create virtual network blade, enter the following:
+4. On the Create virtual network blade, enter the following:
 
     - **Name**: Enter **hands-on-lab-SUFFIX-vnet**.
     - **Address space**: Accept the default value here. This should be /16 block, in the format 10.X.0.0/16.
@@ -49,17 +53,17 @@ In this task, you will create and configure a virtual network (VNet) which will 
 
     ![On the Create virtual network blade, the values specified above are entered into the appropriate fields.](media/create-virtual-network.png "Create virtual network")
 
-4. Select **Create**. It will take a few seconds for the virtual network to provision.
+5. Select **Create**. It will take a few seconds for the virtual network to provision.
 
-5. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
+6. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
 
     ![The Go to resource button is highlighted in the deployment succeeded notification in the Azure portal.](media/vnet-go-to-resource.png "Deployment succeeded notification")
 
-6. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
+7. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
 
     ![The Subnets item is highlighted and selected in the left-hand menu of the Virtual network blade, and + Subnet is highlighted in the top menu.](media/vnet-subnets-add.png "Add subnet")
 
-7. On the Add subnet blade, enter the following:
+8. On the Add subnet blade, enter the following:
 
     - **Name**: Enter **Management**.
     - **Address range**: Accept the default value, which should be a subnet mask of /24, within the address range of your VNet.
@@ -70,19 +74,19 @@ In this task, you will create and configure a virtual network (VNet) which will 
 
     ![On the Add subnet blade, Management is entered into the name field and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
 
-8. Select **OK**.
+9.  Select **OK**.
 
-9. Back on the **Subnets** blade, select **+ Gateway Subnet**.
+10. Back on the **Subnets** blade, select **+ Gateway Subnet**.
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-10. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints and Subnet delegation set to their default values.
+11. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
     > **Note**: The default address range creates a gateway subnet with a CIDR block of /24. This provide enough IP addresses to accommodate additional future configuration requirements.
 
-11. Select **OK**.
+12. Select **OK**.
 
 ## Task 2: Create VPN gateway
 
@@ -231,7 +235,7 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
 
 > **Note**: An older version of Windows Server is being used because SQL Server 2008 R2 is not supported on Windows Server 2016.
 
-1. In the [Azure portal](https://portal.azure.com/), select **+Create a resource**, and enter "SQL Server 2008R2SP3 on Windows Server 2008R2" into the Search the Marketplace box.
+1. In the [Azure portal](https://portal.azure.com/), select **+Create a resource**, and enter "SQL Server 2008 R2 SP3 on Windows Server 2008 R2" into the Search the Marketplace box.
 
 2. On the **SQL Server 2008 R2 SP3 on Windows Server 2008 R2** blade, select **SQL Server R2 SP3 Standard on Windows Server 2008 R2** for the software plan and then select **Create**.
 
@@ -239,17 +243,28 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
 
 3. On the Create a virtual machine **Basics** tab, set the following configuration:
 
-    - **Subscription**: Select the subscription you are using for this hands-on lab.
-    - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
-    - **Virtual machine name**: Enter SqlServer2008.
-    - **Region**: Select the region you are using for resources in this hands-on lab.
-    - **Availability options**: Select no infrastructure redundancy required.
-    - **Image**: Leave SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2 selected.
-    - **Size**: Select **Change size**, and select Standard D2s v3 from the list and then select **Accept**.
-    - **Username**: Enter **sqlmiuser**
-    - **Password**: Enter **Password.1234567890**
-    - **Public inbound ports**: Choose Allow selected ports.
-    - **Select inbound ports**: Select RDP (3389) in the list.
+   - Project Details:
+
+        - **Subscription**: Select the subscription you are using for this hands-on lab.
+        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+
+   - Instance Details:
+
+        - **Virtual machine name**: Enter SqlServer2008.
+        - **Region**: Select the region you are using for resources in this hands-on lab.
+        - **Availability options**: Select no infrastructure redundancy required.
+        - **Image**: Leave SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2 selected.
+        - **Size**: Accept the default size, Standard DS12 v2.
+
+   - Administrator Account:
+
+        - **Username**: Enter **sqlmiuser**
+        - **Password**: Enter **Password.1234567890**
+
+   - Inbound Port Rules:
+
+        - **Public inbound ports**: Choose Allow selected ports.
+        - **Select inbound ports**: Select RDP (3389) in the list.
 
     ![Screenshot of the Basics tab, with fields set to the previously mentioned settings.](media/sql-server-2008-r2-vm-basics-tab.png "Create a virtual machine Basics tab")
 
@@ -266,19 +281,38 @@ In this task, you will provision another virtual machine (VM) in Azure which wil
     - **Public IP**: Leave **(new) SqlServer2008-ip** selected.
     - **NIC network security group**: Select **Basic**.
     - **Public inbound ports**: Leave **Allow selected ports** selected.
-    - **Select inbound ports**: Leave **RDP** selected.
+    - **Select inbound ports**: Leave **RDP (3389)** selected.
 
     ![On the Create a virtual machine Networking tab, the settings specified above are entered into the appropriate fields.](media/sql-virtual-machine-networking-tab.png "Create a virtual machine Networking tab")
 
-    > **Note**: The remaining tabs can be skipped, and default values will be used.
+7. Select the **SQL Server settings** tab from the top menu.
 
-7. Select **Review + create** to validate the configuration.
+    ![The SQL Server settings tab is highlighted in the create a virtual machine tabs list.](media/sql-server-2008-r2-vm-sql-settings-tab.png "Create a virtual machine SQL Server settings tab")
 
-8. On the **Review + create** tab, ensure the Validation passed message is displayed, and then select **Create** to provision the virtual machine.
+    > **Note**: The Management and Advanced tabs can be skipped, and default values will be used.
+
+8. On the **SQL Server settings** tab, set the following:
+
+    - Security & Networking:
+
+        - **SQL connectivity**: Select Public (Internet)
+        - **Port**: Set to 1433.
+
+    - SQL Authentication:
+
+        - **SQL Authentication**: Select Enable.
+        - **Login name**: Enter **sqlmiuser**
+        - **Password**: Enter **Password.1234567890**
+
+    ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
+
+9. Select **Review + create** to validate the configuration.
+
+10. On the **Review + create** tab, ensure the Validation passed message is displayed, and then select **Create** to provision the virtual machine.
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/sql-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-9. It will take approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
+11. It will take approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 6: Create Azure Database Migration Service
 
