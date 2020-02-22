@@ -96,7 +96,7 @@
         "jbCustomScriptFileName": "configure-jumpbox.ps1",
         "jbCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('jbCustomScriptFileName'))]",
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
-        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/kylebunting/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
         "appServicePlanName": "[concat(resourceGroup().name, '-asp')]",
         "webAppName": "[concat('tailspintoys', uniqueString(resourceGroup().id))]",
         "dmsName": "tailspin-dms"
