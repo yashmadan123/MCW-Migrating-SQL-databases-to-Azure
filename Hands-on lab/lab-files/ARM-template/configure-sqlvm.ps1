@@ -52,7 +52,7 @@ $DatabaseName = 'TailspinToys'
 # Restore the TailspinToys database using the downloaded backup file
 function Restore-SqlDatabase {
     $FilePath = 'C:\'
-    $bakFileName = $FilePath + 'TailspinToys.bak'
+    $bakFileName = $FilePath + $DatabaseName +'.bak'
     
     $RestoreCmd = "USE [master];
                    GO
@@ -71,7 +71,7 @@ function Restore-SqlDatabase {
                     
     Invoke-Sqlcmd $UserSetupCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
-    $AssignUserCmd = "USE [TailspinToys];
+    $AssignUserCmd = "USE [$DatabaseName];
                       GO
                       IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'WorkshopUser')
                         BEGIN
@@ -82,7 +82,7 @@ function Restore-SqlDatabase {
 
     Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
-    $RecoveryModeCmd = "USE [TailspinToys];
+    $RecoveryModeCmd = "USE [$DatabaseName];
                         GO
                         ALTER DATABASE ['$DatabaseName'] SET RECOVERY FULL;
                         GO"
