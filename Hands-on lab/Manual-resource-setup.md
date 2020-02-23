@@ -539,21 +539,47 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 ## Task 10: Install required software on the JumpBox
 
-In this task, you install SQL Server Management Studio (SSMS) on the JumpBox.
+In this task, you download the lab starter solution and install SQL Server Management Studio (SSMS) on the JumpBox.
 
-1. First, you will install SSMS on the JumpBox. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
+1. First, download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip).
+
+2. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
+
+    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](media/ie-tools-context-menu.png "Internet Explorer")
+
+3. In the **Internet Options** dialog, select **Custom level** in the Security level for this zone box.
+
+    ![The Custom level button is highlighted in the Internet Options dialog.](media/ie-internet-options.png "Internet Options")
+
+4. In the Security Settings - Internet Zone dialog, locate the **Downloads** settings and choose **Enable**, then select **OK**.
+
+    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](media/ie-security-settings-internet-zone.png "Security Settings")
+
+5. Select **OK** on the Internet Options dialog, and then attempt the download again.
+
+6. When prompted, choose to save the file and then select Open folder.
+
+    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
+
+7. Once it is download, extract the ZIP file to `C:\hands-on-lab`.
+
+    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
+
+    > **Important**: Ensure yiu use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
+
+8. Next, install SQL Server Management Studio (SSMS) on the JumpBox. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
 
     ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
     > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
 
-2. Run the downloaded installer.
+9. Run the downloaded installer.
 
-3. On the Welcome screen, select **Install** to begin the installation.
+10. On the Welcome screen, select **Install** to begin the installation.
 
     ![The Install button is highlighted on the SSMS installation welcome screen.](media/ssms-install.png "Install SSMS")
 
-4. Select **Close** when the installation completes.
+11. Select **Close** when the installation completes.
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 

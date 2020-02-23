@@ -10,6 +10,10 @@ function Disable-InternetExplorerESC {
 # Disable IE ESC
 Disable-InternetExplorerESC
 
+# Download and extract the starter solution files
+Invoke-WebRequest 'https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip' -OutFile 'C:\MCW.zip'
+Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\hands-on-lab' -Force
+
 # Download and install SQL Server Management Studio
 Invoke-WebRequest 'https://go.microsoft.com/fwlink/?linkid=2105412' -OutFile 'C:\SSMS-Setup.exe'
 $pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs log.txt}
