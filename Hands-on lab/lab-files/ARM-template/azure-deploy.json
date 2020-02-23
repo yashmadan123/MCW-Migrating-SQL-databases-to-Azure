@@ -80,6 +80,7 @@
         "sqlNetworkSecurityGroupName": "[concat(variables('sqlVirtualMachineName'), '-nsg')]",
         "sqlNetworkInterfaceName": "[concat(variables('sqlVirtualMachineName'), '-nic')]",
         "sqlPublicIpAddressName": "[concat(variables('sqlVirtualMachineName'), '-ip')]",
+        "dataDisks": [{"lun":0,"createOption":"empty","caching":"ReadOnly","writeAcceleratorEnabled":false,"id":null,"name":null,"storageAccountType":"Premium_LRS","diskSizeGB":1023,"diskEncryptionSet":{"id":null}}],
         "virtualNetworkGatewayName": "[concat(resourceGroup().name, '-vnet-gateway')]",
         "vgPublicIpAddressName": "vnet-gateway-ip",
         "vgGatewayType": "Vpn",
@@ -184,7 +185,7 @@
         {
             "name": "[variables('sqlVirtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2019-03-01",
+            "apiVersion": "2019-07-01",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('sqlNetworkInterfaceName'))]"
@@ -203,9 +204,26 @@
                     "imageReference": {
                         "publisher": "MicrosoftSQLServer",
                         "offer": "SQL2008R2SP3-WS2008R2SP1",
-                        "sku": "Enterprise",
+                        "sku": "Standard",
                         "version": "latest"
-                    }
+                    },
+                    "copy": [
+                        {
+                            "name": "dataDisks",
+                            "count": "[length(variables('dataDisks'))]",
+                            "input": {
+                                "lun": "[variables('dataDisks')[copyIndex('dataDisks')].lun]",
+                                "createOption": "[variables('dataDisks')[copyIndex('dataDisks')].createOption]",
+                                "caching": "[variables('dataDisks')[copyIndex('dataDisks')].caching]",
+                                "writeAcceleratorEnabled": "[variables('dataDisks')[copyIndex('dataDisks')].writeAcceleratorEnabled]",
+                                "diskSizeGB": "[variables('dataDisks')[copyIndex('dataDisks')].diskSizeGB]",
+                                "managedDisk": {
+                                    "id": "[coalesce(variables('dataDisks')[copyIndex('dataDisks')].id, if(equals(variables('dataDisks')[copyIndex('dataDisks')].name, json('null')), json('null'), resourceId('Microsoft.Compute/disks', variables('dataDisks')[copyIndex('dataDisks')].name)))]",
+                                    "storageAccountType": "[variables('dataDisks')[copyIndex('dataDisks')].storageAccountType]"
+                                }
+                            }
+                        }
+                    ]
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -227,7 +245,7 @@
             "resources": [
                 {
                     "name": "SetupSqlVm",
-                    "apiVersion": "2019-03-01",
+                    "apiVersion": "2019-05-01",
                     "type": "extensions",
                     "location": "[variables('location')]",
                     "properties": {
@@ -250,6 +268,57 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "[variables('sqlVirtualMachineName')]",
+            "type": "Microsoft.SqlVirtualMachine/SqlVirtualMachines",
+            "apiVersion": "2017-03-01-preview",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
+            ],
+            "properties": {
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
+                "sqlManagement": "Full",
+                "SqlServerLicenseType": "PAYG",
+                "AutoPatchingSettings": {
+                    "Enable": true,
+                    "DayOfWeek": "Sunday",
+                    "MaintenanceWindowStartingHour": 2,
+                    "MaintenanceWindowDuration": 60
+                },
+                "KeyVaultCredentialSettings": {
+                    "Enable": false,
+                    "CredentialName": ""
+                },
+                "StorageConfigurationSettings": {
+                    "DiskConfigurationType": "NEW",
+                    "StorageWorkloadType": "General",
+                    "SQLDataSettings": {
+                        "LUNs": [0],
+                        "DefaultFilePath": "F:\\data"
+                    },
+                    "SQLLogSettings": {
+                        "LUNs": [0],
+                        "DefaultFilePath": "F:\\log"
+                    },
+                    "SQLTempDbSettings": {
+                        "LUNs": [0],
+                        "DefaultFilePath": "F:\\tempDb"
+                    }
+                },
+                "ServerConfigurationsManagementSettings": {
+                    "SQLConnectivityUpdateSettings": {
+                        "ConnectivityType": "Public",
+                        "Port": "1433",
+                        "SQLAuthUpdateUserName": "[parameters('adminUsername')]",
+                        "SQLAuthUpdatePassword": "[parameters('adminPassword')]"
+                    },
+                    "AdditionalFeaturesServerConfigurations": {
+                        "IsRServicesEnabled": false
+                    }
+                }
+            }
         },
         {
             "name": "[variables('jbVirtualMachineName')]",
@@ -462,7 +531,7 @@
         {
             "name": "[variables('jbNetworkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2019-07-01",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
@@ -484,6 +553,7 @@
                         }
                     }
                 ],
+                "enableAcceleratedNetworking": true,
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('jbNetworkSecurityGroupName'))]"
                 }
@@ -492,7 +562,7 @@
         {
             "name": "[variables('sqlNetworkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2019-07-01",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
@@ -514,6 +584,7 @@
                         }
                     }
                 ],
+                "enableAcceleratedNetworking": true,
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('sqlNetworkSecurityGroupName'))]"
                 }

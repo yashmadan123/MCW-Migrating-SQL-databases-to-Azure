@@ -71,19 +71,16 @@ function Restore-SqlDatabase {
                     
     Invoke-Sqlcmd $UserSetupCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
-    $ConfigCmd = "USE [master];
+    $SetBrokerCmd = "USE [master];
                   GO
-                  ALTER DATABASE ['$DatabaseName']
-                  SET
-                  RECOVERY FULL,
-                  ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+                  ALTER DATABASE ['$DatabaseName'] SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
                   GO"
 
-    Invoke-Sqlcmd $ConfigCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $SetBrokerCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
     $AssignUserCmd = "USE [TailspinToys];
                       GO
-                      IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
+                      IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'WorkshopUser')
                         BEGIN
                             CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
                             EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
@@ -91,6 +88,13 @@ function Restore-SqlDatabase {
                       GO"
 
     Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $RecoveryModeCmd = "USE [TailspinToys];
+                  GO
+                  ALTER DATABASE ['$DatabaseName'] SET RECOVERY FULL;
+                  GO"
+
+    Invoke-Sqlcmd $RecoveryModeCmd -QueryTimeout 3600 -ServerInstance $ServerName
 }
 
 Restore-SqlDatabase
