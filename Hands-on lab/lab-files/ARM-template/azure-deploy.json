@@ -553,7 +553,6 @@
                         }
                     }
                 ],
-                "enableAcceleratedNetworking": true,
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('jbNetworkSecurityGroupName'))]"
                 }
@@ -584,7 +583,6 @@
                         }
                     }
                 ],
-                "enableAcceleratedNetworking": true,
                 "networkSecurityGroup": {
                     "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('sqlNetworkSecurityGroupName'))]"
                 }

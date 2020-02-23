@@ -90,9 +90,9 @@ function Restore-SqlDatabase {
     Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
     $RecoveryModeCmd = "USE [TailspinToys];
-                  GO
-                  ALTER DATABASE ['$DatabaseName'] SET RECOVERY FULL;
-                  GO"
+                        GO
+                        ALTER DATABASE ['$DatabaseName'] SET RECOVERY FULL;
+                        GO"
 
     Invoke-Sqlcmd $RecoveryModeCmd -QueryTimeout 3600 -ServerInstance $ServerName
 }
