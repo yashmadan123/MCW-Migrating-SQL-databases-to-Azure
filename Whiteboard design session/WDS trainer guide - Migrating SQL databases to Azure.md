@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-October 2019
+February 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -432,7 +432,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 Molly Fischer, Chief Information Officer (CIO), Tailspin Toys
 
-The primary audience is business and technology decision-makers. From the case study scenario, it would include the Director of Analytics. Usually we talk to the infrastructure managers who report to the chief information officer (CIO), or to application sponsors, such as a line of business (LOB) vice president (VP), chief marketing officer (CMO), or to those who represent the business unit IT or developers who report to application sponsors.
+The primary audience is business and technology decision-makers. From the case study scenario, it would include the Director of Analytics. Usually, we talk to the infrastructure managers who report to the chief information officer (CIO), or to application sponsors, such as a line of business (LOB) vice president (VP), chief marketing officer (CMO), or to those who represent the business unit IT or developers who report to application sponsors.
 
 ## Preferred solution
 
@@ -444,7 +444,7 @@ The primary audience is business and technology decision-makers. From the case s
 
     ![Possible target architecture](media/target-architecture.png "Target architecture")
 
-    From a high level, their authentication and gateway services VMs will be migrated into Azure VMs, doing a simple lift-and-shift. The two back-end authentication databases will be migrated to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs and associated with a single SQL MI instance running the 5 gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service.
+    From a high level, their authentication and gateway services VMs will be migrated into Azure VMs, doing a simple lift-and-shift. The two back-end authentication databases will be migrated to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs and associated with a single SQL MI instance running the five gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service.
 
     In more detail, for each game, an isolated VNet will be created, with subnets for the game service, managed instances, authorization services, management, and a Gateway subnet, as displayed in the diagram below.
 
@@ -567,13 +567,13 @@ The primary audience is business and technology decision-makers. From the case s
 
     - The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) provides visibility into the security state of a database and includes actionable steps to resolve security issues and enhance database security.
 
-    - [Advanced Threat Detection](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview) for Azure SQL Database Managed Instance detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases.
+    - [Advanced Threat Detection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) for Azure SQL Database Managed Instance detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases.
 
     - [Transparent Data Encryption](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) encrypts data at rest. This will help protect them from the potential of malicious parties being able to obtain data from physical media, such as drives or backup tapes.
 
     - [Dynamic Data Masking](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (DDM) limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
 
-    - [Row-level security](https://docs.microsoft.com/en-us/sql/relational-databases/security/row-level-security) enables you to control access to rows in a database table based on the characteristics of the user executing a query (such as by group membership or execution context). Row-level security (RLS) simplifies the design and coding of security in your application. RLS enables you to implement restrictions on data row access. For example, ensuring that workers can access only the data rows that are pertinent to their department or restricting data access to only the relevant data.
+    - [Row-level security](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) enables you to control access to rows in a database table based on the characteristics of the user executing a query (such as by group membership or execution context). Row-level security (RLS) simplifies the design and coding of security in your application. RLS enables you to implement restrictions on data row access. For example, ensuring that workers can access only the data rows that are pertinent to their department or restricting data access to only the relevant data.
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
@@ -609,9 +609,9 @@ The primary audience is business and technology decision-makers. From the case s
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
-    For their data warehouse, they could use either Azure SQL Data Warehouse or Azure SQL Database (Hyperscale service tier). The Hyperscale service tier is required due to the large size of its existing data warehouse.
+    For their data warehouse, they could use either Azure Synapse Analytics or Azure SQL Database (Hyperscale service tier). The Hyperscale service tier is required due to the large size of its existing data warehouse.
 
-    Given the customer's requirements, migrating to Azure SQL Database Hyperscale service tier is the recommended approach. This would provide maximum compatibility with their existing SQL Server 2008 R2 data warehouse, without needing to make any architectural changes. With the customer's current lack of real DBA skills, this would simplify the migration. Migrating to SQL DW, on the other hand, could require some re-architecting. In addition, the customer stated that their developers and customer service personnel connect directly to the data warehouse for reporting, troubleshooting, and other activities. SQL DW only allows 32 concurrent queries, so this could cause issues if many users are hitting the data warehouse concurrently.
+    Given the customer's requirements, migrating to Azure SQL Database Hyperscale service tier is the recommended approach. This would provide maximum compatibility with their existing SQL Server 2008 R2 data warehouse, without needing to make any architectural changes. With the customer's current lack of real DBA skills, this would simplify the migration. Migrating to Azure Synapse Analytics, on the other hand, could require some re-architecting. In addition, the customer stated that their developers and customer service personnel connect directly to the data warehouse for reporting, troubleshooting, and other activities. Azure Synapse Analytics allows a maximum of four to 128 concurrent queries, depending on the service level selected, so this could cause issues if many users are hitting the data warehouse concurrently.
 
 2. How could they read-scale out their data warehouse to serve more requests?
 
@@ -681,7 +681,7 @@ The primary audience is business and technology decision-makers. From the case s
 
     Running SQL Server on Azure VMs is an IaaS approach that would allow a 100% compatible transition of existing databases to the cloud, without any need for application changes. It works with any SQL Server version and edition on any machine size, on both Windows and Linux. SQL Server on an Azure VM provides a seamless, no-hassle method for moving SQL Server workloads from on-premises to the cloud. Teams will be freed from needing to manage on-premises hardware, but it does require teams to continue to manage the underlying infrastructure, including OS, database, and application patching. This option can also be more expensive with multiple databases and is more difficult to scale. High availability would come from using SQL Server Availability Groups.
 
-    SQL Server on Azure VMs is a good choice when full control over the database is required, or when the source database uses features that are not supported in Azure SQL DB and SQL MI, such as filestream and file groups. This approach recommended for teams that need to choose maintenance and patching schedules that work best for their business operations. In addition, for customers running SQL Server 2008 R2, migrating their database to Azure VMs does provide an additional 3 years of support beyond the July 2019 end of support cutoff.
+    SQL Server on Azure VMs is a good choice when full control over the database is required, or when the source database uses features that are not supported in Azure SQL DB and SQL MI, such as filestream and file groups. This approach recommended for teams that need to choose maintenance and patching schedules that work best for their business operations. In addition, for customers running SQL Server 2008 R2, migrating their database to Azure VMs does provide an additional three years of support beyond the July 2019 end of support cutoff.
 
 2. Are there tools that allow us to evaluate which of the various SQL Database hosting options in Azure will work with our current SQL Server 2008 R2 databases? Is there a way we can test targeted workloads against other versions of SQL? Are there tools that can help us identify potential issues and incompatibilities before we attempt a migration?
 
@@ -723,11 +723,11 @@ The primary audience is business and technology decision-makers. From the case s
 
     Customer applications can connect to managed instances and can query and update databases inside the virtual network, peered virtual network, or network connected by VPN or Azure ExpressRoute. This network must use an endpoint and a private IP address.
 
-    To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a secure public endpoint. SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended that traffic allowed to connect be limited to well-known IP addresses.
+    To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a secure public endpoint. SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended that the traffic allowed to connect be limited to well-known IP addresses.
 
 4. We do not want to be locked into a specific cloud vendor. Is it possible to use PaaS services for hosting our databases, and still have a valid exit strategy, or will this mean we should stick to using VMs in Azure for hosting our databases?
 
-    Yes, it is possible to use a PaaS database service, and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
+    Yes, it is possible to use a PaaS database service and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
 
 ## Customer quote (to be read back to the attendees at the end)
 
