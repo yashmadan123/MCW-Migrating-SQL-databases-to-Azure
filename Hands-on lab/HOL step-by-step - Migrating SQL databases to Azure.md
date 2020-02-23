@@ -271,11 +271,13 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
     ![Start assessment](media/dma-start-assessment-to-sql-mi.png "Start assessment")
 
-9. Review the migration assessment to determine the possibility of migrating to Azure SQL Database Managed Instance.
+9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Database Managed Instance.
 
-    ![For a target platform of Azure SQL Database Managed Instance, feature parity with PowerShell job step is listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
+    ![For a target platform of Azure SQL Database Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
 
-    >**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows feature parity only with a PowerShell job step. The step listed is associated with a built-in SQL Server Agent Job, and it does not impact the migration of the `TailspinToys` database to SQL MI.
+    ![For a target platform of Azure SQL Database Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
+
+    >**Note**: The assessment report for a migrating the `TailspinToys` database to a target platform of Azure SQL Database Managed Instance shows no feature parity and a note to validate full-text search functionality. The full text search changes do not impact the migration of the `TailspinToys` database to SQL MI.
 
 10. The database, including the cross-database references and Service broker features, can be migrated as is, providing the opportunity for TailspinToys to have a fully managed PaaS database running in Azure. Previously, their options for migrating a database using features, such as Service Broker, incompatible with Azure SQL Database, were to deploy the database to a virtual machine running in Azure (IaaS) or modify their database and applications not to use the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with *near 100% compatibility*, including the features that prevented them from using Azure SQL Database.
 
@@ -397,7 +399,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
-In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your SQL MI and SqlServer2008 VM from DMS.
+In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your SqlServer2008 VM from DMS.
 
 1. In the [Azure portal](https://portal.azure.com), select the Azure Cloud Shell icon from the top menu.
 
@@ -417,30 +419,18 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
     ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group:
+5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM, which is used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group:
 
     ```powershell
     $resourceGroup = "<your-resource-group-name>"
-    az sql mi list --resource-group $resourceGroup
-    ```
-
-    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
-6. Within the output of the above command, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for later reference.
-
-    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
-
-7. Next, enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which is used to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** in the resource group name with your unique identifier:
-
-    ```powershell
     az vm list-ip-addresses -g $resourceGroup -n SqlServer2008 --output table
     ```
 
-8. Within the output, locate and copy the value of the `ipAddress` property within the `publicIpAddresses` object. Paste the value into a text editor, such as Notepad.exe, for later reference.
+6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIpAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
     ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the publicIpAddress for the SqlServer2008 VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
 
-9. Leave the Azure Cloud Shell open for the next task.
+7. Leave the Azure Cloud Shell open for the next task.
 
 ### Task 5: Create a service principal
 
@@ -465,7 +455,7 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
 4. Next, enter the following `az ad sp create-for-rbac` command at the Cloud Shell prompt and then press `Enter` to run the command.
 
     ```powershell
-    az ad sp create-for-rbac -n "tailspin-toys" --role owner --scopes subscriptions/$subscriptionId}/resourceGroups/$resourceGroup
+    az ad sp create-for-rbac -n "tailspin-toys" --role owner --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
     ```
 
     ![The az ad sp create-for-rbac command is entered into the Cloud Shell, and the output of the command is displayed.](media/azure-cli-create-sp.png "Azure CLI")
@@ -654,13 +644,38 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 In this task, you connect to the SQL MI database using SSMS, and quickly verify the migration.
 
-1. Return to SSMS on your SqlServer2008 VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+1. First, use the Azure Cloud Shell to retrieve the fully qualified domain name of your SQL MI database. In the [Azure portal](https://portal.azure.com), select the Azure Cloud Shell icon from the top menu.
+
+    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
+
+2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
+
+    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
+
+3. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
+
+    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
+
+4. At the prompt, retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group:
+
+    ```powershell
+    $resourceGroup = "<your-resource-group-name>"
+    az sql mi list --resource-group $resourceGroup
+    ```
+
+    > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+
+5. Within the output of the above command, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
+
+    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
+
+6. Return to SSMS on your SqlServer2008 VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
     ![In the SSMS Object Explorer, Connect is highlighted in the menu and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
-2. In the Connect to Server dialog, enter the following:
+7. In the Connect to Server dialog, enter the following:
 
-    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
+    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
     - **Authentication**: Select SQL Server Authentication.
     - **Login**: Enter sqlmiuser
     - **Password**: Enter Password.1234567890
@@ -668,15 +683,15 @@ In this task, you connect to the SQL MI database using SSMS, and quickly verify 
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-connect-to-server-sql-mi.png "Connect to Server")
 
-3. Select **Connect**.
+8. Select **Connect**.
 
-4. The SQL MI connection appears below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `TailspinToys` database.
+9. The SQL MI connection appears below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `TailspinToys` database.
 
     ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the TailspinToys database is highlighted and selected.](media/ssms-sql-mi-tailspintoys-database.png "SSMS Object Explorer")
 
-5. With the `TailspinToys` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+10. With the `TailspinToys` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
-6. In the new query window, enter the following SQL script:
+11. In the new query window, enter the following SQL script:
 
     ```sql
     USE TailspinToys;
@@ -685,11 +700,11 @@ In this task, you connect to the SQL MI database using SSMS, and quickly verify 
     SELECT * FROM Game
     ```
 
-7. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
+12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-8. You are done using the SqlServer2008 VM. Close any open windows and log off of the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+13. You are done using the SqlServer2008 VM. Close any open windows and log off of the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
 ## Exercise 3: Update the web application to use the new SQL MI database
 
