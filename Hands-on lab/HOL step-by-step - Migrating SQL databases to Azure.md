@@ -417,10 +417,11 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
     ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing SUFFIX** in the resource group name with your unique identifier:
+5. At the prompt, retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group:
 
     ```powershell
-    az sql mi list --resource-group hands-on-lab-SUFFIX
+    $resourceGroup = "<your-resource-group-name>"
+    az sql mi list --resource-group $resourceGroup
     ```
 
     > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
@@ -432,7 +433,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 7. Next, enter a second command to retrieve the public IP address of the SqlSerer2008 VM, which is used to connect to the database on that server. Enter the following PowerShell command, **replacing SUFFIX** in the resource group name with your unique identifier:
 
     ```powershell
-    az vm list-ip-addresses -g hands-on-lab-SUFFIX -n SqlServer2008 --output table
+    az vm list-ip-addresses -g $resourceGroup -n SqlServer2008 --output table
     ```
 
 8. Within the output, locate and copy the value of the `ipAddress` property within the `publicIpAddresses` object. Paste the value into a text editor, such as Notepad.exe, for later reference.
@@ -455,12 +456,16 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
     az account list --output table
     ```
 
-3. In the output table, locate the subscription you are using for this hands-on lab, and copy the SubscriptionId value into a text editor, such as Notepad, for use below.
-
-4. Next, enter the following `az ad sp create-for-rbac` command at the Cloud Shell prompt, replacing `{SubscriptionID}` with the value you copied above and `{ResourceGroupName}` with the name of your **hands-on-lab-SUFFIX** resource group, and then press `Enter` to run the command.
+3. In the output table, locate the subscription you are using for this hands-on lab. Copy the SubscriptionId value and use it to replace `<your-subscription-id>` in the command below. Run the completed command at the CLI command prompt.
 
     ```powershell
-    az ad sp create-for-rbac -n "tailspin-toys" --role owner --scopes subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}
+    $subscriptionId = "<your-subscription-id>"
+    ```
+
+4. Next, enter the following `az ad sp create-for-rbac` command at the Cloud Shell prompt and then press `Enter` to run the command.
+
+    ```powershell
+    az ad sp create-for-rbac -n "tailspin-toys" --role owner --scopes subscriptions/$subscriptionId}/resourceGroups/$resourceGroup
     ```
 
     ![The az ad sp create-for-rbac command is entered into the Cloud Shell, and the output of the command is displayed.](media/azure-cli-create-sp.png "Azure CLI")
