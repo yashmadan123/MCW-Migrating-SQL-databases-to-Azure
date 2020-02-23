@@ -688,12 +688,6 @@ In this task, you restore and configure the `TailspinToys` database on the SQL S
     USE master;
     GO
 
-    -- Update the recovery model of the database to FULL and enable Service Broker
-    ALTER DATABASE TailspinToys SET
-    RECOVERY FULL,
-    ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
-    GO
-
     -- Create a login and user named WorkshopUser
     CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
     GO
