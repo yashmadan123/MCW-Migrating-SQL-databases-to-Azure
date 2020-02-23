@@ -185,7 +185,7 @@
         {
             "name": "[variables('sqlVirtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2019-07-01",
+            "apiVersion": "2019-03-01",
             "location": "[variables('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('sqlNetworkInterfaceName'))]"
@@ -245,7 +245,7 @@
             "resources": [
                 {
                     "name": "SetupSqlVm",
-                    "apiVersion": "2019-05-01",
+                    "apiVersion": "2019-03-01",
                     "type": "extensions",
                     "location": "[variables('location')]",
                     "properties": {
