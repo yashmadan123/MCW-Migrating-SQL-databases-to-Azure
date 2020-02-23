@@ -624,7 +624,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![The Start Cutover button is displayed.](media/dms-migration-wizard-start-cutover.png "DMS Migration Wizard")
 
-12. On the Complete cutover dialog, verify pending log backups is `0`, check Confirm, and select **Apply**.
+12. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Apply**.
 
     ![In the Complete cutover dialog, a value of 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/dms-migration-wizard-complete-cutover-apply.png "Migration Wizard")
 
@@ -749,115 +749,109 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
     ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
-8. Once logged in, download the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/Migrating-SQL-databases-to-Azure/archive/master.zip).
+8. Once logged in, open File Explorer by selecting it in the Windows start bar.
 
-9. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the browser window, and then select **Internet options** from the context menu.
+    ![The File Explorer icon is highlighted in the Windows start bar.](media/windows-2019-start-bar-file-explorer.png "Windows start bar")
 
-    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](media/ie-tools-context-menu.png "Internet Explorer")
-
-10. In the **Internet Options** dialog, select **Custom level** in the Security level for this zone box.
-
-    ![The Custom level button is highlighted in the Internet Options dialog.](media/ie-internet-options.png "Internet Options")
-
-11. In the Security Settings - Internet Zone dialog, locate the **Downloads** settings and choose **Enable**, then select **OK**.
-
-    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](media/ie-security-settings-internet-zone.png "Security Settings")
-
-12. Select **OK** on the Internet Options dialog, and then attempt the download again.
-
-13. When prompted, choose to save the file and then select Open folder.
-
-    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
-
-14. Once it is download, extract the ZIP file to `C:\hands-on-lab`.
-
-    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
-
-    > **Important**: Ensure to use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
-
-15. Open the `C:\hands-on-lab` folder, and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
+9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
 
     ![The folder at the path specified above is displayed, and TailspinToys.sln is highlighted.](media/windows-explorer-tailspintoysweb.png "Windows Explorer")
 
-16. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
+10. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
 
-17. Select **Sign in** and enter your Azure account credentials when prompted.
+11. Select **Sign in** and enter your Azure account credentials when prompted.
 
     ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
 
-18. At the security warning prompt, uncheck Ask me for every project in this solution, and then select **OK**.
+12. At the security warning prompt, uncheck Ask me for every project in this solution, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
-19. Once logged into Visual Studio, right-click the `TailspinToysWeb` project in the Solution Explorer, and then select **Publish**.
+13. Once logged into Visual Studio, right-click the `TailspinToysWeb` project in the Solution Explorer, and then select **Publish**.
 
     ![In the Solution Explorer, the context menu for the TailspinToysWeb project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
-20. In the Pick a publish target window, select **App Service**, choose **Select Existing** and then select **Create Profile**.
+14. In the Pick a publish target window, select **App Service**, choose **Select Existing** and then select **Create Profile**.
 
     ![In the Pick a publish target dialog, App Service is selected, and Select Existing is selected.](media/visual-studio-pick-publish-target.png "Visual Studio")
 
-21. In the Select Existing App Service dialog, select the subscription you are using for this hands-on lab, then expand the hands-on-lab-SUFFIX resource group folder and select the **tailspintoysUNIQUEID** App Service.
+15. In the Select Existing App Service dialog, select the subscription you are using for this hands-on lab, then expand the hands-on-lab-SUFFIX resource group folder and select the **tailspintoysUNIQUEID** App Service.
 
     ![The tailspintoysUNIQUEID App Service is selected in the list of existing App Services.](media/visual-studio-select-existing-app-service.png "Visual Studio")
 
-22. Select **OK**.
+16. Select **OK**.
 
-23. Select **Publish** to start the process of publishing the application to Azure.
+17. Select **Publish** to start the process of publishing the application to Azure.
 
     ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
 
-24. When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.
+18. When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.
 
     ![The Publish Succeeded message is displayed in the Visual Studio Output pane.](media/visual-studio-output-publish-succeeded.png "Visual Studio")
 
-25. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
+19. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
+
+    ![An error screen is displayed, because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
 ### Task 2: Update App Service configuration
 
 In this task, you make updates to the TailspinToys gamer info web application to enable it to connect to and utilize the SQL MI database.
 
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, select the **hands-on-lab-SUFFIX** resource group and then select the **tailspintoysUNIQUEID** App Service from the list of resources.
+1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
+
+    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+
+2. Select the hands-on-lab-SUFFIX resource group from the list.
+
+    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+3. In the list of resources for your resource group, select the **hands-on-lab-SUFFIX** resource group and then select the **tailspintoysUNIQUEID** App Service from the list of resources.
 
    ![The tailspintoys App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
-2. On the App Service blade, select **Configuration** under Settings on the left-hand side.
+4. On the App Service blade, select **Configuration** under Settings on the left-hand side.
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-3. On the Configuration blade, locate the **Connection strings** section, and then select the Pencil (Edit) icon to the right of the `TailspinToysContext` connection string.
+5. On the Configuration blade, locate the **Connection strings** section, and then select the Pencil (Edit) icon to the right of the `TailspinToysContext` connection string.
 
     ![In the Connection string section, the pencil icon is highlighted to the right of the TailspinToysContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
-4. The value of the connection string should look like:
+6. The value of the connection string should look like:
 
     ```sql
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ```
 
-5. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell.
+7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell.
 
     ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](media/app-service-configuration-edit-conn-string.png "Edit Connection String")
 
-6. The updated value should look similar to the following screenshot.
+8. The updated value should look similar to the following screenshot.
 
     ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
 
-7. Select **Update**.
+9. Select **OK**.
 
-8. Repeat steps 3 - 7, this time for the `TailspinToysReadOnlyContext` connection string.
+10. Repeat steps 3 - 7, this time for the `TailspinToysReadOnlyContext` connection string.
 
-9. Select **Save** at the top of the Configuration blade.
+11. Select **Save** at the top of the Configuration blade.
 
-   ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
+    ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
 
-10. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
+12. When prompted that changes to application settings and connection strings will restart your application, select **Continue**.
+
+    ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
+
+13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
     ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
 
-11. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. This is because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
+14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. This is because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
+
+    ![An error screen is displayed, because the application is unable to connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
 
 ## Exercise 4: Integrate App Service with the virtual network
 
@@ -888,7 +882,7 @@ In this task, you configure the client address pool. This is a range of private 
 
     ![The values specified above are entered into the Point-to-site configuration form.](media/virtual-network-gateway-point-to-site-configuration.png "Virtual network gateway")
 
-4. Select **Save** to validate and save the settings. It takes 1 - 2 minutes for the save to finish.
+4. Select **Save** to validate and save the settings. It takes a few minutes for the save to finish.
 
 ### Task 2: Configure VNet integration with App Services
 
@@ -928,7 +922,9 @@ In this task, you verify your web application now loads, and you can see the hom
 
     ![Screenshot of the TailspinToys Operations Web App.](media/tailspin-toys-web-app.png "TailspinToys Web")
 
-> That's it. You successfully connected your application to the new SQL MI database.
+    > If you get an error screen, try selecting Refresh in the browser window.
+
+3. That's it. You successfully connected your application to the new SQL MI database.
 
 ## Exercise 5: Improve database security posture with Advanced Data Security
 
@@ -940,17 +936,23 @@ In this exercise, you enable Advanced Data Security (ADS) on your SQL MI databas
 
 In this task, you enable ADS for all databases on the Managed Instance.
 
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, select the **hands-on-lab-SUFFIX** resource group, and then select the **TailspinToys** Managed database resource from the list.
+1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
+
+    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+
+2. Select the hands-on-lab-SUFFIX resource group from the list.
+
+    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+3. Select the **TailspinToys** Managed database resource from the list.
 
     ![The TailspinToys Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
 
-2. On the TailspinToys Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **ON** to enable Advanced Data Security on the managed instance. Select **Storage account** and choose the storage account named **sqlmistoreUNIQUEID**. Enter your email address into the **Send alerts to** box and uncheck **Also send email notification to admins and subscription owners**.
+4. On the TailspinToys Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **Enable Advanced Data Security on the managed instance**.
 
-    ![In the Advanced Data Security blade of the Managed database, the Enable Advanced Data Security on the managed instance button is highlighted.](media/managed-database-ads.png "Advanced Data Security")
+    ![Advanced Data Security is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Advanced Data Security on the managed instance button is highlighted.](media/sql-mi-managed-database-advanced-data-security-enable.png "Advanced Data Security")
 
-3. Select **Save**.
-
-4. Within a few minutes, ADS is enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled when it has been enabled.
+5. Within a few minutes, ADS is enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled and populated with data when it has finished.
 
     ![The enabled tiles on the Advance Data Security blade are displayed.](media/ads-panels.png "Advanced Data Security")
 
@@ -962,7 +964,7 @@ In this task, you review the [SQL Data Discovery and Classification](https://doc
 
     ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Advanced Data Security")
 
-2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 36 columns with classification recommendations**.
+2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
 
     ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
 
@@ -992,21 +994,25 @@ In this task, you review the [SQL Data Discovery and Classification](https://doc
 
 8. Notice that the **Sales - CreditCard - CardNumber** field disappears from the recommendations list, and the number of recommendations drops by 1.
 
-9. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that the recommendation service flagged these fields as **Confidential - GDPR**. Tailspin Toys maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
+9. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
+
+    ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
+
+10. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that the recommendation service flagged these fields as **Confidential - GDPR**. Tailspin Toys maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
 
     ![GDPR information is highlighted in the list of recommendations](media/ads-data-discovery-and-classification-recommendations-gdpr.png "Data Discovery & Classification")
 
-10. Check the **Select all** checkbox at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
+11. Check the **Select all** checkbox at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
 
     ![All the recommended classifications are checked, and the Accept selected recommendations button is highlighted.](media/ads-data-discovery-and-classification-accept-recommendations.png "Data Discovery & Classification")
 
-11. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
+12. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
     ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
 
     >**Note**: If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery & Classification tile again to see the results.
 
-12. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
+13. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
 
     ![The View Report button is highlighted on the toolbar.](media/ads-data-discovery-and-classification-overview-report.png "View report")
 
@@ -1226,19 +1232,23 @@ In this exercise, you examine how you can use the automatically created online s
 
 In this task, you open a web report using the web application you deployed to your App Service.
 
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu and then select the resource group named **hands-on-lab-SUFFIX**.
+1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
 
-   ![The hands-on-lab-SUFFIX resource group is selected.](media/resource-groups.png "Resource groups")
+    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
 
-2. In the hands-on-lab-SUFFIX resource group, select the **tailspintoysUNIQUEID** App Service from the list of resources.
+2. Select the hands-on-lab-SUFFIX resource group from the list.
+
+    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+3. In the hands-on-lab-SUFFIX resource group, select the **tailspintoysUNIQUEID** App Service from the list of resources.
 
    ![The App Service resource is selected from the list of resources in the hands-on-lab-SUFFIX resource group.](media/rg-app-service.png "hands-on-lab-SUFFIX resource group")
 
-3. On the App Service overview blade, select the **URL** to open the web application in a browser window.
+4. On the App Service overview blade, select the **URL** to open the web application in a browser window.
 
    ![The App service URL is highlighted.](media/app-service-url.png "App service URL")
 
-4. In the TailspinToys web app, select **Leaderboard** from the menu.
+5. In the TailspinToys web app, select **Leaderboard** from the menu.
 
    ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "TailspinToys Web App")
 
@@ -1268,9 +1278,9 @@ In this task, you enable Read Scale-Out for the `TailspinToys`database, using th
    Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```
 
-5. Select **Update**.
+5. Select **OK**.
 
-6. Select **Save** at the top of the Configuration blade.
+6. Select **Save** at the top of the Configuration blade, and select **Continue** when prompted about the application being restarted.
 
    ![The save button on the Application settings blade is highlighted.](media/app-service-configuration-save.png "Save")
 
