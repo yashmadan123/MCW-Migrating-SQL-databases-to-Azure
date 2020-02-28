@@ -137,6 +137,8 @@ In this task, you run an Azure Resource Manager (ARM) template to create the res
     <img src="http://azuredeploy.net/deploybutton.png"/>
     </a>
 
+    > **Note**: Running the ARM template occasionally results in a `ResourceDeploymentFailure` error, with a code of `VnetSubnetConflictedWithIntendedPolicy`. This is not an ARM template issue, and appears to be the result of backend resource deployment issues in Azure. At this time, the work-around is to first try the deployment in a different region. If that does not work, try going through the [Manual resource setup guide](./Manual-resource-setup.md) to create the SQL MI database.
+
 6. On the custom deployment screen in the Azure portal, enter the following:
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
