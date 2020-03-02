@@ -88,11 +88,11 @@ Each whiteboard design session uses the following flow:
 
 Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements
+- Customer's background, situation, needs and technical requirements.
 
-- Current customer infrastructure and architecture
+- Current customer infrastructure and architecture.
 
-- Potential issues, objectives and blockers
+- Potential issues, objectives and blockers.
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -114,15 +114,15 @@ Design a solution and prepare to present the solution to the target customer aud
 
 Present solution to your customer:
 
-- Present solution
+- Present solution.
 
-- Respond to customer objections
+- Respond to customer objections.
 
-- Receive feedback
+- Receive feedback.
 
 **Wrap-up (15 minutes)**
 
-- Review preferred solution
+- Review preferred solution.
 
 ## Before the whiteboard design session: How to prepare
 
@@ -216,8 +216,8 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like to know more about:
 
-    - Adding the ability to scale out the data warehouse to serve more requests
-    - The upgrade path for our SSIS packages, SSAS cubes, and SSRS reports
+    - Adding the ability to scale out the data warehouse to serve more requests.
+    - The upgrade path for our SSIS packages, SSAS cubes, and SSRS reports.
 
 3. We want recommendations for how to minimize migration costs as much as possible.
 
@@ -225,8 +225,8 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 5. We have had complaints of high latency from gamers in other regions throughout the world, along with reports that gamers are unable to join games during peaks of high usage. By migrating our gaming services to the cloud, we are looking to improve the overall gaming experience, including:
 
-   - Reducing latency for gamers accessing our services from various places around the world
-   - Improving our ability to host more gamers during peak times or when new game releases
+   - Reducing latency for gamers accessing our services from various places around the world.
+   - Improving our ability to host more gamers during peak times or when new game releases.
    - Adding redundancy to ensure high-availability for our gaming services.
 
 6. In the event of a regional outage, we would like to be able to resume gaming services within minutes and recover the data warehouse within 48 hours.
@@ -486,26 +486,26 @@ The primary audience is business and technology decision-makers. From the case s
 
     For the PoC, we should include the following:
 
-    - All assets required for a hosting a single game in Azure
+    - All assets required for a hosting a single game in Azure:
 
-      - Authentication and gateway services
-        - VMs should be hosted on Azure virtual machines
-        - The two authentication databases should be hosted on a single SQL MI General Purpose tier instance
-      - The five gaming databases hosted on a single SQL MI Business Critical tier instance
-      - The three gaming services virtual machines migrated to Azure VMs
+      - Authentication and gateway services:
+        - VMs should be hosted on Azure virtual machines.
+        - The two authentication databases should be hosted on a single SQL MI General Purpose tier instance.
+      - The five gaming databases hosted on a single SQL MI Business Critical tier instance.
+      - The three gaming services virtual machines migrated to Azure VMs.
 
-    - An upgraded data warehouse
+    - An upgraded data warehouse:
 
-      - Hosted on Azure SQL DB Hyperscale, to accommodate the size of the database and number of users connecting
-      - Upgraded SSIS, SSAS, and SSRS
-      - Implement new features in Azure SQL DB, such as table compression, Transparent Data Encryption, and Clustered ColumnStore Indexing
+      - Hosted on Azure SQL DB Hyperscale, to accommodate the size of the database and number of users connecting.
+      - Upgraded SSIS, SSAS, and SSRS.
+      - Implement new features in Azure SQL DB, such as table compression, Transparent Data Encryption, and Clustered ColumnStore Indexing.
 
-    - VNet isolation
+    - VNet isolation:
 
-      - Inherent with SQL MI
-      - Management subnet for managing the databases
-      - Gaming services VNet for hosting gaming services VMs, with VNet peering back to SQL MI VNet
-      - Secure channel for connecting to the databases from on-premises development machines for troubleshooting
+      - Inherent with SQL MI.
+      - Management subnet for managing the databases.
+      - Gaming services VNet for hosting gaming services VMs, with VNet peering back to SQL MI VNet.
+      - Secure channel for connecting to the databases from on-premises development machines for troubleshooting.
 
 *Game databases*
 

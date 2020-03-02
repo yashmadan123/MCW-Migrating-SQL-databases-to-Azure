@@ -59,12 +59,12 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
 2. On the Resource groups blade, select **+Add**.
 
-    ![+Add is highlighted in the toolbar on Resource groups blade.t](media/resource-groups-add.png "Resource groups")
+    ![+Add is highlighted in the toolbar on Resource groups blade.](media/resource-groups-add.png "Resource groups")
 
 3. On the Create a resource group **Basics** tab, enter the following:
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
-    - **Resource group**: Enter **hands-on-lab-SUFFIX** as the name of the new resource group.
+    - **Resource group**: Enter `hands-on-lab-SUFFIX` as the name of the new resource group.
     - **Region**: Select the region you are using for this hands-on lab.
 
     ![The values specified above are entered into the Create a resource group Basics tab.](media/create-resource-group.png "Create resource group")
@@ -101,15 +101,15 @@ In this task, you register the `Microsoft.DataMigration` resource provider with 
 
 In this task, you run an Azure Resource Manager (ARM) template to create the resources required for this hands-on lab. The components are deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. In addition to creating resources, the ARM template also executes PowerShell scripts on each of the VMs to install software and configure the servers. The resources created by the ARM template include:
 
-- A virtual network with three subnets, ManagedInstance, Management, and a Gateway subnet
-- A virtual network gateway, associated with the Gateway subnet
-- A route table
-- Azure SQL Database Managed Instance (SQL MI), added to the ManagedInstance subnet
-- A JumpBox with Visual Studio 2019 Community Edition and SQL Server Management Studio (SSMS installed, added to the Management subnet)
-- A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet
-- Azure Database Migration Service (DMS)
-- Azure App Service Plan and App Service (Web App)
-- Azure Blob Storage account
+- A virtual network with three subnets, ManagedInstance, Management, and a Gateway subnet.
+- A virtual network gateway, associated with the Gateway subnet.
+- A route table.
+- Azure SQL Database Managed Instance (SQL MI), added to the ManagedInstance subnet.
+- A JumpBox with Visual Studio 2019 Community Edition and SQL Server Management Studio (SSMS installed, added to the Management subnet).
+- A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet.
+- Azure Database Migration Service (DMS).
+- Azure App Service Plan and App Service (Web App).
+- Azure Blob Storage account.
 
 >**Note**: You can review the steps to manually provision and configure the lab resources in the [Manual resource setup guide](./Manual-resource-setup.md).
 

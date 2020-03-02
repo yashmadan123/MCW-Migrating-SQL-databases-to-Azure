@@ -40,13 +40,13 @@ In this task, you create and configure a virtual network (VNet), which will cont
 
 4. On the Create virtual network blade, enter the following:
 
-    - **Name**: Enter **hands-on-lab-SUFFIX-vnet**.
-    - **Address space**: Accept the default value here. This should be /16 block, in the format 10.X.0.0/16.
+    - **Name**: Enter `hands-on-lab-SUFFIX-vnet`
+    - **Address space**: Accept the default value here. This should be /16 block, in the format **10.X.0.0/16**.
     - **Subscription**: Select the subscription you are using for this hands-on lab.
-    - **Resource group**: Select the hands-on-lab-SUFFIX resource group from the list.
+    - **Resource group**: Select the **hands-on-lab-SUFFIX** resource group from the list.
     - **Location**: Select the region you are using for resources in this hands-on lab.
-    - **Subnet Name**: Enter **ManagedInstance**.
-    - **Subnet Address range**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated above, in the format 10.X.0.0/24.
+    - **Subnet Name**: Enter `ManagedInstance`
+    - **Subnet Address range**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated above, in the format **10.X.0.0/24**.
     - **DDOS protection**: Choose **Basic**.
     - **Service endpoints**: Select **Disabled**.
     - **Firewall**: Select **Disabled**.
@@ -65,12 +65,12 @@ In this task, you create and configure a virtual network (VNet), which will cont
 
 8. On the Add subnet blade, enter the following:
 
-    - **Name**: Enter **Management**.
+    - **Name**: Enter `Management`
     - **Address range**: Accept the default value, which should be a subnet mask of /24, within the address range of your VNet.
-    - **Network security group***: Leave set to none.
-    - **Route table**: Leave set to none.
-    - **Service endpoints**: Leave set to 0 selected.
-    - **Subnet delegation**: Leave set to none.
+    - **Network security group***: Leave set to **None**.
+    - **Route table**: Leave set to **None**.
+    - **Service endpoints**: Leave set to **0 selected**.
+    - **Subnet delegation**: Leave set to **None**.
 
     ![On the Add subnet blade, Management is entered into the name field, and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
 
@@ -113,7 +113,7 @@ In this task, you set up a Virtual Network Gateway.
 
     - Instance details:
 
-        - **Name**: Enter hands-on-lab-SUFFIX-vnet-gateway.
+        - **Name**: Enter `hands-on-lab-SUFFIX-vnet-gateway`
         - **Region**: Select the location you are using for resources in this hands-on lab.
         - **Gateway type**: Choose **VPN**.
         - **VPN type**: Choose **Route-based**.
@@ -162,7 +162,7 @@ In this task, you create an Azure SQL Managed Instance.
 
     - Managed Instance details:
 
-        - **Managed instance name**: Enter **sqlmi-SUFFIX**
+        - **Managed instance name**: Enter `sqlmi-SUFFIX`
         - **Region**: Select the region you are using for resources in this hands-on lab.
         - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **16** and the Storage to **32**, and then select **Apply**.
 
@@ -170,8 +170,8 @@ In this task, you create an Azure SQL Managed Instance.
 
     - Administrator account:
 
-        - **Managed instance admin login**: Enter **sqlmiuser**
-        - **Password**: Enter **Password.1234567890**
+        - **Managed instance admin login**: Enter `sqlmiuser`
+        - **Password**: Enter `Password.1234567890`
 
     ![On the Create SQL Managed Instance Basics tab, the values specified above are entered into the appropriate fields.](media/sql-managed-instance-basics-tab.png "Create SQL Managed Instance")
 
@@ -221,26 +221,26 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
     - Project details:
 
         - **Subscription**: Select the subscription you are using for this hands-on lab.
-        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+        - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
 
     - Instance details:
 
-        - **Virtual machine name**: Enter JumpBox.
+        - **Virtual machine name**: Enter `JumpBox`
         - **Region**: Select the region you are using for resources in this hands-on lab.
-        - **Availability options**: Select no infrastructure redundancy required.
-        - **Image**: Leave Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64) selected.
-        - **Azure Spot instance**: Choose No.
-        - **Size**: Select **Change size**, and select Standard D2s v3 from the list and then select **Accept**.
+        - **Availability options**: Select **No infrastructure redundancy required**.
+        - **Image**: Leave **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)** selected.
+        - **Azure Spot instance**: Choose **No**.
+        - **Size**: Select **Change size**, and select **Standard D2s v3** from the list and then select **Accept**.
 
     - Administrator account:
 
-        - **Username**: Enter **sqlmiuser**
-        - **Password**: Enter **Password.1234567890**
+        - **Username**: Enter `sqlmiuser`
+        - **Password**: Enter `Password.1234567890`
 
     - Inbound port rules:
 
-        - **Public inbound ports**: Choose Allow selected ports.
-        - **Select inbound ports**: Select RDP (3389) in the list.
+        - **Public inbound ports**: Choose **Allow selected ports**.
+        - **Select inbound ports**: Select **RDP (3389)** in the list.
 
     ![Screenshot of the Basics tab, with fields set to the previously mentioned settings.](media/lab-virtual-machine-basics-tab.png "Create a virtual machine Basics tab")
 
@@ -292,25 +292,25 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
    - Project Details:
 
         - **Subscription**: Select the subscription you are using for this hands-on lab.
-        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+        - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
 
    - Instance Details:
 
-        - **Virtual machine name**: Enter SqlServer2008.
+        - **Virtual machine name**: Enter `SqlServer2008`
         - **Region**: Select the region you are using for resources in this hands-on lab.
-        - **Availability options**: Select no infrastructure redundancy required.
-        - **Image**: Leave SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2 selected.
-        - **Size**: Accept the default size, Standard DS12 v2.
+        - **Availability options**: Select **No infrastructure redundancy required**.
+        - **Image**: Leave **SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2** selected.
+        - **Size**: Accept the default size, **Standard DS12 v2**.
 
    - Administrator Account:
 
-        - **Username**: Enter **sqlmiuser**
-        - **Password**: Enter **Password.1234567890**
+        - **Username**: Enter `sqlmiuser`
+        - **Password**: Enter `Password.1234567890`
 
    - Inbound Port Rules:
 
-        - **Public inbound ports**: Choose Allow selected ports.
-        - **Select inbound ports**: Select RDP (3389) in the list.
+        - **Public inbound ports**: Choose **Allow selected ports**.
+        - **Select inbound ports**: Select **RDP (3389)** in the list.
 
     ![Screenshot of the Basics tab, with fields set to the previously mentioned settings.](media/sql-server-2008-r2-vm-basics-tab.png "Create a virtual machine Basics tab")
 
@@ -341,14 +341,14 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
     - Security & Networking:
 
-        - **SQL connectivity**: Select Public (Internet)
-        - **Port**: Set to 1433.
+        - **SQL connectivity**: Select **Public (Internet)**
+        - **Port**: Set to `1433`
 
     - SQL Authentication:
 
-        - **SQL Authentication**: Select Enable.
-        - **Login name**: Enter **sqlmiuser**
-        - **Password**: Enter **Password.1234567890**
+        - **SQL Authentication**: Select **Enable**.
+        - **Login name**: Enter `sqlmiuser`
+        - **Password**: Enter `Password.1234567890`
 
     ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
 
@@ -379,14 +379,14 @@ In this task, you provision an instance of the Azure Database Migration Service 
     - Project details:
 
         - **Subscription**: Select the subscription you are using for this hands-on lab.
-        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+        - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
 
     - Instance details:
 
-        - **Migration service Name**: Enter tailspin-dms.
+        - **Migration service Name**: Enter `tailspin-dms`
         - **Location**: Select the location you are using for resources in this hands-on lab.
-        - **Service mode**: Select Azure.
-        - **Pricing tier**: Select Configure tier, choose **Premium**, and select **Apply**.
+        - **Service mode**: Select **Azure**.
+        - **Pricing tier**: Select **Configure tier**, choose **Premium**, and select **Apply**.
 
     ![The Create Migration Service Basics tab is displayed, with the values specified above entered into the appropriate fields.](media/create-migration-service-basics-tab.png "Create Migration Service")
 
@@ -423,20 +423,20 @@ In this task, you provision an App Service (Web app), which will be used for hos
     - Project Details:
 
         - **Subscription**: Select the subscription you are using for this hands-on lab.
-        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+        - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
 
     - Instance Details:
 
-        - **Name**: Enter tailspintoysSUFFIX.
-        - **Publish**: Select Code.
-        - **Runtime stack**: Select .NET Core 3.0 (Current).
-        - **Operating System**: Select Windows.
+        - **Name**: Enter `tailspintoysSUFFIX`
+        - **Publish**: Select **Code**.
+        - **Runtime stack**: Select **.NET Core 3.0 (Current)**.
+        - **Operating System**: Select **Windows**.
         - **Region**: Select the region you are using for resources in this hands-on lab.
 
     - App Service Plan:
 
         - **Plan**: Accept the default value for creating a new App Service Plan.
-        - **Sku and size**: Accept the default value of Standard S1.
+        - **Sku and size**: Accept the default value of **Standard S1**.
 
     ![The values specified above are entered into the appropriate fields in the Create Web App Basics tab.](media/create-web-app-basics-tab.png "Create Web App Basics tab")
 
@@ -465,11 +465,11 @@ In this task, you create an Azure Storage account.
     - Project details:
 
         - **Subscription**: Select the subscription you are using for this hands-on lab.
-        - **Resource Group**: Select the hands-on-lab-SUFFIX resource group from the list of existing resource groups.
+        - **Resource Group**: Select the **hands-on-lab-SUFFIX** resource group from the list of existing resource groups.
 
     - Instance details:
 
-        - **Storage account name**: Enter sqlmistoreSUFFIX.
+        - **Storage account name**: Enter `sqlmistoreSUFFIX` 
         - **Location**: Select the location you are using for resources in this hands-on lab.
         - **Performance**: Choose **Standard**.
         - **Account kind**: Select **StorageV2 (general purpose v2)**.
@@ -516,8 +516,8 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 7. Enter the following credentials when prompted, and then select **OK**:
 
-    - **User name**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **User name**: `sqlmiuser`
+    - **Password**: `Password.1234567890`
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
@@ -599,8 +599,8 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-    - **User name**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **User name**: `sqlmiuser`
+    - **Password**: `Password.1234567890`
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -678,7 +678,7 @@ In this task, you restore and configure the `TailspinToys` database on the SQL S
 
     ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-4. Once connected, right-click **Databases** under SQLSERVER2008 in the Object Explorer, and then select **Restore Database** from the context menu.
+4. Once connected, right-click **Databases** under **SQLSERVER2008** in the Object Explorer, and then select **Restore Database** from the context menu.
 
     ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 

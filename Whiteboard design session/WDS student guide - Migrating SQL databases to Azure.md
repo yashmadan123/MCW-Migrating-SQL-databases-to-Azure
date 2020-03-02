@@ -90,8 +90,8 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 2. In addition to our gaming services, we would like to migrate our existing data warehouse to Azure to take advantage of the ability to scale out along with some new SQL features available there. As part of this request, we would like to know more about:
 
-   - Adding the ability to scale out the data warehouse to serve more requests
-   - The upgrade path for our SSIS packages, SSAS cubes, and SSRS reports
+   - Adding the ability to scale out the data warehouse to serve more requests.
+   - The upgrade path for our SSIS packages, SSAS cubes, and SSRS reports.
 
 3. We want recommendations for how to minimize migration costs as much as possible.
 
@@ -99,8 +99,8 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 5. We have had complaints of high latency from gamers in other regions throughout the world, along with reports that gamers are unable to join games during peaks of high usage. By migrating our gaming services to the cloud, we are looking to improve the overall gaming experience, including:
 
-   - Reducing latency for gamers accessing our services from various places around the world
-   - Improving our ability to host more gamers during peak times or when new game releases
+   - Reducing latency for gamers accessing our services from various places around the world.
+   - Improving our ability to host more gamers during peak times or when new game releases.
    - Adding redundancy to ensure high-availability for our gaming services.
 
 6. In the event of a regional outage, we would like to be able to resume gaming services within minutes and recover the data warehouse within 48 hours.

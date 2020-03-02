@@ -133,8 +133,8 @@ In this task, you do some configuration the `TailspinToys` database on the SQL S
 
 7. Enter the following credentials when prompted, and then select **OK**:
 
-    - **User name**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **User name**: `sqlmiuser`
+    - **Password**: `Password.1234567890`
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -185,11 +185,11 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 3. In the New project pane, set the following:
 
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToAzureSqlDb.
-    - **Assessment type**: Select Database Engine.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database.
+    - **Project type**: Select **Assessment**.
+    - **Project name**: Enter `ToAzureSqlDb`
+    - **Assessment type**: Select **Database Engine**.
+    - **Source server type**: Select **SQL Server**.
+    - **Target server type**: Select **Azure SQL Database**.
 
     ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
 
@@ -201,10 +201,10 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
-    - **Server name**: Enter **SQLSERVER2008**.
+    - **Server name**: Select **SQLSERVER200**.
     - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**
-    - **Password**: Enter **Password.1234567890**
+    - **Username**: Enter `WorkshopUser`
+    - **Password**: Enter `Password.1234567890`
     - **Encrypt connection**: Check this box.
     - **Trust server certificate**: Check this box.
 
@@ -236,11 +236,11 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 2. In the New project pane, set the following:
 
-    - **Project type**: Select Assessment.
-    - **Project name**: Enter ToSqlMi.
-    - **Assessment type**: Select Database Engine.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database Managed Instance.
+    - **Project type**: Select **Assessment**.
+    - **Project name**: Enter `ToSqlMi`
+    - **Assessment type**: Select **Database Engine**.
+    - **Source server type**: Select **SQL Server**.
+    - **Target server type**: Select **Azure SQL Database Managed Instance**.
 
     ![The new project settings for doing a SQL Server to Azure SQL Database Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.png "New project settings")
 
@@ -252,10 +252,10 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
-    - **Server name**: Enter **SQLSERVER2008**.
+    - **Server name**: Select **SQLSERVER2008**.
     - **Authentication type**: Select **SQL Server Authentication**.
-    - **Username**: Enter **WorkshopUser**.
-    - **Password**: Enter **Password.1234567890**.
+    - **Username**: Enter `WorkshopUser`
+    - **Password**: Enter `Password.1234567890`
     - **Encrypt connection**: Check this box.
     - **Trust server certificate**: Check this box.
 
@@ -333,8 +333,8 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
-    - **Account name**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **Account name**: `sqlmiuser`
+    - **Password**: `Password.1234567890`
 
     ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
@@ -395,7 +395,7 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
 11. You will receive a message when the backup is complete. Select **OK**.
 
-    ![Dialog displayed a message that the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
+    ![A dialog displaying a message that the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
@@ -496,9 +496,9 @@ In this task, you create a new online data migration project in DMS for the `Tai
 
 3. On the New migration project blade, enter the following:
 
-    - **Project name**: Enter OnPremToSqlMi.
-    - **Source server type**: Select SQL Server.
-    - **Target server type**: Select Azure SQL Database Managed Instance.
+    - **Project name**: Enter `OnPremToSqlMi`
+    - **Source server type**: Select **SQL Server**.
+    - **Target server type**: Select **Azure SQL Database Managed Instance**.
     - **Choose type of activity**: Select **Online data migration** and select **Save**.
 
     ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
@@ -509,8 +509,8 @@ In this task, you create a new online data migration project in DMS for the `Tai
 
     - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `13.66.228.107`.
     - **Authentication type**: Select SQL Authentication.
-    - **Username**: Enter **WorkshopUser**
-    - **Password**: Enter **Password.1234567890**
+    - **Username**: Enter `WorkshopUser`
+    - **Password**: Enter `Password.1234567890`
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
     ![The Migration Wizard Select source blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
@@ -523,8 +523,8 @@ In this task, you create a new online data migration project in DMS for the `Tai
     - **Key**: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
     - **Subscription**: Select the subscription you are using for this hand-on lab.
     - **Target Azure SQL Managed Instance**: Select the sqlmi-UNIQUEID instance.
-    - **SQL Username**: Enter **sqlmiuser**
-    - **Password**: Enter **Password.1234567890**
+    - **SQL Username**: Enter `sqlmiuser`
+    - **Password**: Enter `Password.1234567890`
 
     ![The Migration Wizard Select target blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
 
@@ -540,9 +540,9 @@ In this task, you create a new online data migration project in DMS for the `Tai
 
     - **Network share location**: Enter `\\SQLSERVER2008\dms-backups`. This is the path of the SMB network share you created previously.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQLSERVER2008\sqlmiuser`
-    - **Password**: Enter Password.1234567890
+    - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-    - **Storage account**: Select the sqlmistoreUNIQUEID storage account.
+    - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
 
     ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
 
@@ -636,7 +636,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 14. Close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the TailspinToys blade. This returns you to the TailspinToysMigration blade. Select **Refresh**, and you should see a status of **Completed** from the TailspinToys database.
 
-    ![On the Migration job blade, the status of Completed is highlighted](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
+    ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
 15. You have successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
 
@@ -676,9 +676,9 @@ In this task, you connect to the SQL MI database using SSMS, and quickly verify 
 7. In the Connect to Server dialog, enter the following:
 
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
-    - **Authentication**: Select SQL Server Authentication.
-    - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Authentication**: Select **SQL Server Authentication**.
+    - **Login**: Enter `sqlmiuser`
+    - **Password**: Enter `Password.1234567890`
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-connect-to-server-sql-mi.png "Connect to Server")
@@ -740,8 +740,8 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
 6. Enter the following credentials when prompted, and then select **OK**:
 
-    - **Username**: sqlmiuser
-    - **Password**: Password.1234567890
+    - **Username**: `sqlmiuser`
+    - **Password**: `Password.1234567890`
 
     ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
@@ -765,7 +765,7 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
     ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
 
-12. At the security warning prompt, uncheck Ask me for every project in this solution, and then select **OK**.
+12. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
@@ -982,11 +982,11 @@ In this task, you review the [SQL Data Discovery and Classification](https://doc
 
 6. In the Add classification dialog, enter the following:
 
-    - **Schema name**: Select Sales.
-    - **Table name**: Select CreditCard.
-    - **Column name**: Select CardNumber (nvarchar).
-    - **Information type**: Select Credit Card.
-    - **Sensitivity level**: Select Highly Confidential.
+    - **Schema name**: Select **Sales**.
+    - **Table name**: Select **CreditCard**.
+    - **Column name**: Select **CardNumber (nvarchar)**.
+    - **Information type**: Select **Credit Card**.
+    - **Sensitivity level**: Select **Highly Confidential**.
 
     ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
 
@@ -1026,7 +1026,7 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 
 2. On the Vulnerability Assessment blade, select **Scan** on the toolbar.
 
-    ![Vulnerability assessment scan button.](media/vulnerability-assessment-scan.png "Scan")
+    ![Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
 3. When the scan completes, a dashboard displaying the number of failing and passing checks, along with a breakdown of the risk summary by severity level is displayed.
 
@@ -1049,9 +1049,9 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 7. On your JumpBox VM, open Microsoft SQL Server Management Studio 18 from the Start menu, and enter the following information in the **Connect to Server** dialog.
 
     - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
-    - **Authentication**: Select SQL Server Authentication.
-    - **Login**: Enter sqlmiuser
-    - **Password**: Enter Password.1234567890
+    - **Authentication**: Select **SQL Server Authentication**.
+    - **Login**: Enter `sqlmiuser`
+    - **Password**: Enter `Password.1234567890`
     - Check the **Remember password** box.
 
     ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-18-connect-to-server.png "Connect to Server")
@@ -1085,7 +1085,7 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 
 12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
-    ![Vulnerability assessment scan button.](media/vulnerability-assessment-scan.png "Scan")
+    ![Vulnerability assessment scan button is selected from the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
 13. When the scan completes, select the **Failed** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the Failed list.
 
