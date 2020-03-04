@@ -41,7 +41,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 - Microsoft Azure subscription must be pay-as-you-go or MSDN.
   - Trial subscriptions will *not* work.
-- **Important**: You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this hands-on lab.
+
+> **Important**: You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this hands-on lab.
 
 ## Before the hands-on lab
 
