@@ -41,12 +41,12 @@ In this task, you create and configure a virtual network (VNet), which will cont
 4. On the Create virtual network blade, enter the following:
 
     - **Name**: Enter `hands-on-lab-SUFFIX-vnet`
-    - **Address space**: Accept the default value here. This should be /16 block, in the format **10.X.0.0/16**.
+    - **Address space**: Accept the default value here. This should be /16 block, in the format **10.X.0.0/16**
     - **Subscription**: Select the subscription you are using for this hands-on lab.
     - **Resource group**: Select the **hands-on-lab-SUFFIX** resource group from the list.
     - **Location**: Select the region you are using for resources in this hands-on lab.
     - **Subnet Name**: Enter `ManagedInstance`
-    - **Subnet Address range**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated above, in the format **10.X.0.0/24**.
+    - **Subnet Address range**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated above, in the format **10.X.0.0/24**
     - **DDOS protection**: Choose **Basic**.
     - **Service endpoints**: Select **Disabled**.
     - **Firewall**: Select **Disabled**.
@@ -565,7 +565,7 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
     ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
 
-    > **Important**: Ensure yiu use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
+    > **Important**: Ensure you use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
 
 8. Next, install SQL Server Management Studio (SSMS) on the JumpBox. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
 
