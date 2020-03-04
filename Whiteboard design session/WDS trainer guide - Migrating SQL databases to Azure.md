@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 - [Trainer information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
@@ -88,11 +88,11 @@ Each whiteboard design session uses the following flow:
 
 Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements.
+- Customer's background, situation, needs and technical requirements
 
-- Current customer infrastructure and architecture.
+- Current customer infrastructure and architecture
 
-- Potential issues, objectives and blockers.
+- Potential issues, objectives and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -114,15 +114,15 @@ Design a solution and prepare to present the solution to the target customer aud
 
 Present solution to your customer:
 
-- Present solution.
+- Present solution
 
-- Respond to customer objections.
+- Respond to customer objections
 
-- Receive feedback.
+- Receive feedback
 
 **Wrap-up (15 minutes)**
 
-- Review preferred solution.
+- Review preferred solution
 
 ## Before the whiteboard design session: How to prepare
 
@@ -442,7 +442,7 @@ The primary audience is business and technology decision-makers. From the case s
 
     After running the Microsoft Data Migration Assistant assessments against their gaming databases, Tailspin Toys found that Azure SQL Database Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service, with no required changes to their databases. This can help to shift their focus back to game development, and not have to spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
 
-    ![Possible target architecture](media/target-architecture.png "Target architecture")
+    ![Possible target architecture.](media/target-architecture.png "Target architecture")
 
     From a high level, their authentication and gateway services VMs will be migrated into Azure VMs, doing a simple lift-and-shift. The two back-end authentication databases will be migrated to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs and associated with a single SQL MI instance running the five gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service.
 
