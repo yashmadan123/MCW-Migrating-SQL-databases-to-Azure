@@ -57,6 +57,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 6: Enable Dynamic Data Masking](#exercise-6-enable-dynamic-data-masking)
     - [Task 1: Enable DDM on credit card numbers](#task-1-enable-ddm-on-credit-card-numbers)
     - [Task 2: Apply DDM to email addresses](#task-2-apply-ddm-to-email-addresses)
+  - [Exercise 7: Use online secondary for read-only queries](#exercise-7-use-online-secondary-for-read-only-queries)
+    - [Task 1: View Leaderboard report in TailspinToys web application](#task-1-view-leaderboard-report-in-tailspintoys-web-application)
+    - [Task 2: Update read-only connection string](#task-2-update-read-only-connection-string)
     - [Task 3: Reload Leaderboard report in the Tailspin Toys web app](#task-3-reload-leaderboard-report-in-the-tailspin-toys-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete Azure resource groups](#task-1-delete-azure-resource-groups)
@@ -1190,11 +1193,11 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select **Execute**:
 
-    ```sql
+   ```sql
    USE [TailspinToys];
    GO
 
-   GRANT SELECT ON [dbo].[Gamer] TO DDMUser;
+   GRANT SELECT ON [dbo].[Gamer] to DDMUser;
    ```
 
 3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar and paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
