@@ -6,7 +6,7 @@ To facilitate online gameplay, they host gaming services on-premises using rente
 
 Tailspin Toys is hoping that migrating their services from on-premises to the cloud. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
 
-October 2019
+February 2020
 
 ## Target audience
 
