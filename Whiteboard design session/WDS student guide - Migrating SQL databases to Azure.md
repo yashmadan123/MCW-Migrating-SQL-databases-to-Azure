@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-February 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -52,7 +52,7 @@ Analyze your customer's needs.
 
 Timeframe: 15 minutes
 
-Directions:  With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
 1. Meet your table participants and trainer.
 
@@ -68,15 +68,15 @@ To facilitate online gameplay, they decided to take a conservative approach, hos
 
 Molly Fischer, the CIO of Tailspin Toys, stated that the response to adding online gameplay has far exceeded their initial estimates. While the increased popularity of their games has been good for profitability, the rapid increase in demand for their services has made supporting the current setup problematic. At its foundation, Tailspin Toys is a game development company, made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with an ever-expanding workload. Increasingly, game developers have had to step in to assist in supporting the infrastructure, which is taking time away from game development and has resulted in several missed release timelines. Molly has expressed concerns over adding additional non-developer resources, as she feels this is outside of their core business. She is hoping that migrating their services from on-premises to the cloud can help to alleviate some of their infrastructure management issues, while simultaneously helping them to refocus their efforts on delivering business value by releasing new and improved games.
 
-Compounding this problem is the release schedule for new versions of their most popular games. They have a target schedule of releasing a new version every 12 - 18 months, which means adding new VMs and a database server for each new version they release, while also maintaining the services for all previous game versions. Each new release results in increased rental equipment costs, as well as a steadily increasing workload on their already overburdened staff. Internally, they have discussed end-of-life scenarios for older game versions, but the number of players remains high for many of their older games, so no decisions have been made about when to end support for those games.
+Compounding this problem is the release schedule for new versions of their most popular games. They have a target schedule of releasing a new version every 12 - 18 months, which means adding new VMs and a database server for each new version they release, while also maintaining the services for all previous game versions. Each new release results in increased rental equipment costs, as well as a steadily growing workload on their already overburdened staff. Internally, they have discussed end-of-life scenarios for older game versions, but the number of players remains high for many of these games, so no decisions have been made about when to end support for those games.
 
 Tailspin Toys indicated that their current hardware rental agreement ends in three months, and they're hoping to avoid signing another contract by migrating their existing VMs into Azure. They understand three months is a short timeframe, but believe a lift-and-shift approach of their gaming service VMs might be possible if they dedicate the appropriate resources. They already have VM images for each of their games that could be used in the process. They would like to know more about what a lift-and-shift might involve so they can plan resource allocation accordingly. They are also interested in learning more if this approach could be used to allow them to better scale the VM and database deployments on a per-game basis. Currently, they use the same number of VMs and databases for each game and version but have frequently run into issues hosting more gamers for popular games. They would like the ability to scale up to meet demand on new releases and more popular games, while also being able to scale down for older and less popular games. They would also like to investigate the possibility of globally distributing their gaming services to address latency issues reported by gamers accessing their services from other locations around the world.
 
 Of great concern to the leadership team at Tailspin Toys is the rapidly approaching end of support date for SQL Server 2008 R2. For their databases, they are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure. They lack any employees with actual database administration skills, so they feel this would be an excellent first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read that the Service Broker feature of SQL Server is not available in Azure. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
 
-In addition to their gaming services, Tailspin Toys is also interested in migrating their data warehouse and its associated services to the cloud. They currently host their data warehouse on a dedicated SQL Server 2008 R2 instance. The data warehouse is currently around 20TB in size and is growing at a rate of about 250GB per month. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e., data on the behavior of players, such as their interaction with games and with other players). Code embedded in the gaming software transmits data to the gaming databases. That telemetry data is loaded hourly using SQL Server Integration Services (SSIS) packages. Using the data in their data warehouse, they build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They also noted that their customer service personnel and developers connect to the data warehouse for various activities.
+In addition to their gaming services, Tailspin Toys is also interested in migrating their data warehouse and its associated services to the cloud. They currently host their data warehouse on a dedicated SQL Server 2008 R2 instance. The data warehouse is presently around 20TB in size and is growing at a rate of about 250GB per month. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e., data on the behavior of players, such as their interaction with games and with other players). Code embedded in the gaming software transmits data to the gaming databases. That telemetry data is loaded hourly using SQL Server Integration Services (SSIS) packages. Using the data in their data warehouse, they build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They also noted that their customer service personnel and developers connect to the data warehouse for various activities.
 
-They also mentioned that they have some reports that are run directly against the gaming databases so that they can analyze real-time user telemetry and gaming metrics. While there are not many of these reports, they are important to the developers and business users. They have noticed that at times of peak gaming activity, running these reports can be very slow, and they have occasionally seen impacts on gaming performance. They are interested to learn if there is any way they can continue to run these reports, but do it in a way that will alleviate the performance impact they've experienced.
+They also mentioned that they have some reports that are run directly against the gaming databases so that they can analyze real-time user telemetry and gaming metrics. While there are not many of these reports, they are essential to the developers and business users. They have noticed that at times of peak gaming activity, running these reports can be very slow, and they have occasionally seen impacts on gaming performance. They are interested to learn if there is any way they can continue to run these reports, but do it in a way that will alleviate the performance impact they've experienced.
 
 Tailspin Toys is excited to learn more about how migrating to the cloud can help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. Their end goal is to migrate their whole service to the cloud, so they would also like to understand better what their overall architecture might look after migrating to the cloud.
 
@@ -97,10 +97,10 @@ To assist you in better understanding their current environment, Tailspin Toys h
 
 4. We want to improve the security posture of our databases and learn more about potential vulnerabilities and compliance issues.
 
-5. We have had complaints of high latency from gamers in other regions throughout the world, along with reports that gamers are unable to join games during peaks of high usage. By migrating our gaming services to the cloud, we are looking to improve the overall gaming experience, including:
+5. We have had complaints of high latency from gamers in other regions throughout the world, along with reports that players are unable to join games during peaks of high usage. By migrating our gaming services to the cloud, we are looking to improve the overall gaming experience, including:
 
    - Reducing latency for gamers accessing our services from various places around the world.
-   - Improving our ability to host more gamers during peak times or when new game releases.
+   - Improving our ability to host more players during peak times or when new game releases.
    - Adding redundancy to ensure high-availability for our gaming services.
 
 6. In the event of a regional outage, we would like to be able to resume gaming services within minutes and recover the data warehouse within 48 hours.
@@ -139,9 +139,9 @@ Directions: With all participants at your table, answer the following questions 
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-*High-level architecture*
+_High-level architecture_
 
-1. Without getting into the details (the following sections address the particular details), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
+1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
 2. How can migration costs be minimized?
 
@@ -149,7 +149,7 @@ Directions: With all participants at your table, respond to the following questi
 
 4. What functionality should you include in the PoC?
 
-*Game databases*
+_Game databases_
 
 1. What are the factors that Tailspin Toys should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
@@ -161,7 +161,7 @@ Directions: With all participants at your table, respond to the following questi
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
-*Gaming services*
+_Gaming services_
 
 1. How should Tailspin Toys handle migrating their gaming services VMs into Azure?
 
@@ -171,7 +171,7 @@ Directions: With all participants at your table, respond to the following questi
 
 4. How can the gaming services be made highly-available?
 
-*Data warehouse and reporting*
+_Data warehouse and reporting_
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -179,7 +179,7 @@ Directions: With all participants at your table, respond to the following questi
 
 3. What is the upgrade path for their SSIS packages, SSAS cubes, and SSRS reports?
 
-*Regional outages*
+_Regional outages_
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
@@ -229,33 +229,33 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Additional references
 
-|          |             |
-|----------|-------------|
-| **Description** | **Link** |
-| Choosing the right SQL Server option in Azure | <https://docs.microsoft.com/azure/sql-database/sql-database-paas-vs-sql-server-iaas> |
-| SQL Database Platform as a Service | <https://docs.microsoft.com/azure/sql-database/sql-database-paas> |
-| Business continuity | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity> |
-| High availability | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability> |
-| Automated backups | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups> |
-| Long-term back retention | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention> |
-| Geo-replication | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auto-failover-group> |
-| Scale resources | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources> |
-| Feature comparison: Azure SQL Database versus SQL Server | <https://docs.microsoft.com/azure/sql-database/sql-database-features> |
-| Azure SQL Database managed instance | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index> |
-| Connectivity architecture for SQL MI | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture> |
-| Connecting an app to SQL MI | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connect-app> |
-| Azure SQL Database service tiers  | <https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-general-purpose-business-critical> |
-| Getting started with Azure SQL MI | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-quickstart-guide> |
-| Database Migration Guide | <https://datamigration.microsoft.com/> |
-| Database Migration Assistant | <https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current> |
-| Azure Database Migration Service | <https://docs.microsoft.com/azure/dms/dms-overview> |
-| Migrate SQL Server to an Azure SQL Database Managed Instance | <https://datamigration.microsoft.com/scenario/sql-to-azuresqldbmi> |
-| Migrate to Azure SQL Database Managed Instance | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json> |
-| Migrate SQL Server to an Azure SQL Database managed instance using DMS | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online?view=sql-server-2017> |
-| Azure SQL Database pricing | <https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/> |
-| Overview of Azure SQL Database security capabilities | <https://docs.microsoft.com/azure/sql-database/sql-database-security-overview> |
-| Advanced data security | <https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security> |
-| Data discovery and classification | <https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification> |
-| SQL Vulnerability Assessment service | <https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment> |
-| Threat detection | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview> |
-| SQL Database Read Scale-Out | <https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out> |
+|                                                                        |                                                                                                                 |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Description**                                                        | **Link**                                                                                                        |
+| Choosing the right SQL Server option in Azure                          | <https://docs.microsoft.com/azure/sql-database/sql-database-paas-vs-sql-server-iaas>                            |
+| SQL Database Platform as a Service                                     | <https://docs.microsoft.com/azure/sql-database/sql-database-paas>                                               |
+| Business continuity                                                    | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity>                          |
+| High availability                                                      | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability>                            |
+| Automated backups                                                      | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups>                            |
+| Long-term back retention                                               | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention>                          |
+| Geo-replication                                                        | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auto-failover-group>                          |
+| Scale resources                                                        | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources>                              |
+| Feature comparison: Azure SQL Database versus SQL Server               | <https://docs.microsoft.com/azure/sql-database/sql-database-features>                                           |
+| Azure SQL Database managed instance                                    | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index>                             |
+| Connectivity architecture for SQL MI                                   | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture>         |
+| Connecting an app to SQL MI                                            | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connect-app>                 |
+| Azure SQL Database service tiers                                       | <https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-general-purpose-business-critical>    |
+| Getting started with Azure SQL MI                                      | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-quickstart-guide>                  |
+| Database Migration Guide                                               | <https://datamigration.microsoft.com/>                                                                          |
+| Database Migration Assistant                                           | <https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current>                                    |
+| Azure Database Migration Service                                       | <https://docs.microsoft.com/azure/dms/dms-overview>                                                             |
+| Migrate SQL Server to an Azure SQL Database Managed Instance           | <https://datamigration.microsoft.com/scenario/sql-to-azuresqldbmi>                                              |
+| Migrate to Azure SQL Database Managed Instance                         | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json> |
+| Migrate SQL Server to an Azure SQL Database managed instance using DMS | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online?view=sql-server-2017>         |
+| Azure SQL Database pricing                                             | <https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/>                                       |
+| Overview of Azure SQL Database security capabilities                   | <https://docs.microsoft.com/azure/sql-database/sql-database-security-overview>                                  |
+| Advanced data security                                                 | <https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security>                             |
+| Data discovery and classification                                      | <https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification>                  |
+| SQL Vulnerability Assessment service                                   | <https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment>                                    |
+| Threat detection                                                       | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview>                    |
+| SQL Database Read Scale-Out                                            | <https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out>                                     |
