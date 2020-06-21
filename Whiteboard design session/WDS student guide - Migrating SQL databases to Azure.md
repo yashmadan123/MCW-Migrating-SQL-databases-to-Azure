@@ -157,7 +157,7 @@ _Game databases_
 
 3. How would you handle the data migration? Provide step-by-step instructions from assessment to data migration.
 
-4. What are some of the features available in Azure SQL Database Managed Instance that can help improve the security posture of Tailspin Toys?
+4. What are some of the features available in Azure SQL Managed Instance that can help improve the security posture of Tailspin Toys?
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
@@ -229,33 +229,33 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Additional references
 
-|                                                                        |                                                                                                                 |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **Description**                                                        | **Link**                                                                                                        |
-| Choosing the right SQL Server option in Azure                          | <https://docs.microsoft.com/azure/sql-database/sql-database-paas-vs-sql-server-iaas>                            |
-| SQL Database Platform as a Service                                     | <https://docs.microsoft.com/azure/sql-database/sql-database-paas>                                               |
-| Business continuity                                                    | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity>                          |
-| High availability                                                      | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability>                            |
-| Automated backups                                                      | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups>                            |
-| Long-term back retention                                               | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention>                          |
-| Geo-replication                                                        | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auto-failover-group>                          |
-| Scale resources                                                        | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources>                              |
-| Feature comparison: Azure SQL Database versus SQL Server               | <https://docs.microsoft.com/azure/sql-database/sql-database-features>                                           |
-| Azure SQL Database managed instance                                    | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index>                             |
-| Connectivity architecture for SQL MI                                   | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture>         |
-| Connecting an app to SQL MI                                            | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connect-app>                 |
-| Azure SQL Database service tiers                                       | <https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-general-purpose-business-critical>    |
-| Getting started with Azure SQL MI                                      | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-quickstart-guide>                  |
-| Database Migration Guide                                               | <https://datamigration.microsoft.com/>                                                                          |
-| Database Migration Assistant                                           | <https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current>                                    |
-| Azure Database Migration Service                                       | <https://docs.microsoft.com/azure/dms/dms-overview>                                                             |
-| Migrate SQL Server to an Azure SQL Database Managed Instance           | <https://datamigration.microsoft.com/scenario/sql-to-azuresqldbmi>                                              |
-| Migrate to Azure SQL Database Managed Instance                         | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json> |
-| Migrate SQL Server to an Azure SQL Database managed instance using DMS | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online?view=sql-server-2017>         |
-| Azure SQL Database pricing                                             | <https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/>                                       |
-| Overview of Azure SQL Database security capabilities                   | <https://docs.microsoft.com/azure/sql-database/sql-database-security-overview>                                  |
-| Advanced data security                                                 | <https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security>                             |
-| Data discovery and classification                                      | <https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification>                  |
-| SQL Vulnerability Assessment service                                   | <https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment>                                    |
-| Threat detection                                                       | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview>                    |
-| SQL Database Read Scale-Out                                            | <https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out>                                     |
+|                                                               |                                                                                                                 |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Description**                                               | **Link**                                                                                                        |
+| Choosing the right SQL Server option in Azure                 | <https://docs.microsoft.com/azure/sql-database/sql-database-paas-vs-sql-server-iaas>                            |
+| SQL Database Platform as a Service                            | <https://docs.microsoft.com/azure/sql-database/sql-database-paas>                                               |
+| Business continuity                                           | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity>                          |
+| High availability                                             | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-high-availability>                            |
+| Automated backups                                             | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automated-backups>                            |
+| Long-term back retention                                      | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-long-term-retention>                          |
+| Geo-replication                                               | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auto-failover-group>                          |
+| Scale resources                                               | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-scale-resources>                              |
+| Feature comparison: Azure SQL Database versus SQL Server      | <https://docs.microsoft.com/azure/sql-database/sql-database-features>                                           |
+| Azure SQL Managed Instance                                    | <https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview>                |
+| Connectivity architecture for SQL MI                          | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture>         |
+| Connecting an app to SQL MI                                   | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-connect-app>                 |
+| Azure SQL Database service tiers                              | <https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-general-purpose-business-critical>    |
+| Getting started with Azure SQL MI                             | <https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-quickstart-guide>                  |
+| Database Migration Guide                                      | <https://datamigration.microsoft.com/>                                                                          |
+| Database Migration Assistant                                  | <https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current>                                    |
+| Azure Database Migration Service                              | <https://docs.microsoft.com/azure/dms/dms-overview>                                                             |
+| Migrate SQL Server to an Azure SQL Managed Instance           | <https://datamigration.microsoft.com/scenario/sql-to-azuresqldbmi>                                              |
+| Migrate to Azure SQL Managed Instance                         | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json> |
+| Migrate SQL Server to an Azure SQL Managed Instance using DMS | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online?view=sql-server-2017>         |
+| Azure SQL Database pricing                                    | <https://azure.microsoft.com/en-us/pricing/details/sql-database/managed/>                                       |
+| Overview of Azure SQL Database security capabilities          | <https://docs.microsoft.com/azure/sql-database/sql-database-security-overview>                                  |
+| Advanced data security                                        | <https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security>                             |
+| Data discovery and classification                             | <https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification>                  |
+| SQL Vulnerability Assessment service                          | <https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment>                                    |
+| Threat detection                                              | <https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-overview>                    |
+| SQL Database Read Scale-Out                                   | <https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out>                                     |
