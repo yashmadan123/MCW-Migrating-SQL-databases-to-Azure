@@ -38,55 +38,67 @@ In this task, you create and configure a virtual network (VNet), which will cont
 
    ![The Create button is highlighted on the Virtual Network blade.](media/vnet-create.png "Create Virtual Network")
 
-4. On the Create virtual network blade, enter the following:
+4. On the Create virtual network **Basics** tab, enter the following:
 
-   - **Name**: Enter `hands-on-lab-SUFFIX-vnet`
-   - **Address space**: Accept the default value here. This should be /16 block, in the format **10.X.0.0/16**
+   Project details:
+
    - **Subscription**: Select the subscription you are using for this hands-on lab.
    - **Resource group**: Select the **hands-on-lab-SUFFIX** resource group from the list.
-   - **Location**: Select the region you are using for resources in this hands-on lab.
+
+   Instance details:
+
+   - **Name**: Enter `hands-on-lab-SUFFIX-vnet`
+   - **Region**: Select the region you are using for resources in this hands-on lab.
+
+   ![The values specified above are entered into the appropriate fields on the Create Virtual Network Basics tab.](media/create-virtual-network-basics-tab.png "Create virtual network Basics tab")
+
+5. Select **Next: IP Addresses**.
+
+6. On the **IP Addresses** tab, select **default** under subnets and edit the subnet's properties as follows:
+
    - **Subnet Name**: Enter `ManagedInstance`
-   - **Subnet Address range**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated above, in the format **10.X.0.0/24**
-   - **DDOS protection**: Choose **Basic**.
-   - **Service endpoints**: Select **Disabled**.
-   - **Firewall**: Select **Disabled**.
+   - **Address space**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
+   - Select **Save**.
 
-   ![On the Create virtual network blade, the values specified above are entered into the appropriate fields.](media/create-virtual-network.png "Create virtual network")
+   ![On the Create virtual IP Addresses tab, the values specified above are entered into the appropriate fields.](media/create-virtual-network-ip-addresses-tab.png "Create virtual network IP addresses tab")
 
-5. Select **Create**. It will take a few seconds for the virtual network to provision.
+7. Select **Review + create**. The default values will be used for the remaining tabs, so they can be skipped.
 
-6. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
+8. On the **Review + create** tab, ensure the **Validation passed** message is displayed and select **Create**. It will take a few seconds for the virtual network to provision.
+
+9. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
 
    ![The Go to resource button is highlighted in the deployment succeeded notification in the Azure portal.](media/vnet-go-to-resource.png "Deployment succeeded notification")
 
-7. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
+10. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
 
-   ![The Subnets item is highlighted and selected in the left-hand menu of the Virtual network blade, and + Subnet is highlighted in the top menu.](media/vnet-subnets-add.png "Add subnet")
+    ![The Subnets item is highlighted and selected in the left-hand menu of the Virtual network blade, and + Subnet is highlighted in the top menu.](media/vnet-subnets-add.png "Add subnet")
 
-8. On the Add subnet blade, enter the following:
+11. On the Add subnet blade, enter the following:
 
-   - **Name**: Enter `Management`
-   - **Address range**: Accept the default value, which should be a subnet mask of /24, within the address range of your VNet.
-   - **Network security group\***: Leave set to **None**.
-   - **Route table**: Leave set to **None**.
-   - **Service endpoints**: Leave set to **0 selected**.
-   - **Subnet delegation**: Leave set to **None**.
+    - **Name**: Enter `Management`
+    - **Address range**: Accept the default value, which should be a subnet mask of /24, within the address range of your VNet.
+    - **NAT gateway**: Leave set to **None**.
+    - **Network security group**: Leave set to **None**.
+    - **Route table**: Leave set to **None**.
+    - **Service endpoints**: Leave set to **0 selected**.
+    - **Subnet delegation**: Leave set to **None**.
 
-   ![On the Add subnet blade, Management is entered into the name field, and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
+    ![On the Add subnet blade, Management is entered into the name field, and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
 
-9. Select **OK**.
+12. Select **OK**.
 
-10. Back on the **Subnets** blade, select **+ Gateway Subnet**.
+13. Back on the **Subnets** blade, select **+ Gateway Subnet**.
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-11. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
+14. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
     > **Note**: The default address range creates a gateway subnet with a CIDR block of /24. This provides enough IP addresses to accommodate additional future configuration requirements.
 
-12. Select **OK**.
+15. Select **OK**.
 
 ## Task 2: Create a VPN gateway
 
@@ -173,11 +185,11 @@ In this task, you create an Azure SQL Managed Instance.
      - **Managed instance admin login**: Enter `sqlmiuser`
      - **Password**: Enter `Password.1234567890`
 
-   ![On the Create SQL Managed Instance Basics tab, the values specified above are entered into the appropriate fields.](media/sql-managed-instance-basics-tab.png "Create SQL Managed Instance")
+     ![On the Create SQL Managed Instance Basics tab, the values specified above are entered into the appropriate fields.](media/sql-managed-instance-basics-tab.png "Create SQL Managed Instance")
 
-   > **Note**: If you see a message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance).
+     > **Note**: If you see a message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance).
 
-   ![A message is displayed stating that SQL MI creation not available in the selected subscription.](media/sql-mi-creation-not-available.png "SQL MI creation not available")
+     ![A message is displayed stating that SQL MI creation not available in the selected subscription.](media/sql-mi-creation-not-available.png "SQL MI creation not available")
 
 5. Select **Next: Networking**, and on the **Networking** tab set the following configuration:
 
@@ -188,17 +200,9 @@ In this task, you create an Azure SQL Managed Instance.
 
    ![On the Create SQL Managed Instance Networking tab, the configuration specified above is entered into the form.](media/sql-managed-instance-networking-tab.png "Create SQL Managed Instance")
 
-6. Select **Next: Additional settings**, and on the **Additional settings** tab enter the following:
+6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
 
-   - **Collation**: Accept the default value, **SQL_Latin1_General_CP1_CI_AS**.
-   - **Time zone**: Select **(UTC) Coordinated Universal Time**.
-   - **Use this instance as a Failover Group secondary**: Select **No**.
-
-   ![On the Create SQL Managed Instance Additional settings tab, the settings specified above are selected.](media/sql-managed-instance-additional-settings-tab.png "Create SQL Managed Instance")
-
-7. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
-
-   > **Note**: Provisioning of SQL Managed Instance can take 6+ hours if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 7 hours, you may need to submit a support ticket to request assistance in completing the setup.
+   > **Note**: Provisioning of SQL Managed Instance can take 4+ hours if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 6 hours, you may need to submit a support ticket to request assistance in completing the setup.
 
 ## Task 4: Create the JumpBox VM
 
@@ -230,7 +234,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
      - **Availability options**: Select **No infrastructure redundancy required**.
      - **Image**: Leave **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)** selected.
      - **Azure Spot instance**: Choose **No**.
-     - **Size**: Select **Change size**, and select **Standard D2s v3** from the list and then select **Accept**.
+     - **Size**: Accept the default size of **Standard_D4s_v3**.
 
    - Administrator account:
 
@@ -246,7 +250,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
 
 5. Select **Next: Disks** to move to the next step.
 
-6. On the **Disks** tab, set OS disk type to **Premium SSD**, and then select **Next: Networking**.
+6. On the **Disks** tab, ensure the OS disk type is set to **Premium SSD**, and then select **Next: Networking**.
 
    ![On the Create a virtual machine Disks tab, the OS disk type is set to Standard SSD.](media/lab-virtual-machine-disks-tab.png "Create a virtual machine Disks tab")
 
@@ -261,9 +265,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
 
    ![On the Create a virtual machine Networking tab, the settings specified above are entered into the appropriate fields.](media/lab-virtual-machine-networking-tab.png "Create a virtual machine Networking tab")
 
-   > **Note**: The remaining tabs can be skipped, and default values will be used.
-
-8. Select **Review + create** to validate the configuration.
+8. Select **Review + create** to validate the configuration. The remaining tabs can be skipped, and default values will be used.
 
 9. On the **Review + create** tab, ensure the Validation passed message is displayed, and then select **Create** to provision the virtual machine.
 
@@ -300,7 +302,8 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
      - **Region**: Select the region you are using for resources in this hands-on lab.
      - **Availability options**: Select **No infrastructure redundancy required**.
      - **Image**: Leave **SQL Server 2008 R2 SP3 Standard on Windows Server 2008 R2** selected.
-     - **Size**: Accept the default size, **Standard DS12 v2**.
+     - **Azure Spot instance**: Choose **No**.
+     - **Size**: Accept the default size of **Standard_D4s_v3**.
 
    - Administrator Account:
 
@@ -314,13 +317,11 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
    ![Screenshot of the Basics tab, with fields set to the previously mentioned settings.](media/sql-server-2008-r2-vm-basics-tab.png "Create a virtual machine Basics tab")
 
-5. Select **Next: Disks** to move to the next step.
-
-6. On the **Disks** tab, set OS disk type to **Premium SSD**, and then select **Next: Networking**.
+5. Select **Next: Disks**, ensure the OS disk type is set to **Premium SSD**, and then select **Next: Networking**.
 
    ![On the Create a virtual machine Disks tab, the OS disk type is set to Standard SSD.](media/lab-virtual-machine-disks-tab.png "Create a virtual machine Disks tab")
 
-7. On the **Networking** tab, set the following configuration:
+6. On the **Networking** tab, set the following configuration:
 
    - **Virtual network**: Select the **hands-on-lab-vnet**.
    - **Subnet**: Select the **Management** subnet.
@@ -331,13 +332,13 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
    ![On the Create a virtual machine Networking tab, the settings specified above are entered into the appropriate fields.](media/sql-virtual-machine-networking-tab.png "Create a virtual machine Networking tab")
 
-8. Select the **SQL Server settings** tab from the top menu.
+7. Select the **SQL Server settings** tab from the top menu.
 
    ![The SQL Server settings tab is highlighted in the create a virtual machine tabs list.](media/sql-server-2008-r2-vm-sql-settings-tab.png "Create a virtual machine SQL Server settings tab")
 
    > **Note**: The Management and Advanced tabs can be skipped, and default values will be used.
 
-9. On the **SQL Server settings** tab, set the following:
+8. On the **SQL Server settings** tab, set the following:
 
    - Security & Networking:
 
@@ -350,15 +351,15 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
      - **Login name**: Enter `sqlmiuser`
      - **Password**: Enter `Password.1234567890`
 
-   ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
+     ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
 
-10. Select **Review + create** to validate the configuration.
+9. Select **Review + create** to validate the configuration.
 
-11. On the **Review + create** tab, ensure the Validation passed message is displayed, and then select **Create** to provision the virtual machine.
+10. On the **Review + create** tab, ensure the Validation passed message is displayed, and then select **Create** to provision the virtual machine.
 
     ![The Review + create tab is displayed, with a Validation passed message.](media/sql-virtual-machine-review-create-tab.png "Create a virtual machine Review + create tab")
 
-12. It takes approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
+11. It takes approximately 10 minutes for the SQL VM to finish provisioning. You can move on to the next task while you wait.
 
 ## Task 6: Create Azure Database Migration Service
 
@@ -388,7 +389,7 @@ In this task, you provision an instance of the Azure Database Migration Service 
      - **Service mode**: Select **Azure**.
      - **Pricing tier**: Select **Configure tier**, choose **Premium**, and select **Apply**.
 
-   ![The Create Migration Service Basics tab is displayed, with the values specified above entered into the appropriate fields.](media/create-migration-service-basics-tab.png "Create Migration Service")
+     ![The Create Migration Service Basics tab is displayed, with the values specified above entered into the appropriate fields.](media/create-migration-service-basics-tab.png "Create Migration Service")
 
 4. Select **Next: Networking**.
 
@@ -427,9 +428,9 @@ In this task, you provision an App Service (Web app), which will be used for hos
 
    - Instance Details:
 
-     - **Name**: Enter `tailspintoysSUFFIX`
+     - **Name**: Enter `tailspintoysSUFFIX`, to create a globally unique name.
      - **Publish**: Select **Code**.
-     - **Runtime stack**: Select **.NET Core 3.0 (Current)**.
+     - **Runtime stack**: Select **.NET Core 3.1 (LTS)**.
      - **Operating System**: Select **Windows**.
      - **Region**: Select the region you are using for resources in this hands-on lab.
 
@@ -438,13 +439,11 @@ In this task, you provision an App Service (Web app), which will be used for hos
      - **Plan**: Accept the default value for creating a new App Service Plan.
      - **Sku and size**: Accept the default value of **Standard S1**.
 
-   ![The values specified above are entered into the appropriate fields in the Create Web App Basics tab.](media/create-web-app-basics-tab.png "Create Web App Basics tab")
+     ![The values specified above are entered into the appropriate fields in the Create Web App Basics tab.](media/create-web-app-basics-tab.png "Create Web App Basics tab")
 
 5. Select **Review + create**.
 
 6. On the **Review + create** tab, select **Create**.
-
-   ![The Create Web App Review and Create tab is displayed.](media/create-web-app-review-and-create-tab.png "Create Web App Review and Create tab")
 
 7. It takes a few minutes for the Web App creation to complete. You can move on to the next task while you wait.
 
@@ -476,7 +475,7 @@ In this task, you create an Azure Storage account.
      - **Replication**: Select **Locally-redundant storage (LRS)**.
      - **Access tier**: Choose **Hot**.
 
-   ![On the Create storage account blade, the values specified above are entered into the appropriate fields.](media/storage-create-account-basics-tab.png "Create storage account")
+     ![On the Create storage account blade, the values specified above are entered into the appropriate fields.](media/storage-create-account-basics-tab.png "Create storage account")
 
 4. Select **Review + create**.
 
@@ -502,13 +501,13 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
    ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted.](./media/resource-group-resources-jumpbox.png "JumpBox in resource group list")
 
-4. On your JumpBox VM blade, select **Connect** from the top menu.
+4. On your JumpBox VM blade, select **Connect** and **RDP** from the top menu.
 
-   ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-jumpbox.png "Connect to JumpBox VM")
+   ![The JumpBox VM blade is displayed, with the Connect and RDP button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to JumpBox VM")
 
 5. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
 
-   ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine.png "Connect to virtual machine")
+   ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine-with-rdp.png "Connect to virtual machine")
 
 6. Select **Connect** on the Remote Desktop Connection dialog.
 
@@ -587,11 +586,11 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
 In this task, you open an RDP connection to the SqlServer2008 VM, disable Internet Explorer Enhanced Security Configuration, and add a firewall rule to open port 1433 to inbound TCP traffic. You also install the Microsoft Data Migration Assistant (DMA).
 
-1. As you did for the JumpBox, navigate to the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** on the top menu.
+1. As you did for the JumpBox, navigate to the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu.
 
-   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-sqlserver2008.png "Connect to SqlServer2008 VM")
+   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
 
-2. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
+2. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
 
 3. Select **Connect** on the Remote Desktop Connection dialog.
 
