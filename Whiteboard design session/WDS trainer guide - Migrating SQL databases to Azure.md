@@ -440,7 +440,7 @@ _High-level architecture_
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
-   After running the Microsoft Data Migration Assistant assessments against their gaming databases, Tailspin Toys found that Azure SQL Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service, with no required changes to their databases. This can help to shift their focus back to game development, and not have to spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
+   After running the Microsoft Data Migration Assistant assessments against their gaming databases, Tailspin Toys found that Azure SQL Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service. SQL MI will enable them to accomplish this without making changes to their databases, allowing them to shift their focus back to game development, and not have to spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
 
    ![Possible target architecture.](media/target-architecture.png "Target architecture")
 
@@ -476,7 +476,7 @@ _High-level architecture_
 
    While there are no guarantees that the complete migration could be completed in a three-month window, there are steps Tailspin Toys could take and tools they could use to improve their chances of success.
 
-   Using the Azure Database Migration Service (DMS) can help simplify the process of database migration. For their gaming and authentication databases, DMS provides a simple tool for migrating a large number of databases into Azure SQL Managed Instance, with minimal time and effort. Using SQL MI will also help to minimize the number of application and database changes needed to get up and running the cloud quickly. This could be used to migrate their database while remaining online, which will cut down on time required to prepare and manage the cutover to online services. DMS could also be used to handle the migration of the data warehouse into Azure SQL DB Hyperscale.
+   Using the Azure Database Migration Service (DMS) can help simplify the process of database migration. For their gaming and authentication databases, DMS provides a simple tool for migrating a large number of databases into Azure SQL Managed Instance, with minimal time and effort. Using SQL MI will also help to minimize the amount of application and database changes needed to get up and running the cloud quickly. This could be used to migrate their database while remaining online, which will cut down on time required to prepare and manage the cutover to online services. DMS could also be used to handle the migration of the data warehouse into Azure SQL DB Hyperscale.
 
    Azure Site Recovery (ASR) could be used to replicate their on-premises VMs into Azure VMs, quickly and easily. It is designed for business continuity and disaster recovery, but can also be used to manage replication for on-premises VMs into Azure.
 
@@ -579,7 +579,7 @@ _Game databases_
 
    Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. This provides a capability called [**Read Scale-Out**](https://docs.microsoft.com/azure/azure-sql/database/read-scale-out), which enables the load balancing of read-only workloads using the capacity of one read-only replica. Using Read Scale-Out means read-only workloads can be isolated from the primary read-write workload without affecting its performance.
 
-   The feature is intended for applications that include logically separated read-only workloads, such as analytics, and therefore they could gain performance benefits using this additional capacity at no extra cost.
+   The feature is intended for applications that include logically separated read-only workloads, such as analytics. Therefore, they could gain performance benefits using this additional capacity at no extra cost.
 
 _Gaming services_
 
@@ -589,7 +589,7 @@ _Gaming services_
 
 2. What would you recommend for addressing the latency issues experienced by gamers from other regions of the world?
 
-   To address the latency issues reported by gamers, they should look at deploying their services to multiple regions around the globe. By deploying closer to where gamers are, they can reduce the latency they experience when accessing the online gaming services.
+   To address the latency issues reported by gamers, they should look at using multiple regions around the globe. By deploying their services closer to where players are, they can reduce the latency they experience when accessing the online gaming services.
 
 3. How should the ability to scale gaming services up or down be handled?
 
