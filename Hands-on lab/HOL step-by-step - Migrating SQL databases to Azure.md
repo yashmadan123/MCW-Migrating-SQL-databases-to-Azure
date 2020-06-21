@@ -731,13 +731,11 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
    ![The list of resources in the hands-on-lab-SUFFIX resource group are displayed, and JumpBox is highlighted.](./media/resource-group-resources-jumpbox.png "JumpBox in resource group list")
 
-3. On your JumpBox VM blade, select **Connect** from the top menu.
+3. On your JumpBox VM blade, select **Connect** and **RDP** from the top menu.
 
-   ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-jumpbox.png "Connect to JumpBox VM")
+   ![The JumpBox VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to JumpBox VM")
 
-4. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
-
-   ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine.png "Connect to virtual machine")
+4. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
 
 5. Select **Connect** on the Remote Desktop Connection dialog.
 
@@ -778,25 +776,29 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
     ![In the Solution Explorer, the context menu for the TailspinToysWeb project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
-14. In the Pick a publish target window, select **App Service**, choose **Select Existing** and then select **Create Profile**.
+14. On the **Publish** dialog, select **Azure** in the Target box and select **Next**.
 
-    ![In the Pick a publish target dialog, App Service is selected, and Select Existing is selected.](media/visual-studio-pick-publish-target.png "Visual Studio")
+    ![In the Publish dialog, Azure is selected and highlighted in the Target box. The Next button is highlighted.](media/vs-publish-to-azure.png "Publish API App to Azure")
 
-15. In the Select Existing App Service dialog, select the subscription you are using for this hands-on lab, then expand the hands-on-lab-SUFFIX resource group folder and select the **tailspintoysUNIQUEID** App Service.
+15. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
 
-    ![The tailspintoysUNIQUEID App Service is selected in the list of existing App Services.](media/visual-studio-select-existing-app-service.png "Visual Studio")
+    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-publish-specific-target.png "Publish API App to Azure")
 
-16. Select **OK**.
+16. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the Web App.
 
-17. Select **Publish** to start the process of publishing the application to Azure.
+    ![In the Publish dialog, The Tailspin Toys Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
+
+17. Select **Finish**.
+
+18. Back on the Visual Studio Publish page for the `TailspinToysWeb` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
     ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
 
-18. When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.
+19. When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.
 
     ![The Publish Succeeded message is displayed in the Visual Studio Output pane.](media/visual-studio-output-publish-succeeded.png "Visual Studio")
 
-19. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
+20. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
 
     ![An error screen is displayed, because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
