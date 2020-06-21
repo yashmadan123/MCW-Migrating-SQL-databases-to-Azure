@@ -384,7 +384,7 @@ In this task, you provision an instance of the Azure Database Migration Service 
 
    - Instance details:
 
-     - **Migration service Name**: Enter `tailspin-dms`
+     - **Migration service Name**: Enter `wwi-dms`
      - **Location**: Select the location you are using for resources in this hands-on lab.
      - **Service mode**: Select **Azure**.
      - **Pricing tier**: Select **Configure tier**, choose **Premium**, and select **Apply**.
