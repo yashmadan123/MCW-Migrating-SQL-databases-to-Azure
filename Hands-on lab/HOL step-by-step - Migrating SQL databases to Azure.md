@@ -152,11 +152,13 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
 
     ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-11. Once connected, select **New Query** from the SSMS toolbar.
+11. Once connected, verify you see the `TailspinToys` database listed under databases. If you don't see it, the configuration script may have failed during the VM setup. You can manually add restore the database by following the step under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md).
+
+12. Select **New Query** from the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-12. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+13. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
 
     ```sql
     USE master;
@@ -169,7 +171,7 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
     GO
     ```
 
-13. To run the script, select **Execute** from the SSMS toolbar.
+14. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
@@ -287,9 +289,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 Duration: 60 minutes
 
-In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the WWI `TailspinToys` database from the on-premises SQL 2008 R2 database to SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
+In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate WWI's `TailspinToys` database from their on-premises SQL Server 2008 R2 database into SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
 
-> The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-service-tiers).
+> The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#service-tiers).
 
 ### Task 1: Create an SMB network share on the SqlServer2008 VM
 
@@ -428,6 +430,8 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    az vm list-ip-addresses -g $resourceGroup -n SqlServer2008 --output table
    ```
 
+   > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab, and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIpAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the publicIpAddress for the SqlServer2008 VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
@@ -460,8 +464,6 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
    az ad sp create-for-rbac -n "https://wide-world-importers" --role owner --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
    ```
 
-   ![The az ad sp create-for-rbac command is entered into the Cloud Shell, and the output of the command is displayed.](media/azure-cli-create-sp.png "Azure CLI")
-
 5. Copy the output from the command into a text editor, as you need the `appId` and `password` in the next task. The output should be similar to:
 
    ```json
@@ -469,7 +471,7 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
      "appId": "aeab3b83-9080-426c-94a3-4828db8532e9",
      "displayName": "wide-world-importers",
      "name": "https://wide-world-importers",
-     "password": "76ff5bae-8d25-469a-a74b-4a33ad868585",
+     "password": "hd_42~OwuFk.mp1BQ8l6nKkzOLzg5vrQpC",
      "tenant": "d280491c-b27a-XXXX-XXXX-XXXXXXXXXXXX"
    }
    ```
@@ -486,9 +488,9 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
 
 ### Task 6: Create and run an online data migration project
 
-In this task, you create a new online data migration project in DMS for the WWI `TailspinToys` database.
+In this task, you create a new online data migration project in DMS for WWI's `TailspinToys` database.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **tailspin-dms** Azure Database Migration Service in the list of resources.
+1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
    ![The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-dms-resource.png "Resources")
 
@@ -523,6 +525,7 @@ In this task, you create a new online data migration project in DMS for the WWI 
 
    - **Application ID**: Enter the `appId` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
    - **Key**: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
+   - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi-UNIQUEID instance.
    - **SQL Username**: Enter `sqlmiuser`
@@ -640,7 +643,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
-15. You have successfully migrated the `TailspinToys` database to Azure SQL Managed Instance.
+15. You have successfully migrated WWI's `TailspinToys` database to Azure SQL Managed Instance.
 
 ### Task 8: Verify database and transaction log migration
 
