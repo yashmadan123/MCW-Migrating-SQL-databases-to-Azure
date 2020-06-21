@@ -1153,7 +1153,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
    GO
 
    EXECUTE AS USER = 'DDMUser';
-   SELECT * FROM [Sales].[CreditCard];
+   SELECT TOP 10 * FROM [Sales].[CreditCard];
    REVERT;
    ```
 
@@ -1178,7 +1178,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
    GO
 
    EXECUTE AS USER = 'DDMUser';
-   SELECT * FROM [Sales].[CreditCard];
+   SELECT TOP 10 * FROM [Sales].[CreditCard];
    REVERT;
    ```
 
@@ -1196,7 +1196,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    USE [TailspinToys];
    GO
 
-   SELECT TOP(100) * FROM [dbo].[Gamer]
+   SELECT TOP 10 * FROM [dbo].[Gamer]
    ```
 
    ![In the query results, full email addresses are visible.](media/ddm-select-gamer-results.png "Query results")
@@ -1229,7 +1229,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    GO
 
    EXECUTE AS USER = 'DDMUser';
-   SELECT * FROM [dbo].[Gamer];
+   SELECT TOP 10 * FROM [dbo].[Gamer];
    REVERT;
    ```
 
