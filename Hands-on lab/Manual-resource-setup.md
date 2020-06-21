@@ -505,9 +505,9 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
    ![The JumpBox VM blade is displayed, with the Connect and RDP button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to JumpBox VM")
 
-5. On the Connect to virtual machine blade, select **Download RDP File**, then open the downloaded RDP file.
+5. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
 
-   ![The Connect to virtual machine blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine-with-rdp.png "Connect to virtual machine")
+   ![The Connect with RDP blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine-with-rdp.png "Connect with RDP")
 
 6. Select **Connect** on the Remote Desktop Connection dialog.
 
