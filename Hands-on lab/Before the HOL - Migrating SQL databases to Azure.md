@@ -105,7 +105,7 @@ In this task, you run an Azure Resource Manager (ARM) template to create the res
 - A virtual network with three subnets, ManagedInstance, Management, and a Gateway subnet.
 - A virtual network gateway, associated with the Gateway subnet.
 - A route table.
-- Azure SQL Database Managed Instance (SQL MI), added to the ManagedInstance subnet.
+- Azure SQL Managed Instance (SQL MI), added to the ManagedInstance subnet.
 - A JumpBox with Visual Studio 2019 Community Edition and SQL Server Management Studio (SSMS installed, added to the Management subnet).
 - A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet.
 - Azure Database Migration Service (DMS).
