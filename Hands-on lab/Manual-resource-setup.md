@@ -18,7 +18,7 @@ June 2020
   - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
-  - [Task 12: Configure the TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-tailspintoys-database-on-the-sqlserver2008-vm)
+  - [Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-wwi-tailspintoys-database-on-the-sqlserver2008-vm)
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -404,7 +404,7 @@ In this task, you provision an instance of the Azure Database Migration Service 
 
 ## Task 7: Provision a Web App
 
-In this task, you provision an App Service (Web app), which will be used for hosting the Tailspin Toys web application.
+In this task, you provision an App Service (Web app), which will be used for hosting the WWI Tailspin Toys web application.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -664,11 +664,11 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
-## Task 12: Configure the TailspinToys database on the SqlServer2008 VM
+## Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM
 
-In this task, you restore and configure the `TailspinToys` database on the SQL Server 2008 R2 instance.
+In this task, you restore and configure Wide World Importers' `TailspinToys` database on the SQL Server 2008 R2 instance.
 
-1. On the SqlServer2008 VM, download a [backup of the TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
+1. On the SqlServer2008 VM, download a [backup of the WWI TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
@@ -682,7 +682,7 @@ In this task, you restore and configure the `TailspinToys` database on the SQL S
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the WWI `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -694,9 +694,9 @@ In this task, you restore and configure the `TailspinToys` database on the SQL S
 
    ![In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
 
-8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `TailspinToys` database.
+8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the WWI `TailspinToys` database.
 
-   ![The completed Restore Database dialog is displayed, with the TailSpinToys database specified as the target.](media/ssms-restore-database.png "Restore Database")
+   ![The completed Restore Database dialog is displayed, with the WWI TailSpinToys database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
 9. Select **OK** to start the restore.
 

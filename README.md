@@ -1,10 +1,10 @@
 # Migrating SQL databases to Azure
 
-Tailspin Toys is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
+Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
 To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased the popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic.
 
-Tailspin Toys is interested in learning more about how migrating to the cloud could help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
+WWI is interested in learning more about how migrating to the cloud could help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
 
 June 2020
 
