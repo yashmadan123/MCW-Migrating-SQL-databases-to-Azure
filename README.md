@@ -4,9 +4,9 @@ Tailspin Toys is the developer of several popular online video games. Founded in
 
 To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased the popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic.
 
-Tailspin Toys is hoping that migrating their services from on-premises to the cloud. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
+Tailspin Toys is interested in learning more about how migrating to the cloud could help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
 
-February 2020
+June 2020
 
 ## Target audience
 
@@ -56,14 +56,14 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 
 ## Help & Support
 
-We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
+We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.
 
-***Having trouble?***
+**_Having trouble?_**
 
 - First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
 - Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.  
+- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.
 
-If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
+If you are planning to present a workshop, _review and test the materials early_! We recommend at least two weeks prior.
 
 ### Please allow 5 - 10 business days for review and resolution of issues.
