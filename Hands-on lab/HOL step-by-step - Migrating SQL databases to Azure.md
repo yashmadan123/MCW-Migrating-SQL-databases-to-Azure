@@ -874,9 +874,9 @@ In this task, you configure the client address pool. This is a range of private 
 
    ![The Virtual network gateway resource is highlighted in the list of resources.](media/resource-group-vnet-gateway.png "Resources")
 
-2. On the virtual network gateway blade, select **Point-to-site configuration** under Settings in the left-hand menu, and then select **Configure now**.
+2. On the virtual network gateway blade, select **User VPN configuration** under Settings in the left-hand menu, and then select **Configure now**.
 
-   ![Point-to-site configuration is highlighted and selected in the left-hand menu. On the Point-to-site configuration blade, Configure now is highlighted.](media/virtual-network-gateway-configure-point-to-site.png "Virtual network gateway")
+   ![User VPN configuration is highlighted and selected in the left-hand menu. On the User VPN configuration blade, Configure now is highlighted.](media/virtual-network-gateway-configure-point-to-site.png "Virtual network gateway User VPN configuration")
 
 3. On the **Point-to-site** configuration page, set the following configuration:
 
@@ -907,9 +907,15 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration.png "App Service")
 
-4. Select the **hands-on-lab-SUFFIX-vnet** in the Virtual Network dialog.
+4. On the Network Feature Status dialog, enter the following:
 
-   ![The hands-on-lab-SUFFIX-vnet** is highlighted.](media/app-service-vnet-configuration-add-vnet.png "App Service")
+   - **Virtual Network**: Select the hands-on-lab-SUFFIX-vnet.
+   - **Subnet**: Select Create New Subnet.
+   - **Subnet Name**: Enter WebAppSubnet.
+   - **Virtual Network Address Block**: Select the only option under this dropdown, 10.x.0.0/16.
+   - **Subnet Address Block**: Enter a subnet with a /24 block, such as 10.x.3.0/24.
+
+   ![The values specified above are entered into the Network Feature Status dialog.](media/app-service-vnet-network-feature-status.png "Network Feature Status configuration")
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see that the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
 
