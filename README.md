@@ -1,12 +1,12 @@
 # Migrating SQL databases to Azure
 
-Tailspin Toys is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
+Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
 To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased the popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic.
 
-Tailspin Toys is hoping that migrating their services from on-premises to the cloud. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
+WWI is interested in learning more about how migrating to the cloud could help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
 
-February 2020
+June 2020
 
 ## Target audience
 
@@ -30,13 +30,13 @@ At the end of this whiteboard design session, you will be better able to design 
 
 ### Hands-on lab
 
-In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Database Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
+In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
 
 At the end of this hands-on lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.
 
 ## Azure services and related products
 
-- Azure SQL Database Managed Instance (SQL MI)
+- Azure SQL Managed Instance (SQL MI)
 - Azure SQL Database (SQL DB)
 - Azure Database Migration Service (DMS)
 - Microsoft Data Migration Assistant (DMA)
@@ -56,14 +56,14 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 
 ## Help & Support
 
-We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
+We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.
 
-***Having trouble?***
+**_Having trouble?_**
 
 - First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
 - Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.  
+- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.
 
-If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
+If you are planning to present a workshop, _review and test the materials early_! We recommend at least two weeks prior.
 
 ### Please allow 5 - 10 business days for review and resolution of issues.
