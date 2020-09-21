@@ -1,3 +1,6 @@
+### Let us know how we’re doing!  
+Please take a moment to fill out the [Microsoft Cloud Workshop Survey]( https://forms.office.com/Pages/DesignPage.aspx#FormId=v4j5cvGGr0GRqy180BHbRyEtIpX7sDdChuWsXhzKJXJUNjFBVkROWDhSSVdYT0dSRkY4UVFCVzZBVy4u&Token=d8027e9aa480420fa80d97e143eee1ed) and help us improve our offerings.
+
 # Migrating SQL databases to Azure
 
 Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
