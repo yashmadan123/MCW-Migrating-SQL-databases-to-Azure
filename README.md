@@ -1,15 +1,16 @@
-### Let us know how we’re doing!  
+### Let us know how we're doing!
+
 Please take a moment to fill out the [Microsoft Cloud Workshop Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyEtIpX7sDdChuWsXhzKJXJUNjFBVkROWDhSSVdYT0dSRkY4UVFCVzZBVy4u) and help us improve our offerings.
 
 # Migrating SQL databases to Azure
 
 Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
-To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased the popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic.
+To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic.
 
-WWI is interested in learning more about how migrating to the cloud could help them improve their overall processes, as well as address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. Their end goal is to migrate their whole service to Azure, so they would also like to understand better what the overall architecture might look after migrating to the cloud.
+WWI is interested in learning more about how migrating to the cloud could help them improve their overall processes and address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud.
 
-June 2020
+October 2020
 
 ## Target audience
 
@@ -21,19 +22,19 @@ June 2020
 
 ### Workshop
 
-In this workshop, you learn how to develop a plan for migrating on-premises VMs and SQL Server 2008 R2 databases into a combination of IaaS and PaaS services in Azure. You perform assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and the managed database offerings in Azure. You then design a solution for migrating their existing on-premises services, including VMs and databases, into Azure, with minimal or no down-time. Finally, you demonstrate some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
+In this workshop, you learn how to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You perform assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their existing on-premises services, including VMs and databases, into Azure, with minimal down-time. Finally, you demonstrate some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
 
 At the end of this workshop, you will be better able to design and implement a cloud migration solution for business-critical applications and databases.
 
 ### Whiteboard design session
 
-In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server 2008 R2 databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and the managed database offerings in Azure. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal or no down-time. Finally, you provide guidance on how to enable some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
+In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal down-time. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
 
 At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business-critical applications and databases.
 
 ### Hands-on lab
 
-In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
+In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and Azure's managed database offerings. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal down-time. Finally, you enable some of the advanced SQL features in SQL MI to improve security and performance in the customer's application.
 
 At the end of this hands-on lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.
 
