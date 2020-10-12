@@ -8,7 +8,7 @@ Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of s
 
 To facilitate online gameplay, they host gaming services on-premises using rented hardware. Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic.
 
-WWI is interested in learning more about how migrating to the cloud could help them improve their overall processes and address the concerns and issues they have with their on-premises setup. They are looking for a proof-of-concept (PoC) for migrating the VMs and databases of a single game into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud.
+WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud.
 
 October 2020
 
