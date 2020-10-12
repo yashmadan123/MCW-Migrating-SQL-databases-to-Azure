@@ -655,9 +655,9 @@ _Regional outages_
 
 ## Checklist of preferred objection handling
 
-1. It appears that there are multiple options for hosting SQL databases in Azure. What are all the different options, and how do they differ? Do they all support the same features as an on-premises SQL Server instance, or are there unsupported features we should be aware of before migrating?
+1. It appears that there are multiple options for hosting SQL databases in Azure. What are all the different options, and how do they differ? Do they all support the same features as an on-premises SQL Server instance, or are there unsupported features we should be aware of before migrating? Will we be able to continue using Service Broker with a PaaS database in Azure?
 
-   There are indeed multiple options for hosting SQL databases in Azure. The options have some overlap, but each is geared towards specific use cases and scenarios, as described below.
+   There are indeed multiple options for hosting SQL databases in Azure. The options have some overlap, but each is geared towards specific use cases and scenarios, as described below. Azure documentation also provides a [feature comparison between Azure SQL Database and Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/features-comparison).
 
    _Azure SQL Database (SQL DB)_
 
@@ -675,7 +675,7 @@ _Regional outages_
 
    SQL MI is a fully-managed PaaS SQL Server Database Engine Instance hosted in Azure that provides _near_ 100% compatibility with on-premises SQL Server database instances. Unlike SQL DB, it does not use an isolated multi-tenant model but instead provides a native virtual network (VNet) implementation that addresses many common isolation and security concerns of on-premises SQL Server customers. As such, it is the best PaaS option for migrating existing SQL Server databases to the cloud.
 
-   The managed instance model allows existing SQL Server customers to lift-and-shift their on-premises applications to the cloud with minimal application and database changes. As a deployment option of Azure SQL Database, it preserves all the PaaS capabilities that drastically reduce management overhead and TCO. While the majority of on-premises SQL features are supported, there are some features, like Filestream, that are not available. Unlike SQL DB, SQL MI does support distributed transactions, SQL Agent jobs, .NET CLR integration, and Service broker.
+   The managed instance model allows existing SQL Server customers to lift-and-shift their on-premises applications to the cloud with minimal application and database changes. As a deployment option of Azure SQL Database, it preserves all the PaaS capabilities that drastically reduce management overhead and TCO. While the majority of on-premises SQL features are supported, there are some features, like Filestream, that are not available. Unlike SQL DB, SQL MI does support distributed transactions, SQL Agent jobs, .NET CLR integration, and [Service broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=%2Fazure%2Fazure-sql%2Ftoc.json&view=sql-server-ver15).
 
    Azure SQL MI is best for new cloud-native applications or existing applications that want to use the latest stable SQL Server features, and need to be migrated to the cloud with minimal changes. In addition, it is recommended for teams that do not want to employ resources for configuration and management of database infrastructure.
 
@@ -691,7 +691,7 @@ _Regional outages_
 
    _Database Experimentation Assistant (DEA)_
 
-   The Database Experimentation Assistant (DEA) is an A/B testing solution for SQL Server upgrades. It will assist in evaluating specific workloads against a targeted version of SQL Server or SQL Database. DEA is not a migration tool but can be used to help determine the appropriate target version of SQL Server or SQL Database for migrations.
+   The [Database Experimentation Assistant](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sqlallproducts-allversions) (DEA) is an A/B testing solution for SQL Server upgrades. It will assist in evaluating specific workloads against a targeted version of SQL Server or SQL Database. DEA is not a migration tool but can be used to help determine the appropriate target version of SQL Server or SQL Database for migrations.
 
    DEA guides you through running A/B testing by completing three steps:
 
@@ -703,17 +703,17 @@ _Regional outages_
 
    _Database Migration Assistant (DMA)_
 
-   The Data Migration Assistant (DMA) enables you to upgrade to a modern data platform by detecting compatibility and feature parity issues that can impact an upgrade or migration to your target version of SQL Server or Azure SQL Database. DMA also provides recommendations on performance and reliability improvements you can make once your databases have been migrated to your target environment. It allows you to move your schema, data, and uncontained objects (SQL Agent jobs, SSIS packages, roles, users, and logins) from your source server to your target server.
+   The [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sqlallproducts-allversions) (DMA) enables you to upgrade to a modern data platform by detecting compatibility and feature parity issues that can impact an upgrade or migration to your target version of SQL Server or Azure SQL Database. DMA also provides recommendations on performance and reliability improvements you can make once your databases have been migrated to your target environment. It allows you to move your schema, data, and uncontained objects (SQL Agent jobs, SSIS packages, roles, users, and logins) from your source server to your target server.
 
    _Azure Database Migration Service (DMS)_
 
-   The Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime. It provides customers with a comprehensive, highly available migration solution. The service uses the Data Migration Assistant to generate assessment reports that provide recommendations to guide you through the changes required prior to performing a migration. When you're ready to begin the migration process, the Azure Database Migration Service performs all of the required steps, following best practices as determined by Microsoft.
+   The [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview?view=sqlallproducts-allversions) (DMS) is a fully managed service designed to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime. It provides customers with a comprehensive, highly available migration solution. The service uses the Data Migration Assistant to generate assessment reports that provide recommendations to guide you through the changes required prior to performing a migration. When you're ready to begin the migration process, the Azure Database Migration Service performs all of the required steps, following best practices as determined by Microsoft.
 
    In addition to SQL database migrations, DMS can also be used for migrating other database types, such as MongoDB to Cosmos DB and MySQL and PostgreSQL migrations to the Azure Data Platform.
 
    _SQL Server Migration Assistant (SSMA)_
 
-   While not specifically applicable to this scenario, another tool to be aware of is the SQL Server Migration Assistant (SSMA). SSMA is a tool designed to automate database migrations to SQL Server or SQL Database from Microsoft Access, DB2, MySQL, Oracle, and SAP ASE.
+   While not specifically applicable to this scenario, another tool to be aware of is the [SQL Server Migration Assistant](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sqlallproducts-allversions) (SSMA). SSMA is a tool designed to automate database migrations to SQL Server or SQL Database from Microsoft Access, DB2, MySQL, Oracle, and SAP ASE.
 
 3. In moving to the cloud, will we retain the ability to connect to and troubleshoot from our on-premises dev environment, while keeping our back-end networking fully isolated and only enabling talking to the front-end through a secured channel?
 
@@ -727,7 +727,7 @@ _Regional outages_
 
    To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a secure public endpoint. SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended that the traffic allowed to connect be limited to well-known IP addresses.
 
-4. We do not want to be locked into a specific cloud vendor. Is it possible to use PaaS services for hosting our databases, and still have a valid exit strategy, or will this mean we should stick to using VMs in Azure for hosting our databases?
+4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
    Yes, it is possible to use a PaaS database service and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
 
