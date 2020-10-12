@@ -157,7 +157,7 @@ _Game databases_
 
 3. How would you handle the data migration? Provide step-by-step instructions from assessment to data migration.
 
-4. What are some of the features available in Azure SQL Managed Instance that can help improve the security posture of WWI?
+4. What are some of the features available in Azure SQL Managed Instance that can help improve WWI's security posture?
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
