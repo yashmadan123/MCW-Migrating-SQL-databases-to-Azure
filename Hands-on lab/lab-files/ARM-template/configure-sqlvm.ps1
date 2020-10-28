@@ -36,7 +36,7 @@ function Add-SqlFirewallRule {
 Add-SqlFirewallRule
 
 # Download the database backup file from the GitHub repo
-Invoke-WebRequest 'https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak' -OutFile 'C:\TailspinToys.bak'
+Invoke-WebRequest 'https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak' -OutFile 'C:\WideWorldImporters.bak'
 
 # Download and install Data Mirgation Assistant
 Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
@@ -47,9 +47,9 @@ Add-PSSnapin SqlServerCmdletSnapin* -ErrorAction SilentlyContinue
 
 # Define database variables
 $ServerName = 'SQLSERVER2008'
-$DatabaseName = 'TailspinToys'
+$DatabaseName = 'WideWorldImporters'
 
-# Restore the TailspinToys database using the downloaded backup file
+# Restore the WideWorldImporters database using the downloaded backup file
 function Restore-SqlDatabase {
     $FilePath = 'C:\'
     $bakFileName = $FilePath + $DatabaseName +'.bak'
