@@ -9,7 +9,7 @@ Hands-on lab step-by-step guide
 </div>
 
 <div class="MCWHeader3">
-June 2020
+November 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -30,13 +30,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
-    - [Task 1: Configure the WWI TailspinToys database on the SqlServer2008 VM](#task-1-configure-the-wwi-tailspintoys-database-on-the-sqlserver2008-vm)
+    - [Task 1: Configure the WWI WideWorldImporters database on the SqlServer2008 VM](#task-1-configure-the-wwi-wideworldimporters-database-on-the-sqlserver2008-vm)
     - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
     - [Task 3: Perform assessment for migration to Azure SQL Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
     - [Task 2: Change MSSQLSERVER service to run under sqlmiuser account](#task-2-change-mssqlserver-service-to-run-under-sqlmiuser-account)
-    - [Task 3: Create a backup of WWI TailspinToys database](#task-3-create-a-backup-of-wwi-tailspintoys-database)
+    - [Task 3: Create a backup of WWI WideWorldImporters database](#task-3-create-a-backup-of-wwi-wideworldimporters-database)
     - [Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information](#task-4-retrieve-sql-mi-and-sql-server-2008-vm-connection-information)
     - [Task 5: Create a service principal](#task-5-create-a-service-principal)
     - [Task 6: Create and run an online data migration project](#task-6-create-and-run-an-online-data-migration-project)
@@ -68,7 +68,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and the managed database offerings in Azure. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal to no down-time. Finally, you enable some of the advanced SQL features available in SQL MI to improve security and performance in the customer's application.
+In this hands-on lab, you implement a proof-of-concept (PoC) for migrating an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). You perform assessments to reveal any feature parity and compatibility issues between the on-premises SQL Server 2008 R2 database and Azure's managed database offerings. You then migrate the customer's on-premises gamer information web application and database into Azure, with minimal down-time. Finally, you enable some of the advanced SQL features in SQL MI to improve security and performance in the customer's application.
 
 At the end of this hands-on lab, you will be better able to implement a cloud migration solution for business-critical applications and databases.
 
@@ -76,21 +76,21 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 
 Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
-Adding online gameplay has dramatically increased the popularity of their games, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host shared authentication and gateway VMs and databases. At its foundation, Tailspin Toys is a game development company, made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.
+Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host shared authentication and gateway VMs and databases. At its foundation, Tailspin Toys is a game development company made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.
 
-WWI is hoping that migrating their services from on-premises to the cloud can help to alleviate some of their infrastructure management issues, while simultaneously helping them to refocus their efforts on delivering business value by releasing new and improved games. They are looking for a proof-of-concept (PoC) for migrating their gamer information web application and database into the cloud. They maintain their gamer information database, `TailspinToys`, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons, and more. Since this system helps to drive revenue, it is considered a business-critical application and needs to be highly-available. They are aware that SQL Server 2008 R2 is approaching the end of support, and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to migrate the database into a platform-as-a-service (PaaS) offering, if possible. WWI is using the Service Broker feature of SQL Server for messaging within the WWI `TailspinToys` database. This functionality enables several critical processes, and they cannot afford to lose these capabilities when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.
+WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud. They maintain their gamer information database, `WideWorldImporters`, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons, and more. Since this system helps drive revenue, it is considered a business-critical application and needs to be highly available. They are aware that SQL Server 2008 R2 is beyond the end of support and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to migrate the database into a platform-as-a-service (PaaS) offering, if possible. WWI uses the Service Broker feature of SQL Server for messaging within the WWI `WideWorldImporters` database. This functionality enables several critical processes, and they cannot afford to lose these capabilities when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.
 
 ## Solution architecture
 
-Below is a diagram of the solution architecture you implement in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
+Below is a diagram of the solution architecture you implement in this lab. Please study this carefully to understand the whole of the solution as you are working on the various components.
 
-![This solution diagram includes a virtual network containing SQL MI in an isolated subnet, along with a JumpBox VM and Database Migration Service in a management subnet. The MI Subnet displays both the primary managed instance, along with a read-only replica, which is accessed by reports from the web app. The web app connects to SQL MI via a subnet gateway and point-to-site VPN. The web app is published to App Services using Visual Studio 2019. Online data migration is conducted from the on-premises SQL Server to SQL MI using the Azure Database Migration Service, which reads backup files from an SMB network share.](./media/preferred-solution-architecture.png "Preferred Solution diagram")
+![This solution diagram includes a virtual network containing SQL MI in an isolated subnet, along with a JumpBox VM and Database Migration Service in a management subnet. The MI Subnet displays both the primary managed instance and a read-only replica, which is accessed by reports from the web app. The web app connects to SQL MI via a subnet gateway and point-to-site VPN. The web app is published to App Services using Visual Studio 2019. Online data migration is conducted from the on-premises SQL Server to SQL MI using the Azure Database Migration Service, which reads backup files from an SMB network share.](./media/preferred-solution-architecture.png "Preferred Solution diagram")
 
-The solution begins with using the Microsoft Data Migration Assistant (DMA) to perform assessments of feature parity and compatibility of the on-premises SQL Server 2008 R2 database. Assessments are performed against both Azure SQL Database (Azure SQL DB) and Azure SQL Managed Instance (SQL MI). The goal is to migrate the `TailspinToys` database into an Azure PaaS offering with minimal or no changes. After completing the assessments and reviewing the findings, the SQL Server 2008 R2 database is migrated into SQL MI using the Azure Database Migration Service's online data migration option. Online data migration allows the database to be migrated with little to no downtime by using a backup and transaction logs stored in an SMB network share.
+The solution begins with using the Microsoft Data Migration Assistant (DMA) to perform assessments of feature parity and compatibility of the on-premises SQL Server 2008 R2 database. DMA assessments are performed against Azure SQL Database (Azure SQL DB) and Azure SQL Managed Instance (SQL MI). The goal is to migrate the `WideWorldImporters` database into an Azure PaaS offering with minimal or no application changes. After completing the assessments and reviewing the findings, the SQL Server 2008 R2 database is migrated into SQL MI using the Azure Database Migration Service's online data migration option. The online data migration feature of DMS allows the database migration to happen with minimal downtime, using a backup and transaction logs stored in an SMB network share.
 
-The web app is deployed to an Azure App Service Web App using Visual Studio 2019. Once the database has been migrated and cutover, the `TailspinToysWeb` application is configured to talk to the SQL MI VNet through a virtual network gateway using point-to-site VPN, and its connection strings are updated to point to the new SQL MI database.
+The web app is deployed to an Azure App Service Web App using Visual Studio 2019. Once the migrated database's cutover is complete, VNet integration for the `WideWorldImporters` web application is configured. This integration allows the web app to connect to the SQL MI VNet through a virtual network gateway using a point-to-site VPN. The web app's connection strings are updated to point to the new SQL MI database.
 
-In SQL MI, several features of Azure SQL Database are examined. Advanced Data Security (ADS) is enabled, and Data Discovery and Classification is used to better understand the data and potential compliance issues with data in the database. The ADS Vulnerability Assessment is used to identify potential security vulnerabilities and issues in the database, and those finding are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on WWI's Tailspin Toys web app to a read-only secondary, allowing reporting to occur without impacting the performance of the primary database.
+In SQL MI, several features of Azure SQL are examined. Advanced Data Security (ADS) is enabled, and Data Discovery and Classification is used to understand better the data and potential compliance issues with data in the database. The ADS Vulnerability Assessment tool is used to identify potential security vulnerabilities and problems in the database. Those issues listed in the assessment report are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on WWI's web app to a read-only secondary, allowing reporting to occur without impacting the primary database's performance.
 
 ## Requirements
 
@@ -103,13 +103,13 @@ In SQL MI, several features of Azure SQL Database are examined. Advanced Data Se
 
 Duration: 20 minutes
 
-In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perform assessments on the `TailspinToys` database. You create two assessments, one for a migration to Azure SQL Database, and then a second for SQL MI. These assessments provide reports about any feature parity, and compatibility issues between the on-premises database and the Azure managed SQL database service options.
+In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perform assessments on the `WideWorldImporters` database. You create two assessments: one for SQL DB and a second for SQL MI. These assessments provide reports about any feature parity and compatibility issues between the on-premises database and the Azure managed SQL database service options.
 
 > DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the [Data Migration Assistant documentation](https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current).
 
-### Task 1: Configure the WWI TailspinToys database on the SqlServer2008 VM
+### Task 1: Configure the WWI WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you do some configuration the WWI `TailspinToys` database on the SQL Server 2008 R2 instance to prepare it for migration.
+In this task, you perform some configuration for the WWI `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
@@ -140,9 +140,9 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
-8. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+8. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
 9. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
@@ -152,7 +152,7 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
 
     ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-11. Once connected, verify you see the `TailspinToys` database listed under databases. If you don't see it, the configuration script may have failed during the VM setup. You can manually add restore the database by following the step under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md).
+11. Once connected, verify you see the `WideWorldImporters` database listed under databases. If you do not see it, the configuration script may have failed during the VM setup. You can manually restore the database by following the step under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md).
 
 12. Select **New Query** from the SSMS toolbar.
 
@@ -165,7 +165,7 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
     GO
 
     -- Update the recovery model of the database to FULL and enable Service Broker
-    ALTER DATABASE TailspinToys SET
+    ALTER DATABASE WideWorldImporters SET
     RECOVERY FULL,
     ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
     GO
@@ -177,9 +177,9 @@ In this task, you do some configuration the WWI `TailspinToys` database on the S
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
-In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI's `TailspinToys` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI's `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -199,7 +199,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI
 
 4. Select **Create**.
 
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
+5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
 
@@ -212,13 +212,13 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](media/dma-connect-to-a-server.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma-connect-to-a-server.png "Connect to a server")
 
 7. Select **Connect**.
 
-8. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
+8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The TailspinToys box is checked on the Add sources dialog.](media/dma-add-sources.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](media/dma-add-sources.png "Add sources")
 
 9. Select **Start Assessment**.
 
@@ -228,7 +228,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI
 
     ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
 
-    > The DMA assessment for migrating WWI's `TailspinToys` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from being able to migrate to the Azure SQL DB PaaS offering without first making changes to their database.
+    > The DMA assessment for migrating WWI's `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without first making changes to their database.
 
 ### Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
@@ -250,7 +250,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 3. Select **Create**.
 
-4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are both checked, and then select **Next**.
+4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
 
@@ -263,13 +263,13 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered into the appropriate fields.](media/dma-connect-to-a-server.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma-connect-to-a-server.png "Connect to a server")
 
 6. Select **Connect**.
 
-7. On the **Add sources** dialog that appears next, check the box for **TailspinToys** and select **Add**.
+7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The TailspinToys box is checked on the Add sources dialog.](media/dma-add-sources.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](media/dma-add-sources.png "Add sources")
 
 8. Select **Start Assessment**.
 
@@ -281,21 +281,21 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
-   > **Note**: The assessment report for a migrating WWI's `TailspinToys` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full text search changes do not impact the migration of the `TailspinToys` database to SQL MI.
+   > **Note**: The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
-10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
+10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
 ## Exercise 2: Migrate the database to SQL MI
 
 Duration: 60 minutes
 
-In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate WWI's `TailspinToys` database from their on-premises SQL Server 2008 R2 database into SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
+In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate WWI's `WideWorldImporters` database from their on-premises SQL Server 2008 R2 database into SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#service-tiers).
 
 ### Task 1: Create an SMB network share on the SqlServer2008 VM
 
-In this task, you create a new SMB network share on the SqlServer2008 VM. This is the folder used by DMS for retrieving backups of the WWI `TailspinToys` database during the database migration process.
+In this task, you create a new SMB network share on the SqlServer2008 VM. This is the folder used by DMS for retrieving backups of the WWI `WideWorldImporters` database during the database migration process.
 
 1. On the SqlServer2008 VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
@@ -354,9 +354,9 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 7. Close the SQL Server Configuration Manager.
 
-### Task 3: Create a backup of WWI TailspinToys database
+### Task 3: Create a backup of WWI WideWorldImporters database
 
-To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you create a backup of the WWI `TailspinToys` database using SSMS and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you created in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
+To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you create a backup of the WWI `WideWorldImporters` database using SSMS and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you created in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
@@ -366,13 +366,13 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
    ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-3. Once connected, expand **Databases** under SQLSERVER2008 in the Object Explorer, and then right-click the **TailspinToys** database. In the context menu, select **Tasks** and then **Back Up**.
+3. Once connected, expand **Databases** under SQLSERVER2008 in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
 
-   ![In the SSMS Object Explorer, the context menu for the TailspinToys database is displayed, with Tasks and Back Up... highlighted.](media/ssms-backup.png "SSMS Backup")
+   ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](media/ssms-backup.png "SSMS Backup")
 
-4. In the Back Up Database dialog, you should see `C:\TailspinToys.bak` listed in the Destinations box. This is no longer needed, so select it and then select **Remove**.
+4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This is no longer needed, so select it and then select **Remove**.
 
-   ![In the General tab of the Back Up Database dialog, C:\TailspinToys.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
+   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
@@ -382,9 +382,9 @@ To perform online data migrations, DMS looks for backups and logs in the SMB sha
 
    ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
 
-7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter `TailspinToys.bak` into the File name field, and then select **OK**.
+7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter `WideWorldImporters.bak` into the File name field, and then select **OK**.
 
-   ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and TailspinToys.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
+   ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted and WideWorldImporters.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
 
 8. Select **OK** to close the Select Backup Destination dialog.
 
@@ -488,7 +488,7 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
 
 ### Task 6: Create and run an online data migration project
 
-In this task, you create a new online data migration project in DMS for WWI's `TailspinToys` database.
+In this task, you create a new online data migration project in DMS for WWI's `WideWorldImporters` database.
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
@@ -535,9 +535,9 @@ In this task, you create a new online data migration project in DMS for WWI's `T
 
 8. Select **Save**.
 
-9. On the Migration Wizard **Select databases** blade, select `TailspinToys`.
+9. On the Migration Wizard **Select databases** blade, select `WideWorldImporters`.
 
-   ![The Migration Wizard Select databases blade is displayed, with the TailspinToys database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
+   ![The Migration Wizard Select databases blade is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
 
 10. Select **Save**.
 
@@ -571,15 +571,15 @@ In this task, you create a new online data migration project in DMS for WWI's `T
 
 ### Task 7: Perform migration cutover
 
-Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the WWI `TailspinToys` database by cutting over to the SQL MI database.
+Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the WWI `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. In the migration status window in the Azure portal and select **TailspinToys** under database name to view further details about the database migration.
+1. In the migration status window in the Azure portal and select **WideWorldImporters** under database name to view further details about the database migration.
 
-   ![The TailspinToys database name is highlighted in the migration status window.](media/dms-migration-wizard-database-name.png "Migration status")
+   ![The WideWorldImporters database name is highlighted in the migration status window.](media/dms-migration-wizard-database-name.png "Migration status")
 
-2. On the TailspinToys screen, note the status of **Restored** for the `TailspinToys.bak` file.
+2. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
-   ![On the TailspinToys blade, a status of Restored is highlighted next to the TailspinToys.bak file in the list of active backup files.](media/dms-migration-wizard-database-restored.png "Migration Wizard")
+   ![On the WideWorldImporters blade, a status of Restored is highlighted next to the WideWorldImporters.bak file in the list of active backup files.](media/dms-migration-wizard-database-restored.png "Migration Wizard")
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
 
@@ -590,7 +590,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 5. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
    ```sql
-   USE TailspinToys;
+   USE WideWorldImporters;
    GO
 
    INSERT [dbo].[Game] (Title, Description, Rating, IsOnlineMultiplayer)
@@ -607,23 +607,23 @@ Since you performed an "online data migration," the migration wizard continuousl
    USE master;
    GO
 
-   BACKUP LOG TailspinToys
-   TO DISK = 'c:\dms-backups\TailspinToysLog.trn'
+   BACKUP LOG WideWorldImporters
+   TO DISK = 'c:\dms-backups\WideWorldImportersLog.trn'
    WITH CHECKSUM
    GO
    ```
 
 8. Execute the query by selecting **Execute** in the SSMS toolbar.
 
-9. Return to the migration status page in the Azure portal. On the TailspinToys screen, select **Refresh** and you should see the **TailspinToysLog.trn** file appear with a status of **Uploaded**.
+9. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh** and you should see the **WideWorldImportersLog.trn** file appear with a status of **Uploaded**.
 
-   ![On the TailspinToys blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
+   ![On the WideWorldImporters blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
 
    > **Note**: If you don't see it the transaction logs entry, continue selecting refresh every few seconds until it appears.
 
 10. Once the transaction logs are uploaded, they are restored to the database. Select **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
-    ![A status of Restored is highlighted next to the TailspinToysLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-restored.png "Migration Wizard")
+    ![A status of Restored is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-restored.png "Migration Wizard")
 
 11. After verifying the transaction log status of **Restored**, select **Start Cutover**.
 
@@ -639,11 +639,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     > **Note**: If after a few minutes the progress bar has not moved, you can proceed to the next step, and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
-14. Close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the TailspinToys blade. This returns you to the WwiMigration blade. Select **Refresh**, and you should see a status of **Completed** from the TailspinToys database.
+14. Close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. This returns you to the WwiMigration blade. Select **Refresh**, and you should see a status of **Completed** from the WideWorldImporters database.
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
-15. You have successfully migrated WWI's `TailspinToys` database to Azure SQL Managed Instance.
+15. You have successfully migrated WWI's `WideWorldImporters` database to Azure SQL Managed Instance.
 
 ### Task 8: Verify database and transaction log migration
 
@@ -690,16 +690,16 @@ In this task, you connect to the SQL MI database using SSMS, and quickly verify 
 
 8. Select **Connect**.
 
-9. The SQL MI connection appears below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `TailspinToys` database.
+9. The SQL MI connection appears below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `WideWorldImporters` database.
 
-   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the TailspinToys database is highlighted and selected.](media/ssms-sql-mi-tailspintoys-database.png "SSMS Object Explorer")
+   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/ssms-sql-mi-tailspintoys-database.png "SSMS Object Explorer")
 
-10. With the `TailspinToys` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+10. With the `WideWorldImporters` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
 
     ```sql
-    USE TailspinToys;
+    USE WideWorldImporters;
     GO
 
     SELECT * FROM Game
@@ -715,13 +715,13 @@ In this task, you connect to the SQL MI database using SSMS, and quickly verify 
 
 Duration: 30 minutes
 
-With the WWI `TailspinToys` database now running on SQL MI in Azure, the next step is to make the required modifications to the WWI TailspinToys gamer information web application.
+With the `WideWorldImporters` database now running on SQL MI in Azure, the next step is to make the required modifications to the WideWorldImporters gamer information web application.
 
 > **Note**: Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance).
 
 ### Task 1: Deploy the web app to Azure
 
-In this task, you create an RDP connection to the JumpBox VM and then using Visual Studio on the JumpBox, deploy the `TailspinToysWeb` application into the App Service in Azure.
+In this task, you create an RDP connection to the JumpBox VM and then using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the Azure navigation pane and select the **hands-on-lab-SUFFIX** resource group from the list.
 
@@ -756,9 +756,9 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
    ![The File Explorer icon is highlighted in the Windows start bar.](media/windows-2019-start-bar-file-explorer.png "Windows start bar")
 
-9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `TailspinToysWeb.sln` to open the solution in Visual Studio.
+9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
-   ![The folder at the path specified above is displayed, and TailspinToys.sln is highlighted.](media/windows-explorer-tailspintoysweb.png "Windows Explorer")
+   ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-tailspintoysweb.png "Windows Explorer")
 
 10. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
 
@@ -772,9 +772,9 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
-13. Once logged into Visual Studio, right-click the `TailspinToysWeb` project in the Solution Explorer, and then select **Publish**.
+13. Once logged into Visual Studio, right-click the `WideWorldImporters.Web` project in the Solution Explorer, and then select **Publish**.
 
-    ![In the Solution Explorer, the context menu for the TailspinToysWeb project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
+    ![In the Solution Explorer, the context menu for the WideWorldImporters.Web project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
 14. On the **Publish** dialog, select **Azure** in the Target box and select **Next**.
 
@@ -790,7 +790,7 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
 17. Select **Finish**.
 
-18. Back on the Visual Studio Publish page for the `TailspinToysWeb` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
+18. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
     ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
 
@@ -814,22 +814,22 @@ In this task, you make updates to WWI's Tailspin Toys gamer info web application
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. In the list of resources for your resource group, select the **hands-on-lab-SUFFIX** resource group and then select the **tailspintoysUNIQUEID** App Service from the list of resources.
+3. In the list of resources for your resource group, select the **hands-on-lab-SUFFIX** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
-   ![The tailspintoys App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
+   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
 4. On the App Service blade, select **Configuration** under Settings on the left-hand side.
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-5. On the Configuration blade, locate the **Connection strings** section, and then select the Pencil (Edit) icon to the right of the `TailspinToysContext` connection string.
+5. On the Configuration blade, locate the **Connection strings** section, and then select the Pencil (Edit) icon to the right of the `WwiContext` connection string.
 
-   ![In the Connection string section, the pencil icon is highlighted to the right of the TailspinToysContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
+   ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
 6. The value of the connection string should look like:
 
    ```sql
-   Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
+   Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
    ```
 
 7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell.
@@ -842,7 +842,7 @@ In this task, you make updates to WWI's Tailspin Toys gamer info web application
 
 9. Select **OK**.
 
-10. Repeat steps 3 - 7, this time for the `TailspinToysReadOnlyContext` connection string.
+10. Repeat steps 3 - 7, this time for the `WwiReadOnlyContext` connection string.
 
 11. Select **Save** at the top of the Configuration blade.
 
@@ -895,9 +895,9 @@ In this task, you configure the client address pool. This is a range of private 
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, select the **hands-on-lab-SUFFIX** resource group and then select the **tailspintoysUNIQUEID** App Service from the list of resources.
+1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the left-hand menu, select the **hands-on-lab-SUFFIX** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
-   ![The tailspintoys App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
+   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
 2. On the App Service blade, select **Networking** from the left-hand menu and then select **Click here to configure** under **VNet Integration**.
 
@@ -933,7 +933,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
 2. Verify that the web site and data are loaded correctly. The page should look similar to the following:
 
-   ![Screenshot of the TailspinToys Operations Web App.](media/tailspin-toys-web-app.png "TailspinToys Web")
+   ![Screenshot of the WideWorldImporters Operations Web App.](media/tailspin-toys-web-app.png "WideWorldImporters Web")
 
    > **Note**: If you get an error screen, try selecting Refresh in the browser window.
 
@@ -957,11 +957,11 @@ In this task, you enable ADS for all databases on the Managed Instance.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. Select the **TailspinToys** Managed database resource from the list.
+3. Select the **WideWorldImporters** Managed database resource from the list.
 
-   ![The TailspinToys Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
+   ![The WideWorldImporters Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
 
-4. On the TailspinToys Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **Enable Advanced Data Security on the managed instance**.
+4. On the WideWorldImporters Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **Enable Advanced Data Security on the managed instance**.
 
    ![Advanced Data Security is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Advanced Data Security on the managed instance button is highlighted.](media/sql-mi-managed-database-advanced-data-security-enable.png "Advanced Data Security")
 
@@ -1031,9 +1031,9 @@ In this task, you review the [SQL Data Discovery and Classification](https://doc
 
 ### Task 3: Review an Advanced Data Security Vulnerability Assessment
 
-In this task, you review an assessment report generated by ADS for the `TailspinToys` database and take action to remediate one of the findings in the `TailspinToys` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
+In this task, you review an assessment report generated by ADS for the `WideWorldImporters` database and take action to remediate one of the findings in the `WideWorldImporters` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
 
-1. Return to the **Advanced Data Security** blade for the `TailspinToys` Managed database and then select the **Vulnerability Assessment** tile.
+1. Return to the **Advanced Data Security** blade for the `WideWorldImporters` Managed database and then select the **Vulnerability Assessment** tile.
 
    ![The Vulnerability tile is displayed.](media/ads-vulnerability-assessment-tile.png "Advanced Data Security")
 
@@ -1055,7 +1055,7 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 
    > The details for each finding provide more insight into the reason for the finding. Of note are fields describing the finding, the impact of the recommended settings, and details on remediation for the finding.
 
-6. You will now act on the recommended remediation steps for the finding and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal) for the `TailspinToys` database. To accomplish this, switch over to using SSMS on your JumpBox VM for the next few steps.
+6. You will now act on the recommended remediation steps for the finding and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal) for the `WideWorldImporters` database. To accomplish this, switch over to using SSMS on your JumpBox VM for the next few steps.
 
    > **Note**: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
@@ -1072,10 +1072,10 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 8. In SSMS, select **New Query** from the toolbar, paste the following SQL script into the new query window.
 
    ```sql
-   USE TailspinToys;
+   USE WideWorldImporters;
    GO
 
-   ALTER DATABASE [TailspinToys] SET ENCRYPTION ON
+   ALTER DATABASE [WideWorldImporters] SET ENCRYPTION ON
    ```
 
    > You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.
@@ -1092,11 +1092,11 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 
 11. Select **Execute** from the SSMS toolbar. You will see two records in the Results window, which provide information about the encryption state and keys used for encryption.
 
-    ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the TailspinToys database are highlighted.](media/ssms-sql-mi-database-encryption-keys-results.png "Results")
+    ![The Execute button on the SSMS toolbar is highlighted, and in the Results pane the two records about the encryption state and keys for the WideWorldImporters database are highlighted.](media/ssms-sql-mi-database-encryption-keys-results.png "Results")
 
     > By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
-12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `TailspinToys` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
+12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `WideWorldImporters` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
     ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
@@ -1114,17 +1114,17 @@ In this task, you review an assessment report generated by ADS for the `Tailspin
 
 Duration: 15 minutes
 
-In this exercise, you enable [Dynamic Data Masking](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (DDM) on credit card numbers in the `TailspinToys` database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
+In this exercise, you enable [Dynamic Data Masking](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (DDM) on credit card numbers in the `WideWorldImporters` database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
 
 > For example, a service representative at a call center may identify callers by several digits of their credit card number, but those data items should not be fully exposed to the service representative. A masking rule can be defined that masks all but the last four digits of any credit card number in the result set of any query. As another example, an appropriate data mask can be defined to protect personally identifiable information (PII) data, so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
 
 ### Task 1: Enable DDM on credit card numbers
 
-When inspecting the data in the `TailspinToys` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
+When inspecting the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
 1. On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Tables** under the **TailspinToys** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Tables** under the **WideWorldImporters** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
@@ -1135,7 +1135,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
 4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, select **New Query** and paste the following SQL script into the new query window:
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    CREATE USER DDMUser WITHOUT LOGIN;
@@ -1149,7 +1149,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
 6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -1164,7 +1164,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
 8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar and paste the following query into the query window to apply a mask to the `CardNumber` field, and select **Execute**.
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    ALTER TABLE [Sales].[CreditCard]
@@ -1174,7 +1174,7 @@ When inspecting the data in the `TailspinToys` database using the ADS Data Disco
 9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -1193,7 +1193,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    SELECT TOP 10 * FROM [dbo].[Gamer]
@@ -1204,7 +1204,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select **Execute**:
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
@@ -1213,7 +1213,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar and paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    ALTER TABLE [dbo].[Gamer]
@@ -1225,7 +1225,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
 
    ```sql
-   USE [TailspinToys];
+   USE [WideWorldImporters];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -1253,7 +1253,7 @@ In this task, you open a web report using the web application you deployed to yo
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. In the hands-on-lab-SUFFIX resource group, select the **tailspintoysUNIQUEID** App Service from the list of resources.
+3. In the hands-on-lab-SUFFIX resource group, select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
    ![The App Service resource is selected from the list of resources in the hands-on-lab-SUFFIX resource group.](media/rg-app-service.png "hands-on-lab-SUFFIX resource group")
 
@@ -1269,26 +1269,26 @@ In this task, you open a web report using the web application you deployed to yo
 
 ### Task 2: Update read-only connection string
 
-In this task, you enable Read Scale-Out for the `TailspinToys`database, using the `ApplicationIntent` option in the connection string. This option dictates whether the connection is routed to the write replica or a read-only replica. Specifically, if the `ApplicationIntent` value is `ReadWrite` (the default value), the connection is directed to the database's read-write replica. If the `ApplicationIntent` value is `ReadOnly`, the connection is routed to a read-only replica.
+In this task, you enable Read Scale-Out for the `WideWorldImporters`database, using the `ApplicationIntent` option in the connection string. This option dictates whether the connection is routed to the write replica or a read-only replica. Specifically, if the `ApplicationIntent` value is `ReadWrite` (the default value), the connection is directed to the database's read-write replica. If the `ApplicationIntent` value is `ReadOnly`, the connection is routed to a read-only replica.
 
 1. Return to the App Service blade in the Azure portal and select **Configuration** under Settings on the left-hand side.
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-2. On the Configuration blade, scroll down and locate the connection string named `TailspinToysReadOnlyContext` within the **Connection strings** section, and select the Pencil (edit) icon on the right.
+2. On the Configuration blade, scroll down and locate the connection string named `WwiReadOnlyContext` within the **Connection strings** section, and select the Pencil (edit) icon on the right.
 
    ![The edit icon next to the read-only connection string is highlighted.](media/app-service-configuration-connection-strings-read-only.png "Connection strings")
 
-3. In the Add/Edit connection string dialog, select the **Value** for the `TailspinToysReadOnlyContext` and paste the following parameter to the end of the connection string.
+3. In the Add/Edit connection string dialog, select the **Value** for the `WwiReadOnlyContext` and paste the following parameter to the end of the connection string.
 
    ```sql
    ApplicationIntent=ReadOnly;
    ```
 
-4. The `TailspinToysReadOnlyContext` connection string should now look something like the following:
+4. The `WwiReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```
 
 5. Select **OK**.
