@@ -176,9 +176,9 @@ In this task, you create an Azure SQL Managed Instance.
 
      - **Managed instance name**: Enter `sqlmi-SUFFIX`
      - **Region**: Select the region you are using for resources in this hands-on lab.
-     - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **16** and the Storage to **32**, and then select **Apply**.
+     - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **4** and the Storage to **32**, and then select **Apply**.
 
-     ![On the Configure performance blade, Business Critical is selected, Gen5 is selected, and the vCores are set to 16, and the Storage size is set to 32.](media/sql-mi-configure-performance.png "Configure performance")
+     ![On the Compute + storage blade, Business Critical is selected for the service tier, the vCores are set to 4, and storage size is set to 32 GB.](media/sql-mi-configure-performance.png "Compute + storage blade")
 
    - Administrator account:
 

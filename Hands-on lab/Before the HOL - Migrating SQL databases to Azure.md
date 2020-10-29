@@ -148,7 +148,7 @@ In this task, you run an Azure Resource Manager (ARM) template to create the res
    - **Managed Instance Name**: Accept the default value, **sqlmi**. The actual name must be globally unique, so a unique string is generated from your Resource Group and appended to the name during provisioning.
    - **Admin Username**: Accept the default value, **sqlmiuser**.
    - **Admin Password**: Accept the default value, **Password.1234567890**.
-   - **V Cores**: Accept the default value, **16**.
+   - **V Cores**: Accept the default value, **4**.
    - **Storage Size in GB**: Accept the default value, **32**.
 
    ![The Custom deployment blade is displayed, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")
