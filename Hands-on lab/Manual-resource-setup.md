@@ -2,7 +2,7 @@
 
 This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
-June 2020
+November 2020
 
 **Contents**:
 
@@ -18,7 +18,7 @@ June 2020
   - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
-  - [Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-wwi-tailspintoys-database-on-the-sqlserver2008-vm)
+  - [Task 12: Configure the WWI WideWorldImporters database on the SqlServer2008 VM](#task-12-configure-the-wwi-wideworldimporters-database-on-the-sqlserver2008-vm)
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -428,7 +428,7 @@ In this task, you provision an App Service (Web app), which will be used for hos
 
    - Instance Details:
 
-     - **Name**: Enter `tailspintoysSUFFIX`, to create a globally unique name.
+     - **Name**: Enter `wwi-web-SUFFIX`, to create a globally unique name.
      - **Publish**: Select **Code**.
      - **Runtime stack**: Select **.NET Core 3.1 (LTS)**.
      - **Operating System**: Select **Windows**.
@@ -663,11 +663,11 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
-## Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM
+## Task 12: Configure the WWI WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you restore and configure Wide World Importers' `TailspinToys` database on the SQL Server 2008 R2 instance.
+In this task, you restore and configure Wide World Importers' `WideWorldImporters` database on the SQL Server 2008 R2 instance.
 
-1. On the SqlServer2008 VM, download a [backup of the WWI TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
+1. On the SqlServer2008 VM, download a [backup of the WWI WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
@@ -681,7 +681,7 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the WWI `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -689,19 +689,19 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
 
    ![In the Select backup devices dialog, the Add button is highlighted.](media/ssms-restore-database-select-devices.png "Select backup devices")
 
-7. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `TailspinToys.bak` file, select that file, and then select **OK**.
+7. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `WideWorldImporters.bak` file, select that file, and then select **OK**.
 
-   ![In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
+   ![In the Location Backup File dialog, the WideWorldImporters.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
 
-8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the WWI `TailspinToys` database.
+8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-   ![The completed Restore Database dialog is displayed, with the WWI TailSpinToys database specified as the target.](media/ssms-restore-database.png "Restore Database")
+   ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
 9. Select **OK** to start the restore.
 
 10. Select **OK** in the dialog when the database restore is complete.
 
-    ![A dialog is displayed with a message that the database TailspinToys was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
+    ![A dialog is displayed with a message that the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
 
 11. Next, you execute a script in SSMS, which enables Service broker, creates the `WorkshopUser` account, and changes the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
@@ -722,8 +722,8 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
         @rolename = N'sysadmin';
     GO
 
-    -- Assign the user to the TailspinToys database
-    USE TailspinToys;
+    -- Assign the user to the WideWorldImporters database
+    USE WideWorldImporters;
     GO
 
     IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
