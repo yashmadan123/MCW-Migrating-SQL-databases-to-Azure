@@ -617,49 +617,21 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-9. Back in the Server Manager, expand **Configuration** and **Windows Firewall with Advanced Security**, and then select **Inbound Rules**.
+9. Close the Server Manager.
 
-   ![In Server Manager, Configuration and Windows Firewall with Advanced Security are expanded, Inbound Rules is selected and highlighted.](media/windows-firewall-inbound-rules.png "Windows Firewall")
-
-10. Right-click on **Inbound Rules** and then select **New Rule** from the context menu.
-
-    ![Inbound Rules is selected, and New Rule is highlighted in the context menu.](media/windows-firewall-with-advanced-security-new-inbound-rule.png "New Rule")
-
-11. In the New Inbound Rule Wizard, under Rule Type, select **Port**, then select **Next**.
-
-    ![Rule Type is selected and highlighted on the left side of the New Inbound Rule Wizard, and Port is selected and highlighted on the right.](media/windows-2008-new-inbound-rule-wizard-rule-type.png "Select Port")
-
-12. In the Protocol and Ports dialog, use the default **TCP**, and enter **1433** in the Specific local ports text box, and then select **Next**.
-
-    ![Protocol and Ports is selected on the left side of the New Inbound Rule Wizard, and 1433 is in the Specific local ports box, which is selected on the right.](media/windows-2008-new-inbound-rule-wizard-protocol-and-ports.png "Select a specific local port")
-
-13. In the Action dialog, select **Allow the connection** and then select **Next**.
-
-    ![Action is selected on the left side of the New Inbound Rule Wizard, and Allow the connection is selected on the right.](media/windows-2008-new-inbound-rule-wizard-action.png "Specify the action")
-
-14. In the Profile step, check **Domain**, **Private**, and **Public**, then select **Next**.
-
-    ![Profile is selected on the left side of the New Inbound Rule Wizard, and Domain, Private, and Public are selected on the right.](media/windows-2008-new-inbound-rule-wizard-profile.png "Select Domain, Private, and Public")
-
-15. On the Name screen, enter **SqlServer** for the name, and select **Finish**.
-
-    ![Profile is selected on the left side of the New Inbound Rule Wizard, and sqlserver is in the Name box on the right.](media/windows-2008-new-inbound-rule-wizard-name.png "Specify the name")
-
-16. Close the Server Manager.
-
-17. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
+10. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
 
     ![The Download button is highlighted on the Data Migration Assistant download page.](media/dma-download.png "Download Data Migration Assistant")
 
     > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
 
-18. Run the downloaded installer.
+11. Run the downloaded installer.
 
-19. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
+12. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
 
-20. Select **Install** on the Privacy Policy screen to begin the installation.
+13. Select **Install** on the Privacy Policy screen to begin the installation.
 
-21. On the final screen, select **Finish** to close the installer.
+14. On the final screen, select **Finish** to close the installer.
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
@@ -703,7 +675,7 @@ In this task, you restore and configure `WideWorldImporters` database on the SQL
 
     ![A dialog is displayed with a message that the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
 
-11. Next, you execute a script in SSMS, which enables Service broker, creates the `WorkshopUser` account, and changes the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+11. Next, you execute a script in SSMS to create the `WorkshopUser` account. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
