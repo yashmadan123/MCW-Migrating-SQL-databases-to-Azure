@@ -42,8 +42,9 @@ Invoke-WebRequest 'https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL
 Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
 Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
 
-#Add snap-in
-Add-PSSnapin SqlServerCmdletSnapin* -ErrorAction SilentlyContinue
+#Add snapins
+Add-PSSnapin SqlServerProviderSnapin100 -ErrorAction SilentlyContinue
+Add-PSSnapin SqlServerCmdletSnapin100 -ErrorAction SilentlyContinue
 
 # Define database variables
 $ServerName = 'SQLSERVER2008'
@@ -53,50 +54,45 @@ $DatabaseName = 'WideWorldImporters'
 function Restore-SqlDatabase {
     $FilePath = 'C:\'
     $bakFileName = $FilePath + $DatabaseName +'.bak'
-    
-    $RestoreCmd = "USE [master];
-                   GO
-                   RESTORE DATABASE [$DatabaseName] FROM DISK ='$bakFileName';"
 
+    $UseMasterCmd = "USE [master];"
+    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $RestoreCmd = "RESTORE DATABASE [$DatabaseName] FROM DISK ='$bakFileName';"
     Invoke-Sqlcmd $RestoreCmd -QueryTimeout 3600 -ServerInstance $ServerName
+}
 
-    $UserSetupCmd = "USE [master];
-                     GO
-                     CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
-                     GO
-                     EXEC sp_addsrvrolemember
-                        @loginame = N'WorkshopUser',
-                        @rolename = N'sysadmin';
-                     GO"
-                    
-    Invoke-Sqlcmd $UserSetupCmd -QueryTimeout 3600 -ServerInstance $ServerName
+function Enable-ServiceBroker {
+    $UseMasterCmd = "USE [master];"
+    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -ServerInstance $ServerName
 
-    $AssignUserCmd = "USE [$DatabaseName];
-                      GO
-                      IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'WorkshopUser')
-                        BEGIN
-                            CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
-                            EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
-                        END;
-                      GO"
-
-    Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
-
-    $RecoveryModeCmd = "USE [$DatabaseName];
-                        GO
-                        ALTER DATABASE ['$DatabaseName'] SET RECOVERY FULL;
-                        GO"
-
-    Invoke-Sqlcmd $RecoveryModeCmd -QueryTimeout 3600 -ServerInstance $ServerName
-
-    $SetBrokerCmd = "USE [master];
-                     GO
-                     ALTER DATABASE ['$DatabaseName']
-                     SET 
-                     ENABLE_BROKER WITH ROLLBACK immediate;
-                     GO"
-
+    $SetBrokerCmd = "ALTER DATABASE ['$DatabaseName'] SET ENABLE_BROKER WITH ROLLBACK immediate;"
     Invoke-Sqlcmd $SetBrokerCmd -QueryTimeout 3600 -ServerInstance $ServerName
 }
 
+function Config-SqlDatabaseLogin {
+    $UserName = 'WorkshopUser'
+    $Password = 'Password.1234567890'
+
+    $CreateLoginCmd = "CREATE LOGIN $UserName WITH PASSWORD = N'$Password';"
+    Invoke-Sqlcmd $CreateLoginCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $AddRoleCmd = "EXEC sp_addsrvrolemember @loginame = N'$UserName', @rolename = N'sysadmin';"      
+    Invoke-Sqlcmd $AddRoleCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $UseDatabaseCmd = "USE [$DatabaseName];"
+    Invoke-Sqlcmd $UseDatabaseCmd -QueryTimeout 3600 -ServerInstance $ServerName
+
+    $AssignUserCmd = "IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = '$UserName')
+                        BEGIN
+                            CREATE USER [$UserName] FOR LOGIN [$UserName]
+                            EXEC sp_addrolemember N'db_datareader', N'$UserName'
+                        END;
+                      GO"
+    Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
+}
+
 Restore-SqlDatabase
+Start-Sleep -m 30000
+Enable-ServiceBroker
+Config-SqlDatabaseLogin
