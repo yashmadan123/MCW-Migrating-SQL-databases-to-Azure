@@ -28,8 +28,9 @@
         },
         "vCores": {
             "type": "int",
-            "defaultValue": 8,
+            "defaultValue": 4,
             "allowedValues": [
+                4,
                 8,
                 16,
                 24,
