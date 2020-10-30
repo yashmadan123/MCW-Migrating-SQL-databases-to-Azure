@@ -40,8 +40,9 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 
 ## Azure services and related products
 
-- Azure SQL Managed Instance (SQL MI)
-- Azure SQL Database (SQL DB)
+- Azure SQL
+  - Azure SQL Managed Instance (SQL MI)
+  - Azure SQL Database (SQL DB)
 - Azure Database Migration Service (DMS)
 - Microsoft Data Migration Assistant (DMA)
 - Azure App Service

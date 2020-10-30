@@ -18,7 +18,7 @@ November 2020
   - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
-  - [Task 12: Configure the WWI WideWorldImporters database on the SqlServer2008 VM](#task-12-configure-the-wwi-wideworldimporters-database-on-the-sqlserver2008-vm)
+  - [Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM](#task-12-configure-the-wideworldimporters-database-on-the-sqlserver2008-vm)
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -405,7 +405,7 @@ In this task, you provision an instance of the Azure Database Migration Service 
 
 ## Task 7: Provision a Web App
 
-In this task, you provision an App Service (Web app), which will be used for hosting the WWI Tailspin Toys web application.
+In this task, you provision an App Service (Web app), which will be used for hosting the Wide World Importers web application.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -663,11 +663,11 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
-## Task 12: Configure the WWI WideWorldImporters database on the SqlServer2008 VM
+## Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you restore and configure Wide World Importers' `WideWorldImporters` database on the SQL Server 2008 R2 instance.
+In this task, you restore and configure `WideWorldImporters` database on the SQL Server 2008 R2 instance.
 
-1. On the SqlServer2008 VM, download a [backup of the WWI WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
