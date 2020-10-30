@@ -36,7 +36,10 @@ function Add-SqlFirewallRule {
 Add-SqlFirewallRule
 
 # Download the database backup file from the GitHub repo
-Invoke-WebRequest 'https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak' -OutFile 'C:\WideWorldImporters.bak'
+Invoke-WebRequest 'https://raw.githubusercontent.com/kylebunting/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak' -OutFile 'C:\WideWorldImporters.bak'
+
+# Download the SQL-only version of this file in case the script execution fails to run those parts.
+Invoke-WebRequest 'https://raw.githubusercontent.com/kylebunting/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/configure-sqlvm.ps1' -OutFile 'C:\configure-sqlvm.ps1'
 
 # Download and install Data Mirgation Assistant
 Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
@@ -49,6 +52,12 @@ Add-PSSnapin SqlServerCmdletSnapin100 -ErrorAction SilentlyContinue
 # Define database variables
 $ServerName = 'SQLSERVER2008'
 $DatabaseName = 'WideWorldImporters'
+$SqlMiUser = 'sqlmiuser'
+$PasswordPlainText = 'Password.1234567890'
+$PasswordSecure = ConvertTo-SecureString $PasswordPlainText -AsPlainText -Force
+$PasswordSecure.MakeReadOnly()
+$Creds = New-Object System.Management.Automation.PSCredential $SqlMiUser,$PasswordSecure
+$Password = $Creds.GetNetworkCredential().Password
 
 # Restore the WideWorldImporters database using the downloaded backup file
 function Restore-SqlDatabase {
@@ -56,32 +65,31 @@ function Restore-SqlDatabase {
     $bakFileName = $FilePath + $DatabaseName +'.bak'
 
     $UseMasterCmd = "USE [master];"
-    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
     $RestoreCmd = "RESTORE DATABASE [$DatabaseName] FROM DISK ='$bakFileName';"
-    Invoke-Sqlcmd $RestoreCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $RestoreCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 }
 
 function Enable-ServiceBroker {
     $UseMasterCmd = "USE [master];"
-    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
     $SetBrokerCmd = "ALTER DATABASE ['$DatabaseName'] SET ENABLE_BROKER WITH ROLLBACK immediate;"
-    Invoke-Sqlcmd $SetBrokerCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $SetBrokerCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 }
 
 function Config-SqlDatabaseLogin {
     $UserName = 'WorkshopUser'
-    $Password = 'Password.1234567890'
 
     $CreateLoginCmd = "CREATE LOGIN $UserName WITH PASSWORD = N'$Password';"
-    Invoke-Sqlcmd $CreateLoginCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $CreateLoginCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
     $AddRoleCmd = "EXEC sp_addsrvrolemember @loginame = N'$UserName', @rolename = N'sysadmin';"      
-    Invoke-Sqlcmd $AddRoleCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $AddRoleCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
     $UseDatabaseCmd = "USE [$DatabaseName];"
-    Invoke-Sqlcmd $UseDatabaseCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $UseDatabaseCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
     $AssignUserCmd = "IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = '$UserName')
                         BEGIN
@@ -89,7 +97,7 @@ function Config-SqlDatabaseLogin {
                             EXEC sp_addrolemember N'db_datareader', N'$UserName'
                         END;
                       GO"
-    Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -ServerInstance $ServerName
+    Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 }
 
 Restore-SqlDatabase
