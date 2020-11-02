@@ -5,102 +5,99 @@ function Disable-InternetExplorerESC {
     Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0 -Force
     Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0 -Force
     Stop-Process -Name Explorer -Force
-    Write-Host "IE Enhanced Security Configuration (ESC) has been disabled." -ForegroundColor Green
+    Write-Host 'IE Enhanced Security Configuration (ESC) has been disabled.' -ForegroundColor Green
 }
 
 # Disable IE ESC
 Disable-InternetExplorerESC
 
-# Enable SQL Server ports on the Windows firewall
-function Add-SqlFirewallRule {
-    $fwPolicy = $null
-    $fwPolicy = New-Object -ComObject HNetCfg.FWPolicy2
-
-    $NewRule = $null
-    $NewRule = New-Object -ComObject HNetCfg.FWRule
-
-    $NewRule.Name = "SqlServer"
-    # TCP
-    $NewRule.Protocol = 6
-    $NewRule.LocalPorts = 1433
-    $NewRule.Enabled = $True
-    $NewRule.Grouping = "SQL Server"
-    # ALL
-    $NewRule.Profiles = 7
-    # ALLOW
-    $NewRule.Action = 1
-    # Add the new rule
-    $fwPolicy.Rules.Add($NewRule)
-}
-
-Add-SqlFirewallRule
-
 # Download the database backup file from the GitHub repo
 Invoke-WebRequest 'https://raw.githubusercontent.com/kylebunting/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak' -OutFile 'C:\WideWorldImporters.bak'
-
-# Download the SQL-only version of this file in case the script execution fails to run those parts.
-Invoke-WebRequest 'https://raw.githubusercontent.com/kylebunting/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/configure-sqlvm.ps1' -OutFile 'C:\configure-sqlvm.ps1'
 
 # Download and install Data Mirgation Assistant
 Invoke-WebRequest 'https://download.microsoft.com/download/C/6/3/C63D8695-CEF2-43C3-AF0A-4989507E429B/DataMigrationAssistant.msi' -OutFile 'C:\DataMigrationAssistant.msi'
 Start-Process -file 'C:\DataMigrationAssistant.msi' -arg '/qn /l*v C:\dma_install.txt' -passthru | wait-process
 
-#Add snapins
+# Wait a few minutes to allow the SQL Resource provider setup to start
+Start-Sleep -Seconds 240.0
+
+# Add snapins to allow use of the Invoke-SqlCmd commandlet
 Add-PSSnapin SqlServerProviderSnapin100 -ErrorAction SilentlyContinue
 Add-PSSnapin SqlServerCmdletSnapin100 -ErrorAction SilentlyContinue
 
 # Define database variables
-$ServerName = 'SQLSERVER2008'
+$ServerName = $env:ComputerName
 $DatabaseName = 'WideWorldImporters'
 $SqlMiUser = 'sqlmiuser'
 $PasswordPlainText = 'Password.1234567890'
 $PasswordSecure = ConvertTo-SecureString $PasswordPlainText -AsPlainText -Force
 $PasswordSecure.MakeReadOnly()
-$Creds = New-Object System.Management.Automation.PSCredential $SqlMiUser,$PasswordSecure
+$Creds = New-Object System.Management.Automation.PSCredential $SqlMiUser, $PasswordSecure
 $Password = $Creds.GetNetworkCredential().Password
 
 # Restore the WideWorldImporters database using the downloaded backup file
 function Restore-SqlDatabase {
-    $FilePath = 'C:\'
-    $bakFileName = $FilePath + $DatabaseName +'.bak'
+    $bakFileName = 'C:\' + $DatabaseName +'.bak'
 
-    $UseMasterCmd = "USE [master];"
-    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    $RestoreCmd = "USE [master];
+                   GO
+                   RESTORE DATABASE [$DatabaseName] FROM DISK ='$bakFileName' WITH REPLACE;
+                   GO"
 
-    $RestoreCmd = "RESTORE DATABASE [$DatabaseName] FROM DISK ='$bakFileName';"
-    Invoke-Sqlcmd $RestoreCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    Invoke-SqlCmd -Query $RestoreCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    Start-Sleep -Seconds 30
 }
 
 function Enable-ServiceBroker {
-    $UseMasterCmd = "USE [master];"
-    Invoke-Sqlcmd $UseMasterCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    $SetBrokerCmd = "USE [$DatabaseName];
+                     GO
+                     GRANT ALTER ON DATABASE:: $DatabaseName TO $SqlMiUser;
+                     GO
+                     ALTER DATABASE [$DatabaseName]
+                     SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+                     GO"
 
-    $SetBrokerCmd = "ALTER DATABASE ['$DatabaseName'] SET ENABLE_BROKER WITH ROLLBACK immediate;"
-    Invoke-Sqlcmd $SetBrokerCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    Invoke-SqlCmd -Query $SetBrokerCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 }
 
 function Config-SqlDatabaseLogin {
     $UserName = 'WorkshopUser'
 
-    $CreateLoginCmd = "CREATE LOGIN $UserName WITH PASSWORD = N'$Password';"
-    Invoke-Sqlcmd $CreateLoginCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    $CreateLoginCmd = "USE [master];
+                       GO
+                       CREATE LOGIN $UserName WITH PASSWORD = N'$Password';
+                       GO"
 
-    $AddRoleCmd = "EXEC sp_addsrvrolemember @loginame = N'$UserName', @rolename = N'sysadmin';"      
-    Invoke-Sqlcmd $AddRoleCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    Invoke-SqlCmd -Query $CreateLoginCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 
-    $UseDatabaseCmd = "USE [$DatabaseName];"
-    Invoke-Sqlcmd $UseDatabaseCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+    $AddRoleCmd = "USE [master];
+                   GO
+                   EXEC sp_addsrvrolemember @loginame = N'$UserName', @rolename = N'sysadmin';
+                   GO"
 
-    $AssignUserCmd = "IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = '$UserName')
+    Invoke-SqlCmd -Query $AddRoleCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+
+    $AssignUserCmd = "USE [$DatabaseName];
+                      GO
+                      IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = '$UserName')
                         BEGIN
                             CREATE USER [$UserName] FOR LOGIN [$UserName]
                             EXEC sp_addrolemember N'db_datareader', N'$UserName'
                         END;
                       GO"
-    Invoke-Sqlcmd $AssignUserCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
+
+    Invoke-SqlCmd -Query $AssignUserCmd -QueryTimeout 3600 -Username $SqlMiUser -Password $Password -ServerInstance $ServerName
 }
 
+# Restore the datasbase
 Restore-SqlDatabase
-Start-Sleep -m 30000
+
+# Restart the MSSQLSERVER service.
+Stop-Service -Name 'MSSQLSERVER' -Force
+Start-Service -Name 'MSSQLSERVER'
+
+# Enable the Service Broker functionality on the database
 Enable-ServiceBroker
+
+# Create the WorkshopUser user
 Config-SqlDatabaseLogin

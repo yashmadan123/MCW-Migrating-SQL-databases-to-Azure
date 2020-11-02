@@ -30,13 +30,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Solution architecture](#solution-architecture)
   - [Requirements](#requirements)
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
-    - [Task 1: Configure the WWI WideWorldImporters database on the SqlServer2008 VM](#task-1-configure-the-wwi-wideworldimporters-database-on-the-sqlserver2008-vm)
+    - [Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM](#task-1-connect-to-the-wideworldimporters-database-on-the-sqlserver2008-vm)
     - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
     - [Task 3: Perform assessment for migration to Azure SQL Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
     - [Task 2: Change MSSQLSERVER service to run under sqlmiuser account](#task-2-change-mssqlserver-service-to-run-under-sqlmiuser-account)
-    - [Task 3: Create a backup of WWI WideWorldImporters database](#task-3-create-a-backup-of-wwi-wideworldimporters-database)
+    - [Task 3: Create a backup of the WideWorldImporters database](#task-3-create-a-backup-of-the-wideworldimporters-database)
     - [Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information](#task-4-retrieve-sql-mi-and-sql-server-2008-vm-connection-information)
     - [Task 5: Create a service principal](#task-5-create-a-service-principal)
     - [Task 6: Create and run an online data migration project](#task-6-create-and-run-an-online-data-migration-project)
@@ -57,7 +57,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Enable DDM on credit card numbers](#task-1-enable-ddm-on-credit-card-numbers)
     - [Task 2: Apply DDM to email addresses](#task-2-apply-ddm-to-email-addresses)
   - [Exercise 7: Use online secondary for read-only queries](#exercise-7-use-online-secondary-for-read-only-queries)
-    - [Task 1: View Leaderboard report in the WWI Tailspin Toys web application](#task-1-view-leaderboard-report-in-the-wwi-tailspin-toys-web-application)
+    - [Task 1: View Leaderboard report in the WideWorldImporters web application](#task-1-view-leaderboard-report-in-the-wideworldimporters-web-application)
     - [Task 2: Update read-only connection string](#task-2-update-read-only-connection-string)
     - [Task 3: Reload Leaderboard report in the Tailspin Toys web app](#task-3-reload-leaderboard-report-in-the-tailspin-toys-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
@@ -78,7 +78,7 @@ Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of s
 
 Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host shared authentication and gateway VMs and databases. At its foundation, Tailspin Toys is a game development company made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.
 
-WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud. They maintain their gamer information database, `WideWorldImporters`, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons, and more. Since this system helps drive revenue, it is considered a business-critical application and needs to be highly available. They are aware that SQL Server 2008 R2 is beyond the end of support and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to migrate the database into a platform-as-a-service (PaaS) offering, if possible. WWI uses the Service Broker feature of SQL Server for messaging within the WWI `WideWorldImporters` database. This functionality enables several critical processes, and they cannot afford to lose these capabilities when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.
+WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud. They maintain their gamer information database, `WideWorldImporters`, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons, and more. Since this system helps drive revenue, it is considered a business-critical application and needs to be highly available. They are aware that SQL Server 2008 R2 is beyond the end of support and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to migrate the database into a platform-as-a-service (PaaS) offering, if possible. WWI uses the Service Broker feature of SQL Server for messaging within its `WideWorldImporters` database. This functionality enables several critical processes, and they cannot afford to lose these capabilities when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.
 
 ## Solution architecture
 
@@ -107,9 +107,9 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 
 > DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the [Data Migration Assistant documentation](https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current).
 
-### Task 1: Configure the WWI WideWorldImporters database on the SqlServer2008 VM
+### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you perform some configuration for the WWI `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
+In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
@@ -152,32 +152,17 @@ In this task, you perform some configuration for the WWI `WideWorldImporters` da
 
     ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
 
-11. Once connected, verify you see the `WideWorldImporters` database listed under databases. If you do not see it, the configuration script may have failed during the VM setup. You can manually restore the database by following the step under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md).
+11. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
-12. Select **New Query** from the SSMS toolbar.
+    ![The WideWorldImporters database is highlighted under Databases on the SQLSERVER2008 instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
-    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
-
-13. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
-
-    ```sql
-    USE master;
-    GO
-
-    -- Update the recovery model of the database to FULL and enable Service Broker
-    ALTER DATABASE WideWorldImporters SET
-    RECOVERY FULL,
-    ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
-    GO
-    ```
-
-14. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+    > **Important**
+    >
+    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
-In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI's `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
 1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
 
@@ -228,7 +213,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess WWI
 
     ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
 
-    > The DMA assessment for migrating WWI's `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without first making changes to their database.
+    > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
 ### Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
@@ -289,13 +274,13 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 Duration: 60 minutes
 
-In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate WWI's `WideWorldImporters` database from their on-premises SQL Server 2008 R2 database into SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
+In this exercise, you use the [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) (DMS) to migrate the `WideWorldImporters` database from their on-premises SQL Server 2008 R2 database into SQL MI. WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to reduce downtime. The [Business Critical service tier](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers) is targeted to meet the customer's high-availability requirements.
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the [Managed Instance service tiers documentation](https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#service-tiers).
 
 ### Task 1: Create an SMB network share on the SqlServer2008 VM
 
-In this task, you create a new SMB network share on the SqlServer2008 VM. This is the folder used by DMS for retrieving backups of the WWI `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the SqlServer2008 VM. This is the folder used by DMS for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
 1. On the SqlServer2008 VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
@@ -354,9 +339,9 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 7. Close the SQL Server Configuration Manager.
 
-### Task 3: Create a backup of WWI WideWorldImporters database
+### Task 3: Create a backup of the WideWorldImporters database
 
-To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you create a backup of the WWI `WideWorldImporters` database using SSMS and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you created in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
+To perform online data migrations, DMS looks for backups and logs in the SMB shared backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you created in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
@@ -488,7 +473,7 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
 
 ### Task 6: Create and run an online data migration project
 
-In this task, you create a new online data migration project in DMS for WWI's `WideWorldImporters` database.
+In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
@@ -571,7 +556,7 @@ In this task, you create a new online data migration project in DMS for WWI's `W
 
 ### Task 7: Perform migration cutover
 
-Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the WWI `WideWorldImporters` database by cutting over to the SQL MI database.
+Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. This allows for any updates that happen on the source database to be captured until you cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
 1. In the migration status window in the Azure portal and select **WideWorldImporters** under database name to view further details about the database migration.
 
@@ -643,7 +628,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
 
-15. You have successfully migrated WWI's `WideWorldImporters` database to Azure SQL Managed Instance.
+15. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
 ### Task 8: Verify database and transaction log migration
 
@@ -804,7 +789,7 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
 ### Task 2: Update App Service configuration
 
-In this task, you make updates to WWI's Tailspin Toys gamer info web application to enable it to connect to and utilize the SQL MI database.
+In this task, you make updates to WWI gamer info web application to enable it to connect to and utilize the SQL MI database.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
 
@@ -1241,7 +1226,7 @@ Duration: 15 minutes
 
 In this exercise, you examine how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.
 
-### Task 1: View Leaderboard report in the WWI Tailspin Toys web application
+### Task 1: View Leaderboard report in the WideWorldImporters web application
 
 In this task, you open a web report using the web application you deployed to your App Service.
 
@@ -1261,7 +1246,7 @@ In this task, you open a web report using the web application you deployed to yo
 
    ![The App service URL is highlighted.](media/app-service-url.png "App service URL")
 
-5. In the WWI Tailspin Toys web app, select **Leaderboard** from the menu.
+5. In the WideWorldImporters web app, select **Leaderboard** from the menu.
 
    ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "Tailspin Toys Web App")
 
@@ -1299,7 +1284,7 @@ In this task, you enable Read Scale-Out for the `WideWorldImporters`database, us
 
 ### Task 3: Reload Leaderboard report in the Tailspin Toys web app
 
-In this task, you refresh the Leaderboard report in WWI's Tailspin Toys web app, and observe the result.
+In this task, you refresh the Leaderboard report in the WideWorldImporters web app, and observe the result.
 
 1. Return to the Tailspin Toys gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
 

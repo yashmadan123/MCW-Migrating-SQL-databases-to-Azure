@@ -709,3 +709,27 @@ In this task, you restore and configure `WideWorldImporters` database on the SQL
 13. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+
+14. Select **New Query** from the SSMS toolbar again.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+15. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+
+    ```sql
+    USE [WideWorldImporters];
+    GO
+
+    -- Grant the sqlmiuser ALTER database permissions
+    GRANT ALTER ON DATABASE:: WideWorldImporters TO sqlmiuser;
+    GO
+
+    -- Enable Service Broker
+    ALTER DATABASE WideWorldImporters
+    SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+    GO
+    ```
+
+16. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
