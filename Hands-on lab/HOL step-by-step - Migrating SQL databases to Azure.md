@@ -722,7 +722,7 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 ### Task 1: Deploy the web app to Azure
 
-In this task, you create an RDP connection to the JumpBox VM and then using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
+In this task, you create an RDP connection to the JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** in the Azure navigation pane and select the **hands-on-lab-SUFFIX** resource group from the list.
 
@@ -749,9 +749,9 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
-7. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+7. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 8. Once logged in, open File Explorer by selecting it in the Windows start bar.
 
@@ -795,13 +795,13 @@ In this task, you create an RDP connection to the JumpBox VM and then using Visu
 
     ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
 
-19. When the publish completes, you will see a message in the Visual Studio Output page that the publish succeeded.
+19. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
     ![The Publish Succeeded message is displayed in the Visual Studio Output pane.](media/visual-studio-output-publish-succeeded.png "Visual Studio")
 
 20. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
 
-    ![An error screen is displayed, because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
+    ![An error screen is displayed because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
 ### Task 2: Update App Service configuration
 
