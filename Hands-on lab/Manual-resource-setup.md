@@ -637,7 +637,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 ## Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you restore and configure `WideWorldImporters` database on the SQL Server 2008 R2 instance.
+In this task, you restore and configure the `WideWorldImporters` database on the SQL Server 2008 R2 instance.
 
 1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
 
@@ -714,7 +714,7 @@ In this task, you restore and configure `WideWorldImporters` database on the SQL
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-15. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+15. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
 
     ```sql
     USE [WideWorldImporters];
