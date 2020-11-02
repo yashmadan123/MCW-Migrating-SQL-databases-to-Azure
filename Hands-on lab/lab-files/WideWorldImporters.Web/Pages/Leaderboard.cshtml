@@ -1,0 +1,74 @@
+﻿@page
+@model WideWorldImporters.Web.Pages.LeaderboardModel
+
+@{
+    ViewData["Title"] = "Gamer Leaderboard";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Gamer Leaderboard</h2>
+        <hr />
+        <h4>@ViewData["UpdateabilityMessage"]</h4>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].Position)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].GamerTag)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].GamerScore)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].Diff)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].GamesPlayed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Leaderboard[0].IsOnline)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Leaderboard)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamerTag)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamerScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diff)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GamesPlayed)
+                    </td>
+                    <td>
+                        @if (item.IsOnline)
+                        {
+                            <img src="~/images/check-green.svg" alt="Player online" height="12" />
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
