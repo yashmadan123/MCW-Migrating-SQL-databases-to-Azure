@@ -50,8 +50,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Configure VNet integration with App Services](#task-2-configure-vnet-integration-with-app-services)
     - [Task 3: Open the web application](#task-3-open-the-web-application)
   - [Exercise 5: Improve database security posture with Advanced Data Security](#exercise-5-improve-database-security-posture-with-advanced-data-security)
-    - [Task 1: Enable Advanced Data Security](#task-1-enable-advanced-data-security)
-    - [Task 2: Configure SQL Data Discovery and Classification](#task-2-configure-sql-data-discovery-and-classification)
+    - [Task 1: Configure Data Discovery and Classification](#task-1-configure-data-discovery-and-classification)
+    - [Task 2: Enable Azure Defender for SQL](#task-2-enable-azure-defender-for-sql)
     - [Task 3: Review an Advanced Data Security Vulnerability Assessment](#task-3-review-an-advanced-data-security-vulnerability-assessment)
   - [Exercise 6: Enable Dynamic Data Masking](#exercise-6-enable-dynamic-data-masking)
     - [Task 1: Enable DDM on credit card numbers](#task-1-enable-ddm-on-credit-card-numbers)
@@ -948,37 +948,13 @@ In this task, you verify your web application now loads, and you can see the hom
 
 Duration: 30 minutes
 
-In this exercise, you enable Advanced Data Security (ADS) on your SQL MI database and explore some of the security benefits that come with running your database in Azure. [SQL Database Advance Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) (ADS) provides advanced SQL security capabilities, including functionality for discovering and classifying sensitive data, surfacing and mitigating potential database vulnerabilities, and detecting anomalous activities that could indicate a threat to your database.
+In this exercise, you enable set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
 
-### Task 1: Enable Advanced Data Security
+### Task 1: Configure Data Discovery and Classification
 
-In this task, you enable ADS for all databases on the Managed Instance.
+In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
 
-1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
-
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
-
-2. Select the hands-on-lab-SUFFIX resource group from the list.
-
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
-
-3. Select the **WideWorldImporters** Managed database resource from the list.
-
-   ![The WideWorldImporters Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
-
-4. On the WideWorldImporters Managed database blade, select **Advanced Data Security** from the left-hand menu, under Security, and then select **Enable Advanced Data Security on the managed instance**.
-
-   ![Advanced Data Security is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Advanced Data Security on the managed instance button is highlighted.](media/sql-mi-managed-database-advanced-data-security-enable.png "Advanced Data Security")
-
-5. Within a few minutes, ADS is enabled for all databases on the Managed Instance. You will see the three tiles on the Advanced Data Security blade become enabled and populated with data when it has finished.
-
-   ![The enabled tiles on the Advance Data Security blade are displayed.](media/ads-panels.png "Advanced Data Security")
-
-### Task 2: Configure SQL Data Discovery and Classification
-
-In this task, you review the [SQL Data Discovery and Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=sql-server-2017) feature of Advanced Data Security. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
-
-1. On the Advanced Data Security blade, select the **Data Discovery & Classification** tile.
+1. On the WideWorldImporters Managed database blade, select the **Data Discovery & Classification** from the left-hand menu.
 
    ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Advanced Data Security")
 
@@ -1028,19 +1004,39 @@ In this task, you review the [SQL Data Discovery and Classification](https://doc
 
     ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
 
-    > **Note**
-    >
-    > If you receive an error when saving, try returning to the Advanced Data Security blade, and selecting the Data Discovery & Classification tile again to see the results.
-
 13. When the save completes, select the **Overview** tab on the Data Discovery & Classification blade to view a report with a full summary of the database classification state.
 
     ![The View Report button is highlighted on the toolbar.](media/ads-data-discovery-and-classification-overview-report.png "View report")
 
+### Task 2: Enable Azure Defender for SQL
+
+In this task, you enable Azure Defender for SQL for all databases on the Managed Instance.
+
+1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
+
+   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+
+2. Select the hands-on-lab-SUFFIX resource group from the list.
+
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+3. Select the **WideWorldImporters** Managed database resource from the list.
+
+   ![The WideWorldImporters Managed Database is highlighted in the resources list.](media/resources-sql-mi-database.png "Resources")
+
+4. On the WideWorldImporters Managed database blade, select **Security center** from the left-hand menu, under Security, and then select **Enable Azure Defender for SQL on the managed instance**.
+
+   ![Security center is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Azure Defender for SQL on the managed instance button is highlighted.](media/sql-mi-managed-database-azure-defender-for-sql-enable.png "Advanced Data Security")
+
+5. Within a few minutes, Azure Defender for SQL is enabled for all databases on the Managed Instance. You will see the two tiles on the Azure Defender blade become activated and populated with data when it has finished.
+
+   ![The enabled tiles on the Advance Data Security blade are displayed.](media/ads-panels.png "Advanced Data Security")
+
 ### Task 3: Review an Advanced Data Security Vulnerability Assessment
 
-In this task, you review an assessment report generated by ADS for the `WideWorldImporters` database and take action to remediate one of the findings in the `WideWorldImporters` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
+In this task, you review an assessment report generated by Azure Defender for the `WideWorldImporters` database and take action to remediate one of the findings in the `WideWorldImporters` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
 
-1. Return to the **Advanced Data Security** blade for the `WideWorldImporters` Managed database and then select the **Vulnerability Assessment** tile.
+1. On the **Security center** blade for the `WideWorldImporters` Managed database, select **Initiate a new scan for your database** in the **Vulnerability Assessment** tile.
 
    ![The Vulnerability tile is displayed.](media/ads-vulnerability-assessment-tile.png "Advanced Data Security")
 
@@ -1109,9 +1105,9 @@ In this task, you review an assessment report generated by ADS for the `WideWorl
 
     ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
-13. When the scan completes, select the **Failed** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the Failed list.
+13. When the scan completes, select the **Findings** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the findings list.
 
-    ![The Failed tab is highlighted, and VA1219 is entered into the search filter. The list displays no results.](media/sql-mi-vulnerability-assessment-failed-filter-va1219.png "Failed")
+    ![The Findings tab is highlighted, and VA1219 is entered into the search filter. The list displays no results.](media/sql-mi-vulnerability-assessment-failed-filter-va1219.png "Scan Findings List")
 
 14. Now, select the **Passed** tab, and observe the **VA1219** check is listed with a status of **PASS**.
 
