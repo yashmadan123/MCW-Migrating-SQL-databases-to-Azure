@@ -759,7 +759,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
 9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
-   ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-tailspintoysweb.png "Windows Explorer")
+   ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
 10. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
 
@@ -785,7 +785,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
     ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-publish-specific-target.png "Publish API App to Azure")
 
-16. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the Web App.
+16. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the `wwi-web-UNIQUEID` Web App.
 
     ![In the Publish dialog, The Tailspin Toys Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
 
@@ -805,7 +805,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
 ### Task 2: Update App Service configuration
 
-In this task, you make updates to WWI gamer info web application to enable it to connect to and utilize the SQL MI database.
+In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
 
@@ -823,7 +823,7 @@ In this task, you make updates to WWI gamer info web application to enable it to
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-5. On the Configuration blade, locate the **Connection strings** section, and then select the Pencil (Edit) icon to the right of the `WwiContext` connection string.
+5. On the Configuration blade, locate the **Connection strings** section and then select the Pencil (Edit) icon to the right of the `WwiContext` connection string.
 
    ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
@@ -857,9 +857,9 @@ In this task, you make updates to WWI gamer info web application to enable it to
 
     ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
 
-14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. This is because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
+14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. The error occurs because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
 
-    ![An error screen is displayed, because the application is unable to connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
+    ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
 
 ## Exercise 4: Integrate App Service with the virtual network
 
