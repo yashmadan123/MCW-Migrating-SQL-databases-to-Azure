@@ -59,7 +59,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 7: Use online secondary for read-only queries](#exercise-7-use-online-secondary-for-read-only-queries)
     - [Task 1: View Leaderboard report in the WideWorldImporters web application](#task-1-view-leaderboard-report-in-the-wideworldimporters-web-application)
     - [Task 2: Update read-only connection string](#task-2-update-read-only-connection-string)
-    - [Task 3: Reload Leaderboard report in the Tailspin Toys web app](#task-3-reload-leaderboard-report-in-the-tailspin-toys-web-app)
+    - [Task 3: Reload Leaderboard report in the web app](#task-3-reload-leaderboard-report-in-the-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete Azure resource groups](#task-1-delete-azure-resource-groups)
     - [Task 2: Delete the wide-world-importers service principal](#task-2-delete-the-wide-world-importers-service-principal)
@@ -489,7 +489,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
-   ![The tailspin-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-dms-resource.png "Resources")
+   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](media/resource-group-dms-resource.png "Resources")
 
 2. On the Azure Database Migration Service blade, select **+New Migration Project**.
 
@@ -787,7 +787,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
 16. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the `wwi-web-UNIQUEID` Web App.
 
-    ![In the Publish dialog, The Tailspin Toys Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
 
 17. Select **Finish**.
 
@@ -940,7 +940,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
    > **Note**
    >
-   > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the web app's toolbar.
+   > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
 
@@ -1026,11 +1026,9 @@ In this task, you enable Azure Defender for SQL for all databases on the Managed
 
 4. On the WideWorldImporters Managed database blade, select **Security center** from the left-hand menu, under Security, and then select **Enable Azure Defender for SQL on the managed instance**.
 
-   ![Security center is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Azure Defender for SQL on the managed instance button is highlighted.](media/sql-mi-managed-database-azure-defender-for-sql-enable.png "Advanced Data Security")
+   ![Security center is selected and highlighted in the left-hand menu of the Managed database blade, and the Enable Azure Defender for SQL on the managed instance button is highlighted.](media/sql-mi-managed-database-azure-defender-for-sql-enable.png "Azure Defender for SQL")
 
-5. Within a few minutes, Azure Defender for SQL is enabled for all databases on the Managed Instance. You will see the two tiles on the Azure Defender blade become activated and populated with data when it has finished.
-
-   ![The enabled tiles on the Advance Data Security blade are displayed.](media/ads-panels.png "Advanced Data Security")
+5. Within a few minutes, Azure Defender for SQL is enabled for all databases on the Managed Instance. You will see the two tiles on the Azure Defender blade become activated when it has been enabled.
 
 ### Task 3: Review an Advanced Data Security Vulnerability Assessment
 
@@ -1246,7 +1244,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
 Duration: 15 minutes
 
-In this exercise, you examine how you can use the automatically created online secondary for reporting, without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads using the capacity of one read-only replica.
+In this exercise, you examine how you can use the automatically created online secondary for reporting without feeling the impacts of a heavy transactional load on the primary database. Each database in the SQL MI Business Critical tier is automatically provisioned with several AlwaysON replicas to support the availability SLA. Using [**Read Scale-Out**](https://docs.microsoft.com/azure/sql-database/sql-database-read-scale-out) allows you to load balance Azure SQL Database read-only workloads utilizing the capacity of one read-only replica.
 
 ### Task 1: View Leaderboard report in the WideWorldImporters web application
 
@@ -1270,9 +1268,9 @@ In this task, you open a web report using the web application you deployed to yo
 
 5. In the WideWorldImporters web app, select **Leaderboard** from the menu.
 
-   ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "Tailspin Toys Web App")
+   ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "Gamer Leaderboard within the Web App")
 
-   > Note the `READ_WRITE` string on the page. This is the output from reading the `Updateability` property associated with the `ApplicationIntent` option on the target database. This can be retrieved using the SQL query `SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")`.
+   > Note the `READ_WRITE` string on the page. This message is the output from reading the `Updateability` property associated with the `ApplicationIntent` option on the target database. This can be retrieved using the SQL query `SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")`.
 
 ### Task 2: Update read-only connection string
 
@@ -1295,24 +1293,24 @@ In this task, you enable Read Scale-Out for the `WideWorldImporters`database, us
 4. The `WwiReadOnlyContext` connection string should now look something like the following:
 
    ```sql
-   Server=tcp:sqlmi-abcmxwzksiqoo.15b8611394c5.database.windows.net,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
+   Server=tcp:sqlmi-kmtwpw3nia6n2.15b8611394c5.database.windows.net,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;ApplicationIntent=ReadOnly;
    ```
 
 5. Select **OK**.
 
-6. Select **Save** at the top of the Configuration blade, and select **Continue** when prompted about the application being restarted.
+6. Select **Save** at the top of the Configuration blade, and select **Continue** when prompted about restarting the application.
 
    ![The save button on the Application settings blade is highlighted.](media/app-service-configuration-save.png "Save")
 
-### Task 3: Reload Leaderboard report in the Tailspin Toys web app
+### Task 3: Reload Leaderboard report in the web app
 
-In this task, you refresh the Leaderboard report in the WideWorldImporters web app, and observe the result.
+In this task, you refresh the Leaderboard report in the WideWorldImporters web app and observe the result.
 
-1. Return to the Tailspin Toys gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
+1. Return to the gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
 
-   ![READ_ONLY is highlighted on the Reports page.](media/tailspin-toys-leaderboard-read-only.png "Tailspin Toys Web App")
+   ![READ_ONLY is highlighted on the Reports page.](media/tailspin-toys-leaderboard-read-only.png "Gamer Leaderboard Web App")
 
-   > Notice the `updateability` option is now displaying as `READ_ONLY`. With a simple addition to your database connection string, you can send read-only queries to the online secondary of your SQL MI Business-critical database, allowing you to load-balance read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has built-in Read Scale-Out capability that provides free-of-charge built-in read-only node that can be used to run read-only queries that should not affect the performance of your primary workload.
+   > Notice the `updateability` option is now displaying as `READ_ONLY`. With a simple addition to your database connection string, queries can be sent to an online secondary of your SQL MI Business-critical database. This setting allows for load-balancing read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has a built-in Read Scale-Out capability that provides a free-of-charge built-in read-only node that can be used to run read-only queries that should not affect the performance of your primary workload.
 
 ## After the hands-on lab
 
@@ -1326,12 +1324,12 @@ In this exercise, you de-provision all Azure resources that you created in suppo
 
    > **Note**
    >
-   > Deleting a resource group containing SQL MI does not always work the first time, resulting in a few networking components (route table, SQL MI NSG, and VNet) remaining in the resource group, along with the SQL MI instance, after the first delete attempt. In this case, wait for the first process to complete, and then attempt to delete the resource group a second time. You may need to allow several hours or more between delete attempts.
+   > Deleting a resource group containing SQL MI does not always work the first time. The deletion failure can result in a few networking components (route table, SQL MI NSG, and VNet) remaining in the resource group, along with the SQL MI instance, after the first delete attempt. In this case, wait for the first process to complete, and then attempt to delete the resource group a second time. _You may need to allow several hours or more between delete attempts_.
 
 ### Task 2: Delete the wide-world-importers service principal
 
 1. In the Azure portal, select **Azure Active Directory** and then select **App registrations**.
 
-2. Select the **wide-world-importers** application, and select **Delete** on the application blade.
+2. Select the **wide-world-importers** application and select **Delete** on the application blade.
 
 You should follow all steps provided _after_ attending the Hands-on lab.
