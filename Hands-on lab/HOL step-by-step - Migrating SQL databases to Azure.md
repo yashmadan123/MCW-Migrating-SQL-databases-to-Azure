@@ -74,9 +74,9 @@ At the end of this hands-on lab, you will be better able to implement a cloud mi
 
 ## Overview
 
-Tailspin Toys, a subsidiary of Wide World Importers (WWI), is the developer of several popular online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
+Wide World Importers (WWI) is the developer of the popular Tailspin Toys brand of online video games. Founded in 2010, the company has experienced exponential growth since releasing the first installment of their most popular game franchise to include online multiplayer gameplay. They have since built upon this success by adding online capabilities to the majority of their game portfolio.
 
-Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host shared authentication and gateway VMs and databases. At its foundation, Tailspin Toys is a game development company made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.
+Adding online gameplay has dramatically increased their games' popularity, but the rapid increase in demand for their services has made supporting the current setup problematic. To facilitate online gameplay, they host gaming services on-premises using rented hardware. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 instance. In addition to the dedicated gaming VMs and databases, they also host shared authentication and gateway VMs and databases. At its foundation, WWI is a game development company made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with their ever-increasing workload.
 
 WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud. They maintain their gamer information database, `WideWorldImporters`, on an on-premises SQL Server 2008 R2 database. This system is used by gamers to update their profiles, view leader boards, purchase game add-ons, and more. Since this system helps drive revenue, it is considered a business-critical application and needs to be highly available. They are aware that SQL Server 2008 R2 is beyond the end of support and are looking at options for migrating this database into Azure. They have read about some of the advanced security and performance tuning options that are available only in Azure and would prefer to migrate the database into a platform-as-a-service (PaaS) offering, if possible. WWI uses the Service Broker feature of SQL Server for messaging within its `WideWorldImporters` database. This functionality enables several critical processes, and they cannot afford to lose these capabilities when migrating their operations database to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the solution to use an alternative message broker.
 
@@ -936,7 +936,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
 2. Verify that the web site and data are loaded correctly. The page should look similar to the following:
 
-   ![Screenshot of the WideWorldImporters Operations Web App.](media/tailspin-toys-web-app.png "WideWorldImporters Web")
+   ![Screenshot of the WideWorldImporters Operations Web App.](media/wwi-web-app.png "WideWorldImporters Web")
 
    > **Note**
    >
@@ -1268,7 +1268,7 @@ In this task, you open a web report using the web application you deployed to yo
 
 5. In the WideWorldImporters web app, select **Leaderboard** from the menu.
 
-   ![READ_WRITE is highlighted on the Leaderboard page.](media/tailspin-toys-leaderboard-read-write.png "Gamer Leaderboard within the Web App")
+   ![READ_WRITE is highlighted on the Leaderboard page.](media/gamer-leaderboard-read-write.png "Gamer Leaderboard within the Web App")
 
    > Note the `READ_WRITE` string on the page. This message is the output from reading the `Updateability` property associated with the `ApplicationIntent` option on the target database. This can be retrieved using the SQL query `SELECT DATABASEPROPERTYEX(DB_NAME(), "Updateability")`.
 
@@ -1308,7 +1308,7 @@ In this task, you refresh the Leaderboard report in the WideWorldImporters web a
 
 1. Return to the gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
 
-   ![READ_ONLY is highlighted on the Reports page.](media/tailspin-toys-leaderboard-read-only.png "Gamer Leaderboard Web App")
+   ![READ_ONLY is highlighted on the Reports page.](media/gamer-leaderboard-read-only.png "Gamer Leaderboard Web App")
 
    > Notice the `updateability` option is now displaying as `READ_ONLY`. With a simple addition to your database connection string, queries can be sent to an online secondary of your SQL MI Business-critical database. This setting allows for load-balancing read-only workloads using the capacity of one read-only replica. The SQL MI Business Critical cluster has a built-in Read Scale-Out capability that provides a free-of-charge built-in read-only node that can be used to run read-only queries that should not affect the performance of your primary workload.
 
