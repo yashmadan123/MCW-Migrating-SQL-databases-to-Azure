@@ -49,10 +49,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Set point-to-site addresses](#task-1-set-point-to-site-addresses)
     - [Task 2: Configure VNet integration with App Services](#task-2-configure-vnet-integration-with-app-services)
     - [Task 3: Open the web application](#task-3-open-the-web-application)
-  - [Exercise 5: Improve database security posture with Advanced Data Security](#exercise-5-improve-database-security-posture-with-advanced-data-security)
+  - [Exercise 5: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL](#exercise-5-improve-database-security-posture-with-data-discovery-and-classification-and-azure-defender-for-sql)
     - [Task 1: Configure Data Discovery and Classification](#task-1-configure-data-discovery-and-classification)
     - [Task 2: Enable Azure Defender for SQL](#task-2-enable-azure-defender-for-sql)
-    - [Task 3: Review an Advanced Data Security Vulnerability Assessment](#task-3-review-an-advanced-data-security-vulnerability-assessment)
+    - [Task 3: Review an Azure Defender for SQL Vulnerability Assessment](#task-3-review-an-azure-defender-for-sql-vulnerability-assessment)
   - [Exercise 6: Enable Dynamic Data Masking](#exercise-6-enable-dynamic-data-masking)
     - [Task 1: Enable DDM on credit card numbers](#task-1-enable-ddm-on-credit-card-numbers)
     - [Task 2: Apply DDM to email addresses](#task-2-apply-ddm-to-email-addresses)
@@ -90,7 +90,7 @@ The solution begins with using the Microsoft Data Migration Assistant (DMA) to p
 
 The web app is deployed to an Azure App Service Web App using Visual Studio 2019. Once the migrated database's cutover is complete, VNet integration for the `WideWorldImporters` web application is configured. This integration allows the web app to connect to the SQL MI VNet through a virtual network gateway using a point-to-site VPN. The web app's connection strings are updated to point to the new SQL MI database.
 
-In SQL MI, several features of Azure SQL are examined. Advanced Data Security (ADS) is enabled, and Data Discovery and Classification is used to understand better the data and potential compliance issues with data in the database. The ADS Vulnerability Assessment tool is used to identify potential security vulnerabilities and problems in the database. Those issues listed in the assessment report are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on WWI's web app to a read-only secondary, allowing reporting to occur without impacting the primary database's performance.
+In SQL MI, several features of Azure SQL are examined. Azure Defender for SQL is enabled, and Data Discovery and Classification is used to understand better the data and potential compliance issues with data in the database. The Azure Defender for SQL Vulnerability Assessment tool is used to identify potential security vulnerabilities and problems in the database. Those issues listed in the assessment report are used to mitigate one finding by enabling Transparent Data Encryption in the database. Dynamic Data Masking (DDM) is used to prevent sensitive data from appearing when querying the database. Finally, Read Scale-out is used to point reports on WWI's web app to a read-only secondary, allowing reporting to occur without impacting the primary database's performance.
 
 ## Requirements
 
@@ -944,7 +944,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
 
-## Exercise 5: Improve database security posture with Advanced Data Security
+## Exercise 5: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL
 
 Duration: 30 minutes
 
@@ -956,7 +956,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. On the WideWorldImporters Managed database blade, select the **Data Discovery & Classification** from the left-hand menu.
 
-   ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Advanced Data Security")
+   ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
 
 2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
 
@@ -1030,13 +1030,13 @@ In this task, you enable Azure Defender for SQL for all databases on the Managed
 
 5. Within a few minutes, Azure Defender for SQL is enabled for all databases on the Managed Instance. You will see the two tiles on the Azure Defender blade become activated when it has been enabled.
 
-### Task 3: Review an Advanced Data Security Vulnerability Assessment
+### Task 3: Review an Azure Defender for SQL Vulnerability Assessment
 
 In this task, you review an assessment report generated by Azure Defender for the `WideWorldImporters` database and take action to remediate one of the findings in the `WideWorldImporters` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
 
 1. On the **Security center** blade for the `WideWorldImporters` Managed database, select **Initiate a new scan for your database** in the **Vulnerability Assessment** tile.
 
-   ![The Vulnerability tile is displayed.](media/ads-vulnerability-assessment-tile.png "Advanced Data Security")
+   ![The Vulnerability tile is displayed.](media/ads-vulnerability-assessment-tile.png "Azure Defender for SQL Vulnerability Assessment tile")
 
 2. On the Vulnerability Assessment blade, select **Scan** on the toolbar.
 
@@ -1099,7 +1099,7 @@ In this task, you review an assessment report generated by Azure Defender for th
 
     > By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
-12. Return to the Azure portal and the Advanced Data Security - Vulnerability Assessment blade of the `WideWorldImporters` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
+12. Return to the Azure portal and the Azure Defender for SQL's Vulnerability Assessment blade of the `WideWorldImporters` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
     ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 

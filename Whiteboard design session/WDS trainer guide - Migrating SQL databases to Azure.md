@@ -241,6 +241,8 @@ To help you better understand their current environment, WWI has provided the fo
 
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
+5. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
+
 ### Infographic for common scenarios
 
 ![An infographic for common scenarios is displayed.](media/common-scenario-infographic.png "Common scenario")
@@ -381,12 +383,14 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Migrate SQL Server to an Azure SQL Managed Instance using DMS | <https://docs.microsoft.com/azure/dms/tutorial-sql-server-managed-instance-online?view=sql-server-2017>                    |
 | Azure SQL Database pricing                                    | <https://azure.microsoft.com/pricing/details/sql-database/managed>                                                         |
 | Overview of Azure SQL Database security capabilities          | <https://docs.microsoft.com/azure/azure-sql/database/security-overview>                                                    |
-| Advanced data security                                        | <https://docs.microsoft.com/azure/azure-sql/database/advanced-data-security>                                               |
+| Azure Defender for SQL                                       | <https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql>                                               |
 | Data discovery and classification                             | <https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview>                           |
 | SQL Vulnerability Assessment service                          | <https://docs.microsoft.com/azure/azure-sql/database/sql-vulnerability-assessment>                                         |
 | Threat detection                                              | <https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview>                                            |
 | SQL Database Read Scale-Out                                   | <https://docs.microsoft.com/azure/azure-sql/database/read-scale-out>                                                       |
 | RDL Migration Tool for migrating SSRS reports to Power BI | <https://github.com/microsoft/RdlMigration> |
+| Cloud Adoption Framework for Azure | <https://docs.microsoft.com/azure/cloud-adoption-framework/overview> |
+| Azure Migrate | <https://docs.microsoft.com/azure/migrate/migrate-services-overview> |
 
 # Migrating SQL databases to Azure whiteboard design session trainer guide
 
@@ -746,6 +750,12 @@ _Regional outages_
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
    Yes, it is possible to use a PaaS database service and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
+
+5. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
+
+   The Microsoft [Cloud Adoption Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/overview) (CAF) for Azure contains proven guidance designed to help customers create and implement the business and technology strategies necessary to succeed in the cloud. It provides a set of tools, advice, and narratives that help shape technology, business, and people strategies for driving desired business outcomes during cloud adoption efforts.
+
+   Using the Microsoft Cloud Adoption Framework for Azure best practices, organizations can better align their business and technical strategies to ensure success.
 
 ## Customer quote (to be read back to the attendees at the end)
 
