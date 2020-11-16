@@ -713,6 +713,8 @@ _Regional outages_
 
    While not specifically applicable to this scenario, another tool to be aware of is the SQL Server Migration Assistant (SSMA). SSMA is a tool designed to automate database migrations to SQL Server or SQL Database from Microsoft Access, DB2, MySQL, Oracle, and SAP ASE.
 
+    For more information on specific tools corresponding to the different Azure SQL deployment models, refer to the [Azure SQL migration guides](https://aka.ms/sqlmigrationguide).
+
 3. In moving to the cloud, will we retain the ability to connect to and troubleshoot from our on-premises dev environment, while keeping our back-end networking fully isolated and only enabling talking to the front-end through a secured channel?
 
    Yes, this is still possible after migrating your databases and applications to the cloud.
