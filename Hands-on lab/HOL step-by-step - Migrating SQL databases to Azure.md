@@ -135,7 +135,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 7. Enter the following credentials when prompted, and then select **OK**:
 
-   - **User name**: `sqlmiuser`
+   - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
@@ -427,7 +427,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    >
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
-6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIpAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
+6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the SqlServer2008 VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
 
@@ -1316,7 +1316,7 @@ In this task, you refresh the Leaderboard report in the WideWorldImporters web a
 
 Duration: 10 minutes
 
-In this exercise, you de-provision all Azure resources that you created in support of this hands-on lab.
+In this exercise, you will de-provision all Azure resources that you created in support of this hands-on lab.
 
 ### Task 1: Delete Azure resource groups
 
