@@ -515,7 +515,7 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 7. Enter the following credentials when prompted, and then select **OK**:
 
-   - **User name**: `sqlmiuser`
+   - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
@@ -598,7 +598,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-   - **User name**: `sqlmiuser`
+   - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
