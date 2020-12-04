@@ -1,0 +1,39 @@
+﻿@page
+@model WideWorldImporters.Web.Pages.GameModel
+
+@{
+    ViewData["Title"] = "Game Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Game.Title)</h1>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Game.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Game.IsOnlineMultiplayer)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Game.IsOnlineMultiplayer)
+            {
+                <img src="~/images/check-green.svg" alt="Has online pultiplayer gameplay" height="12" />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Index">Home</a>
+</div>

@@ -28,8 +28,9 @@
         },
         "vCores": {
             "type": "int",
-            "defaultValue": 16,
+            "defaultValue": 4,
             "allowedValues": [
+                4,
                 8,
                 16,
                 24,
@@ -99,8 +100,8 @@
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
         "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
         "appServicePlanName": "[concat(resourceGroup().name, '-asp')]",
-        "webAppName": "[concat('tailspintoys', uniqueString(resourceGroup().id))]",
-        "dmsName": "tailspin-dms"
+        "webAppName": "[concat('wwi-web-', uniqueString(resourceGroup().id))]",
+        "dmsName": "wwi-dms"
     },
     "resources": [
         {
@@ -422,13 +423,13 @@
                 "siteConfig": {
                     "connectionStrings": [
                         {
-                            "name": "TailspinToysContext",
-                            "connectionString": "Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+                            "name": "WwiContext",
+                            "connectionString": "Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
                             "type": "SQLAzure"
                         },
                         {
-                            "name": "TailSpinToysReadOnlyContext",
-                            "connectionString": "Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=TailspinToys;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
+                            "name": "WwiReadOnlyContext",
+                            "connectionString": "Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImporters;User ID=sqlmiuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;",
                             "type": "SQLAzure"
                         }
                     ],

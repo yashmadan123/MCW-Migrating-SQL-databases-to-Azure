@@ -2,7 +2,7 @@
 
 This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
-June 2020
+November 2020
 
 **Contents**:
 
@@ -18,7 +18,7 @@ June 2020
   - [Task 9: Connect to the JumpBox](#task-9-connect-to-the-jumpbox)
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
-  - [Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM](#task-12-configure-the-wwi-tailspintoys-database-on-the-sqlserver2008-vm)
+  - [Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM](#task-12-configure-the-wideworldimporters-database-on-the-sqlserver2008-vm)
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -176,9 +176,9 @@ In this task, you create an Azure SQL Managed Instance.
 
      - **Managed instance name**: Enter `sqlmi-SUFFIX`
      - **Region**: Select the region you are using for resources in this hands-on lab.
-     - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **16** and the Storage to **32**, and then select **Apply**.
+     - **Compute + storage**: Select **Configure Managed Instance**, and on the Configure performance blade, select **Business Critical**, **Gen5**, and set the vCores to **4** and the Storage to **32**, and then select **Apply**.
 
-     ![On the Configure performance blade, Business Critical is selected, Gen5 is selected, and the vCores are set to 16, and the Storage size is set to 32.](media/sql-mi-configure-performance.png "Configure performance")
+     ![On the Compute + storage blade, Business Critical is selected for the service tier, the vCores are set to 4, and storage size is set to 32 GB.](media/sql-mi-configure-performance.png "Compute + storage blade")
 
    - Administrator account:
 
@@ -405,7 +405,7 @@ In this task, you provision an instance of the Azure Database Migration Service 
 
 ## Task 7: Provision a Web App
 
-In this task, you provision an App Service (Web app), which will be used for hosting the WWI Tailspin Toys web application.
+In this task, you provision an App Service (Web app), which will be used for hosting the Wide World Importers web application.
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
@@ -428,7 +428,7 @@ In this task, you provision an App Service (Web app), which will be used for hos
 
    - Instance Details:
 
-     - **Name**: Enter `tailspintoysSUFFIX`, to create a globally unique name.
+     - **Name**: Enter `wwi-web-SUFFIX`, to create a globally unique name.
      - **Publish**: Select **Code**.
      - **Runtime stack**: Select **.NET Core 3.1 (LTS)**.
      - **Operating System**: Select **Windows**.
@@ -515,7 +515,7 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 7. Enter the following credentials when prompted, and then select **OK**:
 
-   - **User name**: `sqlmiuser`
+   - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
@@ -598,7 +598,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 4. Enter the following credentials when prompted, and then select **OK**:
 
-   - **User name**: `sqlmiuser`
+   - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
@@ -617,57 +617,29 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-9. Back in the Server Manager, expand **Configuration** and **Windows Firewall with Advanced Security**, and then select **Inbound Rules**.
+9. Close the Server Manager.
 
-   ![In Server Manager, Configuration and Windows Firewall with Advanced Security are expanded, Inbound Rules is selected and highlighted.](media/windows-firewall-inbound-rules.png "Windows Firewall")
-
-10. Right-click on **Inbound Rules** and then select **New Rule** from the context menu.
-
-    ![Inbound Rules is selected, and New Rule is highlighted in the context menu.](media/windows-firewall-with-advanced-security-new-inbound-rule.png "New Rule")
-
-11. In the New Inbound Rule Wizard, under Rule Type, select **Port**, then select **Next**.
-
-    ![Rule Type is selected and highlighted on the left side of the New Inbound Rule Wizard, and Port is selected and highlighted on the right.](media/windows-2008-new-inbound-rule-wizard-rule-type.png "Select Port")
-
-12. In the Protocol and Ports dialog, use the default **TCP**, and enter **1433** in the Specific local ports text box, and then select **Next**.
-
-    ![Protocol and Ports is selected on the left side of the New Inbound Rule Wizard, and 1433 is in the Specific local ports box, which is selected on the right.](media/windows-2008-new-inbound-rule-wizard-protocol-and-ports.png "Select a specific local port")
-
-13. In the Action dialog, select **Allow the connection** and then select **Next**.
-
-    ![Action is selected on the left side of the New Inbound Rule Wizard, and Allow the connection is selected on the right.](media/windows-2008-new-inbound-rule-wizard-action.png "Specify the action")
-
-14. In the Profile step, check **Domain**, **Private**, and **Public**, then select **Next**.
-
-    ![Profile is selected on the left side of the New Inbound Rule Wizard, and Domain, Private, and Public are selected on the right.](media/windows-2008-new-inbound-rule-wizard-profile.png "Select Domain, Private, and Public")
-
-15. On the Name screen, enter **SqlServer** for the name, and select **Finish**.
-
-    ![Profile is selected on the left side of the New Inbound Rule Wizard, and sqlserver is in the Name box on the right.](media/windows-2008-new-inbound-rule-wizard-name.png "Specify the name")
-
-16. Close the Server Manager.
-
-17. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
+10. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
 
     ![The Download button is highlighted on the Data Migration Assistant download page.](media/dma-download.png "Download Data Migration Assistant")
 
     > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
 
-18. Run the downloaded installer.
+11. Run the downloaded installer.
 
-19. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
+12. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
 
-20. Select **Install** on the Privacy Policy screen to begin the installation.
+13. Select **Install** on the Privacy Policy screen to begin the installation.
 
-21. On the final screen, select **Finish** to close the installer.
+14. On the final screen, select **Finish** to close the installer.
 
     ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
 
-## Task 12: Configure the WWI TailspinToys database on the SqlServer2008 VM
+## Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM
 
-In this task, you restore and configure Wide World Importers' `TailspinToys` database on the SQL Server 2008 R2 instance.
+In this task, you restore and configure the `WideWorldImporters` database on the SQL Server 2008 R2 instance.
 
-1. On the SqlServer2008 VM, download a [backup of the WWI TailspinToys database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/TailspinToys.bak), and save it to the `C:\` of the VM.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
@@ -681,7 +653,7 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the WWI `TailspinToys` database using the downloaded `TailspinToys.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -689,21 +661,21 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
 
    ![In the Select backup devices dialog, the Add button is highlighted.](media/ssms-restore-database-select-devices.png "Select backup devices")
 
-7. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `TailspinToys.bak` file, select that file, and then select **OK**.
+7. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `WideWorldImporters.bak` file, select that file, and then select **OK**.
 
-   ![In the Location Backup File dialog, the TailspinToys.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
+   ![In the Location Backup File dialog, the WideWorldImporters.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
 
-8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the WWI `TailspinToys` database.
+8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-   ![The completed Restore Database dialog is displayed, with the WWI TailSpinToys database specified as the target.](media/ssms-restore-database.png "Restore Database")
+   ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
 9. Select **OK** to start the restore.
 
 10. Select **OK** in the dialog when the database restore is complete.
 
-    ![A dialog is displayed with a message that the database TailspinToys was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
+    ![A dialog is displayed with a message that the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
 
-11. Next, you execute a script in SSMS, which enables Service broker, creates the `WorkshopUser` account, and changes the database recovery model to FULL. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+11. Next, you execute a script in SSMS to create the `WorkshopUser` account. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
@@ -722,8 +694,8 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
         @rolename = N'sysadmin';
     GO
 
-    -- Assign the user to the TailspinToys database
-    USE TailspinToys;
+    -- Assign the user to the WideWorldImporters database
+    USE WideWorldImporters;
     GO
 
     IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
@@ -735,5 +707,29 @@ In this task, you restore and configure Wide World Importers' `TailspinToys` dat
     ```
 
 13. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+
+14. Select **New Query** from the SSMS toolbar again.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+15. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
+
+    ```sql
+    USE [WideWorldImporters];
+    GO
+
+    -- Grant the sqlmiuser ALTER database permissions
+    GRANT ALTER ON DATABASE:: WideWorldImporters TO sqlmiuser;
+    GO
+
+    -- Enable Service Broker
+    ALTER DATABASE WideWorldImporters
+    SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+    GO
+    ```
+
+16. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
