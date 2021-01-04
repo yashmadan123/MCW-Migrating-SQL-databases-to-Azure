@@ -79,11 +79,11 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 2. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-   ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
+   ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
 3. Once connected, expand **Databases** under SQL2008-SUFFIX in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
 
-   ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](media/ssms-backup.png "SSMS Backup")
+   ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
 
 4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This device is no longer needed, so select it and then select **Remove**.
 
@@ -155,7 +155,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
-   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008-SUFFIX VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
+   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008-SUFFIX VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
 
 7. Leave the Azure Cloud Shell open for the next task.
 
@@ -222,7 +222,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
 
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/Exericse-2-Task-5-Step-11.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
+ 
+ - Click on **Advance Settings**. 
+ - **WideWorldImporters**: Enter **Target Database name** WideWorldImportersSUFFIX. 
+ Note: - You can get SUFFIX details from you Environment details page 
+
+ ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
 
 12. Select **Next : Summary**.
 
@@ -257,7 +263,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 5. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
    ```sql
-   USE WideWorldImporters;
+   USE WideWorldImportersSUFFIX;
    GO
 
    INSERT [dbo].[Game] (Title, Description, Rating, IsOnlineMultiplayer)
@@ -367,14 +373,14 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImporters` database.
 
-   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/ssms-sql-mi-database.png "SSMS Object Explorer")
+   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/midb23.png "SSMS Object Explorer")
 
-10. With the `WideWorldImporters` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+10. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
 
     ```sql
-    USE WideWorldImporters;
+    USE WideWorldImportersSUFFIX;
     GO
 
     SELECT * FROM Game

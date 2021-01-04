@@ -25,12 +25,12 @@ In this task, you add the networking configuration to your App Service to enable
 4. On the Network Feature Status dialog, enter the following:
 
    - **Virtual Network**: Select the vnet-sqlmi--cus.
-   - **Subnet**: Select Create New Subnet.
-   - **Subnet Name**: Enter WebAppSubnet.
-   > **Note**: If you are not able to select any existing subnet then follow the below steps.
-   > **Note**: If the address space is overlapping with other subnets you may need to changes the address space.
+   - **Subnet**: Select any existing subnet.
+  > **Note**: If you are not able to select any existing subnet then follow the below steps.
+   - Select the create new subnet option and enter name as WebappsubnetSUFFIX. Select Virtual Network address block from the drop down list. In the subnet address block enter new address block 10.0.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
+  > **Note**: If the address space is overlapping with other subnets you may need to changes the address space.
 
-   ![The values specified above are entered into the Network Feature Status dialog.](media/https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/newvnet.png "Network Feature Status configuration")
+   ![The values specified above are entered into the Network Feature Status dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/newvnet.png "Network Feature Status configuration")
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see that the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
 

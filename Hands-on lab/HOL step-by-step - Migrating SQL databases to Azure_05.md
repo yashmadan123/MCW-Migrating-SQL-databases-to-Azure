@@ -16,7 +16,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 10. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
+    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
 11. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
