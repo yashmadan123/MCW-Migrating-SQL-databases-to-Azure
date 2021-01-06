@@ -222,14 +222,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
 
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
  
  - Click on **Advance Settings**. 
  - **WideWorldImporters**: Enter **Target Database name** WideWorldImportersSUFFIX. 
 
- Note: - You can get SUFFIX details from you Environment details page 
+   Note: - You can get SUFFIX details from you Environment details page 
 
- ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
 
 12. Select **Next : Summary**.
 
