@@ -69,7 +69,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma-add.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
 
 9. Select **Start Assessment**.
 
@@ -120,7 +120,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma-add.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
 
 8. Select **Start Assessment**.
 

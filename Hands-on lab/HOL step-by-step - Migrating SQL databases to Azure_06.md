@@ -165,7 +165,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
-   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.]https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/resource-group-dms-resource.png "Resources")
+   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-SUFFIX resource group.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/resource-group-dms-resource.png "Resources")
 
 2. On the Azure Database Migration Service blade, select **+New Migration Project**.
 
@@ -226,6 +226,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
  
  - Click on **Advance Settings**. 
  - **WideWorldImporters**: Enter **Target Database name** WideWorldImportersSUFFIX. 
+
  Note: - You can get SUFFIX details from you Environment details page 
 
  ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
@@ -373,7 +374,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImporters` database.
 
-   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/midb23.png "SSMS Object Explorer")
+   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
 10. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
