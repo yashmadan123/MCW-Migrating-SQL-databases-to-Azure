@@ -393,3 +393,4 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 13. You are done using the Sql2008-SUFFIX VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
+
