@@ -13,8 +13,6 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 In this task, you create an RDP connection to the JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
 
-   ![The File Explorer icon is highlighted in the Windows start bar.](media/windows-2019-start-bar-file-explorer.png "Windows start bar")
-
  1. Go to your Lab Environment details page and click on the Go TO JUMPBOX-SUFFIX button to launch the VM.
    ![Jumpbox vm ](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/v2.png "Add sources")
 
