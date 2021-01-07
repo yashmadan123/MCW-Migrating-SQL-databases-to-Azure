@@ -14,17 +14,38 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-10. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+1. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
     ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-11. Once connected, verify you see the `WideWorldImporters` database listed under databases.
+1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-SUFFIX instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
     > **Important**
     >
     > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+    
+ 1. Select **New Query** from the SSMS toolbar.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+1. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+
+    ```sql
+    USE master;
+    GO
+
+    -- Update the recovery model of the database to FULL and enable Service Broker
+    ALTER DATABASE WideWorldImporters SET
+    RECOVERY FULL,
+    ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+    GO
+    ```
+
+1. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
