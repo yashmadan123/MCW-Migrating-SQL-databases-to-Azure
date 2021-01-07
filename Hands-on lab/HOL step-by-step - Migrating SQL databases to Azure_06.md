@@ -202,7 +202,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
    - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
 
    ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/h2.png "Migration Wizard Select target")
 
