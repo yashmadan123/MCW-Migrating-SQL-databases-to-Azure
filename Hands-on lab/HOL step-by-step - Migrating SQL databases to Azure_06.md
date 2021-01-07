@@ -365,7 +365,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
