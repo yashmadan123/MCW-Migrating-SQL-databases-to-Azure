@@ -26,7 +26,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
     >
     > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
     
- 1. Select **New Query** from the SSMS toolbar.
+1. Select **New Query** from the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
