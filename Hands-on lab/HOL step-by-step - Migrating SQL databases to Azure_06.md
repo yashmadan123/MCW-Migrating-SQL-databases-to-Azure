@@ -370,7 +370,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
-8. Select **Connect**.
+8. Select **Connect**. 
 
 9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
 
