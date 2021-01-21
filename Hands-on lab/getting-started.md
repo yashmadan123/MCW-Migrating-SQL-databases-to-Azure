@@ -24,7 +24,7 @@
    
 4. If you see the pop-up **Help us protect your account**, click **Skip for now**.
    
-   ![](media/protect.png)
+   ![](https://raw.githubusercontent.com/CloudLabsAI-Azure/AIW-Cloud-Adoption-Framework/main/Instructions/images/protect.png)
    
 5. If you see the pop-up **Stay Signed in?**, click Yes
 
