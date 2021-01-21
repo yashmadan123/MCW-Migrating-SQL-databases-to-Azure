@@ -10,21 +10,80 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
-1. In the SQL-2008-SUFFIX VM,, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
+### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+
+In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
+
+
+1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+
+   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+
+1. Select the hands-on-lab-SUFFIX resource group from the list.
+
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+
+1. In the list of resources for your resource group, select the Sql2008-SUFFIX VM.
+
+   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
+
+1. On the Sql2008-SUFFIX VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
+
+   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
+
+1. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+
+1. Select **Connect** on the Remote Desktop Connection dialog.
+
+   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+
+1. Enter the following credentials when prompted, and then select **OK**:
+
+   - **Username**: `sqlmiuser`
+   - **Password**: `Password.1234567890`
+
+   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
+
+1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
+
+   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+
+1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-10. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+1. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
     ![The SQL Server Connect to Search dialog is displayed, with SQL2008-SUFFIX entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-11. Once connected, verify you see the `WideWorldImporters` database listed under databases.
+1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-SUFFIX instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
     > **Important**
     >
     > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+    
+1. Select **New Query** from the SSMS toolbar.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+1. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+
+    ```sql
+    USE master;
+    GO
+
+    -- Update the recovery model of the database to FULL and enable Service Broker
+    ALTER DATABASE WideWorldImporters SET
+    RECOVERY FULL,
+    ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+    GO
+    ```
+
+1. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
@@ -137,4 +196,3 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    > The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
-

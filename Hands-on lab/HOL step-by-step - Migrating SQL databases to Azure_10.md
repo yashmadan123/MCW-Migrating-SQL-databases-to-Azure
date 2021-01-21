@@ -124,4 +124,3 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    ```
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
-

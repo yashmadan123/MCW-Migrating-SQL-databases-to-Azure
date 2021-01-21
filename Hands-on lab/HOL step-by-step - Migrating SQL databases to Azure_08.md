@@ -30,7 +30,7 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![The values specified above are entered into the Network Feature Status dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/newvnet.png "Network Feature Status configuration")
 
-5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see that the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
+5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select refresh to confirm that the Vnet is connected or not.
 
    ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/app-service-vnet-details.png "App Service")
 
@@ -55,4 +55,3 @@ In this task, you verify your web application now loads, and you can see the hom
    > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
-

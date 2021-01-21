@@ -202,7 +202,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
    - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
 
    ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/h2.png "Migration Wizard Select target")
 
@@ -222,14 +222,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
 
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
  
  - Click on **Advance Settings**. 
  - **WideWorldImporters**: Enter **Target Database name** WideWorldImportersSUFFIX. 
 
- Note: - You can get SUFFIX details from you Environment details page 
+   Note: - You can get SUFFIX details from you Environment details page 
 
- ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
 
 12. Select **Next : Summary**.
 
@@ -341,7 +341,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-4. At the prompt, retrieve information about SQL MI in the hands-on-lab-SUFFIX resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **hands-on-lab-SUFFIX**
+4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
 
    ```powershell
    $resourceGroup = "<your-resource-group-name>"
@@ -365,14 +365,14 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   -  **Password:** Enter IAE5fAijit0w^rDM
    - Check the **Remember password** box.
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
-8. Select **Connect**.
+8. Select **Connect**. 
 
-9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImporters` database.
+9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 

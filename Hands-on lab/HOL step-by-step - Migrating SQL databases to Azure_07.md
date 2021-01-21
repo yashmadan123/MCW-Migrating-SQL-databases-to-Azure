@@ -10,13 +10,10 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 ### Task 1: Deploy the web app to Azure
 
-In this task, you create an RDP connection to the JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
+In this task, You will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
 
-   ![The File Explorer icon is highlighted in the Windows start bar.](media/windows-2019-start-bar-file-explorer.png "Windows start bar")
-
- 1. Go to your Lab Environment details page and click on the Go TO JUMPBOX-SUFFIX button to launch the VM.
-   ![Jumpbox vm ](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/v2.png "Add sources")
+ 1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
 
 1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
@@ -121,4 +118,3 @@ In this task, you update the WWI gamer info web application to connect to and ut
 14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. The error occurs because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
-
