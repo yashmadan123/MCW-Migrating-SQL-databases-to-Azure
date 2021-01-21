@@ -55,4 +55,3 @@ In this task, you verify your web application now loads, and you can see the hom
    > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
-
