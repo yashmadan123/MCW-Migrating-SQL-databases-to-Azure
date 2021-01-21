@@ -6,9 +6,6 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 
 > DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the [Data Migration Assistant documentation](https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current).
 
-### Task 1: Connect to the WideWorldImporters database on the Sql2008-SUFFIX VM
-
-In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
 ### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 
