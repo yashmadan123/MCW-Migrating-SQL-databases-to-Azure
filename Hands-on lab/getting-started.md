@@ -6,7 +6,7 @@
 
 2. To get the lab environment details, you can select the **Environment details** tab, you can locate the **Environment details** tab in the upper right corner. Additionally, the credentials will also be emailed to your email address provided during registration.
 
-   ![](images/laben.png)
+   ![](media/laben.png)
    
   >**Note:** You will see **SUFFIX** value on the **Environment details** tab, please use it wherever you see SUFFIX in the lab steps. This is a 6 digit unique ID associated with each lab deployment. 
   
@@ -14,7 +14,7 @@
 
 1. In the virtual machine, double click on the **Azure portal** shortcut on the desktop.
    
-   ![](images/lanenv2.png)
+   ![](media/lanenv2.png)
 
 2. On **Sign in to Microsoft Azure** blade, you will see a login screen, in that enter the following email/username. 
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
@@ -24,7 +24,7 @@
    
 4. If you see the pop-up **Help us protect your account**, click **Skip for now**.
    
-   ![](images/protect.png)
+   ![](media/protect.png)
    
 5. If you see the pop-up **Stay Signed in?**, click Yes
 
