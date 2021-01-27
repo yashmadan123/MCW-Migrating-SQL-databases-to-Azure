@@ -220,7 +220,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQL2008-SUFFIX\sqlmiuser.`
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-    - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
+    - **Storage account**: Select the **sqlmistore######** storage account.
 
     ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
  
