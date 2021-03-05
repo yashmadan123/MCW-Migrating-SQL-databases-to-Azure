@@ -1,4 +1,4 @@
-## Exercise 1: Perform database assessments
+# Exercise 1: Perform database assessments
 
 Duration: 20 minutes
 
@@ -6,48 +6,32 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 
 > DMA helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. DMA recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server. To learn more, read the [Data Migration Assistant documentation](https://docs.microsoft.com/sql/dma/dma-overview?view=azuresqldb-mi-current).
 
+## Task 0: Setup the Environment
 
-### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+1. Default Browser - Make sure Edge is the default browser by navigating to Start>Settings>Default Apps as shown below
 
-In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
+   ![Find Default Apps](media/DefaultApps.png "Find Default Apps")
+
+   ![Edge as default browser](media/Edge-DefaultBrowser.png "Set Edge as Default Browser")
+
+1. Within settings, set the Region and Language to the required setting as shown below
+
+   ![Change Region](media/RegionChange.png "set Region")
+
+   ![Change Language](media/LanguageChange.png "Set Language")
 
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+## Task 1: Connect to the WideWorldImporters database that exists the SqlServer2008 Server
 
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+In this task, you perform an assessment on the `WideWorldImporters` database that resides on the SQL Server 2008 R2 instance to assess it for migration.
 
-1. Select the hands-on-lab-SUFFIX resource group from the list.
+1. Log in to the Azure portal using the Edge Browser app and the address <https://portal.azure.com>. when prompted, use the credentials provided within the **Environment Details** tab of the lab guide.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+![Azure Portal Home](media/AzurePortal.png "Azure Portal Home")
 
-1. In the list of resources for your resource group, select the Sql2008-SUFFIX VM.
+1. Next, open **Microsoft SQL Server Management Studio 18** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 18** from the search results.
 
-   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
-
-1. On the Sql2008-SUFFIX VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
-
-   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
-
-1. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
-
-1. Select **Connect** on the Remote Desktop Connection dialog.
-
-   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
-
-1. Enter the following credentials when prompted, and then select **OK**:
-
-   - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
-
-   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
-
-1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
-
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
-
-1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
-
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio is highlighted in the search results.](media/start-search-ssms-18.png "Windows start menu search")
 
 1. In the SSMS **Connect to Server** dialog, enter **SQL2008-SUFFIX** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
@@ -82,11 +66,11 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
-### Task 2: Perform assessment for migration to Azure SQL Database
+## Task 2: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. Launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -137,7 +121,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
     > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
-### Task 3: Perform assessment for migration to Azure SQL Managed Instance
+## Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 

@@ -1,4 +1,4 @@
-## Exercise 6: Enable Dynamic Data Masking
+# Exercise 4: Enable Dynamic Data Masking
 
 Duration: 15 minutes
 
@@ -6,7 +6,7 @@ In this exercise, you enable **Dynamic Data Masking** `https://docs.microsoft.co
 
 For example, a call center's service representative may identify callers by several digits of their credit card number. However, the full credit card number should not be fully exposed to the service representative. A masking rule can be defined that obfuscates all but the last four digits of any credit card number in any query result. As another example, an appropriate data mask can be created to protect personally identifiable information (PII) data so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
 
-### Task 1: Enable DDM on credit card numbers
+## Task 1: Enable DDM on credit card numbers
 
 When inspecting the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
@@ -23,7 +23,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, select **New Query** and paste the following SQL script into the new query window:
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    CREATE USER DDMUser WITHOUT LOGIN;
@@ -37,7 +37,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -52,7 +52,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar,  paste the following query into the query window to apply a mask to the `CardNumber` field and then select **Execute**.
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    ALTER TABLE [Sales].[CreditCard]
@@ -62,7 +62,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -74,14 +74,14 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    > The `CardNumber` is now displayed using the mask applied to it, so only the card number's last four digits are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
 
-### Task 2: Apply DDM to email addresses
+## Task 2: Apply DDM to email addresses
 
 From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labeled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
 1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    SELECT TOP 10 * FROM [dbo].[Gamer]
@@ -92,7 +92,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select **Execute**:
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
@@ -101,7 +101,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar, paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    ALTER TABLE [dbo].[Gamer]
@@ -115,7 +115,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
 
    ```sql
-   USE [WideWorldImportersSUFFIX];
+   USE WideWorldImporters[SUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';

@@ -1,10 +1,10 @@
-## Exercise 4: Integrate App Service with the virtual network
+# Exercise 6: Integrate App Service with the virtual network
 
 Duration: 15 minutes
 
 In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both of these resources are required to integrate App Service and connect to SQL MI.
 
-### Task 1: Configure VNet integration with App Services
+## Task 1: Configure VNet integration with App Services
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
@@ -38,7 +38,7 @@ In this task, you add the networking configuration to your App Service to enable
    >
    > If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 
-### Task 2: Open the web application
+## Task 2: Open the web application
 
 In this task, you verify your web application now loads, and you can see the home page of the web app.
 

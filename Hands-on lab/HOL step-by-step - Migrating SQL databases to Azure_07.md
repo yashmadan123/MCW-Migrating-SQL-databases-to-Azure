@@ -1,4 +1,4 @@
-## Exercise 3: Update the web application to use the new SQL MI database
+# Exercise 5: Update the web application to use the new SQL MI database
 
 Duration: 30 minutes
 
@@ -8,12 +8,11 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 >
 > Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read Connect your application to Azure SQL Managed Instance `https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance`.
 
-### Task 1: Deploy the web app to Azure
+## Task 1: Deploy the web app to Azure
 
 In this task, You will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
-
- 1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
+1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
 
 1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
@@ -61,7 +60,7 @@ In this task, You will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![An error screen is displayed because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
-### Task 2: Update App Service configuration
+## Task 2: Update App Service configuration
 
 In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
