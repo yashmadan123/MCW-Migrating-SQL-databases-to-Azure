@@ -24,7 +24,7 @@
       "Order": 5
     },
     {
-      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/500-lab-custom.md",
+      "RawFilePath": "https://raw.githubusercontent.com/srushti-714/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/500-lab-custom.md",
       "Order": 6
     },
     {
