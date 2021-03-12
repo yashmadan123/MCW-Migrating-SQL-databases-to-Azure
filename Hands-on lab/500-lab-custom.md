@@ -122,40 +122,13 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your Sql2008-SUFFIX VM from DMS.
 
-1. In the Azure portal `https://portal.azure.com`, navigate to the resource group **hands-on-lab-SUFFIX**
+1. In the Azure portal `https://portal.azure.com`, navigate to the resource group **hands-on-lab-SUFFIX** and select the virtual machine **sql2008-SUFFIX**
 
    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
 
-2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
+2. In the virtual machine **sql2008-SUFFIX** blade from the **overview** copy the `Public IP address`. Paste the value into a text editor, such as Notepad.exe, for later reference. This IP address will be used to connect to the database on that server.
 
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
-
-3. If prompted about not having a storage account mounted, select the subscription you are using for this hands-on lab and select **Create storage**.
-
-   ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
-
-   > **Note**
-   >
-   > If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
-
-4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
-
-   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
-
-5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **hands-on-lab-SUFFIX**
-
-   ```powershell
-   $resourceGroup = "<your-resource-group-name>"
-   az vm list-ip-addresses -g $resourceGroup -n Sql2008-SUFFIX --output table
-   ```
-
-   > **Note**
-   >
-   > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
-6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
-
-   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008-SUFFIX VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
+   ![SQL VM IP Address,Overview.](media/sqlvm-ip.png "SQL VM IP")
 
 ### Task 5: Create and run an online data migration project
 
@@ -335,11 +308,20 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
+3. If prompted about not having a storage account mounted, select the subscription you are using for this hands-on lab and select **Create storage**.
+
+   ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
+
+   > **Note**
+   >
+   > If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
+
+
+4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
+5. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
 
    ```powershell
    $resourceGroup = "<your-resource-group-name>"
@@ -350,15 +332,15 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    >
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
-5. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
+6. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-6. Return to SSMS on your Sql2008-SUFFIX VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+7. Return to SSMS on your Sql2008-SUFFIX VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
-7. In the Connect to Server dialog, enter the following:
+8. In the Connect to Server dialog, enter the following:
 
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
@@ -368,15 +350,15 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
-8. Select **Connect**. 
+9. Select **Connect**. 
 
-9. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
+10. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
-10. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+11. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
-11. In the new query window, enter the following SQL script:
+12. In the new query window, enter the following SQL script:
 
     ```sql
     USE WideWorldImportersSUFFIX;
@@ -385,8 +367,8 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     SELECT * FROM Game
     ```
 
-12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
+13. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-13. You are done using the Sql2008-SUFFIX VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+14. You are done using the Sql2008-SUFFIX VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
