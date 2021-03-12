@@ -126,7 +126,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![Virtual machine icon is highlighted in the Azure portal's top menu.](media/handsonlab-rg.png "resource group")
 
-2. In the virtual machine **sql2008-SUFFIX** blade from the **overview** copy the `Public IP address`. Paste the value into a text editor, such as Notepad.exe, for later reference. This IP address will be used to connect to the database on that server.
+2. In the virtual machine **sql2008-SUFFIX** blade from the **overview** page copy the `Public IP address`. Paste the value into a text editor, such as Notepad.exe, for later reference. This IP address will be used to connect to the database on that server.
 
    ![SQL VM IP Address,Overview.](media/sqlvm-ip.png "SQL VM IP")
 
