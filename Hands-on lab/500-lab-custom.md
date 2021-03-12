@@ -124,7 +124,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 1. In the Azure portal `https://portal.azure.com`, navigate to the resource group **hands-on-lab-SUFFIX** and select the virtual machine **sql2008-SUFFIX**
 
-   ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
+   ![Virtual machine icon is highlighted in the Azure portal's top menu.](media/handsonlab-rg.png "resource group")
 
 2. In the virtual machine **sql2008-SUFFIX** blade from the **overview** copy the `Public IP address`. Paste the value into a text editor, such as Notepad.exe, for later reference. This IP address will be used to connect to the database on that server.
 
