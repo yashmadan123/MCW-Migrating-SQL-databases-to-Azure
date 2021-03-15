@@ -300,47 +300,21 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 In this task, you connect to the SQL MI database using SSMS and quickly verify the migration.
 
-1. First, use the Azure Cloud Shell to retrieve the fully qualified domain name of your SQL MI database. In the Azure portal `https://portal.azure.com`, select the Azure Cloud Shell icon from the top menu.
+1. First, use the Azure portal to retrieve the fully qualified domain name of your SQL MI database. In the Azure portal `https://portal.azure.com`, select the Resource groups and select SQLMI-Shared-RG.
 
-   ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
+1. In the SQLMI-Shared-RG Resource group blade serch for the SQLMI Resource and select that. 
 
-2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
+   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/SQLMINEW.png "Azure Cloud Shell")
 
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
+1. From the overview page of SQLMI Resource copy the host value and save it in notepad for later use.
 
-3. If prompted about not having a storage account mounted, select the subscription you are using for this hands-on lab and select **Create storage**.
+   ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/SQLMINEW1.png "Azure Cloud Shell")
 
-   ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
-
-   > **Note**
-   >
-   > If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
-
-
-4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
-
-   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
-
-5. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
-
-   ```powershell
-   $resourceGroup = "<your-resource-group-name>"
-   az sql mi list --resource-group $resourceGroup
-   ```
-
-   > **Note**
-   >
-   > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
-6. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
-
-   ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
-
-7. Return to SSMS on your Sql2008-SUFFIX VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+1. Return to SSMS on your Sql2008-SUFFIX VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
-8. In the Connect to Server dialog, enter the following:
+1. In the Connect to Server dialog, enter the following:
 
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
@@ -350,15 +324,15 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
-9. Select **Connect**. 
+1. Select **Connect**. 
 
-10. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
+1. The SQL MI connection appears below the SQL2008-SUFFIX connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
-11. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+1. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
-12. In the new query window, enter the following SQL script:
+1. In the new query window, enter the following SQL script:
 
     ```sql
     USE WideWorldImportersSUFFIX;
@@ -367,8 +341,8 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     SELECT * FROM Game
     ```
 
-13. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
+1. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-14. You are done using the Sql2008-SUFFIX VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+1. You are done using the Sql2008-SUFFIX VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
