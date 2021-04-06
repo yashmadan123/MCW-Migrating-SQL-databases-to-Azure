@@ -116,7 +116,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 11. You will receive a message when the backup is complete. Select **OK**.
 
-    ![Screenshot of the dialog confirming the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
+    ![Screenshot of the dialog confirming the database backup was completed successfully.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/ssms-backup-complete.png)
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
