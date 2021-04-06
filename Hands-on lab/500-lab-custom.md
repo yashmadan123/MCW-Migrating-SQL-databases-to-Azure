@@ -87,7 +87,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This device is no longer needed, so select it and then select **Remove**.
 
-   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
+   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/ssms-back-up-database-general-remove.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
