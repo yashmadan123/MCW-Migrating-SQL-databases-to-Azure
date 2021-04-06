@@ -95,7 +95,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 6. In the Select Backup Destination dialog, select the Browse (`...`) button.
 
-   ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
+   ![The Browse button is highlighted in the Select Backup Destination dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/ssms-select-backup-destination.png)
 
 7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter `WideWorldImporters.bak` into the File name field, and then select **OK**.
 
