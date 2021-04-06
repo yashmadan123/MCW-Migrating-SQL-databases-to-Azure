@@ -91,7 +91,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
-   ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](media/ssms-back-up-database-general.png "Back Up Database")
+   ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/ssms-back-up-database-general.png)
 
 6. In the Select Backup Destination dialog, select the Browse (`...`) button.
 
