@@ -189,7 +189,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
 
-    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering `\\SQL2008-SUFFIX\dms-backups`.
+    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering `\\SQL2008-SUFFIX\dms-backups`. Don't forget to change SUFFIX value.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQL2008-SUFFIX\sqlmiuser.`
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
