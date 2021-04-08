@@ -136,10 +136,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-SUFFIX** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
- 
-
    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.] (https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/resource-group-dms-resource.png)
-
 
 2. On the Azure Database Migration Service blade, select **+New Migration Project**.
 
