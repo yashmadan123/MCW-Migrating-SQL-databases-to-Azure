@@ -12,7 +12,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Tables** under the **WideWorldImporters** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Tables** under the **WideWorldImportersSUFFIX** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
@@ -124,3 +124,6 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    ```
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
+
+
+## You have successfully completed the lab.
