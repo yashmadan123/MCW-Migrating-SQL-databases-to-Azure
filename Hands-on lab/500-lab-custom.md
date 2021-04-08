@@ -118,7 +118,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
     ![Screenshot of the dialog confirming the database backup was completed successfully.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/prod/Hands-on%20lab/media/ssms-backup-complete.png)
     
-    > **Note**: Please minimize the **sql2008-Suffix** VM connection.
+    > **Note**: Please minimize the **sql2008-Suffix** VM RDP connection.
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
@@ -169,8 +169,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 7. On the Migration Wizard **Select target** tab, enter the following:
 
-   - **Application ID**: Enter the `Application/Client ID` value from the lab details page..
-   - **Key**: Enter the `Application Secret Key` value from the lab details page.
+   - **Application ID**: Enter the `Application/Client ID` value from the Environment Details page..
+   - **Key**: Enter the `Application Secret Key` value from the Environment Details page.
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
