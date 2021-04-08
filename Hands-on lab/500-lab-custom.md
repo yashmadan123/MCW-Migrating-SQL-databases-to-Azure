@@ -6,7 +6,7 @@ In this exercise, you use the **Azure Database Migration Service** here `https:/
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
-### Task 1: Create an SMB network share on the Sql2008-<inject key="Suffix" enableCopy="false" /> VM
+### Task 1: Create an SMB network share on the Sql2008-<inject key="Suffix" enableCopy="false"/> VM
 
 In this task, you create a new SMB network share on the Sql2008-SUFFIX VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
