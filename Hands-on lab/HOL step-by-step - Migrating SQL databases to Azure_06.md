@@ -235,7 +235,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 13. On the Migration Wizard **Summary** tab, enter `WwiMigration` as the **Activity name**.
 
-    ![The Migration Wizard summary tab is displayed, WwiMigration is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
+    ![The Migration Wizard summary tab is displayed, WwiMigration is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-migration-summary.png)
 
 14. Select **Start migration**.
 
