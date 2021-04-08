@@ -173,7 +173,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Key**: Enter the `Application Secret Key` value from the Environment Details page.
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
-   -  **Target Azure SQL Managed Instance**: Select the instance with prefix **sqlmi-**, you will find  Azure region name as suffix.
+   - **Target Azure SQL Managed Instance**: Select the instance with prefix **sqlmi-**, you will find US Azure region name as suffix. 
    - **SQL Username**: Enter `contosoadmin`
    - **Password**: Enter `IAE5fAijit0w^rDM`
 
