@@ -196,7 +196,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 7. On the Migration Wizard **Select target** tab, enter the following:
 
-   - **Application ID**: **<inject key="Application/Client ID"  />**
+   - **Application ID**: **<inject key="Application/Client ID" enableCopy="true"  />**
    - **Key**: **<inject key="Application Secret Key"  />**
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
