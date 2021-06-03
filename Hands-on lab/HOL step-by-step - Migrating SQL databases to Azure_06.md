@@ -141,9 +141,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 1. You are done using the Sql2008-[SUFFIX] VM. Close any open windows and log off the Server. The remaining tasks of this hands-on lab will be done using the Lab VM.
 
-## Task 4: Check SQL Server 2008 VM connection information
-
-In this task, you will verify Sql2008-[SUFFIX] VM from the **Environment Details** tab in the guide.
+    ![Screenshot of the log off option from SQL Server.](media/sql-logoff.png "log off SQL server")
 
 1. From the **Environment Details** tab in the guide, copy the `SQL Server VM DNS Name`.
 
@@ -154,9 +152,9 @@ In this task, you will verify Sql2008-[SUFFIX] VM from the **Environment Details
 
     Pinging sqlvmdns323163.centralus.cloudapp.azure.com [13.89.50.142] with 32 bytes of data:
 
-1. Copy the IP address that is shown for the next task.
+1. Copy the IP address from the output for the next task.
 
-## Task 5: Create and run an online data migration project
+## Task 4: Create and run an online data migration project
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
@@ -239,7 +237,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
-## Task 6: Perform migration cutover
+## Task 5: Perform migration cutover
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
@@ -321,7 +319,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 16. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
-## Task 7: Verify database and transaction log migration
+## Task 6: Verify database and transaction log migration
 
 In this task, you connect to the SQL MI database using SSMS and quickly verify the migration.
 
@@ -361,3 +359,5 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 1. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
+
+1. Select next on the guide for the next exercise.

@@ -70,15 +70,17 @@ In this task, you perform an assessment on the `WideWorldImporters` database tha
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. Launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. Download and install DMA using this link <https://aka.ms/DMAdownload>
+
+1. Launch DMA from the Windows Start menu by selecting **Microsoft Data Migration Assistant** .
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
-2. In the DMA dialog, select **+** from the left-hand menu to create a new project.
+1. In the DMA dialog, select **+** from the left-hand menu to create a new project.
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-3. In the New project pane, set the following:
+1. In the New project pane, set the following:
 
    - **Project type**: Select **Assessment**.
    - **Project name**: Enter `ToAzureSqlDb`
@@ -88,13 +90,13 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
 
-4. Select **Create**.
+1. Select **Create**.
 
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
+1. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
 
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+1. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
    - **Server name**: Select **SQL2008-SUFFIX**.
    - **Authentication type**: Select **SQL Server Authentication**.
@@ -105,17 +107,17 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![In the Connect to a server dialog, the values specified above are entered.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma2.png "Connect to a server")
 
-7. Select **Connect**.
+1. Select **Connect**.
 
-8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
+1. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
    ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
 
-9. Select **Start Assessment**.
+1. Select **Start Assessment**.
 
    ![Start assessment](media/dma-start-assessment-to-azure-sql-db.png "Start assessment")
 
-10. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
+1. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
 
     ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
 
