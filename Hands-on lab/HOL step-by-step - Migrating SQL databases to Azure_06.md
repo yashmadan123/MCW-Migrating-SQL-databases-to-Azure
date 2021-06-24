@@ -176,9 +176,9 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Project name**: Enter `OnPremToSqlMi`
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database Managed Instance**.
-   - **Choose type of activity**: Select **Online data migration** and select **Save**.
+   - **Choose type of activity**: Select **Online data migration**
 
-   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
+   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/sqlnndbdbdbd.png "New migration project")
 
 4. Select **Create and run activity**.
 
