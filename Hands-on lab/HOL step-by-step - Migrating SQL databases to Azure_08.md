@@ -8,7 +8,7 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
-1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **hands-on-lab-<inject key="DeploymentID/Suffix" />** resource group, and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
+1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **hands-on-lab-<inject key="Suffix" />** resource group, and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
@@ -26,7 +26,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Subnet**: Select  existing subnet. and select any subnet from the drop down menu. 
    - **Note**: If you see **Failed to add delegation to existing subnet** please select any other subnet.
   > **Note**: If you are not able to select any existing subnet then follow the below steps.
-   - Select the create new subnet option and enter name as Webappsubnet<inject key="DeploymentID/Suffix" />. Select Virtual Network address block from the drop down list. In the subnet address block enter new address block 10.0.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
+   - Select the create new subnet option and enter name as Webappsubnet<inject key="Suffix" />. Select Virtual Network address block from the drop down list. In the subnet address block enter new address block 10.0.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
   > **Note**: If the address space is overlapping with other subnets you may need to changes the address space.
 
    ![The values specified above are entered into the Network Feature Status dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/newvnet.png "Network Feature Status configuration")
