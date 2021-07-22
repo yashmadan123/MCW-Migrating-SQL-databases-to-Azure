@@ -6,11 +6,11 @@ In this exercise, you use the **Azure Database Migration Service** here `https:/
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
-### Task 1: Create an SMB network share on the Sql2008-<inject key="Suffix" /> VM
+### Task 1: Create an SMB network share on the <inject key="SQLVM Name" /> VM
 
-In this task, you create a new SMB network share on the Sql2008-<inject key="Suffix" /> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the <inject key="SQLVM Name" /> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
-1. On the Sql2008-<inject key="Suffix" /> VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
+1. On the <inject key="SQLVM Name" /> VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
    ![The Windows Explorer icon is highlighted in the Windows Taskbar.](media/windows-task-bar.png "Windows Taskbar")
 
@@ -30,7 +30,7 @@ In this task, you create a new SMB network share on the Sql2008-<inject key="Suf
 
    ![In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted.](media/network-discovery-and-file-sharing.png "Network discovery and file sharing")
 
-6. Back on the File Sharing dialog, note the shared folder's path, \\SQL2008-<inject key="Suffix" />\dms-backups, and select **Done** to complete the sharing process.
+6. Back on the File Sharing dialog, note the shared folder's path, \\SQL2008-<inject key="Suffix"/>\dms-backups, and select **Done** to complete the sharing process.
 
    ![The Done button is highlighted on the File Sharing dialog.](media/file-sharing-done.png "File Sharing")
 
@@ -38,7 +38,7 @@ In this task, you create a new SMB network share on the Sql2008-<inject key="Suf
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your Sql2008-<inject key="Suffix" /> VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Managed** from the search results.
+1. On your <inject key="SQLVM Name" /> VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Managed** from the search results.
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
@@ -73,15 +73,15 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the \\SQL2008-<inject key="Suffix" />\dms-backups SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
-1. On the Sql2008-<inject key="Suffix" /> VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
+1. On the <inject key="SQLVM Name" /> VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-2. In the SSMS **Connect to Server** dialog, enter SQL2008-<inject key="Suffix" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+2. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-   ![The SQL Server Connect to Search dialog is displayed, with SQL2008-<inject key="Suffix" /> entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+   ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-3. Once connected, expand **Databases** under SQL2008-<inject key="Suffix" /> in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
+3. Once connected, expand **Databases** under <inject key="SQLVM Name" /> in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
 
    ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
 
@@ -120,7 +120,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
-In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your Sql2008-<inject key="Suffix" /> VM from DMS.
+In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your <inject key="SQLVM Name" /> VM from DMS.
 
 1. In the Azure portal `https://portal.azure.com`, select the Azure Cloud Shell icon from the top menu.
 
@@ -142,11 +142,11 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **hands-on-lab-<inject key="Suffix" />** Also make sure to update SUFFIX value in the VM name.
+5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with: <inject key="SQLVM Name" />
 
    ```powershell
    $resourceGroup = "<your-resource-group-name>"
-   az vm list-ip-addresses -g $resourceGroup -n "Sql2008-<inject key="Suffix" />" --output table
+   az vm list-ip-addresses -g $resourceGroup -n VMNAME --output table
    ```
 
    > **Note**
@@ -155,7 +155,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
-   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008-<inject key="Suffix" /> VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
+   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
 
 7. Leave the Azure Cloud Shell open for the next task.
 
@@ -163,9 +163,9 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **hands-on-lab-<inject key="Suffix" />** resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
+1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the <inject key="Resource Group Name" />  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
-   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab-<inject key="Suffix" /> resource group.](media/resource-group-dms-resource.png "Resources")
+   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
 
 2. On the Azure Database Migration Service blade, select **+New Migration Project**.
 
@@ -184,7 +184,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 5. On the Migration Wizard **Select source** tab, enter the following:
 
-   - **Source SQL Server instance name**: Enter the IP address of your Sql2008-<inject key="Suffix" /> VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
+   - **Source SQL Server instance name**: Enter the IP address of your <inject key="SQLVM Name" /> VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
    - **Authentication type**: Select SQL Authentication.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
@@ -216,7 +216,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
 
-    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering \\SQL2008-<inject key="Suffix" />\dms-backups.
+    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering \\SQL2008-SUFFIX\dms-backups.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter SQL2008-<inject key="Suffix" />\sqlmiuser.
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
@@ -225,7 +225,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
     ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
  
  - Click on **Advance Settings**. 
- - **WideWorldImporters**: Enter **Target Database name** WideWorldImporters<inject key="Suffix" />. 
+ - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
 
  
     ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
@@ -258,7 +258,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
 
-4. Return to SSMS on your Sql2008-<inject key="Suffix" /> VM and select **New Query** from the toolbar.
+4. Return to SSMS on your <inject key="SQLVM Name" /> VM and select **New Query** from the toolbar.
 
    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
@@ -345,7 +345,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
 
    ```powershell
-   $resourceGroup = "<your-resource-group-name>"
+   $resourceGroup = "SQLMI-Shared-RG"
    az sql mi list --resource-group $resourceGroup
    ```
 
@@ -357,7 +357,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-6. Return to SSMS on your Sql2008-<inject key="Suffix" /> VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+6. Return to SSMS on your <inject key="SQLVM Name" /> VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
@@ -373,11 +373,11 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 8. Select **Connect**. 
 
-9. The SQL MI connection appears below the SQL2008-<inject key="Suffix" /> connection. Expand Databases the SQL MI connection and select the `WideWorldImportersSUFFIX` database.
+9. The SQL MI connection appears below the <inject key="SQLVM Name" /> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
-10. With the `WideWorldImportersSUFFIX` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+10. With the <inject key="Database Name" />` database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
 
@@ -392,7 +392,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-13. You are done using the Sql2008-<inject key="Suffix" /> VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+13. You are done using the <inject key="SQLVM Name" /> VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
 
-{"mode":"full","isActive":false}
+
