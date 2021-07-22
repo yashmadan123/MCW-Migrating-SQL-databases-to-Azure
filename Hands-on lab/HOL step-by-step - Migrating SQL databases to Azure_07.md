@@ -71,11 +71,11 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
 
-2. Select the hands-on-lab-<inject key="Suffix" /> resource group from the list.
+2. Select the <inject key="Resource Group Name" /> resource group from the list.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. In the list of resources for your resource group, select the **hands-on-lab-<inject key="Suffix" />** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
+3. In the list of resources for your resource group, select the <inject key="Resource Group Name" /> resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
@@ -91,11 +91,11 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     
   ``
-  Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImporters<inject key="Suffix" />;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
+  Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
    ``
    
 
-7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell.
+7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and the suffix value from envrionment details page.
 
    ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/9.png "Edit Connection String")
 
