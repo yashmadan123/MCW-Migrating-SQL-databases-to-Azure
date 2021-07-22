@@ -379,12 +379,12 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 11. In the new query window, enter the following SQL script:
 
-    ```sql
-    USE WideWorldImportersSUFFIX;
-    GO
+ 
+ >   USE WideWorldImportersSUFFIX;
+     GO
 
-    SELECT * FROM Game
-    ```
+  >  SELECT * FROM Game
+  
 
 12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
