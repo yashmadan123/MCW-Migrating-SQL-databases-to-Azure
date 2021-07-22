@@ -23,7 +23,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, select **New Query** and paste the following SQL script into the new query window:
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    CREATE USER DDMUser WITHOUT LOGIN;
@@ -37,7 +37,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -52,7 +52,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar,  paste the following query into the query window to apply a mask to the `CardNumber` field and then select **Execute**.
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    ALTER TABLE [Sales].[CreditCard]
@@ -62,7 +62,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -81,7 +81,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    SELECT TOP 10 * FROM [dbo].[Gamer]
@@ -92,7 +92,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select **Execute**:
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
@@ -101,7 +101,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar, paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    ALTER TABLE [dbo].[Gamer]
@@ -115,7 +115,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
 
    ```sql
-   USE [WideWorldImporters<inject key="Suffix" />];
+   USE [WideWorldImporters <inject key="Suffix" />];
    GO
 
    EXECUTE AS USER = 'DDMUser';
