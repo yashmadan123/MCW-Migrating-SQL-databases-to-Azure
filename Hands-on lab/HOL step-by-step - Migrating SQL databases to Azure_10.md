@@ -21,9 +21,10 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ![Plain text credit card numbers are highlighted in the query results.](media/ssms-sql-mi-credit-card-table-select-results.png "Results")
 
 4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, select **New Query** and paste the following SQL script into the new query window:
+    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    CREATE USER DDMUser WITHOUT LOGIN;
@@ -35,9 +36,10 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 5. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.
 
 6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
+    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />.
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -50,9 +52,10 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ![The credit card number is unmasked in the query results.](media/ssms-sql-mi-ddm-results-unmasked.png "Query results")
 
 8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar,  paste the following query into the query window to apply a mask to the `CardNumber` field and then select **Execute**.
+   > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    ALTER TABLE [Sales].[CreditCard]
@@ -60,9 +63,10 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ```
 
 9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
+    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';
@@ -79,9 +83,10 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labeled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
 1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
+   > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    SELECT TOP 10 * FROM [dbo].[Gamer]
@@ -92,16 +97,17 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window and enter the following script, and then select **Execute**:
 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
    ```
 
 3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar, paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
-
+    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
+    > 
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    ALTER TABLE [dbo].[Gamer]
@@ -113,9 +119,9 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    > Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
-
+    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
    ```sql
-   USE [WideWorldImporters <inject key="Suffix" />];
+   USE [WideWorldImportersSUFFIX];
    GO
 
    EXECUTE AS USER = 'DDMUser';
