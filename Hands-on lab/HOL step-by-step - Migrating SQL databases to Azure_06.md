@@ -30,7 +30,7 @@ In this task, you create a new SMB network share on the Sql2008-<inject key="Suf
 
    ![In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted.](media/network-discovery-and-file-sharing.png "Network discovery and file sharing")
 
-6. Back on the File Sharing dialog, note the shared folder's path, `\\SQL2008-<inject key="Suffix" />\dms-backups`, and select **Done** to complete the sharing process.
+6. Back on the File Sharing dialog, note the shared folder's path, \\SQL2008-<inject key="Suffix" />\dms-backups, and select **Done** to complete the sharing process.
 
    ![The Done button is highlighted on the File Sharing dialog.](media/file-sharing-done.png "File Sharing")
 
@@ -71,13 +71,13 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
-To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the `\\SQL2008-<inject key="Suffix" />\dms-backups` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
+To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the \\SQL2008-<inject key="Suffix" />\dms-backups SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
 1. On the Sql2008-<inject key="Suffix" /> VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-2. In the SSMS **Connect to Server** dialog, enter **SQL2008-<inject key="Suffix" />** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+2. In the SSMS **Connect to Server** dialog, enter SQL2008-<inject key="Suffix" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-<inject key="Suffix" /> entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
@@ -146,7 +146,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ```powershell
    $resourceGroup = "<your-resource-group-name>"
-   az vm list-ip-addresses -g $resourceGroup -n Sql2008-<inject key="Suffix" /> --output table
+   az vm list-ip-addresses -g $resourceGroup -n "Sql2008-<inject key="Suffix" />" --output table
    ```
 
    > **Note**
@@ -196,8 +196,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 7. On the Migration Wizard **Select target** tab, enter the following:
 
-   - **Application ID**: Enter the `Application/Client ID` value from the lab details page..
-   - **Key**: Enter the `Application Secret Key` value from the lab details page.
+   - **Application ID**: <inject key="Application/Client ID" />
+   - **Key**:  <inject key="Application Secret Key" />
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
@@ -216,8 +216,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
 
-    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering `\\SQL2008-<inject key="Suffix" />\dms-backups`.
-    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQL2008-<inject key="Suffix" />\sqlmiuser.`
+    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering \\SQL2008-<inject key="Suffix" />\dms-backups.
+    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter SQL2008-<inject key="Suffix" />\sqlmiuser.
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistore######** storage account.
@@ -225,17 +225,18 @@ In this task, you create a new online data migration project in DMS for the `Wid
     ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
  
  - Click on **Advance Settings**. 
- - **WideWorldImporters**: Enter **Target Database name** WideWorldImportersSUFFIX. 
+ - **WideWorldImporters**: Enter **Target Database name** WideWorldImporters<inject key="Suffix" />. 
 
-   Note: - You can get SUFFIX details from you Environment details page 
-
+ 
     ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
 
 12. Select **Next : Summary**.
 
 13. On the Migration Wizard **Summary** tab, enter `WwiMigration` as the **Activity name**.
 
-    ![The Migration Wizard summary tab is displayed, WwiMigration is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-migration-summary.png)
+
+    ![d.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-migration-summary.png)
+
 
 14. Select **Start migration**.
 
