@@ -45,9 +45,9 @@ In this task, You will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-publish-specific-target.png "Publish API App to Azure")
 
-1. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the `wwi-web-UNIQUEID` Web App.
+1. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-<inject key="DeploymentID/<inject key="DeploymentID/Suffix" />" /> resource group, and select the `wwi-web-UNIQUEID` Web App.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab-<inject key="DeploymentID/<inject key="DeploymentID/Suffix" />" /> resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
 
 1. Select **Finish**.
 
@@ -71,11 +71,11 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
 
-2. Select the hands-on-lab-SUFFIX resource group from the list.
+2. Select the hands-on-lab-<inject key="DeploymentID/<inject key="DeploymentID/Suffix" />" /> resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-SUFFIX" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-<inject key="DeploymentID/<inject key="DeploymentID/Suffix" />" />" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. In the list of resources for your resource group, select the **hands-on-lab-SUFFIX** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
+3. In the list of resources for your resource group, select the **hands-on-lab-<inject key="DeploymentID/<inject key="DeploymentID/Suffix" />" />** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
@@ -90,10 +90,10 @@ In this task, you update the WWI gamer info web application to connect to and ut
 6. The value of the connection string should look like:
 
    ```sql
-   Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSUFFIX;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
+   Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImporters<inject key="DeploymentID/Suffix" />;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
    ```
 
-7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and update the database SUFFIX with the SUFFIX value from Environment details page.
+7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and update the database <inject key="DeploymentID/Suffix" /> with the <inject key="DeploymentID/Suffix" /> value from Environment details page.
 
    ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/9.png "Edit Connection String")
 
