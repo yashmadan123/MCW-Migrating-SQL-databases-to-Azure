@@ -380,7 +380,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 11. In the new query window, enter the following SQL script:
 
  
- >   USE WideWorldImportersSUFFIX;
+ >   USE <inject key="Database Name" />;
      GO
 
   >  SELECT * FROM Game
