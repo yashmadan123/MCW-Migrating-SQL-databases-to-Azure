@@ -16,15 +16,15 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
 
-1. Select the hands-on-lab-<inject key="Suffix" /> resource group from the list.
+1. Select the <inject key="Resource Group Name" /> resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-<inject key="Suffix" />" resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-1. In the list of resources for your resource group, select the Sql2008-<inject key="Suffix" /> VM.
+1. In the list of resources for your resource group, select the <inject key="SQLVM Name" /> VM.
 
    ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
 
-1. On the Sql2008-<inject key="Suffix" /> VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
+1. On the <inject key="SQLVM Name" /> VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
 
    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
 
@@ -49,14 +49,14 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
-1. In the SSMS **Connect to Server** dialog, enter SQL2008-<inject key="Suffix" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
    - Note:- You can get the SUFFIX details from environment details tab.
 
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-<inject key="Suffix" /> entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
-    ![The WideWorldImporters database is highlighted under Databases on the SQL2008-<inject key="Suffix" /> instance.](media/wide-world-importers-database.png "WideWorldImporters database")
+    ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
     > **Important**
     >
@@ -87,7 +87,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the <inject key="SQLVM Name" /> VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -113,7 +113,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
-   - **Server name**: Enter **SQL2008-<inject key="Suffix" />**.
+   - **Server name**: Enter <inject key="SQLVM Name" />.
    - **Authentication type**: Select **SQL Server Authentication**.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
@@ -164,7 +164,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
-   - **Server name**: Enter **SQL2008-<inject key="Suffix" />**.
+   - **Server name**: Enter <inject key="SQLVM Name" />.
    - **Authentication type**: Select **SQL Server Authentication**.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
