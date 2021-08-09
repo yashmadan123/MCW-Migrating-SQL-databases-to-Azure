@@ -14,7 +14,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 2. On the App Service blade, select **Networking** from the left-hand menu.
 
-   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/app-service-networking.png "App Service")
+   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/networking.png "App Service")
 
 3. Click on the **GO to classic experiance** button to change the UI to Classic.
 
