@@ -12,11 +12,16 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
-2. On the App Service blade, select **Networking** from the left-hand menu and then select **Click here to configure** under **VNet Integration**.
+2. On the App Service blade, select **Networking** from the left-hand menu.
 
    ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/app-service-networking.png "App Service")
 
-3. Select **Add VNet** on the VNet Configuration blade.
+3. Click on the **GO to classic experiance** button to change the UI to Classic.
+
+   ![Add VNet is highlighted on the VNet Configuration blade.](media/classic.png "App Service")
+
+
+3. Now select **Click here to configure** under **VNet Integration** and then click on **Add VNet** on the VNet Configuration blade.
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration.png "App Service")
 
