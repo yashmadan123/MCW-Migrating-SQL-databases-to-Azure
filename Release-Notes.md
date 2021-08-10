@@ -1,4 +1,4 @@
-# Database Modranization 
+# Database Modernization 
 
 ## August 2021
 ### Lab Guide Updates (Updated on 9 August 2021)
