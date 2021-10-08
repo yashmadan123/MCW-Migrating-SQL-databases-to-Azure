@@ -32,7 +32,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Note**: If you see **Failed to add delegation to existing subnet** please select any other subnet.
   > **Note**: If you are not able to select any existing subnet then follow the below steps.
    - Select the create new subnet option and enter name as Webappsubnet<inject key="Suffix" />. Select Virtual Network address block i.e, 10.0.0.0/16 from the drop down list. In the subnet address block enter new address block 10.0.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
-  > **Note**: If the address space is overlapping with other subnets you may need to changes the address space. Try with the other Virtual Network Address Block available in the drop-down i.e, 10.1.0.0/16 or 10.2.0.0/16. In the subnet address block enter new address block 10.1.xx.0/23 or 10.2.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
+  > **Note**: If the address space is overlapping with other subnets you may need to changes the address space. If you are not able to get subnet address block with 10.0.0.0/16 then you can go with the other Virtual Network Address Block available in the drop-down i.e, 10.1.0.0/16 or 10.2.0.0/16. In the subnet address block enter the address block 10.1.xx.0/23 or 10.2.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
 
    ![The values specified above are entered into the Network Feature Status dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/newvnet.png "Network Feature Status configuration")
 
