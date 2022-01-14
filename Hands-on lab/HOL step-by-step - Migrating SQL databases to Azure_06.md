@@ -38,7 +38,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your <inject key="SQLVM Name" /> VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Managed** from the search results.
+1. On your <inject key="SQLVM Name" /> VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
