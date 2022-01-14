@@ -53,7 +53,7 @@ In this task, You will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
-    ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
+    ![The Publish button is highlighted on the Publish page in Visual Studio.](media/wwi-web-publish.png "Publish")
 
 1. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
