@@ -57,9 +57,6 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
-    > **Important**
-    >
-    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/prod/Hands-on%20lab/Manual-resource-setup.md) to **manually restore and configure the database**.
     
 1. Select **New Query** from the SSMS toolbar.
 
@@ -188,8 +185,5 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2.png "Compatibility issues")
 
-   > **Note**
-   >
-   > The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
