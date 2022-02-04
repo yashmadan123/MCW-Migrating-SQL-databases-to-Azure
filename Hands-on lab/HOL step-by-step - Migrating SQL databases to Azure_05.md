@@ -59,7 +59,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     > **Important**
     >
-    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](https://github.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/blob/prod/Hands-on%20lab/Manual-resource-setup.md) to **manually restore and configure the database**.
     
 1. Select **New Query** from the SSMS toolbar.
 
