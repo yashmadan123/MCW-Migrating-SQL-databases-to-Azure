@@ -216,9 +216,10 @@ In this task, you create a new online data migration project in DMS for the `Wid
 10. Select **Next : Configure migration settings**.
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
+    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
     - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
-    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter SQL2008-<inject key="Suffix" />\sqlmiuser.
+    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter ```SQL2008-SUFFIX\sqlmiuser```.
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistore######** storage account.
@@ -365,7 +366,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
-   -  **Password:** Enter IAE5fAijit0w^rDM
+   -  **Password:** Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
