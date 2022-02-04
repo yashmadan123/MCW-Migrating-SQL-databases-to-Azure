@@ -57,9 +57,6 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
-    > **Important**
-    >
-    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
     
 1. Select **New Query** from the SSMS toolbar.
 
@@ -106,9 +103,9 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 4. Select **Create**.
 
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
+5. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
+   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
 6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
@@ -157,9 +154,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 3. Select **Create**.
 
-4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
+4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
+   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
@@ -186,10 +183,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
 
-   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
+   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2.png "Compatibility issues")
 
-   > **Note**
-   >
-   > The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
