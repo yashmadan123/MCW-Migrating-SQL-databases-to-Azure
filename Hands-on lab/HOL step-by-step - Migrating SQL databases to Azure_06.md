@@ -81,7 +81,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-3. Once connected, expand **Databases** under <inject key="SQLVM Name" /> in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
+3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
 
    ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
 
@@ -130,13 +130,14 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. If prompted about not having a storage account mounted, select the subscription you are using for this hands-on lab and select **Create storage**.
+3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
+  
+      - **Storage account** : **storage{Suffix}**
+      - **File Share** : **blob**
+  
+    > **Note**: Storage account name should be always unique, you can get the Suffix from the **Environment Details** tab. 
 
-   ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
-
-   > **Note**
-   >
-   > If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
+   ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
 4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
 
