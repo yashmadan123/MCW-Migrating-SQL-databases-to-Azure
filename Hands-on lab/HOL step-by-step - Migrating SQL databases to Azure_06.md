@@ -6,11 +6,11 @@ In this exercise, you use the **Azure Database Migration Service** here `https:/
 
 > The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
-### Task 1: Create an SMB network share on the <inject key="SQLVM Name" enableCopy="false"/> VM
+### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
 In this task, you create a new SMB network share on the <inject key="SQLVM Name" enableCopy="false"/> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
-1. On the <inject key="SQLVM Name" enableCopy="false"/> VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
+1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
    ![The Windows Explorer icon is highlighted in the Windows Taskbar.](media/windows-task-bar.png "Windows Taskbar")
 
@@ -38,7 +38,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your <inject key="SQLVM Name" enableCopy="false"/> VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
+1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
@@ -73,7 +73,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2008-SUFFIX\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
-1. On the <inject key="SQLVM Name" enableCopy="false"/> VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
+1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
@@ -135,7 +135,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
       - **Storage account** : **storage{Suffix}**
       - **File Share** : **blob**
   
-    > **Note**: Storage account name should be always unique, you can get the Suffix from the **Environment Details** tab. 
+    > **Note**: Storage account name should be always unique, make sure to replace the SUFFIX value with <inject key="Suffix" />
 
    ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
@@ -165,7 +165,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the <inject key="Resource Group Name" enableCopy="false"/>  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
+1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
    ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
 
@@ -186,7 +186,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 5. On the Migration Wizard **Select source** tab, enter the following:
 
-   - **Source SQL Server instance name**: Enter the IP address of your <inject key="SQLVM Name" enableCopy="false"/> VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
+   - **Source SQL Server instance name**: Enter the IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
    - **Authentication type**: Select SQL Authentication.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
@@ -259,7 +259,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
 
-4. Return to SSMS on your <inject key="SQLVM Name" enableCopy="false"/> VM and select **New Query** from the toolbar.
+4. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM and select **New Query** from the toolbar.
 
    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
@@ -358,7 +358,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-6. Return to SSMS on your <inject key="SQLVM Name" enableCopy="false"/> VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+6. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
@@ -378,7 +378,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
-10. With the <inject key="Database Name" enableCopy="false"/>` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+10. With the **<inject key="Database Name" enableCopy="false"/>** database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
     > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
@@ -394,7 +394,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-13. You are done using the <inject key="SQLVM Name" enableCopy="false"/> VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+13. You are done using the > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" /> VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
 
 
