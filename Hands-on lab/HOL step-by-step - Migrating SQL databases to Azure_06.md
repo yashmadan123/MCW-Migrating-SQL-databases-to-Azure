@@ -394,7 +394,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-13. You are done using the > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" /> VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
 
 
