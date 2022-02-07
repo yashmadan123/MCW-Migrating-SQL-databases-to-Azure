@@ -45,7 +45,7 @@ In this task, You will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-publish-specific-target.png "Publish API App to Azure")
 
-1. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-<inject key="Suffix" enableCopy="false"/> resource group, and select the `wwi-web-UNIQUEID` Web App.
+1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the `wwi-web-UNIQUEID` Web App.
 
     ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
 
@@ -75,7 +75,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
-3. In the list of resources for your resource group, select the <inject key="Resource Group Name" enableCopy="false"/> resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
+3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
