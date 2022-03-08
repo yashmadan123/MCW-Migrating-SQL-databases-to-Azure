@@ -18,7 +18,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
 
 1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
