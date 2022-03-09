@@ -132,10 +132,8 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
   
-      - **Storage account** : **storage{Suffix}**
+      - **Storage account** : **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share** : **blob**
-  
-    > **Note**: Storage account name should be always unique, make sure to replace the SUFFIX value with <inject key="Suffix" />
 
    ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
