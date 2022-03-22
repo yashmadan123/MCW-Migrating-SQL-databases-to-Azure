@@ -344,7 +344,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: **SQLMI-Shared-RG**
 
    ```powershell
-   $resourceGroup = "SQLMI-Shared-RG"
+   $resourceGroup = "<your-resource-group-name>"
    az sql mi list --resource-group $resourceGroup
    ```
 
