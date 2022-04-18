@@ -16,7 +16,7 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/networking.png "App Service")
 
-3. Click on the **VNet integration** within **Outbound Traffic** to access the VNet integration page.
+3. On the **Networking** page, click on the **VNet integration** within **Outbound Traffic**.
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/Vnet-integration.png "App Service")
 
