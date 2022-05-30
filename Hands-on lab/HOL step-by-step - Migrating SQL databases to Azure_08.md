@@ -29,6 +29,8 @@ In this task, you add the networking configuration to your App Service to enable
 
    - **Virtual Network**: Select the vnet-sqlmi--cus.
    - **Subnet**: Select  existing subnet. and select any subnet from the drop down menu. 
+      ![image](https://user-images.githubusercontent.com/45102602/171028272-b63fce6e-06fd-4f74-ba45-8bac755cb9d6.png)
+
    - **Note**: If you see **Failed to add delegation to existing subnet** please select any other subnet.
   > **Note**: If you are not able to select any existing subnet then follow the below steps.
    - Select the create new subnet option and enter name as Webappsubnet<inject key="Suffix" />. Select Virtual Network address block i.e, 10.0.0.0/16 from the drop down list. In the subnet address block enter new address block 10.0.xx.0/23 for the subnet, Make sure it is not overlapping other subnet's address.
