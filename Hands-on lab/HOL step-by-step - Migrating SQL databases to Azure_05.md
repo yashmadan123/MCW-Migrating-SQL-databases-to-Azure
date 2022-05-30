@@ -145,7 +145,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
+   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
