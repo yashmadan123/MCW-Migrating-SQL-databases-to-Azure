@@ -132,6 +132,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
   
+      - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
       - **Storage account** : **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share** : **blob**
 
