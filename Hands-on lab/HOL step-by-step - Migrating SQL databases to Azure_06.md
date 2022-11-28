@@ -133,8 +133,8 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
   
       - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
-      - **Storage account** : **storage<inject key="Suffix" enableCopy="false"/>**
-      - **File Share** : **blob**
+      - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
+      - **File Share**: **blob**
 
    ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
@@ -174,14 +174,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 3. On the New migration project blade, enter the following:
 
-   - **Project name**: Enter `OnPremToSqlMi`
+   - **Project name**: Enter `OnPremToSqlMi`**(1)**
    - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database Managed Instance**.
-   - **Choose type of activity**: Select **Online data migration**.
+   - **Target server type**: Select **Azure SQL Database Managed Instance (2)**.
+   - **Choose type of activity**: Select **Online data migration (3)**.
 
       ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/sqlnndbdbdbd.png "New migration project")
 
-4. Select **Create and run activity**.
+4. Select **Create and run activity (4)**.
 
 5. On the Migration Wizard **Select source** tab, enter the following:
 
@@ -269,7 +269,7 @@ Since you performed an "online data migration," the migration wizard continuousl
    GO
 
    INSERT [dbo].[Game] (Title, Description, Rating, IsOnlineMultiplayer)
-   VALUES ('Space Adventure', 'Explore the universe with are newest online multiplayer gaming experience. Build custom  rocket ships, and take off for the stars in an infinite open-world adventure.', 'T', 1)
+   VALUES ('Space Adventure', 'Explore the universe with our newest online multiplayer gaming experience. Build custom rocket ships and take off for the stars in an infinite open-world adventure.', 'T', 1)
    ```
 
 6. Execute the query by selecting **Execute** in the SSMS toolbar.
@@ -366,7 +366,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
-   -  **Password:** Enter `IAE5fAijit0w^rDM`
+   -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
    ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")

@@ -10,20 +10,19 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 ### Task 1: Deploy the web app to Azure
 
-In this task, You will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
+In this task, you will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
-
- 1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
+1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
 
 1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
-1. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
+1. If prompted about how you want to open the file, select **Visual Studio 2019**, and then select **OK**.
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
 
-1. Select **Sign in** and enter following Azure account credentials when prompted:
+1. Select **Sign in** and enter the following Azure account credentials when prompted:
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
 
@@ -37,17 +36,17 @@ In this task, You will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Solution Explorer, the context menu for the WideWorldImporters.Web project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
-1. On the **Publish** dialog, select **Azure** in the Target box and select **Next**.
+1. On the **Publish** dialog, select **Azure** in the Target box, and select **Next**.
 
-    ![In the Publish dialog, Azure is selected and highlighted in the Target box. The Next button is highlighted.](media/vs-publish-to-azure.png "Publish API App to Azure")
+    ![In the Publish dialog, Azure is selected and highlighted in the Target box. The Next button is highlighted.](media/updated15.png "Publish API App to Azure")
 
 1. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
 
-    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-publish-specific-target.png "Publish API App to Azure")
+    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/updated16.png "Publish API App to Azure")
 
 1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/updated17.png "Publish API App to Azure")
 
 1. Select **Finish**.
 
@@ -87,7 +86,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
-6. The value of the connection string should look like:
+6. The value of the connection string should look like this:
 
     
   ``
@@ -119,6 +118,6 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
 
-14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being return. The error occurs because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
+14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")

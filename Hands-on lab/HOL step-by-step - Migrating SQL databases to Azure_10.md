@@ -80,7 +80,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 ### Task 2: Apply DDM to email addresses
 
-From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labeled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
+From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labelled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
 1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
    > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
