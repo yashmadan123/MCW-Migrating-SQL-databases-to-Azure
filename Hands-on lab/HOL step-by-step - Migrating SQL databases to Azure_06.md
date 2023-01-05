@@ -178,7 +178,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 4. Select **WideWorldImporters** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Select** button.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex2-Task5-S4.png "New project settings")
+   ![](media/Ex2-Task5-S4.png)
 
 5. Click on **Next**. In **Step 3: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
