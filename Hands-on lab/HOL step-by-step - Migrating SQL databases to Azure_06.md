@@ -164,73 +164,63 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
+1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
 
-   ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
+   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
-2. On the Azure Database Migration Service blade, select **+New Migration Project**.
+2. In **Step 1: Database for assessment** blade, select **widewordimplantation**, click on **Next**. 
 
-   ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. On the New migration project blade, enter the following:
+3. In **Step 2: Assessment result and recommendation** blade, select **Azure SQL Database Managed Instance** from chose your Azure SQL target and scroll down, and scroll down till end click on **view/select**. 
 
-   - **Project name**: Enter `OnPremToSqlMi`**(1)**
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database Managed Instance (2)**.
-   - **Choose type of activity**: Select **Online data migration (3)**.
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task3-S3.png "New project settings")
 
-      ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/sqlnndbdbdbd.png "New migration project")
+4. Select **WideWorldImporters** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Select** button.
 
-4. Select **Create and run activity (4)**.
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex2-Task5-S4.png "New project settings")
 
-5. On the Migration Wizard **Select source** tab, enter the following:
+5. Click on **Next**. In **Step 3: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
+  
+  > Email/Username: <inject key="AzureAdUserEmail"></inject>
+  >
+  > Password: <inject key="AzureAdUserPassword"></inject>
+  
+6. The field will be populated with the details and click on **Next**. 
 
-   - **Source SQL Server instance name**: Enter the IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
-   - **Authentication type**: Select SQL Authentication.
-   - **Username**: Enter `WorkshopUser`
+   ![](media/Ex2-Task5-S6.png )
+   
+7. In **Step 4: Migration mode** blade, select **Online migration** and click on **Next**.
+
+   ![](media/Ex2-Task5-S7.png) 
+   
+8. In **Step 5: Data source configuration** blade, enter the following details and click on **Next**:
+   > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
+
+   - **Select the location of the database backups to use during migration**: select My database backups are on a network share 
    - **Password**: Enter `Password.1234567890`
-   - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+   - **Windows user account with read access to the network share location**: Enter `SQL2008-SUFFIX\sqlmiuser` 
+   - **Password**: Enter `Password.1234567890`
+   - **Target database name**: Add SUFFIX at the end
+   - **Network share path**: Enter `\\SQL2008-SUFFIX\dms-backups`. 
+   - **Resource Group**: Select `hands-on-lab-######` 
+   - **Storage account**: Select the `sqlmistore######` storage account.    
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
+   ![](media/Ex2-Task5-S8.png) 
 
-6. Select **Next : Select target**.
+9. In **Step 6: Azure Database Migration Service** blade, Click on **Create new** under Azure Data Migration Service.  
 
-7. On the Migration Wizard **Select target** tab, enter the following:
+   ![](media/Ex2-Task5-S9.png) 
 
-   - **Application ID**: <inject key="Application/Client ID" />
-   - **Key**:  <inject key="Application Secret Key" />
-   - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
-   - **Subscription**: Select the subscription you are using for this hand-on lab.
-   - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
-   - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `IAE5fAijit0w^rDM`
+10. Under **Create Azure Database Migration Service** page, select `hands-on-lab-<inject key="Suffix" />` from drop-down menu, enter the name as `wwi-dms`, click on **create**.
+   
+   ![](media/Ex2-Task5-S10.png) 
 
-   ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/h2.png "Migration Wizard Select target")
+11. After the resources been created you can see similar output as shown in the below screenshot. Copy any of the keys to the notepad as it will be used later in the task.
 
-8. Select **Next : Select databases**.
-
-9. On the Migration Wizard **Select databases** tab, select `WideWorldImporters`.
-
-   ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
-
-10. Select **Next : Configure migration settings**.
-
-11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
-    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
-
-    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
-    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter ```SQL2008-SUFFIX\sqlmiuser```.
-    - **Password**: Enter `Password.1234567890`
-    - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-    - **Storage account**: Select the **sqlmistore######** storage account.
-
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
+    ![](media/Ex2-Task5-S11.png) 
  
- - Click on **Advance Settings**. 
- - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
-
- 
-    ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm14.png "Migration Wizard Configure migration settings")
+ > **Note**: Don't close/cancel Azure Data Studio. 
 
 12. Select **Next : Summary**.
 
