@@ -11,7 +11,6 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
-
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
@@ -45,22 +44,21 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
+1. Once logged in, open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/Ex1-Task1-S9.png "Windows start menu search")
 
-1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+1. In the Azure Data Studio **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
   
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10.png "Connect to Server")
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
-    ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/wide-world-importers-database.png "WideWorldImporters database")
+    ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/Ex1-Task1-S11.png "WideWorldImporters database")
 
-    
-1. Select **New Query** from the SSMS toolbar.
+1. Right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)** from the Azure Data Studio toolbar.
 
-    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+    ![The New Query button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S12.png "SSMS Toolbar")
 
 1. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
 
@@ -75,62 +73,29 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
     GO
     ```
 
-1. To run the script, select **Execute** from the SSMS toolbar.
+1. To run the script, select **Execute** from the Azure Data Studio toolbar.
 
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+    ![The Execute button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
 
-   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
+   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
-2. In the DMA dialog, select **+** from the left-hand menu to create a new project.
+2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. In the New project pane, set the following:
+3. In **Step 2: Assessment result and recommendation**, select **Azure SQL Database (PREVIEW)** from chose your Azure SQL target and scroll down, and scroll down till end click on **view/select**. 
 
-   - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToAzureSqlDb`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database**.
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task2-S3.png "New project settings")
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
+4. Select **WideWorldImporters** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel** button.
 
-4. Select **Create**.
-
-5. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
-
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
-
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
-
-   - **Server name**: Enter <inject key="SQLVM Name" />.
-   - **Authentication type**: Select **SQL Server Authentication**.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Encrypt connection**: Check this box.
-   - **Trust server certificate**: Check this box.
-
-   ![In the Connect to a server dialog, the values specified above are entered.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma2.png "Connect to a server")
-
-7. Select **Connect**.
-
-8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
-
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
-
-9. Select **Start Assessment**.
-
-   ![Start assessment](media/dma-start-assessment-to-azure-sql-db.png "Start assessment")
-
-10. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
-
-    ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task2-S4.png "New project settings")
 
     > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
@@ -138,52 +103,20 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
-1. To get started, select **+** on the left-hand menu in DMA to create another new project.
+1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
 
-   ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
+   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
-2. In the New project pane, set the following:
+2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToSqlMi`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database Managed Instance**.
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.png "New project settings")
+3. In **Step 2: Assessment result and recommendation**, select **Azure SQL Database Managed Instance** from chose your Azure SQL target and scroll down, and scroll down till end click on **view/select**. 
 
-3. Select **Create**.
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task3-S3.png "New project settings")
 
-4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
+4. Select **WideWorldImporters** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel** button.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
-
-5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
-
-   - **Server name**: Enter <inject key="SQLVM Name" />.
-   - **Authentication type**: Select **SQL Server Authentication**.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Encrypt connection**: Check this box.
-   - **Trust server certificate**: Check this box.
-
-   ![In the Connect to a server dialog, the values specified above are entered.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma2.png "Connect to a server")
-
-6. Select **Connect**.
-
-7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
-
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
-
-8. Select **Start Assessment**.
-
-   ![Start assessment](media/dma-start-assessment-to-sql-mi.png "Start assessment")
-
-9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
-
-   ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
-
-   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2.png "Compatibility issues")
-
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task3-S4.png "New project settings")
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
