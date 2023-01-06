@@ -58,7 +58,6 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)** from the Azure Data Studio toolbar.
 
-
     ![The New Query button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S12.png "SSMS Toolbar")
 
 1. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
