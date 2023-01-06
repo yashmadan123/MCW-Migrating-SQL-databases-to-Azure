@@ -32,7 +32,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 6. Back on the File Sharing dialog, note the shared folder's path, ```\\SQL2008-SUFFIX\dms-backups```, and select **Done** to complete the sharing process.
 
-   ![The Done button is highlighted on the File Sharing dialog.](media/file-sharing-done.png "File Sharing")
+   ![The Done button is highlighted on the File Sharing dialog.](media/EX2-Task1-S6.png "File Sharing")
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
@@ -190,14 +190,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S6.png )
    
-7. In **Step 4: Migration mode** blade, select **Online migration** and click on **Next**.
+7. In **Step 4: Azure Database Migration Service** blade, select **Online migration**,Select the location of the database backups to use during migration: **select My database backups are on a network share** and Click on **Create new** under Azure Data Migration Service.
 
    ![](media/Ex2-Task5-S7.png) 
    
 8. In **Step 5: Data source configuration** blade, enter the following details and click on **Next**:
    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
-
-   - **Select the location of the database backups to use during migration**: select My database backups are on a network share 
+ 
    - **Password**: Enter `Password.1234567890`
    - **Windows user account with read access to the network share location**: Enter `SQL2008-SUFFIX\sqlmiuser` 
    - **Password**: Enter `Password.1234567890`
@@ -208,7 +207,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S8.png) 
 
-9. In **Step 6: Azure Database Migration Service** blade, Click on **Create new** under Azure Data Migration Service.  
+9. In **Step 6: Azure Database Migration Service** blade, .  
 
    ![](media/Ex2-Task5-S9.png) 
 
