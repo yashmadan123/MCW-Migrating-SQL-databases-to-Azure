@@ -182,9 +182,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 5. Click on **Next**. In **Step 3: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
-  > Email/Username: <inject key="AzureAdUserEmail"></inject>
-  >
-  > Password: <inject key="AzureAdUserPassword"></inject>
+   - Email/Username: <inject key="AzureAdUserEmail"></inject>
+   - Password: <inject key="AzureAdUserPassword"></inject>
   
 6. The field will be populated with the details and click on **Next**. 
 
@@ -194,7 +193,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S7.png) 
    
-8. Under **Create Azure Database Migration Service** page, select `hands-on-lab-<inject key="Suffix" />` from drop-down menu, enter the name as `wwi-dms`, click on **create**.
+8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from drop-down menu, enter the name as `wwi-dms`, click on **create**.
   
    ![](media/Ex2-Task5-S8.png) 
 
