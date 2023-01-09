@@ -68,15 +68,15 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![](media/Ex1-install-s6.png "Windows start menu search")
 
-1. Once logged in, open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
+1. Open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
 
    ![](media/Ex1-Task1-S9.png "Windows start menu search")
    
-1. In the Azure Data Studio select **Extensions (1)**, enter **SQL Migrat (2)** into the search bar, select **Azure SQL Migrat (3)**, and click on **Install (4)**.  
+1. In the Azure Data Studio select **Extensions (1)** from the Activity Bar, enter **SQL Migration (2)** into the search bar, select **Azure SQL Migration (3)**, and click on **Install (4)**.  
 
-   ![](media/Ex1-Task1-S9b.png "Windows start menu search")
+   ![](media/Ex1-Task1-S9b.png)
 
-1. In the Azure Data Studio **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
+1. In the Azure Data Studio select **Connections (1)** from the Activity Bar, click on **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
   
     ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10.png "Connect to Server")
     
