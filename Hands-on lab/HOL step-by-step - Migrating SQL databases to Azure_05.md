@@ -44,9 +44,37 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
+1. Open Edge browser, naviagate to [Microsoft Integration Runtime](https://www.microsoft.com/en-us/download/confirmation.aspx?id=39717), this will download an installer for **Integration Runtime**, once it is downloaded click on **Open**.
+
+   ![](media/Ex1-install-s1.png "Windows start menu search")
+
+1. In **Welcome to the Microsoft Integration Runtime Setup Wizard**, click on **Next**.
+
+   ![](media/Ex1-install-s2.png "Windows start menu search")
+
+1. In **End-User License Agreement**, select the checkbox **I accept the terms in the License Agreement**, and click on **Next**.
+
+   ![](media/Ex1-install-s3.png "Windows start menu search")
+
+1. In **Destination Folder**, click on **Next**.
+
+   ![](media/Ex1-install-s4.png "Windows start menu search")
+
+1. In **Ready to install Microsoft Integration Runtime**, click on **Insatll**.
+
+   ![](media/Ex1-install-s5.png "Windows start menu search")
+
+1. Once the deployment is complted click on **Finish**.
+
+   ![](media/Ex1-install-s6.png "Windows start menu search")
+
 1. Once logged in, open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/Ex1-Task1-S9.png "Windows start menu search")
+   ![](media/Ex1-Task1-S9.png "Windows start menu search")
+   
+1. In the Azure Data Studio select **Extensions (1)**, enter **SQL Migrat (2)** into the search bar, select **Azure SQL Migrat (3)**, and click on **Install (4)**.  
+
+   ![](media/Ex1-Task1-S9b.png "Windows start menu search")
 
 1. In the Azure Data Studio **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
   
