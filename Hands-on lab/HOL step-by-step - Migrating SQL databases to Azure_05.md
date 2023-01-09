@@ -51,6 +51,10 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 1. In the Azure Data Studio **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
   
     ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10.png "Connect to Server")
+    
+    > **Note**: If you see **Connection error** pop-up click on **Enable Trust server certificate**.
+
+      ![](media/ex1-note.png "Connect issue")
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
