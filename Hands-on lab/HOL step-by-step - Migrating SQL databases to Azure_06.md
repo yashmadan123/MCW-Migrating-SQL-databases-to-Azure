@@ -231,7 +231,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Password**: Enter `Password.1234567890` 
    - **Resource Group**: Select `hands-on-lab-######` 
    - **Storage account**: Select the `sqlmistore######` storage account. 
-   - **Target database name**: Add SUFFIX at the end
+   - **Target database name**: **WideWorldImportersSUFFIX**, make sure to Add **SUFFIX** at the end.
    - **Network share path**: Enter `\\SQL2008-SUFFIX\dms-backups`.
 
       ![](media/Ex2-Task5-S13.png)
