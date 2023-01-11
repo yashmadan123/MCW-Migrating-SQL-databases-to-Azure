@@ -193,7 +193,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S7.png) 
    
-8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from drop-down menu, enter the name as `wwi-dms`, click on **create**.
+8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from drop-down menu, enter the name as `wwi-sqldms`, click on **create**.
   
    ![](media/Ex2-Task5-S8.png) 
 
