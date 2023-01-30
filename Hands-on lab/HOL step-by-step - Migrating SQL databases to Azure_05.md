@@ -99,7 +99,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.1.png "New project settings")
 
 4. Select **Create**.
 
@@ -116,7 +116,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
 
 7. Select **Connect**.
 
@@ -150,7 +150,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database Managed Instance**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.1.png "New project settings")
 
 3. Select **Create**.
 
@@ -167,7 +167,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/dma2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
 
 6. Select **Connect**.
 
