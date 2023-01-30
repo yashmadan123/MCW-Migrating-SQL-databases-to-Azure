@@ -63,7 +63,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
    ![The Yes button is highlighted in the Confirm Account Change dialog.](media/confirm-account-change.png "Confirm Account Change")
 
-6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `.\sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
