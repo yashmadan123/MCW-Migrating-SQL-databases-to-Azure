@@ -26,7 +26,11 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
 
-    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
+    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/latestupdate1.4.png "Visual Studio")
+    
+1. Once you signed in, Click on **Start Visual Studio**.
+
+    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/latestupdate1.5.png "Visual Studio")
 
 1. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
