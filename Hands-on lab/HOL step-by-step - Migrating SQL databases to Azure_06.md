@@ -202,11 +202,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
-   - **SQL Username**: Enter `sqlmiuser`
-   - **Password**: Enter `Password.1234567890`
+   - **SQL Username**: Enter `contosoadmin`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.1.png "Migration Wizard Select source")
-   
+   ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/h2.png "Migration Wizard Select target")
+
 8. Select **Next : Select databases**.
 
 9. On the Migration Wizard **Select databases** tab, select `WideWorldImporters`.
@@ -365,11 +365,11 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
-   - **Login**: Enter `sqlmiuser`
-   -  **Password**: Enter `Password.1234567890`
+   - **Login**: Enter `contosoadmin`
+   -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.2.png "Migration Wizard Select source")
+   ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
 8. Select **Connect**. 
 
