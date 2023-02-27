@@ -151,7 +151,8 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    ```
 
    > **Note**
-   >
+   > Copy the powershell command in a notepad file and make the required changes and paste it in the cloud shell pane for convenience.
+   
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
