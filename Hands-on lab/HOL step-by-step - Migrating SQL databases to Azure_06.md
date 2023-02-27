@@ -52,7 +52,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
-   - **Account name**: `contosoadmin`
+   - **Account name**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
@@ -151,7 +151,8 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    ```
 
    > **Note**
-   >
+   > Copy the powershell command in a notepad file and make the required changes and paste it in the cloud shell pane for convenience.
+   
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
@@ -203,7 +204,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
    - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
 
    ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.1.png "Migration Wizard Select source")
    
@@ -366,10 +367,10 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
-   -  **Password**: Enter `Password.1234567890`
+   -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.2.png "Migration Wizard Select source")
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/loginexcercise2.png "Migration Wizard Select source")
 
 8. Select **Connect**. 
 
