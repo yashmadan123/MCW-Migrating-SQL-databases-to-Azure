@@ -52,7 +52,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
-   - **Account name**: `contosoadmin`
+   - **Account name**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
    ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
@@ -202,8 +202,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
-   - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `Password.1234567890`
+   - **SQL Username**: Enter `sqlmiuser`
+   - **Password**: Enter `IAE5fAijit0w^rDM`
 
    ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.1.png "Migration Wizard Select source")
    
@@ -365,8 +365,8 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
-   - **Login**: Enter `contosoadmin`
-   -  **Password**: Enter `Password.1234567890`
+   - **Login**: Enter `sqlmiuser`
+   -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
    ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.2.png "Migration Wizard Select source")
