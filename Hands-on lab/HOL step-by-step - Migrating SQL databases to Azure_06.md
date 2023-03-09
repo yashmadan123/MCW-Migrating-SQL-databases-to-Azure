@@ -206,7 +206,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **SQL Username**: Enter `contosoadmin`
    - **Password**: Enter `IAE5fAijit0w^rDM`
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/latestupdate1.1.png "Migration Wizard Select source")
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/datamodimg-1.png "Migration Wizard Select source")
    
 8. Select **Next : Select databases**.
 
