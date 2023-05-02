@@ -121,7 +121,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 1. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/EX1-T1-S8.png "Add sources")
 
 9. Select **Start Assessment**.
 
@@ -156,22 +156,21 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
-5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side and select **Connect (7)**:
 
-   - **Server name**: Enter <inject key="SQLVM Name" />.
-   - **Authentication type**: Select **SQL Server Authentication**.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Encrypt connection**: Check this box.
-   - **Trust server certificate**: Check this box.
+   - **Server name**: Enter <inject key="SQLVM Name" /> **(1)**.
+   - **Authentication type**: Select **SQL Server Authentication (2)**.
+   - **Username**: Enter `WorkshopUser` **(3)**
+   - **Password**: Enter `Password.1234567890` **(4)**
+   - **Encrypt connection**: Check this box. **(5)**
+   - **Trust server certificate**: Check this box. **(6)**
 
    ![In the Connect to a server dialog, the values specified above are entered.](media/EX1-T2-S6.png "Connect to a server")
 
-6. Select **Connect**.
 
-7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
+1. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/EX1-T1-S8.png "Add sources")
 
 8. Select **Start Assessment**.
 

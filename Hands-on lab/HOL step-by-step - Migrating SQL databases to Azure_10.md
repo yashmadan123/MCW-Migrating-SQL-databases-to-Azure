@@ -114,9 +114,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    ALTER COLUMN [LoginEmail] NVARCHAR(250) MASKED WITH (FUNCTION = 'Email()');
    ```
 
-   > **Note**
-   >
-   > Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
+   > **Note**: Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
     > Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
