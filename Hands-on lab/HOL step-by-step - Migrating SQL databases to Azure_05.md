@@ -107,20 +107,19 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side and select **Connect (7)**:
 
-   - **Server name**: Enter <inject key="SQLVM Name" />.
-   - **Authentication type**: Select **SQL Server Authentication**.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Encrypt connection**: Check this box.
-   - **Trust server certificate**: Check this box.
+   - **Server name**: Enter <inject key="SQLVM Name" /> **(1)**.
+   - **Authentication type**: Select **SQL Server Authentication (2)**.
+   - **Username**: Enter `WorkshopUser` **(3)**
+   - **Password**: Enter `Password.1234567890` **(4)**
+   - **Encrypt connection**: Check this box. **(5)**
+   - **Trust server certificate**: Check this box. **(6)**
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/EX1-T2-S6.png "Connect to a server")
 
-7. Select **Connect**.
 
-8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
+1. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
    ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
 
@@ -142,19 +141,18 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-2. In the New project pane, set the following:
+2. In the New project pane, set the following and select **create (6)**:
 
-   - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToSqlMi`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database Managed Instance**.
+   - **Project type**: Select **Assessment (1)**.
+   - **Project name**: Enter `ToSqlMi` **(2)**
+   - **Assessment type**: Select **Database Engine (3)**.
+   - **Source server type**: Select **SQL Server (4)**.
+   - **Target server type**: Select **Azure SQL Database Managed Instance (5)**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.1.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/EX1-T3-S2.png "New project settings")
 
-3. Select **Create**.
 
-4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
+1. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
@@ -167,7 +165,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/EX1-T2-S6.png "Connect to a server")
 
 6. Select **Connect**.
 
