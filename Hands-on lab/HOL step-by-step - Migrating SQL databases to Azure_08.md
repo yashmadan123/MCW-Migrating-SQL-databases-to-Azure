@@ -8,7 +8,7 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
-1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
+1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
@@ -27,25 +27,26 @@ In this task, you add the networking configuration to your App Service to enable
 
 4. On the Network Feature Status dialog, enter the following and click **OK**.
 
-   - **Virtual Network**: Select the vnet-sqlmi--cus.
+   - **Virtual Network**: Select the vnet-sqlmi-cus.
    - **Subnet**: Select any existing subnet from the drop down menu. 
 
       ![image](media/EX4-T1-S4.png)
 
-   - **Note**: If you see **Failed to add delegation to existing subnet** please select any other available subnet from the list of dropdown.
-  > **Note**: If you are not able to select any existing subnet, then follow the below steps.
-   - Select the create new subnet option and enter name as Webappsubnet<inject key="Suffix" />. Select the Virtual Network address block i.e, 10.0.0.0/16 from the drop down list. In the subnet address block enter new address block 10.0.x.0/24 for the subnet, make sure it is not overlapping other subnet's address.
-  > **Note**: If the address space is overlapping with other subnets, change the virtual network address block by selecting a different virtual network address block i.e, 10.1.0.0/16 or 10.2.0.0/16 from the drop-down. In the subnet address block, enter 10.1.xx.0/24 or 10.2.xx.0/24 according to the virtual network address block you have selected and make sure it is not overlapping the other subnet's address.
+   >**Note**: If you see **Failed to add delegation to existing subnet** please select any other available subnet from the list of dropdown.
+   
+   >**Note**: If you are not able to select any existing subnet, then follow the below steps.
+   
+   - Select the create new subnet option and enter name as **Webappsubnet<inject key="Suffix" />**. Select the Virtual Network address block i.e, 10.0.0.0/16 from the drop down list. In the subnet address block enter new address block 10.0.x.0/24 for the subnet, make sure it is not overlapping other subnet's address.
+   
+   >**Note**: If the address space is overlapping with other subnets, change the virtual network address block by selecting a different virtual network address block i.e, 10.1.0.0/16 or 10.2.0.0/16 from the drop-down. In the subnet address block, enter 10.1.xx.0/24 or 10.2.xx.0/24 according to the virtual network address block you have selected and make sure it is not overlapping the other subnet's address.
 
-   ![The values specified above are entered into the Network Feature Status dialog.](media/EX2-T1-S4-1.png "App Service")
+   ![The values specified above are entered into the Network Feature Status dialog.](media/EX4-T1-S4-1.png "App Service")
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select Refresh to confirm whether the Vnet is connected or not.
 
    ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/updated19.png "App Service")
 
-   > **Note**
-   >
-   > If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
+   >**Note**: If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 
 ### Task 2: Open the web application
 
@@ -59,8 +60,6 @@ In this task, you verify your web application now loads, and you can see the hom
 
    ![Screenshot of the WideWorldImporters Operations Web App.](media/wwi-web-app.png "WideWorldImporters Web")
 
-   > **Note**
-   >
-   > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
+   > **Note**: It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
