@@ -18,13 +18,13 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/EX1-T1-S2.png "Resource groups list")
 
-1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
+1. In the list of resources from your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
    ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
+1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu.
 
    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
 
@@ -34,24 +34,24 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
 
-1. Enter the following credentials when prompted, and then select **OK**:
+1. Enter the following credentials when prompted, and then select **OK (3)**:
 
-   - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Username**: `sqlmiuser` (2)
+   - **Password**: `Password.1234567890` (3)
 
-   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
+   ![The credentials specified above are entered into the Enter your credentials dialog.](media/EX1-T1-S7.png "Enter your credentials")
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
+1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server (1)** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17 (2)** from the search results.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/EX1-T1-S9.png "Windows start menu search")
 
-1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> **(1)** into the Server name box, ensure **Windows Authentication (2)** is selected, and then select **Connect (3)**.
   
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/EX1-T1-S10.png "Connect to Server")
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
@@ -79,48 +79,47 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
+
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, launch DMA from the Windows Start menu by typing **data migration (1)** into the search bar and then selecting **Microsoft Data Migration Assistant (2)** in the search results.
 
-   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
+   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/EX1-T2-S1.png "Data Migration Assistant")
 
 2. In the DMA dialog, select **+** from the left-hand menu to create a new project.
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-3. In the New project pane, set the following:
+3. In the New project pane, set the following and select **Create (6)**:
 
-   - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToAzureSqlDb`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database**.
+   - **Project type**: Select **Assessment (1)**.
+   - **Project name**: Enter `ToAzureSqlDb` **(2)**
+   - **Assessment type**: Select **Database Engine (3)**.
+   - **Source server type**: Select **SQL Server (4)**.
+   - **Target server type**: Select **Azure SQL Database (5)**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.1.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/EX1-T2-S3.png "New project settings")
 
-4. Select **Create**.
 
-5. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
+1. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** checkboxes are checked and then select **Next (2)**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side and select **Connect (7)**:
 
-   - **Server name**: Enter <inject key="SQLVM Name" />.
-   - **Authentication type**: Select **SQL Server Authentication**.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Encrypt connection**: Check this box.
-   - **Trust server certificate**: Check this box.
+   - **Server name**: Enter <inject key="SQLVM Name" /> **(1)**.
+   - **Authentication type**: Select **SQL Server Authentication (2)**.
+   - **Username**: Enter `WorkshopUser` **(3)**
+   - **Password**: Enter `Password.1234567890` **(4)**
+   - **Encrypt connection**: Check this box. **(5)**
+   - **Trust server certificate**: Check this box. **(6)**
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/EX1-T2-S6.png "Connect to a server")
 
-7. Select **Connect**.
 
-8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
+1. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
    ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
 
@@ -142,19 +141,18 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-2. In the New project pane, set the following:
+2. In the New project pane, set the following and select **create (6)**:
 
-   - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToSqlMi`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
-   - **Target server type**: Select **Azure SQL Database Managed Instance**.
+   - **Project type**: Select **Assessment (1)**.
+   - **Project name**: Enter `ToSqlMi` **(2)**
+   - **Assessment type**: Select **Database Engine (3)**.
+   - **Source server type**: Select **SQL Server (4)**.
+   - **Target server type**: Select **Azure SQL Database Managed Instance (5)**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.1.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/EX1-T3-S2.png "New project settings")
 
-3. Select **Create**.
 
-4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
+1. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
 
@@ -167,7 +165,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/EX1-T2-S6.png "Connect to a server")
 
 6. Select **Connect**.
 

@@ -138,9 +138,9 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
-4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
+4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a odl_user prompt.
 
-   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
+   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/EX2-T4-S4.png "Azure Cloud Shell")
 
 5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with: <inject key="SQLVM Name" />. 
 
@@ -202,11 +202,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Key**:  <inject key="Application Secret Key" />
    - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
    - **Subscription**: Select the subscription you are using for this hand-on lab.
-   - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
+   - **Target Azure SQL Managed Instance**: Select the sqlmi-cus instance.
    - **SQL Username**: Enter `contosoadmin`
    - **Password**: Enter `IAE5fAijit0w^rDM`
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/datamodimg-1.png "Migration Wizard Select source")
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/EX2-T5-S7-2.png "Migration Wizard Select source")
    
 8. Select **Next : Select databases**.
 
@@ -225,7 +225,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistore######** storage account.
 
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm12.png "Migration Wizard Configure migration settings")
+    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/EX2-T5-S11.png "Migration Wizard Configure migration settings")
  
  - Click on **Advance Settings**. 
  - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
@@ -339,9 +339,9 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
+3. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a odl_user prompt.
 
-   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
+   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/EX2-T4-S4.png "Azure Cloud Shell")
 
 4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command.
 
