@@ -44,7 +44,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-1. Open Edge browser, naviagate to [Microsoft Integration Runtime](https://www.microsoft.com/en-us/download/confirmation.aspx?id=39717), this will download an installer for **Integration Runtime**, once it is downloaded click on **Open**.
+1. Open Edge browser, naviagate to [Microsoft Integration Runtime](https://download.microsoft.com/download/E/4/7/E4771905-1079-445B-8BF9-8A1A075D8A10/IntegrationRuntime_5.27.8466.1.msi), this will download an installer for **Integration Runtime**, once it is downloaded click on **Open**.
 
    ![](media/Ex1-install-s1.png "Windows start menu search")
 
