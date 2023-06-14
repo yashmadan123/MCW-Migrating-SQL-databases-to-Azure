@@ -18,9 +18,9 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
-1. If prompted about how you want to open the file, select **Visual Studio 2019**, and then select **OK**.
+1. If prompted about how you want to open the file, select **Visual Studio 2022**, and then select **OK**.
 
-    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
+    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/vs2022.png "Visual Studio")
 
 1. Select **Sign in** and enter the following Azure account credentials when prompted:
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
@@ -46,9 +46,9 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/updated17.png "Publish API App to Azure")
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/close.png "Publish API App to Azure")
 
-1. Select **Finish**.
+1. Select **Close**.
 
 1. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
