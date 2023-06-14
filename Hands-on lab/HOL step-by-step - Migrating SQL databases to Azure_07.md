@@ -18,9 +18,9 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
-1. If prompted about how you want to open the file, select **Visual Studio 2019**, and then select **OK**.
+1. If prompted about how you want to open the file, select **Visual Studio 2022**, and then select **OK**.
 
-    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
+    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/vs2022.png "Visual Studio")
 
 1. Select **Sign in** and enter the following Azure account credentials when prompted:
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
