@@ -256,27 +256,23 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. Navigate to Azure portal's in search bar search for **Database Migration Services** and select **Azure Database Migration Services**.
+1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-sqldms** **Database Migration Services** and select.
 
-   ![](media/EX2-task6-s1.png)
+   ![](media/sql-dms.png)
 
-2. In **Azure Database Migration Services** blade, select **wwi-sqldms** resource. 
-
-   ![](media/EX2-task6-s2.png)
-
-3. In **wwi-sqldms** balde, click on **Migrations**, and selct **WideWorldImporters** under Source database
+1. In **wwi-sqldms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" />** under **Source name**.
   
-   ![](media/EX2-task6-s3.png)
+   ![](media/sql-2008.png)
 
-4. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
+1. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
    ![](media/EX2-task6-s4.png)
    
-4. Navigate back to the **Azure Data stuido**, right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)**.
+1. Navigate back to the **Azure Data stuido**, right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)**.
 
     ![](media/Ex1-Task1-S12.png) 
 
-6. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
+1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
    ```sql
    USE WideWorldImporters;
@@ -286,11 +282,11 @@ Since you performed an "online data migration," the migration wizard continuousl
    VALUES ('Space Adventure', 'Explore the universe with our newest online multiplayer gaming experience. Build custom rocket ships and take off for the stars in an infinite open-world adventure.', 'T', 1)
    ```
 
-7. To run the script, select **Run** from the Azure Data Studio toolbar.
+1. To run the script, select **Run** from the Azure Data Studio toolbar.
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-8. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
+1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
 
    ```sql
    USE master;
@@ -302,11 +298,11 @@ Since you performed an "online data migration," the migration wizard continuousl
    GO
    ```
 
-9. To run the script, select **Run** from the Azure Data Studio toolbar.
+1. To run the script, select **Run** from the Azure Data Studio toolbar.
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-10. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
+1. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
 
       ![](media/EX2-task6-s10.png)
 
@@ -314,33 +310,33 @@ Since you performed an "online data migration," the migration wizard continuousl
    >
    > If you don't see it the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
-11. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
+1. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
-12. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
+1. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
     ![A status of Restored is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-transaction-log-restored.png)
 
-13. Navigate back to the **Azure Data stuido**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database 
+1. Navigate back to the **Azure Data stuido**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database 
 
       ![](media/EX2-task6-s13.png)
 
-14. After verifying the transaction log status of **Restored**, select **Start Cutover**.
+1. After verifying the transaction log status of **Restored**, select **Start Cutover**.
 
     ![](media/EX2-task6-s14.png)
 
-15. On the Complete cutover dialog, verify that log backups pending restore is `0`, check **confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialog, verify that log backups pending restore is `0`, check **confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s15.png)
 
-16. Move back to the Migration blade, verify that the migration status of WideWorldImporters have to change to **Succeeded**. You might have to refresh couple of times to see the status as Succeeded.
+1. Move back to the Migration blade, verify that the migration status of WideWorldImporters have to change to **Succeeded**. You might have to refresh couple of times to see the status as Succeeded.
 
     ![](media/EX2-task6-s16.png)
 
-17. You can also view the migration status in the azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
+1. You can also view the migration status in the azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
 
     ![](media/EX2-task6-s17.png)
 
-18. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
+1. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
 ### Task 7: Verify database and transaction log migration
 
