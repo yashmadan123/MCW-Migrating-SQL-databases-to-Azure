@@ -10,6 +10,8 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab select the Managed database named **<inject key="Database Name" enableCopy="false"/>**.
 
+   >**Note**: The SQL Managed instance you are accessing here is a shared resource used by all users with the necessary permissions.
+
 1. On the <inject key="Database Name" enableCopy="false"/> Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
 
    ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
