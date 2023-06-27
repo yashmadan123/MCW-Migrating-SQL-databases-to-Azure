@@ -60,15 +60,15 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![](media/Ex1-install-s4.png "Windows start menu search")
 
-1. In **Ready to install Microsoft Integration Runtime**, click on **Insatll**.
+1. In **Ready to install Microsoft Integration Runtime**, click on **Install**.
 
    ![](media/Ex1-install-s5.png "Windows start menu search")
 
-1. Once the deployment is complted click on **Finish**.
+1. Once the deployment is completed click on **Finish** and minimize the application.
 
    ![](media/Ex1-install-s6.png "Windows start menu search")
 
-1. Open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
+1. Next, open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
 
    ![](media/Ex1-Task1-S9.png "Windows start menu search")
    
