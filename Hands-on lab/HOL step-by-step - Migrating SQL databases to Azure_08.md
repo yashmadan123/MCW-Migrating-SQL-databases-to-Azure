@@ -30,7 +30,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Virtual Network**: Select the `sqlmi-cus2`.
    - **Subnet**: Select any existing subnet from the drop-down menu. 
 
-      ![image](https://user-images.githubusercontent.com/45102602/171028272-b63fce6e-06fd-4f74-ba45-8bac755cb9d6.png)
+    ![](media/addvnet.png "App Service")
 
    - **Note**: If you see **Failed to add delegation to existing subnet** please select any other available subnet from the list of dropdowns.
   > **Note**: If you are not able to select any existing subnet, then follow the below steps.
