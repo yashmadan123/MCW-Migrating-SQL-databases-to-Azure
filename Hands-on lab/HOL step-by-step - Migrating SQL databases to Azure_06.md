@@ -32,7 +32,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 6. Back on the File Sharing dialog, note the shared folder's path, ```\\SQL2008-SUFFIX\dms-backups```, and select **Done** to complete the sharing process.
 
-   ![The Done button is highlighted on the File Sharing dialog.](media/file-sharing-done.png "File Sharing")
+   ![The Done button is highlighted on the File Sharing dialog.](./media/file-sharing-done1.png)
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
