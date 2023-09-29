@@ -79,7 +79,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 2. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-   ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+   ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](./media/ssms1.png)
 
 3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
 
@@ -87,11 +87,11 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This device is no longer needed, so select it and then select **Remove**.
 
-   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
+   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove1.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
-   ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](media/ssms-back-up-database-general.png "Back Up Database")
+   ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](media/ssms-back-up-database-general1.png "Back Up Database")
 
 6. In the Select Backup Destination dialog, select the Browse (`...`) button.
 
