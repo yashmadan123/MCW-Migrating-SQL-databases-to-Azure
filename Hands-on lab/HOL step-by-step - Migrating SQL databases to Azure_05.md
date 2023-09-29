@@ -172,13 +172,13 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2a.png)
 
 6. Select **Connect**.
 
 7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1a.png)
 
 8. Select **Start Assessment**.
 
@@ -186,9 +186,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 
-   ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
+   ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mia.png)
 
-   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2.png "Compatibility issues")
+   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2a.png)
 
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
