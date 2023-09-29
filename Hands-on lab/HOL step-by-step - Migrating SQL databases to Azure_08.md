@@ -21,7 +21,7 @@ In this task, you add the networking configuration to your App Service to enable
    ![Add VNet is highlighted on the VNet Configuration blade.](media/Vnet-integration.png "App Service")
 
 
-3. Now select **Click here to configure** under **VNet Integration** and then click on **Add VNet** on the VNet Configuration blade.
+3. Now click on **Add virtual network integration** under **VNet Integration**.
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration1.png)
 
@@ -30,7 +30,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Virtual Network**: Select the `sqlmi-cus2`.
    - **Subnet**: Select any existing subnet from the drop-down menu. 
 
-    ![](media/addvnet.png "App Service")
+    ![](media/addvnet1.png "App Service")
 
    - **Note**: If you see **Failed to add delegation to existing subnet** please select any other available subnet from the list of dropdowns.
   > **Note**: If you are not able to select any existing subnet, then follow the below steps.
