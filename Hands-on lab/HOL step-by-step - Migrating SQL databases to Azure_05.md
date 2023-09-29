@@ -32,7 +32,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![](./media/Page3_Step4.png)
 
-1. Open RDP on you JumpBox VM and then paste the copied IP address. Then click on **Connect**
+1. Open RDP on you JumpBox VM and then paste the copied IP address. Then click on **Connect**.
 
    ![](./media/Page3_Step5a.png)
    
@@ -48,15 +48,15 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
-
+    ![](./media/Page3_Step8.png)
+  
 1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
 1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
   
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+   ![](./media/ssms.png)
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
