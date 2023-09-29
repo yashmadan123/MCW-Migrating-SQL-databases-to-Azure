@@ -121,13 +121,13 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
+    ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
 
 7. Select **Connect**.
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1.png)
 
 9. Select **Start Assessment**.
 
