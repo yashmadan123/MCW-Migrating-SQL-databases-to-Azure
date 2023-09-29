@@ -121,7 +121,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
 
 7. Select **Connect**.
 
