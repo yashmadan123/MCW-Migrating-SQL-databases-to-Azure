@@ -50,11 +50,11 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App, Click on **Finish**.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/newupdatedphoto1.png "Publish API App to Azure")
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](./media/newupdatedphoto12.png)
 
 1. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
-    ![The Publish button is highlighted on the Publish page in Visual Studio.](media/wwi-web-publish.png "Publish")
+    ![The Publish button is highlighted on the Publish page in Visual Studio.](./media/wwi-web-publish1.png)
 
 1. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
@@ -102,9 +102,9 @@ Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSUFFIX;Use
 
 8. The updated value should look similar to the following screenshot.
 
-   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
+   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](./media/app-service-configuration-edit-conn-string-value1.png)
    
-   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/latestupdate1.3.png "Connection string value")
+   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/latestupdate1.32.png)
 
 9. Select **OK**.
 
