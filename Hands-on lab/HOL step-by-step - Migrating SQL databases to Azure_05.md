@@ -28,7 +28,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
 
-1. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+1. On the Connect page copy the IP address under Connecting using public IP address.
+
+   ![](./media/Page3_Step4.png)
 
 1. Select **Connect** on the Remote Desktop Connection dialog.
 
