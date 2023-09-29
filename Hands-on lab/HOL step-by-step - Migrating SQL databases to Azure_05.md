@@ -32,9 +32,12 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![](./media/Page3_Step4.png)
 
-1. Select **Connect** on the Remote Desktop Connection dialog.
+1. Open RDP on you JumpBox VM and then paste the copied IP address. Then click on **Connect**
 
-   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+   ![](./media/Page3_Step5a.png)
+   
+   ![](./media/Page3_Step5b.png)
+   
 
 1. Enter the following credentials when prompted, and then select **OK**:
 
