@@ -10,11 +10,11 @@ In this task, you add the networking configuration to your App Service to enable
 
 1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-UNIQUEID** App Service from the list of resources.
 
-   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
+   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service1.png)
 
 2. On the App Service blade, select **Networking** from the left-hand menu.
 
-   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/networking.png "App Service")
+   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/networking1.png)
 
 3. On the **Networking** page, click on the **VNet integration** within **Outbound Traffic**.
 
@@ -23,7 +23,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 3. Now select **Click here to configure** under **VNet Integration** and then click on **Add VNet** on the VNet Configuration blade.
 
-   ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration.png "App Service")
+   ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration1.png)
 
 4. On the Network Feature Status dialog, enter the following and click **OK**.
 
@@ -41,7 +41,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select Refresh to confirm whether the Vnet is connected or not.
 
-   ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/updated19.png "App Service")
+   ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/updated191.png)
 
    > **Note**
    >
