@@ -21,7 +21,7 @@ In this task, you add the networking configuration to your App Service to enable
    ![Add VNet is highlighted on the VNet Configuration blade.](media/Vnet-integration.png "App Service")
 
 
-3. Now click on **Add virtual network integration** under **VNet Integration**.
+3. Now click on **Add virtual network integration** under **Virtual Network Integration**.
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration1.png)
 
