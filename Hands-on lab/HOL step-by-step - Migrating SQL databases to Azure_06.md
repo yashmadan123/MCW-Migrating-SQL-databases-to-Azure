@@ -110,7 +110,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
    - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**.
    - Under Reliability, check the box for **Perform checksum before writing to media**. A checksum is required by DMS when using the backup to restore the database to SQL MI.
 
-   ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
+   ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options1.png "Back Up Database")
 
 10. Select **OK** to perform the backup.
 
