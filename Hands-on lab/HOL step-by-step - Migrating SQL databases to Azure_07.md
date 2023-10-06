@@ -14,7 +14,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
 
-1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
+1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
@@ -32,7 +32,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/latestupdate1.5.png "Visual Studio")
 
-1. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
+    >**Note:** If the the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
@@ -48,13 +48,11 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/updated16.png "Publish API App to Azure")
 
-1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App, Click on **Finish**.
+1. In the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App, Click on **Finish**.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](./media/newupdatedphoto12.png)
+1. Finally, in the **Publish profile creation progress page**, select the checkbox of **Automatically close when succeeded**, and select **Close**.
 
 1. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
-
-    ![The Publish button is highlighted on the Publish page in Visual Studio.](./media/wwi-web-publish1.png)
 
 1. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
@@ -68,13 +66,13 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
-1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the Azure services list.
+1. In the Azure portal `https://portal.azure.com`, in **Search resources, services, and docs** search for **Resource groups** and select it from the services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+   ![Resource groups is highlighted in the Azure services list.](media/Rg-1.png "Azure services")
 
 2. Select the <inject key="Resource Group Name" enableCopy="false"/> resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
 
 3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
@@ -91,14 +89,12 @@ In this task, you update the WWI gamer info web application to connect to and ut
 6. The value of the connection string should look like this:
 
     
-`` 
-Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSUFFIX;User     ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
-``
+    `` 
+    Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSUFFIX;User     ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
+    ``
    
 
 7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" /> and also change the UserID with `contosoadmin` and Password with `IAE5fAijit0w^rDM`.
-
-   ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/9.png "Edit Connection String")
 
 8. The updated value should look similar to the following screenshot.
 

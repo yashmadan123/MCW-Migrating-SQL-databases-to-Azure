@@ -12,9 +12,9 @@ In this exercise, you use the Microsoft Data Migration Assistant (DMA) to perfor
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+1. Navigate to the [Azure portal](https://portal.azure.com), in **Search resources, services, and docs** search for **Resource groups** and select it from the services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+   ![Resource groups is highlighted in the Azure services list.](media/Rg-1.png "Azure services")
 
 1. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
@@ -22,11 +22,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
-   ![The SqlServer2008 VM is highlighted in the list of resources.](./media/vmrg.png)
+   ![The SqlServer2008 VM is highlighted in the list of resources.](./media/vmrg1.png)
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
-
-   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
+1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect**, as you've done previously.
 
 1. On the Connect page copy the IP address under Connecting using public IP address.
 
@@ -104,9 +102,9 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.1.png "New project settings")
-
 4. Select **Create**.
+
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.1.png "New project settings")
 
 5. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
@@ -121,9 +119,9 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-    ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
-
 7. Select **Connect**.
+
+   ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
@@ -155,9 +153,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database Managed Instance**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.1.png "New project settings")
-
 3. Select **Create**.
+
+   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.1.png "New project settings")
 
 4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
@@ -172,9 +170,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2a.png)
-
 6. Select **Connect**.
+
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2a.png)
 
 7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
