@@ -22,17 +22,22 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
-   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
+   ![The SqlServer2008 VM is highlighted in the list of resources.](./media/vmrg.png)
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
 
    ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
 
-1. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+1. On the Connect page copy the IP address under Connecting using public IP address.
 
-1. Select **Connect** on the Remote Desktop Connection dialog.
+   ![](./media/Page3_Step4.png)
 
-   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+1. Open RDP on you JumpBox VM and then paste the copied IP address. Then click on **Connect**.
+
+   ![](./media/Page3_Step5a.png)
+   
+   ![](./media/Page3_Step5b.png)
+   
 
 1. Enter the following credentials when prompted, and then select **OK**:
 
@@ -43,15 +48,15 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
-
+    ![](./media/Page3_Step8.png)
+  
 1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
 1. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
   
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+   ![](./media/ssms.png)
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
@@ -116,21 +121,21 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+    ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
 
 7. Select **Connect**.
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1.png)
 
 9. Select **Start Assessment**.
 
-   ![Start assessment](media/dma-start-assessment-to-azure-sql-db.png "Start assessment")
+   ![Start assessment](media/dma-start-assessment-to-azure-sql-db1.png "Start assessment")
 
 10. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
 
-    ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
+    ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](./media/dma-feature-parity-service-broker-not-supported1.png)
 
     > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
@@ -167,13 +172,13 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2.png "Connect to a server")
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2a.png)
 
 6. Select **Connect**.
 
 7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm1.png "Add sources")
+   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1a.png)
 
 8. Select **Start Assessment**.
 
@@ -181,9 +186,9 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 
-   ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
+   ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mia.png)
 
-   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2.png "Compatibility issues")
+   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/Sql-compatability2a.png)
 
 
 10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
