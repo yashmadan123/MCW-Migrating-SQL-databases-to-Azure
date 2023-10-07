@@ -362,7 +362,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 8. Select **Connect**. 
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/loginexcercise2.png "Migration Wizard Select source")
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](./media/mod7.png "Migration Wizard Select source")
 
 9. The SQL MI connection appears below the <inject key="SQLVM Name" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
