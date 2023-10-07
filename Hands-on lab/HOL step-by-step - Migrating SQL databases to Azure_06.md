@@ -224,8 +224,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](./media/dm121.png)
  
- - Click on **Advance Settings**. 
- - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
+    - Click on **Advance Settings**. 
+    - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
 
 12. Select **Next : Summary >>**.
 
