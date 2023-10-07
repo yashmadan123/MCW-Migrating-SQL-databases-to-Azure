@@ -14,11 +14,11 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. On the <inject key="Database Name" enableCopy="false"/> Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
 
-   ![The Data Discovery & Classification tile is displayed.](./media/ads-data-discovery-and-classification-pane1.png)
+   ![The Data Discovery & Classification tile is displayed.](./media/mod8.png)
 
 1. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
 
-   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
+   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](./media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
 
 1. Look over the list of recommendations to get a better understanding of the types of data and classifications that can be assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the **Sales - CreditCard - CardNumber** field.
 
