@@ -24,18 +24,25 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![The SqlServer2008 VM is highlighted in the list of resources.](./media/vmrg1.png)
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect**, as you've done previously.
+1. Fromt the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect**.
 
-1. On the Connect page copy the IP address under Connecting using public IP address.
+   ![](./media/mod1.png)
 
-   ![](./media/Page3_Step4.png)
+1. On the **sql2008-1117397 | Connect** page, click on the **Select (1)** button in the **Native RDP** tile, on the **Native RDP** tab wait for **Configure prerequisites for Native RDP (2)** to validate, and then click on **Download RDP file (3)**. 
+  
+   ![](./media/mod2.png)
 
-1. Open RDP on you JumpBox VM and then paste the copied IP address. Then click on **Connect**.
+1. Click on **Keep**, on the Downloads pop-up. 
 
-   ![](./media/Page3_Step5a.png)
+   ![](./media/mod3.png)
+
+1. Click on **Open file**.
+
+   ![](./media/mod4.png)
+
+1. Next, on the RDP tab click on **Connect**.
    
-   ![](./media/Page3_Step5b.png)
-   
+   ![](./media/mod5.png)
 
 1. Enter the following credentials when prompted, and then select **OK**:
 
@@ -46,7 +53,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-    ![](./media/Page3_Step8.png)
+    ![](./media/mod6.png)
   
 1. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
