@@ -57,7 +57,7 @@
    - Enhanced lab guide instructions and updated screenshots with the latest UI related to Vnet Integration.
  ------------
  
-### 22 March 202
+### 22 March 2022
 
  - Minor updates in the lab.   
    - Enhanced lab guide instructions and updated screenshots with the latest UI from Microsoft Azure for better user experience.
