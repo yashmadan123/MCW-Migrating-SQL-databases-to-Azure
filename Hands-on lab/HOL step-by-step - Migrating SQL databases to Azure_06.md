@@ -229,13 +229,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 12. Select **Next : Summary >>**.
 
-      ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](./media/dm141.png)
+      ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](./media/migration-start.png)
 
 13. On the Migration Wizard **Summary** tab, enter `WwiMigration` as the **Activity name**.
 
 14. Select **Start migration**.
 
-      ![](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-migration-summary.png)
+      ![](./media/migration-completed.png)
 
 15. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
@@ -362,7 +362,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 8. Select **Connect**. 
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](./media/mod7.png "Migration Wizard Select source")
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](./media/sql-login.png "Migration Wizard Select source")
 
 9. The SQL MI connection appears below the <inject key="SQLVM Name" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
