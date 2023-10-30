@@ -24,7 +24,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/file-sharing.png)
+   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](media/fileshare-ex1-s4.png)
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
@@ -203,7 +203,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **SQL Username**: Enter `contosoadmin`
    - **Password**: Enter `IAE5fAijit0w^rDM`
 
-      ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/datamodimg-1.png "Migration Wizard Select source")
+      ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/select-target.png "Migration Wizard Select source")
    
 8. Select **Next : Select databases >>**.
 
@@ -220,7 +220,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter ```SQL2008-SUFFIX\sqlmiuser```.
     - **Password**: Enter `Password.1234567890`
     - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-    - **Storage account**: Select the **sqlmistore######** storage account.
+    - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
 
       ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](./media/dm121.png)
  
@@ -243,9 +243,9 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 ### Task 6: Perform migration cutover
 
-Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
+Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. In the Azure portal's migration status window and select **WideWorldImporters** under database name to view further details about the database migration.
+1. In the Azure portal's migration status window and select **WideWorldImporters** under the database name to view further details about the database migration.
 
    ![The WideWorldImporters database name is highlighted in the migration status window.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-database-name.png)
 
