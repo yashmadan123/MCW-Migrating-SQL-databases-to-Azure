@@ -115,7 +115,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 5. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
+   ![Check database compatibility and check feature parity are checked on the Options screen.](media/data-mig-ex1-t1-ex5.png "DMA options")
 
 6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
@@ -128,15 +128,15 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 7. Select **Connect**.
 
-   ![In the Connect to a server dialog, the values specified above are entered](./media/dma2.2.png)
+   ![In the Connect to a server dialog, the values specified above are entered](media/data-mig-ex1-t1-ex7.png)
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1.png)
+   ![The WideWorldImporters box is checked on the Add sources dialog.](media/data-mig-ex1-t1-ex8.png)
 
 9. Select **Start Assessment**.
 
-   ![Start assessment](media/dma-start-assessment-to-azure-sql-db1.png "Start assessment")
+   ![Start assessment](media/data-mig-ex1-t1-ex9.png "Start assessment")
 
 10. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
 
@@ -166,7 +166,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 4. On the **Options** screen, ensure **Check database compatibility (1)** and **Check feature parity (1)** are checked and then select **Next (2)**.
 
-   ![Check database compatibility and check feature parity are checked on the Options screen.](media/Sql-compatability.png "DMA options")
+   ![Check database compatibility and check feature parity are checked on the Options screen.](media/data-mig-ex1-t1-ex5.png "DMA options")
 
 5. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
@@ -179,15 +179,15 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 6. Select **Connect**.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma2.2a.png)
+   ![In the Connect to a server dialog, the values specified above are entered.](media/data-mig-ex1-t1-ex7.png)
 
 7. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
-   ![The WideWorldImporters box is checked on the Add sources dialog.](./media/dm1a.png)
+   ![The WideWorldImporters box is checked on the Add sources dialog.](media/data-mig-ex1-t1-ex8.png)
 
 8. Select **Start Assessment**.
 
-   ![Start assessment](media/dma-start-assessment-to-sql-mi.png "Start assessment")
+   ![Start assessment](media/data-mig-ex1-t1-ex9.png "Start assessment")
 
 9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 

@@ -46,7 +46,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
 
-    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/updated16.png "Publish API App to Azure")
+    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/vs-code.png "Publish API App to Azure")
 
 1. In the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App, Click on **Finish**.
 
