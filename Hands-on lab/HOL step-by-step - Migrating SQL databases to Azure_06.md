@@ -168,28 +168,28 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
-2. In **Step 1: Database for assessment** blade, select **widewordimplantation**, click on **Next**. 
+2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
    ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. In **Step 2: Assessment result and recommendation** blade, select **Azure SQL Database Managed Instance** from chose your Azure SQL target and scroll down, and scroll down till end click on **view/select**. 
+3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL serevr. Click on **Next (2)**. 
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/Ex1-Task3-S3.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S3.png "New project settings")
 
-4. Select **WideWorldImporters** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Select** button.
+4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance(1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database,and Click on the **Next** button.
 
    ![](media/Ex2-Task5-S4.png)
 
-5. Click on **Next**. In **Step 3: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
    - Email/Username: <inject key="AzureAdUserEmail"></inject>
    - Password: <inject key="AzureAdUserPassword"></inject>
   
 6. The field will be populated with the details and click on **Next**. 
 
-   ![](media/Ex2-Task5-S6.png )
+   ![](media/E2T5S6.png )
    
-7. In **Step 4: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration: **select My database backups are on a network share** and Click on **Create new** under Azure Data Migration Service.
+7. In **Step 5: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration: **select My database backups are on a network share** and Click on **Create new** under Azure Data Migration Service.
 
    ![](media/Ex2-Task5-S7.png) 
    
@@ -203,7 +203,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+10. On the **sql2008-SUFFIX** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
    
       ![](media/Ex2-Task5-S9.png) 
       
@@ -219,11 +219,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connction completed successfully click on **Done**. 
+14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connection completed successfully click on **Next**. 
 
     ![](media/Ex2-Task5-S12.png)
           
-15. In **Step 5: Data source configuration** blade, enter the following details and click on **Run Validate**:
+15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation**:
    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
    - **Password**: Enter `Password.1234567890`
@@ -234,19 +234,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Target database name**: **WideWorldImportersSUFFIX**, make sure to Add **SUFFIX** at the end.
    - **Network share path**: Enter `\\SQL2008-SUFFIX\dms-backups`.
 
-      ![](media/Ex2-Task5-S13.png)
+      ![](media/E2T5S15.png)
 
 16. In Run Validate page wait till all the validation steps are successfull then click on **Done**.
 
       ![](media/Ex2-Task5-S14.png)
 
-17. Once you back to **Step 5: Data source configuration** blade, click on **Next**.
+17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
       ![](media/Ex2-Task5-S15.png)
 
-18. In **Step 6: Summary** blade, click on **Start Migration** .
+18. In **Step 7: Summary** blade, click on **Start Migration** .
 
-    ![](media/Ex2-Task5-S16.png)
+    ![](media/E2T5S18.png)
 
 19. Click on **Migration (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
