@@ -6,13 +6,13 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 > **Note**
 >
-> Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read Connect your application to Azure SQL Managed Instance `https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance`.
+> Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where the Managed Instance is deployed. To learn more, read Connect your application to Azure SQL Managed Instance `https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance`.
 
 ### Task 1: Deploy the web app to Azure
 
 In this task, you will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
-1. You have already logged-in to JumpBox VM, use this VM to continue with the lab. 
+1. You have already logged in to JumpBox VM, use this VM to continue with the lab. 
 
 1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
@@ -23,6 +23,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/vs2022.png "Visual Studio")
 
 1. Select **Sign in** and enter the following Azure account credentials when prompted:
+   
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
 
@@ -87,37 +88,35 @@ In this task, you update the WWI gamer info web application to connect to and ut
    ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
 6. The value of the connection string should look like this:
-
     
   ``
   Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
    ``
-   
 
-7. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" /> .
+8. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
 
    ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/9.png "Edit Connection String")
 
-8. The updated value should look similar to the following screenshot.
+9. The updated value should look similar to the following screenshot.
 
    ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
 
-9. Select **OK**.
+10. Select **OK**.
 
-10. Repeat steps 3 - 7, this time for the `WwiReadOnlyContext` connection string.
+11. Repeat steps 3 - 7, this time for the `WwiReadOnlyContext` connection string.
 
-11. Select **Save** at the top of the Configuration blade.
+12. Select **Save** at the top of the Configuration blade.
 
     ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
 
-12. When prompted that changes to application settings and connection strings will restart your application, select **Continue**.
+13. When prompted that changes to application settings and connection strings will restart your application, select **Continue**.
 
     ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
 
-13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
+14. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
     ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
 
-14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where Managed Instance is deployed, which you handle in the next exercise.
+15. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
