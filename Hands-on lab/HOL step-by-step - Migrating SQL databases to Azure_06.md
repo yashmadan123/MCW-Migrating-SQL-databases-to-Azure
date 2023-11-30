@@ -4,7 +4,7 @@ Duration: 60 minutes
 
 In this exercise, you use the **Azure Database Migration Service** here `https://azure.microsoft.com/services/database-migration/` (DMS) to migrate the `WideWorldImporters` database from an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to minimize downtime. Targeting the **Business Critical service tier** here `https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers` allows WWI to meet its customer's high-availability requirements.
 
-> The Business Critical service tier is designed for business applications with the highest performance and high-availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
+> The Business Critical service tier is designed for business applications with the highest performance and high availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
@@ -18,7 +18,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
    ![In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu.](media/windows-explorer-new-folder.png "Windows Explorer")
 
-3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people** in the context menu.
+3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people...** in the context menu.
 
    ![In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted.](media/windows-explorer-folder-share-with.png "Windows Explorer")
 
@@ -38,13 +38,11 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
+1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter "SQL configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
-   > **Note**
-   >
-   > Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
+   > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
 
 2. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
 
@@ -55,7 +53,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
    - **Account name**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
-   ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
+      ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
 4. Select **OK**.
 
@@ -81,7 +79,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
+3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
 
    ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
 
@@ -97,7 +95,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
 
-7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter `WideWorldImporters.bak` into the File name field, and then select **OK**.
+7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter **WideWorldImporters.bak** into the File name field, and then select **OK**.
 
    ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted, and WideWorldImporters.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
 
@@ -110,7 +108,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
    - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**.
    - Under Reliability, check the box for **Perform checksum before writing to media**. A checksum is required by DMS when using the backup to restore the database to SQL MI.
 
-   ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
+      ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
 
 10. Select **OK** to perform the backup.
 
@@ -130,22 +128,22 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
+3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
   
       - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
 
-   ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
+         ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
 
 4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with: <inject key="SQLVM Name" />. 
+5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with <inject key="SQLVM Name" />. 
 
 
-   ```powershell
+   ```PowerShell
    $resourceGroup = "<your-resource-group-name>"
    az vm list-ip-addresses -g $resourceGroup -n VMNAME --output table
    ```
@@ -164,7 +162,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
+1. In Azure Data Studio click on **Azure SQL Migration** and click on **+ New migration**.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
@@ -172,42 +170,42 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL serevr. Click on **Next (2)**. 
+3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S3.png "New project settings")
 
-4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance(1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database,and Click on the **Next** button.
+4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database, and Click on the **Select** button.
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account was added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
-   - Email/Username: <inject key="AzureAdUserEmail"></inject>
-   - Password: <inject key="AzureAdUserPassword"></inject>
+   - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
+   - **Password**: <inject key="AzureAdUserPassword"></inject>
   
 6. The field will be populated with the details and click on **Next**. 
 
    ![](media/E2T5S6.png )
    
-7. In **Step 5: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration: **select My database backups are on a network share** and Click on **Create new** under Azure Data Migration Service.
+7. In **Step 4: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration select **My database backups are on a network share** and Click on **Create new** under Azure Database Migration Service.
 
    ![](media/Ex2-Task5-S7.png) 
    
-8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from drop-down menu, enter the name as `wwi-sqldms`, click on **create**.
+8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from the drop-down menu, enter the name as **wwi-sqldms**, and click on **create**.
   
    ![](media/Ex2-Task5-S8.png) 
 
-9. After the resources been created you can see similar output as shown in the below screenshot. Copy any of the **Authetication key** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
+9. After the resources have been created you can see similar output as shown in the below screenshot. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
 
    ![](media/Ex2-Task5-add.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. On the **sql2008-SUFFIX** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+10. On the **sql2008-<inject key="Suffix" />** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
    
       ![](media/Ex2-Task5-S9.png) 
       
-11. Paste the **Authetication key** in the box which you coped in earlier in the task and click on **Register**.
+11. Paste the **Authentication key** in the box which you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
@@ -215,28 +213,29 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11.png)
 
-13. Wait for Intergation Runtime to been successfull to continue further.
+13. Wait for the Integration Runtime to be successful to continue further.
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connection completed successfully click on **Next**. 
+14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connection is completed successfully click on **Done**. 
 
     ![](media/Ex2-Task5-S12.png)
           
 15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation**:
-   > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
+
+      > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
-   - **Password**: Enter `Password.1234567890`
-   - **Windows user account with read access to the network share location**: Enter `SQL2008-SUFFIX\sqlmiuser` 
-   - **Password**: Enter `Password.1234567890` 
-   - **Resource Group**: Select `hands-on-lab-######` 
-   - **Storage account**: Select the `sqlmistore######` storage account. 
-   - **Target database name**: **WideWorldImportersSUFFIX**, make sure to Add **SUFFIX** at the end.
-   - **Network share path**: Enter `\\SQL2008-SUFFIX\dms-backups`.
+      - **Password**: Enter **Password.1234567890**
+      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix" />\sqlmiuser** 
+      - **Password**: Enter **Password.1234567890** 
+      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix" />** 
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix" />** storage account. 
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix" />**, make sure to Add **SUFFIX** at the end.
+      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix" />\dms-backups**
 
-      ![](media/E2T5S15.png)
+         ![](media/E2T5S15.png)
 
-16. In Run Validate page wait till all the validation steps are successfull then click on **Done**.
+16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
       ![](media/Ex2-Task5-S14.png)
 
@@ -244,19 +243,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/Ex2-Task5-S15.png)
 
-18. In **Step 7: Summary** blade, click on **Start Migration** .
+18. In **Step 7: Summary** blade, click on **Start migration** .
 
     ![](media/E2T5S18.png)
 
-19. Click on **Migration (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
+19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
     ![](media/Ex2-Task5-S18.png)
 
 ### Task 6: Perform migration cutover
 
-Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
+Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-sqldms** **Database Migration Services** and select.
+1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-sqldms** Database Migration Services and select.
 
    ![](media/sql-dms.png)
 
@@ -268,13 +267,13 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/EX2-task6-s4.png)
    
-1. Navigate back to the **Azure Data stuido**, right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)**.
+1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)**.
 
     ![](media/Ex1-Task1-S12.png) 
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
-   ```sql
+   ```SQL
    USE WideWorldImporters;
    GO
 
@@ -288,7 +287,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
 
-   ```sql
+   ```SQL
    USE master;
    GO
 
@@ -306,9 +305,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
       ![](media/EX2-task6-s10.png)
 
-   > **Note**
-   >
-   > If you don't see it the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
+   > **Note**: If you don't see it in the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
 1. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
@@ -316,23 +313,23 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![A status of Restored is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-transaction-log-restored.png)
 
-1. Navigate back to the **Azure Data stuido**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database 
+1. Navigate back to the **Azure Data studio**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database. 
 
       ![](media/EX2-task6-s13.png)
 
-1. After verifying the transaction log status of **Restored**, select **Start Cutover**.
+1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
     ![](media/EX2-task6-s14.png)
 
-1. On the Complete cutover dialog, verify that log backups pending restore is `0`, check **confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialog, verify that log backups pending restore are `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s15.png)
 
-1. Move back to the Migration blade, verify that the migration status of WideWorldImporters have to change to **Succeeded**. You might have to refresh couple of times to see the status as Succeeded.
+1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You might have to refresh a couple of times to see the status as Succeeded.
 
     ![](media/EX2-task6-s16.png)
 
-1. You can also view the migration status in the azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
+1. You can also view the migration status in the Azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
 
     ![](media/EX2-task6-s17.png)
 
@@ -356,32 +353,30 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 4. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command.
 
-   ```powershell
+   ```PowerShell
    $resourceGroup = "SQLMI-Shared-RG"
    az sql mi list --resource-group $resourceGroup
    ```
 
-   > **Note**
-   >
-   > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+   > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run the `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription ID of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 5. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-6. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+6. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine...** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
 7. In the Connect to Server dialog, enter the following:
 
-   - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in the previous steps.
+   - **Server name**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
    -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
-   ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
+      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
 
 8. Select **Connect**. 
 
@@ -392,20 +387,17 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 10. With the **<inject key="Database Name" enableCopy="false"/>** database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
-    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
+    > **Note**: Make sure to replace the SUFFIX value with **<inject key="Suffix" />**
 
- ```sql
-  USE WideWorldImportersSUFFIX;
-     GO
+      ```SQL
+      USE WideWorldImportersSUFFIX;
+         GO
 
-    SELECT * FROM Game
-  ```  
+         SELECT * FROM Game
+      ```  
 
 12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
-    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
+    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
 13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
-
-
-

@@ -2,11 +2,11 @@
 
 Duration: 30 minutes
 
-In this exercise, you enable set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
+In this exercise, you are able to set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
 
 ### Task 1: Configure Data Discovery and Classification
 
-In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
+In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labelling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
 
 1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab select the Managed database named **<inject key="Database Name" enableCopy="false"/>**.
 
@@ -14,9 +14,9 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
    ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
 
-1. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
+1. In the **Data Discovery & Classification** blade, select the info link with the message **Currently database is using SQL information Protection policy. Found 35 columns with classification recommendations**.
 
-   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
+   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/datamod12.png "Data Discovery & Classification")
 
 1. Look over the list of recommendations to get a better understanding of the types of data and classifications that can be assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the **Sales - CreditCard - CardNumber** field.
 
@@ -38,7 +38,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
    - **Information type**: Select **Credit Card**.
    - **Sensitivity level**: Select **Highly Confidential**.
 
-   ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
+      ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
 
 1. Select **Add classification**.
 
@@ -78,11 +78,11 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
-   > **Note**: If you encounter with an error "Failed to execute Vulnerability Assessment scan for: WideWorldlmporters<inject key="SUFFIX" enableCopy="false"/>. Error message: The configured storage account was not found in the subscriptions", perform the following steps.
+   > **Note**: If you encounter an error "Failed to execute Vulnerability Assessment scan for WideWorldlmporters<inject key="SUFFIX" enableCopy="false"/>. Error message: The configured storage account was not found in the subscriptions", perform the following steps.
 
    1. Move back to the **Microsoft Defender for Cloud** blade.
 
-   2. Once you are in **Microsoft Defender for Cloud** blade, click on **Configure** of the Enablement Status: Enabled at the subscription-level.
+   2. Once you are in the **Microsoft Defender for Cloud** blade, click on **Configure** of the Enablement Status: Enabled at the subscription level.
 
       ![The Vulnerability assessment scan button is selected in the toolbar.](media/microsoft-defender-configure.png "microsoft-defender-configure")
 
@@ -104,7 +104,7 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    ![The Vulnerability Assessment dashboard is displayed.](media/sql-mi-vulnerability-assessment-dashboard1.png "Vulnerability Assessment dashboard")
 
-1. In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the **Unhealthy** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
+1. In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the **Unhealthy** list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
 
    ![The VA1219 finding for Transparent data encryption is highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219.png "Vulnerability assessment")
 
@@ -120,20 +120,20 @@ In this task, you review an assessment report generated by Azure Defender for th
    >
    > Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
-1. On your JumpBox VM, open Microsoft SQL Server Management Studio 19 from the Start menu, and enter the following information in the **Connect to Server** dialog and click on **Connect**.
+1. On your JumpBox VM, open Microsoft SQL Server Management Studio 19 from the Start menu, enter the following information in the **Connect to Server** dialog and click on **Connect**.
 
-   - **Server name**: Enter the fully qualified domain name of your SQL managed instance, which you copied from the Azure Cloud Shell in a previous task.
+   - **Server name**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in a previous task.
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `contosoadmin`
    - **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
-   ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-18-connect-to-server.png "Connect to Server")
+      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-18-connect-to-server.png "Connect to Server")
 
 1. In SSMS, select **New Query** from the toolbar and paste the following SQL script into the new query window.
-   >Note: Make sure to replace the SUFFIX with value <inject key="Suffix" />
+   > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
 
-   ```sql
+   ```SQL
    USE WideWorldImportersSUFFIX;
    GO
 
@@ -142,11 +142,11 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    > You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.
 
-1. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that "Commands completed successfully."
+1. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that **Commands completed successfully**.
 
 10. You can verify the encryption state and view information on the associated encryption keys by using the [sys.dm_database_encryption_keys view](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql). Select **New Query** on the SSMS toolbar again, and paste the following query into the new query window:
 
-    ```sql
+    ```SQL
     SELECT * FROM sys.dm_database_encryption_keys
     ```
 
