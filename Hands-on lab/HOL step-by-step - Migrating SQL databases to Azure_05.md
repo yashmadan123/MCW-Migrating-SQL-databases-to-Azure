@@ -38,7 +38,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
    - **Username**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
-   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
+      ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
