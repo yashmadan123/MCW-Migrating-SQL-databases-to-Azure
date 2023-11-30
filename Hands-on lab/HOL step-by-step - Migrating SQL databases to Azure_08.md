@@ -10,7 +10,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" />** App Service from the list of resources.
 
-   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
+   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/datamod9.png "Resource group")
 
 2. On the App Service blade, select **Networking** from the left-hand menu.
 
@@ -20,14 +20,15 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/Vnet-integration.png "App Service")
 
-3. Now select **Click here to configure** under **VNet Integration** and then click on **Add VNet** on the VNet Configuration blade.
+3. Now click on **Add virtual network integration** under **Virtual Network Integration**.
 
-   ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration.png "App Service")
+   ![Add VNet is highlighted on the VNet Configuration blade.](media/datamod10.png "App Service")
 
-4. On the Network Feature Status dialog, enter the following and click **OK**.
+1. On the Network Feature Status dialog, enter the following and click **Connect**.
 
-   - **Virtual Network**: Select the vnet-sqlmi--cus.
-   - **Subnet**: Select the existing subnet. and select any subnet from the drop-down menu. 
+   - **Virtual Network**: Select the `vnet-sqlmi--cus`.
+   - **Subnet**: Select any existing subnet from the drop-down menu.
+
       ![image](https://user-images.githubusercontent.com/45102602/171028272-b63fce6e-06fd-4f74-ba45-8bac755cb9d6.png)
 
   > **Note**: If you see **Failed to add delegation to existing subnet** please select any other available subnet from the list of dropdowns.
@@ -40,7 +41,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select Refresh to confirm whether the Vnet is connected or not.
 
-   ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/updated19.png "App Service")
+   ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/datamod11.png "App Service")
 
    > **Note**: If you receive a message adding the Virtual Network to the Web App fails, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 

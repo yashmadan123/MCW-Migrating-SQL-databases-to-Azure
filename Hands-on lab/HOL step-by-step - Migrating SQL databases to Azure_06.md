@@ -18,7 +18,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
    ![In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu.](media/windows-explorer-new-folder.png "Windows Explorer")
 
-3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people** in the context menu.
+3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people...** in the context menu.
 
    ![In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted.](media/windows-explorer-folder-share-with.png "Windows Explorer")
 
@@ -79,7 +79,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
 
-3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up**.
+3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
 
    ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
 
@@ -225,15 +225,15 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
-   - **Password**: Enter **Password.1234567890**
-   - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix" />\sqlmiuser** 
-   - **Password**: Enter **Password.1234567890** 
-   - **Resource Group**: Select **hands-on-lab-<inject key="Suffix" />** 
-   - **Storage account**: Select the **sqlmistore<inject key="Suffix" />** storage account. 
-   - **Target database name**: Enter **WideWorldImporters<inject key="Suffix" />**, make sure to Add **SUFFIX** at the end.
-   - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix" />\dms-backups**
+      - **Password**: Enter **Password.1234567890**
+      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix" />\sqlmiuser** 
+      - **Password**: Enter **Password.1234567890** 
+      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix" />** 
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix" />** storage account. 
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix" />**, make sure to Add **SUFFIX** at the end.
+      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix" />\dms-backups**
 
-      ![](media/E2T5S15.png)
+         ![](media/E2T5S15.png)
 
 16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
@@ -364,7 +364,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-6. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine** from the Object Explorer menu.
+6. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine...** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
@@ -387,7 +387,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 10. With the **<inject key="Database Name" enableCopy="false"/>** database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
-    > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />
+    > **Note**: Make sure to replace the SUFFIX value with **<inject key="Suffix" />**
 
       ```SQL
       USE WideWorldImportersSUFFIX;
@@ -398,6 +398,6 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
-    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
+    ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
 13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.

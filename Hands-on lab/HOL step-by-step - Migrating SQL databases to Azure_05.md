@@ -13,9 +13,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
 
-1. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
+1. Select the **hands-on-lab-<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
 
@@ -23,15 +23,25 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu, as you've done previously.
+1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect**.
 
-   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
+    ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod18.png "Passed")
 
-1. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on the **Select (1)** button in the **Native RDP** tile, on the **Native RDP** tab wait for **Configure prerequisites for Native RDP (2)** to validate, and then click on **Download RDP file (3)**. 
+  
+   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod14png.png "Passed")
 
-1. Select **Connect** on the Remote Desktop Connection dialog.
+1. Click on **Keep**, on the Downloads pop-up. 
 
-   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod15.png "Passed")
+
+1. Click on **Open file**.
+
+   ![](media/datamod16.png)
+
+1. Next, on the RDP tab click on **Connect**.
+
+   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod17.png "Passed")
 
 1. Enter the following credentials when prompted, and then select **OK**:
 

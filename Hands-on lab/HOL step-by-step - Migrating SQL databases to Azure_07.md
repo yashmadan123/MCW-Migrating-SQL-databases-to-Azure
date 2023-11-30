@@ -18,14 +18,18 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. If prompted about how you want to open the file, select **Visual Studio 2022**, and then select **OK**.
 
-    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/vs2022.png "Visual Studio")
+    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/datamod2.png "Visual Studio")
 
 1. Select **Sign in** and enter the following Azure account credentials when prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
 
-        ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
+        ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod3.png "Visual Studio")
+
+1. Once you signed in, Click on **Start Visual Studio**.
+
+    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod4.png "Visual Studio")
 
 1. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
@@ -41,11 +45,11 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
 
-    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/updated16.png "Publish API App to Azure")
+    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/datamod6.png "Publish API App to Azure")
 
 1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App.
 
-    
+    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod7.png "Visual Studio")
 
 1. Select **Close**.
 
@@ -69,15 +73,15 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the Azure services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Azure services")
+   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
 
-2. Select the <inject key="Resource Group Name" enableCopy="false"/> resource group from the list.
+2. Select the **hands-on-lab<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
 3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
-   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
+   ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/datamod9.png "Resource group")
 
 4. On the App Service blade, select **Configuration** under Settings on the left-hand side.
 

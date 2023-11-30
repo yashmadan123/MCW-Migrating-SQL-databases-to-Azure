@@ -52,7 +52,8 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ![The credit card number is unmasked in the query results.](media/ssms-sql-mi-ddm-results-unmasked.png "Query results")
 
 8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar,  paste the following query into the query window to apply a mask to the `CardNumber` field and then select **Execute**.
-   > Note: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+
+   > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
 
    ```SQL
    USE [WideWorldImportersSUFFIX];
@@ -63,6 +64,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ```
 
 9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
+
     > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
 
    ```SQL
