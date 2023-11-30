@@ -2,7 +2,7 @@
 
 Duration: 20 minutes
 
-In this exercise, you use the Azure Data Studio to perform assessments on the `WideWorldImporters` database. You create two assessments: one for SQL DB and a second for SQL MI. These assessments provide reports about any feature parity and compatibility issues between the on-premises database and the Azure managed SQL database service options.
+In this exercise, you use the Azure Data Studio to perform assessments on the `WideWorldImporters` database. You create two assessments: one for SQL DB and a second for SQL MI. These assessments provide reports about any feature parity and compatibility issues between the on-premises database and the Azure-managed SQL database service options.
 
 > Azure Data Studio helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. Azure Data Studio recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server.
 
@@ -68,7 +68,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![](media/Ex1-install-s6.png "Windows start menu search")
 
-1. Next go back to LabVM, open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
+1. Next go back to LabVM, and open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
 
    ![](media/E1T1S15.png "Windows start menu search")
    
@@ -92,7 +92,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S12.png "SSMS Toolbar")
 
-1. Next, copy and paste the SQL script below into the new query window. This script enables Service broker and changes the database recovery model to FULL.
+1. Next, copy and paste the SQL script below into the new query window. This script enables the Service broker and changes the database recovery model to FULL.
 
     ```sql
     USE master;
@@ -111,9 +111,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
-In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
+In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against the Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
+1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
@@ -121,11 +121,11 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL serevr. Click on **Next (2)**. 
+3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S3.png "New project settings")
 
-4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL DataBase(1)** from the drop down. Then select **WideWorldImporters(2)** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel (3)** button.
+4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL DataBase(1)** from the drop down. Then select **WideWorldImporters(2)** under the database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel (3)** button.
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S4.png "New project settings")
 
@@ -135,7 +135,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
-1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**
+1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
 
@@ -143,11 +143,11 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
 
-3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL serevr. Click on **Next (2)**. 
+3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S3.png "New project settings")
 
-4.  In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance(1)** from the drop down. Then select **WideWorldImporters(2)** under database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel (3)** button.
+4.  In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Then select **WideWorldImporters (2)** under the database, review the migration assessment to determine the possibility of migrating to Azure SQL DB, and Click on the **Cancel (3)** button.
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T3S4.png "New project settings")
 
