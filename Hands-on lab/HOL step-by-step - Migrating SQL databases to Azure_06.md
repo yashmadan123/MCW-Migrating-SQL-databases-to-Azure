@@ -233,7 +233,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
    - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
    - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
-   - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
+   -  **Target Database name** : Enter **WideWorldImporters**<inject key="Database Name" /> 
    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
 
       ![](media/task5-5.png)
