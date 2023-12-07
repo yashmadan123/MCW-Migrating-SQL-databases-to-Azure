@@ -166,33 +166,34 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
 
-2. On the Azure Database Migration Service blade, select **+ New Migration**.
+1. On the Azure Database Migration Service blade, select **+ New Migration**.
 
    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/DM-2.png "Azure Database Migration Service New Project")
 
-3. On the **Select new migration scenario** blade, enter the following and select **Configure runtime settings**
+1. On the **Select new migration scenario** blade, enter the following and select **Configure runtime settings**
    
    - **Source server type**: Select **SQL Server (2)**.
    - **Target server type**: Select **Azure SQL Managed Instance (3)**.
    - **Backup file storage location**: Select **Network file share**.
    - **Migration mode**: Select **Online**
 
-4. On **Configure runtime settings** blade copy **key 1** value record in notepade.
-5. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
-6. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
-7. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
-8. In Destination Folder, click on Next.
-9. In Ready to install Microsoft Integration Runtime, click on Install.
-10. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
-    [](media/key1.png)
-12. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
-     [](media/key2.png)
-14. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
-     [](media/key3.png)
-16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Next**
-    [](media/task5-1.png)
+1. On **Configure runtime settings** blade copy **key 1** value record in notepade.
+1. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
+1. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
+1. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
+1. In Destination Folder, click on Next.
+1. In Ready to install Microsoft Integration Runtime, click on Install.
+1. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
+     ![](media/key1.png)
 
-18. On the **Connect to source SQL Server** blade specify the following and select **Next: Select migration target** 
+12. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
+     ![](media/key2.png)
+14. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
+     ![](media/key3.png)
+16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Next**
+    ![](media/task5-1.png)
+
+18. On the **Connect to source SQL Server** tab specify the following and select **Next: Select migration target** 
 
     - **Source server name**: Enter the public IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a 
       text editor in the previous task. For example, `40.65.112.26`.
@@ -201,14 +202,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
     - **Password**: Enter `Password.1234567890`
     - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
-      [](media/task5-2.png)
+      ![](media/task5-2.png)
 
-15. On Select migration target page make to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases for 
+15. On Select migration target tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases for 
     migrations>>**    
-     [](media/task5-3.png)
+     ![](media/task5-3.png)
 
 16. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
-     [](media/task5-4.png)
+     ![](media/task5-4.png)
 
 17. On Configure database settings tab specify the following and click on **Next: Database migration summary>>** 
 
@@ -222,11 +223,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
 
-      [](media/task5-5.png)
+      ![](media/task5-5.png)
 
 14. Select **Start migration**.
 
-    [](media/task5-6.png)
+    ![](media/task5-6.png)
     
 16. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
@@ -290,23 +291,22 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![A status of Restored is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-transaction-log-restored.png)
 
-12. After verifying the transaction log status of **Restored**, select **Start Cutover**.
+12. After verifying the transaction log status of **Restored**, select **Complete Cutover**.
 
-    ![The Start Cutover button is displayed.](media/dms-migration-wizard-start-cutover.png "DMS Migration Wizard")
+    ![The Start Cutover button is displayed.](media/task5-10.png "DMS Migration Wizard")
 
-13. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Apply**.
+13. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Complete Cutover**.
 
-    ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/dms-migration-wizard-complete-cutover-apply.png "Migration Wizard")
+    ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/task5-11.png "Migration Wizard")
 
-14. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **Completed**.
+14. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
 
-    ![A status of Completed is displayed in the Complete cutover dialog.](media/dms-migration-wizard-complete-cutover-completed.png "Migration Wizard")
 
     >**Note:** If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
-15. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **Completed** from the WideWorldImporters database.
+15. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **succeeded** from the WideWorldImporters database.
 
-    ![On the Migration job blade, the status of Completed is highlighted.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-status-complete.png)
+    ![On the Migration job blade, the status of Completed is highlighted.](media/task5-12.png)
 
 16. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
