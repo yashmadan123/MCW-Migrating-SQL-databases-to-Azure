@@ -293,11 +293,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 12. After verifying the transaction log status of **Restored**, select **Complete Cutover**.
 
-    ![The Start Cutover button is displayed.](media/task5-10.png "DMS Migration Wizard")
+    ![The Start Cutover button is displayed.](media/task5-11.png "DMS Migration Wizard")
 
 13. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Complete Cutover**.
 
-    ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/task5-11.png "Migration Wizard")
+    ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/task5-(10).png "Migration Wizard")
 
 14. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
 
