@@ -307,7 +307,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 11. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
-    ![A status of Restored is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-transaction-log-restored.png)
+    ![The Start Cutover button is displayed.](media/task5-i5.png "DMS Migration Wizard")
 
 12. After verifying the transaction log status of **Restored**, select **Complete Cutover**.
 
