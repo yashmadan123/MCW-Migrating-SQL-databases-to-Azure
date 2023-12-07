@@ -180,8 +180,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Target server type**: Select **Azure SQL Managed Instance (3)**.
    - **Backup file storage location**: Select **Network file share**.
    - **Migration mode**: Select **Online**
+     ![](media/task5-i1.png)
 
 1. On **Configure runtime settings** blade copy **key 1** value record in notepade.
+   ![](media/task5-(i2).png)
+
 1. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
    ![](media/IR-1.png)
 
@@ -232,14 +235,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
-   - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
-   - **Password**: Enter `Password.1234567890`
-   - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-   - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
-   - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
-   - **WideWorldImporters** : Enter Target Database name **<inject key="Database Name" />** 
-   - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008- 
-      SUFFIX\dms-backups```.
+      - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
+      - **Password**: Enter `Password.1234567890`
+      - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
+      - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
+      - **WideWorldImporters** : Enter Target Database name **<inject key="Database Name" />** 
+      - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008- 
+         SUFFIX\dms-backups```.
 
       ![](media/task5-5.png)
 
