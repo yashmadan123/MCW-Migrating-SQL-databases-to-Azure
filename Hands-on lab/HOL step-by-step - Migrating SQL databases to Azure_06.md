@@ -168,7 +168,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 2. On the Azure Database Migration Service blade, select **+ New Migration**.
 
-   ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
+   ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/DM-2.png "Azure Database Migration Service New Project")
 
 3. On the **Select new migration scenario** blade, enter the following and select **Configure runtime settings**
    
@@ -184,24 +184,33 @@ In this task, you create a new online data migration project in DMS for the `Wid
 8. In Destination Folder, click on Next.
 9. In Ready to install Microsoft Integration Runtime, click on Install.
 10. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
-11. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
-12. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
-13. Back on **Azure portal** > **Select new migration scenario** blade, select **Next**
-14. On the **Connect to source SQL Server** blade specify the following and select **Next: Select migration target** 
+    [](media/key1.png)
+12. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
+     [](media/key2.png)
+14. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
+     [](media/key3.png)
+16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Next**
+    [](media/task5-1.png)
+
+18. On the **Connect to source SQL Server** blade specify the following and select **Next: Select migration target** 
 
     - **Source server name**: Enter the public IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a 
       text editor in the previous task. For example, `40.65.112.26`.
-   - **Authentication type**: Select SQL Authentication.
-   - **Username**: Enter `WorkshopUser`
-   - **Password**: Enter `Password.1234567890`
-   - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+    - **Authentication type**: Select SQL Authentication.
+    - **Username**: Enter `WorkshopUser`
+    - **Password**: Enter `Password.1234567890`
+    - **Connection properties**: Check both Encrypt connection and Trust server certificate.
+
+      [](media/task5-2.png)
 
 15. On Select migration target page make to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases for 
     migrations>>**    
+     [](media/task5-3.png)
 
 16. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
+     [](media/task5-4.png)
 
-17. On Configure database settings tab specify the following:
+17. On Configure database settings tab specify the following and click on **Next: Database migration summary>>** 
 
     > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
@@ -212,12 +221,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
    - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
-     
-18. Click on **Next: Database migration summary>>** 
+
+      [](media/task5-5.png)
 
 14. Select **Start migration**.
 
-15. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
+    [](media/task5-6.png)
+    
+16. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
     ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-status-log-files-uploading.png)
 
