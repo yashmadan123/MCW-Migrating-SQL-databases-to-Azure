@@ -162,7 +162,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In the Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
+1. Within RDP session open edge brows for Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
    ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
 
@@ -170,72 +170,52 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
 
-3. On the New migration project blade, enter the following:
-
-   - **Project name**: Enter `OnPremToSqlMi`**(1)**
+3. On the **Select new migration scenario** blade, enter the following and select **Configure runtime settings**
+   
    - **Source server type**: Select **SQL Server (2)**.
    - **Target server type**: Select **Azure SQL Managed Instance (3)**.
-   - **Choose type of activity**: Select **Online data migration (4)**.
+   - **Backup file storage location**: Select **Network file share**.
+   - **Migration mode**: Select **Online**
 
-4. Select **Create and run activity (5)**.
+4. On **Configure runtime settings** blade copy **key 1** value record in notepade.
+5. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
+6. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
+7. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
+8. In Destination Folder, click on Next.
+9. In Ready to install Microsoft Integration Runtime, click on Install.
+10. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
+11. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
+12. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
+13. Back on **Azure portal** > **Select new migration scenario** blade, select **Next**
+14. On the **Connect to source SQL Server** blade specify the following and select **Next: Select migration target** 
 
-   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/updated-sql.png "New migration project")
-
-5. On the Migration Wizard **Select source** tab, enter the following:
-
-   - **Source SQL Server instance name**: Enter the public IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
+    - **Source server name**: Enter the public IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a 
+      text editor in the previous task. For example, `40.65.112.26`.
    - **Authentication type**: Select SQL Authentication.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
    - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
-      ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source1.png)
+15. On Select migration target page make to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases for 
+    migrations>>**    
 
-6. Select **Next : Select target >>**.
+16. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
 
-7. On the Migration Wizard **Select target** tab, enter the following:
+17. On Configure database settings tab specify the following:
 
-   - **Application ID**: <inject key="Application/Client ID" />
-   - **Key**:  <inject key="Application Secret Key" />
-   - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
-   - **Subscription**: Select the subscription you are using for this hand-on lab.
-   - **Target Azure SQL Managed Instance**: Select the sqlmi--cus instance.
-   - **SQL Username**: Enter `contosoadmin`
-   - **Password**: Enter `IAE5fAijit0w^rDM`
-
-      ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/select-target.png "Migration Wizard Select source")
-   
-8. Select **Next : Select databases >>**.
-
-9. On the Migration Wizard **Select databases** tab, select `WideWorldImporters`.
-
-   ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](./media/dms-migration-wizard-select-databases1.png)
-
-10. Select **Next : Configure migration settings >>**.
-
-11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
     > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
-    - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
-    - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter ```SQL2008-SUFFIX\sqlmiuser```.
-    - **Password**: Enter `Password.1234567890`
-    - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-    - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
-
-      ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](./media/dm121.png)
- 
-    - Click on **Advance Settings**. 
-    - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
-
-12. Select **Next : Summary >>**.
-
-      ![The Migration Wizard Configure migration settings blade is displayed, with the values specified above entered into the appropriate fields.](./media/migration-start.png)
-
-13. On the Migration Wizard **Summary** tab, enter `WwiMigration` as the **Activity name**.
+   - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
+   - **Password**: Enter `Password.1234567890`
+   - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
+   - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
+   - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
+   - **WideWorldImporters**: Enter **Target Database name** <inject key="Database Name" /> 
+   - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
+     
+18. Click on **Next: Database migration summary>>** 
 
 14. Select **Start migration**.
-
-      ![](./media/migration-completed.png)
 
 15. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
