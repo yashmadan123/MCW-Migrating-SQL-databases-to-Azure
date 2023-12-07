@@ -162,7 +162,11 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. Within RDP session open edge brows for Azure portal `https://portal.azure.com`, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
+1. Within RDP session open edge browse for Azure portal `https://portal.azure.com` using following credentials when prompted:
+    * Email/Username: <inject key="AzureAdUserEmail"></inject>
+    * Password: <inject key="AzureAdUserPassword"></inject>
+
+1. In Azure portal, navigate to the Azure Database Migration Service by selecting **Resource groups** from the left-hand navigation menu, selecting the **<inject key="Resource Group Name" enableCopy="false"/>**  resource group, and then selecting the **wwi-dms** Azure Database Migration Service in the list of resources.
 
    ![The wwi-dms Azure Database Migration Service is highlighted in the list of resources in the hands-on-lab resource group.](media/resource-group-dms-resource.png "Resources")
 
@@ -199,14 +203,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
 1. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
      ![](media/key1.png)
 
-12. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
+1. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
      ![](media/key2.png)
-14. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
+1. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
      ![](media/key3.png)
-16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Select**
+1. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Select**
     ![](media/task5-1.png)
 
-18. On the **Connect to source SQL Server** tab specify the following and select **Next: Select migration target** 
+1. On the **Connect to source SQL Server** tab specify the following and select **Next: Select migration target** 
 
     - **Source server name**: Enter the public IP address of your **<inject key="SQLVM Name" enableCopy="false"/>** VM that you copied into a 
       text editor in the previous task. For example, `40.65.112.26`.
@@ -217,8 +221,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/task5-2.png)
 
-15. On Select migration target tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases for 
-    migrations>>**    
+15. On **Select migration target** tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases 
+    for migrations>>**    
      ![](media/task5-3.png)
 
 16. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
