@@ -203,7 +203,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
      ![](media/key2.png)
 14. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully.
      ![](media/key3.png)
-16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Next**
+16. Back on **Azure portal** > **Select new migration scenario** blade, Click on **Select**
     ![](media/task5-1.png)
 
 18. On the **Connect to source SQL Server** tab specify the following and select **Next: Select migration target** 
