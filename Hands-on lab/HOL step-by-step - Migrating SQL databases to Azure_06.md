@@ -261,7 +261,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 2. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
-   ![On the WideWorldImporters blade, a status of Restored is highlighted next to the WideWorldImporters.bak file in the list of active backup files.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-database-restored.png)
+   ![The Start Cutover button is displayed.](media/task5-9.png "DMS Migration Wizard")
 
 3. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
 
