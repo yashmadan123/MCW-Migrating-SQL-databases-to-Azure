@@ -176,14 +176,14 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. On the **Select new migration scenario** blade, enter the following and select **Configure runtime settings**
    
-   - **Source server type**: Select **SQL Server (2)**.
-   - **Target server type**: Select **Azure SQL Managed Instance (3)**.
+   - **Source server type**: Select **SQL Server**.
+   - **Target server type**: Select **Azure SQL Managed Instance**.
    - **Backup file storage location**: Select **Network file share**.
    - **Migration mode**: Select **Online**
      ![](media/task5-i1.png)
 
-1. On **Configure runtime settings** blade copy **key 1** value record in notepade.
-   ![](media/task5-(i2).png)
+1. On **Configure integration runtime** blade copy **key 1** value record in notepade.
+    ![](media/task5-(i2).png)
 
 1. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
    ![](media/IR-1.png)
@@ -235,16 +235,16 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
-      - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
-      - **Password**: Enter `Password.1234567890`
-      - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-      - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
-      - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
-      - **WideWorldImporters** : Enter Target Database name **<inject key="Database Name" />** 
-      - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008- 
-         SUFFIX\dms-backups```.
+       - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
+       - **Password**: Enter `Password.1234567890`
+       - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
+       - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
+       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
+       - **WideWorldImporters** : Enter Target Database name **<inject key="Database Name" />** 
+       - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering 
+            ```\\SQL2008-SUFFIX\dms-backups```.
 
-      ![](media/task5-5.png)
+           ![](media/task5-5.png)
 
 14. Select **Start migration**.
 
@@ -258,21 +258,21 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. In the Azure portal's migration status window and select **WideWorldImporters** under the database name to view further details about the database migration.
+1. In the Azure portal's migration status window and select **Source name** under the database name to view further details about the database migration.
 
-   ![The WideWorldImporters database name is highlighted in the migration status window.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-database-name.png)
+    ![The Start Cutover button is displayed.](media/task5-i4.png "DMS Migration Wizard")
 
-2. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
+1. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
    ![The Start Cutover button is displayed.](media/task5-9.png "DMS Migration Wizard")
 
-3. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
+1. To demonstrate log shipping and how transactions made on the source database during the migration process are added to the target SQL MI database, you will add a record to one of the database tables.
 
-4. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM and select **New Query** from the toolbar.
+1. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM and select **New Query** from the toolbar.
 
    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-5. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
+1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
    ```sql
    USE WideWorldImporters;
@@ -282,11 +282,11 @@ Since you performed an "online data migration," the migration wizard continuousl
    VALUES ('Space Adventure', 'Explore the universe with our newest online multiplayer gaming experience. Build custom rocket ships and take off for the stars in an infinite open-world adventure.', 'T', 1)
    ```
 
-6. Execute the query by selecting **Execute** in the SSMS toolbar.
+1. Execute the query by selecting **Execute** in the SSMS toolbar.
 
    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
-7. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
+1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
 
    ```sql
    USE master;
@@ -298,38 +298,38 @@ Since you performed an "online data migration," the migration wizard continuousl
    GO
    ```
 
-8. Execute the query by selecting **Execute** in the SSMS toolbar.
+1. Execute the query by selecting **Execute** in the SSMS toolbar.
 
-9. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
+1. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
 
    ![On the WideWorldImporters blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-queued.png "Migration wizard")
 
    >**Note:** If you don't see it the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
-10. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
+1. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
-11. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
+1. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
     ![The Start Cutover button is displayed.](media/task5-i5.png "DMS Migration Wizard")
 
-12. After verifying the transaction log status of **Restored**, select **Complete Cutover**.
+1. After verifying the transaction log status of **Restored**, select **Complete Cutover**.
 
     ![The Start Cutover button is displayed.](media/task5-11.png "DMS Migration Wizard")
 
-13. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Complete Cutover**.
+1. On the Complete cutover dialog, verify pending log backups is `0`, check **Confirm**, and then select **Complete Cutover**.
 
     ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/task5-(10).png "Migration Wizard")
 
-14. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
+1. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
 
 
     >**Note:** If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
-15. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **succeeded** from the WideWorldImporters database.
+1. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **succeeded** from the WideWorldImporters database.
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/task5-12.png)
 
-16. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
+1. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
 ### Task 7: Verify database and transaction log migration
 
