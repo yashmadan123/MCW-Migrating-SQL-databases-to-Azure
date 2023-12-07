@@ -179,10 +179,23 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. On **Configure runtime settings** blade copy **key 1** value record in notepade.
 1. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
+   ![](media/IR-1.png)
+
 1. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
+   ![](media/IR-2.png)
+
 1. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
+   ![](media/IR-3.png)
 1. In Destination Folder, click on Next.
+
+    ![](media/IR-4.png)   
+
 1. In Ready to install Microsoft Integration Runtime, click on Install.
+    ![](media/IR-5.png)
+
+1. Once the deployment is completed click on Finish.
+   ![](media/IR-6.png)
+
 1. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
      ![](media/key1.png)
 
