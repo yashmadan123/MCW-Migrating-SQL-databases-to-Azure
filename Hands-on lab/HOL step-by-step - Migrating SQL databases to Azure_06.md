@@ -325,8 +325,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![In the Complete cutover dialog, 0 is highlighted next to Pending log backups, and the Confirm checkbox is checked.](media/task5-(10).png "Migration Wizard")
 
-1. A progress bar below the Apply button in the Complete cutover dialog provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
+1. A progress in the Complete Migration status provides updates on the cutover status. When the migration finishes, the status changes to **succeeded**.
 
+   ![On the Migration job blade, the status of Completed is highlighted.](media/task5-i7.png)
 
     >**Note:** If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
