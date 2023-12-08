@@ -213,7 +213,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. Return back on **Azure portal** click on **Ok** in **Configure integration** 
    window.
-   ![](media/task5-i5.png)
+   ![](media/task5-i6.png)
 
 1. On the **Select new migration scenario** blade, Click on **Select**
     ![](media/task5-1.png)
