@@ -229,35 +229,35 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/task5-2.png)
 
-15. On **Select migration target** tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases 
+1. On **Select migration target** tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases 
     for migrations>>**    
      ![](media/task5-3.png)
 
-16. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
+1. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
      ![](media/task5-4.png)
 
-17. On Configure database settings tab specify the following and click on **Next: Database migration summary>>** 
+1. On Configure database settings tab specify the following and click on **Next: Database migration summary>>** 
 
-    > Note: Make sure to replace the SUFFIX value with <inject key="Suffix" />
+    > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />
 
-       - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
-       - **Password**: Enter `Password.1234567890`
-       - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
-       - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
-       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
-       - **Target Database name** : Enter **<inject key="Database Name" />** 
-       - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering 
+      - **Windows user account with read access to the network share location** : Enter ```SQL2008-SUFFIX\sqlmiuser```.
+      - **Password**: Enter `Password.1234567890`
+      - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
+      - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
+      - **Target Database name** : Enter **<inject key="Database Name" />** 
+      - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering 
             ```\\SQL2008-SUFFIX\dms-backups```.
 
            ![](media/task5-5.png)
 
-14. Select **Start migration**.
+1. Select **Start migration**.
 
     ![](media/task5-6.png)
     
-16. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
+1. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Ready for cutover**. When that status appears, move on to the next task.
 
-    ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/dms-migration-wizard-status-log-files-uploading.png)
+    ![](media/task5-(7).png)
 
 ### Task 6: Perform migration cutover
 
