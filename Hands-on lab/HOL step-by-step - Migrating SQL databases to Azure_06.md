@@ -189,10 +189,10 @@ In this task, you create a new online data migration project in DMS for the `Wid
    ![](media/IR-1.png)
 
 1. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
-   ![](media/IR-2.png)
+    ![](media/IR-2.png)
 
 1. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
-   ![](media/IR-3.png)
+    ![](media/IR-3.png)
 1. In Destination Folder, click on Next.
 
     ![](media/IR-4.png)   
@@ -246,8 +246,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
       - **Resource Group**: **Hand-on-labs-<inject key="Suffix"  />**
       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  />** storage account.
       - **Target Database name** : Enter **<inject key="Database Name" />** 
-      - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering 
-            ```\\SQL2008-SUFFIX\dms-backups```.
+      - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering ```\\SQL2008-SUFFIX\dms-backups```.
 
            ![](media/task5-5.png)
 
