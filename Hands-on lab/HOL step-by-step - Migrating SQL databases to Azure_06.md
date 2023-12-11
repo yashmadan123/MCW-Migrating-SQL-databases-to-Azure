@@ -142,12 +142,10 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and VMNAME with: <inject key="SQLVM Name" />. 
 
-
     ```powershell
      $resourceGroup = "<your-resource-group-name>"
      az vm list-ip-addresses -g $resourceGroup -n VMNAME --output table
     ```
-
    >**Note:** Copy the powershell command in a notepad file and make the required changes and paste it in the cloud shell pane for convenience. 
    
    >**Note:** If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
@@ -183,39 +181,51 @@ In this task, you create a new online data migration project in DMS for the `Wid
      ![](media/task5-i1.png)
 
 1. On **Configure integration runtime** blade copy **key 1** value record in notepade.
+
     ![](media/task5-(i2).png)
 
 1. Open file explorer on your virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime installer**.
-   ![](media/IR-1.png)
+
+    ![](media/IR-1.png)
 
 1. In Welcome to the Microsoft Integration Runtime Setup Wizard, click on Next.
+
     ![](media/IR-2.png)
 
 1. In End-User License Agreement, select the checkbox I accept the terms in the License Agreement, and click on Next.
     ![](media/IR-3.png)
+
 1. In Destination Folder, click on Next.
 
     ![](media/IR-4.png)   
 
 1. In Ready to install Microsoft Integration Runtime, click on Install.
+
     ![](media/IR-5.png)
 
 1. Once the deployment is completed click on Finish.
-   ![](media/IR-6.png)
+
+    ![](media/IR-6.png)
 
 1. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
-     ![](media/key1.png)
+
+    ![](media/key1.png)
 
 1. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
-     ![](media/key2.png)
+
+    ![](media/key2.png)
+
 1. On Register Integration Runtime (Self-hosted) wizard wait for Integration Runtime to register successfully and click on close.
-     ![](media/key3.png)
+
+    ![](media/key3.png)
 
 1. Return back on **Azure portal** click on **Ok** in **Configure integration** 
    window.
-   ![](media/task5-i6.png)
+
+    ![](media/task5-i6.png)
 
 1. On the **Select new migration scenario** blade, Click on **Select**
+
     ![](media/task5-1.png)
 
 1. On the **Connect to source SQL Server** tab specify the following and select **Next: Select migration target** 
@@ -231,10 +241,12 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. On **Select migration target** tab, make sure to select Target SQL Managed Instance as **sqlmi--cus** and click on **Next: Select databases 
     for migrations>>**    
+
      ![](media/task5-3.png)
 
 1. On Select databases for migrations tab select **WideWorldImporters** and click on **Next: Configure database settings>>**
-     ![](media/task5-4.png)
+
+    ![](media/task5-4.png)
 
 1. On Configure database settings tab specify the following and click on **Next: Database migration summary>>** 
 
