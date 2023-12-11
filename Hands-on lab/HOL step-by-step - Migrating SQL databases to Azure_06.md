@@ -142,12 +142,10 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and VMNAME with: <inject key="SQLVM Name" />. 
 
-
     ```powershell
      $resourceGroup = "<your-resource-group-name>"
      az vm list-ip-addresses -g $resourceGroup -n VMNAME --output table
     ```
-
    >**Note:** Copy the powershell command in a notepad file and make the required changes and paste it in the cloud shell pane for convenience. 
    
    >**Note:** If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
