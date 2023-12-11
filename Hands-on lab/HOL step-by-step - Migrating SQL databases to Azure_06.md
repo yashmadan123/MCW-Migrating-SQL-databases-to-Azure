@@ -209,7 +209,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. On **Register Integration Runtime (Self-hosted)** wizard paste the Key 1 which you copied in notepade and click on **Register**.
 
-   ![](media/key1.png)
+    ![](media/key1.png)
 
 1. New Integration Runtime (Self-hosted) Node wizard, click on **Finish**.
 
