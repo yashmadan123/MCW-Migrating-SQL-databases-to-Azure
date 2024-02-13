@@ -1,4 +1,4 @@
-## Exercise 5: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL
+## Exercise 1: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL
 
 Duration: 30 minutes
 
