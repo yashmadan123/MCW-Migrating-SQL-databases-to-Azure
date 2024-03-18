@@ -189,11 +189,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
 7. In **Step 5: Azure Database Migration Service** blade, select the fallowing details and click on **ConfigurelntegrationRuntime**
    
-   - **Online migration**, 
-   - Select the location of the database backups to use during migration: **My database backups are on a network share**.
-   - **Subscription**: Select the available Subscription.
-   - **Resource group**: From the drop-down search and select **hands-on-lab-<inject key="Suffix" />**.
-   - **Azure Database Migration Service**: Select **wwi-dms**. 
+   - **Online migration** **(1)**, 
+   - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
+   - **Subscription**: Select the available Subscription **(3)**.
+   - **Resource group**: From the drop-down search and select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**.
+   - **Azure Database Migration Service**: Select **wwi-dms** **(5)**. 
 
       ![](media/Ex2-Task5-S7.png) 
    
@@ -203,7 +203,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **sql2008-<inject key="Suffix" />** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+9. On the **sql2008-<inject key="Suffix"  enableCopy="false"/>** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
    
       ![](media/Ex2-Task5-S9.png) 
       
@@ -219,21 +219,21 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio**, close **ConfigurelntegrationRuntime**, click on **Test connection**. Once the test connection is completed successfully click on **Done**. 
+14. Navigate back to the **Azure Data Studio**, close **ConfigurelntegrationRuntime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/Ex2-Task5-S12.png)
           
-15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation**:
+15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
-      - **Password**: Enter **Password.1234567890**
-      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix" />\sqlmiuser** 
-      - **Password**: Enter **Password.1234567890** 
-      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix" />** 
-      - **Storage account**: Select the **sqlmistore<inject key="Suffix" />** storage account. 
-      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix" />**, make sure to Add **SUFFIX** at the end.
-      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix" />\dms-backups**
+      - **Password**: Enter **Password.1234567890** **(1)**
+      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
+      - **Password**: Enter **Password.1234567890** **(3)**
+      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**, make sure to Add **SUFFIX** at the end.
+      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
 
@@ -251,7 +251,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
-    ![](media/Ex2-Task5-S18.png)
+    ![](media/Ex2-Task5-S19.png)
 
 ### Task 6: Perform migration cutover
 
