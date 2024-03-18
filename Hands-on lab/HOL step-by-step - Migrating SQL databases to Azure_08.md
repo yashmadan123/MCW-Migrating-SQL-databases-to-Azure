@@ -14,11 +14,11 @@ In this task, you add the networking configuration to your App Service to enable
 
 2. On the App Service blade, select **Networking** from the left-hand menu.
 
-   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/networking.png "App Service")
+   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/web-app-network.png "App Service")
 
-3. On the **Networking** page, click on the **VNet integration** under **Outbound Traffic**.
+3. On the **Networking** page, click on the **Not Configured** next to **Virtual network integration** under **Outbound Traffic**.
 
-   ![Add VNet is highlighted on the VNet Configuration blade.](media/Vnet-integration.png "App Service")
+   ![Add VNet is highlighted on the VNet Configuration blade.](media/web-app-network-output.png "App Service")
 
 4. Now click on **Add virtual network integration** under **Virtual Network Integration**.
 
@@ -52,3 +52,5 @@ In this task, you verify your web application now loads, and you can see the hom
    > **Note**: It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
+
+4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** as you need this database name for upcoming lab.
