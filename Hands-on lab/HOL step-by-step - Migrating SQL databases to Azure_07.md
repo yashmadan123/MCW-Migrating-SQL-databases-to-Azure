@@ -87,11 +87,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-5. On the Configuration blade, locate the **Connection strings** section and then select the Pencil (Edit) icon to the right of the `WwiContext` connection string.
-
-   ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
-
-6. Replace the **value** of the connection string below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
+6. Replace the **value** of the connection string of `WwiContext` below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
     
     ``
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=adminuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
@@ -99,13 +95,13 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 7. Repeat **steps 6**, this time for the `WwiReadOnlyContext` connection string.
 
-    ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
+    ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext.png "Save")
 
 8. Select **OK**.
 
 9. Select **Apply** at the top of the Environment variables blade.
 
-    ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
+    ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContextapplay.png "Save")
 
 13. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Configure**.
 

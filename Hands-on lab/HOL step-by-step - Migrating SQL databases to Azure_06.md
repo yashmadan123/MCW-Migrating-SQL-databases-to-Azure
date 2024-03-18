@@ -24,7 +24,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/file-sharing.png)
+   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](media/file-sharing.png)
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
@@ -187,25 +187,27 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/E2T5S6.png )
    
-7. In **Step 4: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration select **My database backups are on a network share** and Click on **Create new** under Azure Database Migration Service.
-
-   ![](media/Ex2-Task5-S7.png) 
+7. In **Step 5: Azure Database Migration Service** blade, select the fallowing details and click on **ConfigurelntegrationRuntime**
    
-8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from the drop-down menu, enter the name as **wwi-sqldms**, and click on **create**.
-  
-   ![](media/Ex2-Task5-S8.png) 
+   - **Online migration**, 
+   - Select the location of the database backups to use during migration: **My database backups are on a network share**.
+   - **Subscription**: Select the available Subscription.
+   - **Resource group**: From the drop-down search and select **hands-on-lab-<inject key="Suffix" />**.
+   - **Azure Database Migration Service**: Select **wwi-dms**. 
 
-9. After the resources have been created you can see similar output as shown in the below screenshot. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
+      ![](media/Ex2-Task5-S7.png) 
+   
+8. In the **ConfigurelntegrationRuntime** select **I want to setup self-hosted integration runtime on another Windows machine that is not my local machine**. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
 
    ![](media/Ex2-Task5-add.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. On the **sql2008-<inject key="Suffix" />** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+9. On the **sql2008-<inject key="Suffix" />** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
    
       ![](media/Ex2-Task5-S9.png) 
       
-11. Paste the **Authentication key** in the box which you coped in earlier in the task and click on **Register**.
+10. Paste the **Authentication key** in the box which you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
@@ -217,7 +219,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connection is completed successfully click on **Done**. 
+14. Navigate back to the **Azure Data Studio**, close **ConfigurelntegrationRuntime**, click on **Test connection**. Once the test connection is completed successfully click on **Done**. 
 
     ![](media/Ex2-Task5-S12.png)
           
@@ -372,8 +374,8 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    - **Server name**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
-   - **Login**: Enter `contosoadmin`
-   -  **Password**: Enter `IAE5fAijit0w^rDM`
+   - **Login**: Enter `adminuser`
+   -  **Password**: Enter `Password.1234567890`
    - Check the **Remember password** box.
 
       ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
