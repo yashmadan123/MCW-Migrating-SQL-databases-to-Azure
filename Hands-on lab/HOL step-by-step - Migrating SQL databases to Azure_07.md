@@ -83,7 +83,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/datamod9.png "Resource group")
 
-4. On the App Service blade, select **Configuration** under Settings on the left-hand side.
+4. On the App Service blade, select **Environment variables** **(1)** under Settings on the left-hand side, select **Connection strings** **(2)** and click on **Advanced edit** **(3)**.
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
@@ -91,29 +91,23 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![In the Connection string section, the pencil icon is highlighted to the right of the WwiContext connection string.](media/app-service-configuration-connection-strings.png "Connection Strings")
 
-6. The value of the connection string should look like this:
+6. Replace the **value** of the connection string below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
     
     ``
-    Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
+    Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=adminuser;Password=Password.1234567890;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-8. In the Add/Edit connection string dialog, replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
-
-   ![The your-sqlmi-host-fqdn-value string is highlighted in the connection string.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/9.png "Edit Connection String")
-
-9. The updated value should look similar to the following screenshot.
-
-   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
-
-10. Select **OK**.
-
-11. Repeat steps 3 - 7, this time for the `WwiReadOnlyContext` connection string.
-
-12. Select **Save** at the top of the Configuration blade.
+7. Repeat **steps 6**, this time for the `WwiReadOnlyContext` connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
 
-13. When prompted that changes to application settings and connection strings will restart your application, select **Continue**.
+8. Select **OK**.
+
+9. Select **Apply** at the top of the Environment variables blade.
+
+    ![The save button on the Configuration blade is highlighted.](media/app-service-configuration-save.png "Save")
+
+13. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Configure**.
 
     ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
 
