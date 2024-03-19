@@ -178,16 +178,16 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
   
 6. The field will be populated with the details and click on **Next**. 
 
-   ![](media/E2T5S6.png )
+   ![](media/E2T5S6.png)
    
-7. In **Step 5: Azure Database Migration Service** blade, select the fallowing details and click on **ConfigurelntegrationRuntime**
+7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
    - **Online migration** **(1)**, 
    - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
@@ -197,9 +197,9 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/Ex2-Task5-S7.png) 
    
-8. In the **ConfigurelntegrationRuntime** select **I want to setup self-hosted integration runtime on another Windows machine that is not my local machine**. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
+8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine**. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
-   ![](media/Ex2-Task5-add.png)
+   ![](media/Ex2-Task5-S11new.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
@@ -207,11 +207,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
       ![](media/Ex2-Task5-S9.png) 
       
-10. Paste the **Authentication key** in the box which you coped in earlier in the task and click on **Register**.
+10. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
-12. In New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
+12. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
 
     ![](media/Ex2-Task5-S11.png)
 
@@ -219,7 +219,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio**, close **ConfigurelntegrationRuntime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
+14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/Ex2-Task5-S12.png)
           
@@ -323,11 +323,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/EX2-task6-s14.png)
 
-1. On the Complete cutover dialog, verify that log backups pending restore are `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s15.png)
 
-1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You might have to refresh a couple of times to see the status as Succeeded.
+1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You should refresh a couple of times to see the status as Succeeded.
 
     ![](media/EX2-task6-s16.png)
 
@@ -374,8 +374,8 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    - **Server name**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
    - **Authentication**: Select **SQL Server Authentication**.
-   - **Login**: Enter `adminuser`
-   -  **Password**: Enter `Password.1234567890`
+   - **Login**: Enter `contosoadmin`
+   -  **Password**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** box.
 
       ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
