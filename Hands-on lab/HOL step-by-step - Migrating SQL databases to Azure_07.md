@@ -87,15 +87,15 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
 
-6. Replace the **value** of the connection string of `WwiContext` below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace suffix with value: <inject key="suffix" />.
+6. Replace the **value** of the connection string of `WwiContext` below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace the suffix with value: <inject key="suffix" />.
     
     ``
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-7. Repeat **steps 6**, this time for the `WwiReadOnlyContext` connection string.
+7. Repeat **steps 5**, this time for the `WwiReadOnlyContext` connection string.
 
-    ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext.png "Save")
+    ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
 8. Select **OK**.
 
