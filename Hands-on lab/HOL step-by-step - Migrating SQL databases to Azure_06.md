@@ -24,7 +24,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/media/file-sharing.png)
+   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](media/file-sharing.png)
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
@@ -178,38 +178,40 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, login using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
   
 6. The field will be populated with the details and click on **Next**. 
 
-   ![](media/E2T5S6.png )
+   ![](media/E2T5S6.png)
    
-7. In **Step 4: Azure Database Migration Service** blade, select **Online migration**, select the location of the database backups to use during migration select **My database backups are on a network share** and Click on **Create new** under Azure Database Migration Service.
-
-   ![](media/Ex2-Task5-S7.png) 
+7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
-8. Under **Create Azure Database Migration Service** page, select **hands-on-lab-<inject key="Suffix" />** from the drop-down menu, enter the name as **wwi-sqldms**, and click on **create**.
-  
-   ![](media/Ex2-Task5-S8.png) 
+   - **Online migration** **(1)**, 
+   - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
+   - **Subscription**: Select the available Subscription **(3)**.
+   - **Resource group**: From the drop-down search and select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**.
+   - **Azure Database Migration Service**: Select **wwi-dms** **(5)**. 
 
-9. After the resources have been created you can see similar output as shown in the below screenshot. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, minimize the **Azure Data Studio**.  
+      ![](media/Ex2-Task5-S7.png) 
+   
+8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine**. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
-   ![](media/Ex2-Task5-add.png)
+   ![](media/Ex2-Task5-S11new.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. On the **sql2008-<inject key="Suffix" />** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+9. On the **sql2008-<inject key="Suffix"  enableCopy="false"/>** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
    
       ![](media/Ex2-Task5-S9.png) 
       
-11. Paste the **Authentication key** in the box which you coped in earlier in the task and click on **Register**.
+10. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
-12. In New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
+12. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
 
     ![](media/Ex2-Task5-S11.png)
 
@@ -217,21 +219,21 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio** click on **Test connection**. Once the test connection is completed successfully click on **Done**. 
+14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/Ex2-Task5-S12.png)
           
-15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation**:
+15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
-      - **Password**: Enter **Password.1234567890**
-      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix" />\sqlmiuser** 
-      - **Password**: Enter **Password.1234567890** 
-      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix" />** 
-      - **Storage account**: Select the **sqlmistore<inject key="Suffix" />** storage account. 
-      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix" />**, make sure to Add **SUFFIX** at the end.
-      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix" />\dms-backups**
+      - **Password**: Enter **Password.1234567890** **(1)**
+      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
+      - **Password**: Enter **Password.1234567890** **(3)**
+      - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
+      - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**, make sure to Add **SUFFIX** at the end.
+      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
 
@@ -249,7 +251,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
-    ![](media/Ex2-Task5-S18.png)
+    ![](media/Ex2-Task5-S19.png)
 
 ### Task 6: Perform migration cutover
 
@@ -321,11 +323,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/EX2-task6-s14.png)
 
-1. On the Complete cutover dialog, verify that log backups pending restore are `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s15.png)
 
-1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You might have to refresh a couple of times to see the status as Succeeded.
+1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You should refresh a couple of times to see the status as Succeeded.
 
     ![](media/EX2-task6-s16.png)
 

@@ -54,7 +54,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-1. Open file explorer on your **<inject key="SQLVM Name" enableCopy="false"/>** virtual machine, naviagate to C:\ drive and click on **IntegrationRuntime** installer.
+1. Open file explorer on your **<inject key="SQLVM Name" enableCopy="false"/>** virtual machine, naviagate to **C:** drive and click on **IntegrationRuntime** installer.
 
    ![](media/intergation-runtime1.png "intergation runtime ")
 

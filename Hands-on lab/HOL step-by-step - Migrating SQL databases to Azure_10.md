@@ -4,7 +4,7 @@ Duration: 15 minutes
 
 In this exercise, you enable **Dynamic Data Masking** `https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started` (DDM) on credit card numbers in the `WideWorldImporters` database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
 
-For example, a call center's service representative may identify callers by several digits of their credit card number. However, the full credit card number should not be fully exposed to the service representative. A masking rule can be defined that obfuscates all but the last four digits of any credit card number in any query result. As another example, an appropriate data mask can be created to protect personally identifiable information (PII) data so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
+For example, a call centre's service representative may identify callers by several digits of their credit card number. However, the full credit card number should not be fully exposed to the service representative. A masking rule can be defined that obfuscates all but the last four digits of any credit card number in any query result. As another example, an appropriate data mask can be created to protect personally identifiable information (PII) data so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
 
 ### Task 1: Enable DDM on credit card numbers
 
@@ -12,7 +12,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Database**, expand the Database which you used in the previous Exercise name starting like **WideWorldImporters{suffix}**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
@@ -20,13 +20,9 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    ![Plain text credit card numbers are highlighted in the query results.](media/ssms-sql-mi-credit-card-table-select-results.png "Results")
 
-4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, select **New Query** and paste the following SQL script into the new query window:
-    > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**
+4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, In the same **Query** window replace the script with the following script:
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    CREATE USER DDMUser WITHOUT LOGIN;
    GRANT SELECT ON [Sales].[CreditCard] TO DDMUser;
    ```
@@ -35,13 +31,9 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 5. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.
 
-6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
-    > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+6. With the new user created, run a quick query to observe the results. In the same **Query** window replace the script with the following script:
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    EXECUTE AS USER = 'DDMUser';
    SELECT TOP 10 * FROM [Sales].[CreditCard];
    REVERT;
@@ -51,26 +43,16 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    ![The credit card number is unmasked in the query results.](media/ssms-sql-mi-ddm-results-unmasked.png "Query results")
 
-8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. Select **New Query** from the SSMS toolbar,  paste the following query into the query window to apply a mask to the `CardNumber` field and then select **Execute**.
-
-   > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. In the same **Query** window replace the script with the following script to apply a mask to the `CardNumber` field and then select **Execute**.
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    ALTER TABLE [Sales].[CreditCard]
    ALTER COLUMN [CardNumber] NVARCHAR(25) MASKED WITH (FUNCTION = 'partial(0,"xxx-xxx-xxx-",4)')
    ```
 
-9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
-
-    > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+9. Run the `SELECT` in the same **Query** window again replace the query with the below query, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    EXECUTE AS USER = 'DDMUser';
    SELECT TOP 10 * FROM [Sales].[CreditCard];
    REVERT;
@@ -84,36 +66,23 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labelled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
-1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. Open a new query window and execute the following script:
-   > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. In the same **Query** window replace the script with the following script and select **Execute** the following script:
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    SELECT TOP 10 * FROM [dbo].[Gamer]
    ```
 
    ![In the query results, full email addresses are visible.](media/ddm-select-gamer-results.png "Query results")
 
-2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In a new query window enter the following script, and then select **Execute**:
-
-   > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
+2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In the same **Query** window replace the script with the following script, and then select **Execute**:
 
    ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
-
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
    ```
 
-3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. Select **New Query** from the SSMS toolbar, paste the following query into the query window to apply a mask to the `LoginEmail` field, and then select **Execute**.
-    > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
-    > 
-   ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
+3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. In the same **Query** window replace the script with the following script to apply a mask to the `LoginEmail` field, and then select **Execute**.
 
+   ```SQL
    ALTER TABLE [dbo].[Gamer]
    ALTER COLUMN [LoginEmail] NVARCHAR(250) MASKED WITH (FUNCTION = 'Email()');
    ```
@@ -121,18 +90,13 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    > **Note**: Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
-    > **Note**: Make sure to replace the SUFFIX with value **<inject key="Suffix" />**.
-    
-   ```SQL
-   USE [WideWorldImportersSUFFIX];
-   GO
 
+   ```SQL
    EXECUTE AS USER = 'DDMUser';
    SELECT TOP 10 * FROM [dbo].[Gamer];
    REVERT;
    ```
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
-
 
 ## You have successfully completed the lab.
