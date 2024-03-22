@@ -370,18 +370,16 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
-7. In the Connect to Server dialog, enter the following:
+7. In the Connect to Server dialog, enter the following and click on **Connect** **(6)**:
 
-   - **Server name**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
-   - **Authentication**: Select **SQL Server Authentication**.
-   - **Login**: Enter `contosoadmin`
-   -  **Password**: Enter `IAE5fAijit0w^rDM`
-   - Check the **Remember password** box.
+   - **Server name** **(1)**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
+   - **Authentication** **(2)**: Select **SQL Server Authentication**.
+   - **Login** **(3)**: Enter `contosoadmin`
+   -  **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
+   - Check the **Remember password** **(5)** box.
 
-      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](https://raw.githubusercontent.com/SpektraSystems/MCW-Migrating-SQL-databases-to-Azure/stage/Hands-on%20lab/media/ssmsmi.png "Connect to Server")
-
-8. Select **Connect**. 
-
+      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/data-migration-09.png "Connect to Server")
+ 
 9. The SQL MI connection appears below the <inject key="SQLVM Name" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
