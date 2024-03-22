@@ -164,15 +164,15 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 1. In Azure Data Studio click on **Azure SQL Migration** and click on **+ New migration**.
 
-   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
+   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/data-migration-01.png "Data Migration Assistant")
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/data-migration-01.png "New DMA project")
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S3.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
 
 4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database, and Click on the **Select** button.
 
@@ -185,7 +185,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
   
 6. The field will be populated with the details and click on **Next**. 
 
-   ![](media/E2T5S6.png)
+   ![](media/data-migration-04.png)
    
 7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
@@ -197,9 +197,9 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/Ex2-Task5-S7.png) 
    
-8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine**. Copy any of the **Authentication keys** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
+8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
-   ![](media/Ex2-Task5-S11new.png)
+   ![](media/data-migration-05.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
@@ -251,7 +251,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
-    ![](media/Ex2-Task5-S19.png)
+    ![](media/data-migration-06.png)
 
 ### Task 6: Perform migration cutover
 
@@ -317,7 +317,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. Navigate back to the **Azure Data studio**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database. 
 
-      ![](media/EX2-task6-s13.png)
+      ![](media/data-migration-07.png)
 
 1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
@@ -329,7 +329,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You should refresh a couple of times to see the status as Succeeded.
 
-    ![](media/EX2-task6-s16.png)
+    ![](media/data-migration-08.png)
 
 1. You can also view the migration status in the Azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
 
