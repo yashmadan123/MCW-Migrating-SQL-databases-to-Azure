@@ -10,7 +10,7 @@ For example, a call centre's service representative may identify callers by seve
 
 When inspecting the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
-1. On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
+1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
 2. Expand **Database**, expand the Database which you used in the previous Exercise name starting like **WideWorldImporters{suffix}**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 

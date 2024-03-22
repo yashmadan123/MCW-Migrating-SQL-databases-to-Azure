@@ -54,3 +54,5 @@ In this task, you verify your web application now loads, and you can see the hom
 3. Congratulations, you successfully connected your application to the new SQL MI database.
 
 4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** as you need this database name for upcoming lab.
+
+   > **Importent**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** that was created in this lab, as you will require this specific database name for Lab 2, **Data Modernization: Implementing Data Discovery & Classification**.
