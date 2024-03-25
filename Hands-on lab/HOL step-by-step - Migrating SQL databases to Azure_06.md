@@ -257,13 +257,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-sqldms** Database Migration Services and select.
+1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-dms** Database Migration Services and select.
 
-   ![](media/sql-dms.png)
+   ![](media/dms1.png)
 
-1. In **wwi-sqldms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" />** under **Source name**.
+1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" />** under **Source name**.
   
-   ![](media/sql-2008.png)
+   ![](media/dms2.png)
 
 1. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
