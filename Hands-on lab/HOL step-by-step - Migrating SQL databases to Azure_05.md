@@ -27,9 +27,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod18.png "Passed")
 
-1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on the **Select (1)** button in the **Native RDP** tile, on the **Native RDP** tab wait for **Configure prerequisites for Native RDP (2)** to validate, and then click on **Download RDP file (3)**. 
+1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
   
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod14png.png "Passed")
+   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/connect.png "Passed")
 
 1. Click on **Keep**, on the Downloads pop-up. 
 
@@ -54,33 +54,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-1. Open file explorer on your **<inject key="SQLVM Name" enableCopy="false"/>** virtual machine, naviagate to **C:** drive and click on **IntegrationRuntime** installer.
+1. Click on **start (1)** , type **Azure Data Studio (2)** into the search bar and select **Azure Data Studio (3)** from the search results.
 
-   ![](media/intergation-runtime1.png "intergation runtime ")
-
-1. In **Welcome to the Microsoft Integration Runtime Setup Wizard**, click on **Next**.
-
-   ![](media/Ex1-install-s2.png "Windows start menu search")
-
-1. In **End-User License Agreement**, select the checkbox **I accept the terms in the License Agreement**, and click on **Next**.
-
-   ![](media/Ex1-install-s3.png "Windows start menu search")
-
-1. In **Destination Folder**, click on **Next**.
-
-   ![](media/Ex1-install-s4.png "Windows start menu search")
-
-1. In **Ready to install Microsoft Integration Runtime**, click on **Install**.
-
-   ![](media/Ex1-install-s5.png "Windows start menu search")
-
-1. Once the deployment is completed click on **Finish** and minimize the application.
-
-   ![](media/Ex1-install-s6.png "Windows start menu search")
-
-1. Next go back to LabVM, and open **Azure Data Studio** by entering "Azure Data Studio" into the search bar in the Windows Start menu and selecting **Azure Data Studio** from the search results.
-
-   ![](media/E1T1S15.png "Windows start menu search")
+   ![](media/azuredata.png "Windows start menu search")
    
 1. In the Azure Data Studio select **Extensions (1)** from the Activity Bar, enter **SQL Migration (2)** into the search bar, select **Azure SQL Migration (3)**, and click on **Install (4)**.  
 

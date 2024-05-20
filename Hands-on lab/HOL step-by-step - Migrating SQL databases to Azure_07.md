@@ -111,9 +111,9 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![The save button on the Configuration blade is highlighted.](media/app-string-1.png "Save")
 
-12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Configure**.
+12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
 
-    ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
+    ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/save_changes.png "Restart prompt")
 
 13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
