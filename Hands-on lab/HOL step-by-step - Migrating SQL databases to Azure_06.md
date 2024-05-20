@@ -257,7 +257,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 17. In **Step 7: Summary** blade, click on **Start migration** .
 
-    ![](media/E2T5S18.png)
+    ![](media/enn-1.png)
 
 18. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
@@ -329,7 +329,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. Navigate back to the **Azure Data studio**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database. 
 
-      ![](media/data-migration-07.png)
+      ![](media/data-migration-07-1.png)
 
 1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
