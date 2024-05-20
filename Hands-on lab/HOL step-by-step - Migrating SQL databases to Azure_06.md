@@ -32,7 +32,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 6. Back on the File Sharing dialog, note the shared folder's path, ```\\SQL2008-SUFFIX\dms-backups```, and select **Done** to complete the sharing process.
 
-   ![The Done button is highlighted on the File Sharing dialog.](media/EX2-Task1-S6.png "File Sharing")
+   ![The Done button is highlighted on the File Sharing dialog.](media/dms-backup.png "File Sharing")
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
@@ -128,19 +128,29 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
+3. On the Getting Started , Choose **mount a storage account (1)** select the **exisitng subscription (2)** then click on **Apply (3)**.
+
+   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/getting_started.png "Azure Cloud Shell")
+
+4. Choose **I want to create a storage account (1)** , Click on **Next (2)**.
+
+   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/mount-storage.png "Azure Cloud Shell")
+
+
+5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
   
       - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
+      - **Region**: **Central US**
 
-         ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/b4-image36.png "Azure Cloud Shell")
+         ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/create-storage-1.png "Azure Cloud Shell")
 
-4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
+6. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-5. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with <inject key="SQLVM Name" />. 
+7. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with <inject key="SQLVM Name" />. 
 
 
    ```PowerShell
@@ -152,11 +162,11 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    >
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
-6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
+8. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
 
-7. Leave the Azure Cloud Shell open for the next task.
+9. Leave the Azure Cloud Shell open for the next task.
 
 ### Task 5: Create and run an online data migration project
 
@@ -203,27 +213,49 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **sql2008-<inject key="Suffix"  enableCopy="false"/>** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM, Open **file explorer** and Navigate to C drive .
+
+10. Right Click on **IntegrationRuntime** and Click on install.
    
-      ![](media/Ex2-Task5-S9.png) 
+      ![](media/windowc.png)
+
+11. In **Welcome to the Microsoft Integration Runtime Setup Wizard**, click on **Next**.
+
+    ![](media/Ex1-install-s2.png "Windows start menu search")
+
+12. In **End-User License Agreement**, select the checkbox **I accept the terms in the License Agreement**, and click on **Next**.
+
+    ![](media/Ex1-install-s3.png "Windows start menu search")
+
+13. In **Destination Folder**, click on **Next**.
+
+    ![](media/Ex1-install-s4.png "Windows start menu search")
+
+14. In **Ready to install Microsoft Integration Runtime**, click on **Install**.
+
+    ![](media/Ex1-install-s5.png "Windows start menu search")
+
+15. Once the deployment is completed click on **Finish** and minimize the application.
+
+    ![](media/Ex1-install-s6.png "Windows start menu search")
       
-10. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
+16. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
-12. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
+17. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
 
-    ![](media/Ex2-Task5-S11.png)
+    ![](media/inr.png)
 
-13. Wait for the Integration Runtime to be successful to continue further.
+18. Wait for the Integration Runtime to be successful to continue further.
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
+19. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
-    ![](media/Ex2-Task5-S12.png)
+    ![](media/azure-sql.png)
           
-15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
+20. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
@@ -237,19 +269,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
          ![](media/E2T5S15.png)
 
-16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
+21. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
       ![](media/Ex2-Task5-S14.png)
 
-17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
+22. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
       ![](media/Ex2-Task5-S15.png)
 
-18. In **Step 7: Summary** blade, click on **Start migration** .
+23. In **Step 7: Summary** blade, click on **Start migration** .
 
     ![](media/E2T5S18.png)
 
-19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
+24. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
     ![](media/data-migration-06.png)
 
