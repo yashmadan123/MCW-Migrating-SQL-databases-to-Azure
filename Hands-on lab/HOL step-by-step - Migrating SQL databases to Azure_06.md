@@ -213,11 +213,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM, Select the **Start menu**, enter `Integration Runtime` into the search bar, and then select **Microsoft Integration Runtime** from the search results.
+9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM, Open **file explorer** and Navigate to C drive .
+
+10. Right Click on **IntegrationRuntime** and Click on install.
    
-      ![](media/inr-search.png) 
+      ![](media/windowc.png) 
       
-10. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
+11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
