@@ -263,6 +263,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
     
     ![](media/data-migration-06.png)
 
+>**Note**: It may take a few minutes , please be patient.
+
 ### Task 6: Perform migration cutover
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
