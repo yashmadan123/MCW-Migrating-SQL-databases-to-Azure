@@ -103,14 +103,22 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContextapplay.png "Save")
 
-13. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Configure**.
+10. Repeat the **step 5** and **step 6** for **App setting** , Click on **Add** from the App settings
+
+11. Add the **Name** and **Value** for `WwiContext` and `WwiReadOnlyContext` and click on **Apply**
+
+    ![The save button on the Configuration blade is highlighted.](media/app-string.png "Save")
+
+    ![The save button on the Configuration blade is highlighted.](media/app-string-1.png "Save")
+
+12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Configure**.
 
     ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
 
-14. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
+13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
     ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
 
-15. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
+14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
