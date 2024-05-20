@@ -221,23 +221,23 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 11. In **Welcome to the Microsoft Integration Runtime Setup Wizard**, click on **Next**.
 
-   ![](media/Ex1-install-s2.png "Windows start menu search")
+    ![](media/Ex1-install-s2.png "Windows start menu search")
 
 12. In **End-User License Agreement**, select the checkbox **I accept the terms in the License Agreement**, and click on **Next**.
 
-   ![](media/Ex1-install-s3.png "Windows start menu search")
+    ![](media/Ex1-install-s3.png "Windows start menu search")
 
 13. In **Destination Folder**, click on **Next**.
 
-   ![](media/Ex1-install-s4.png "Windows start menu search")
+    ![](media/Ex1-install-s4.png "Windows start menu search")
 
 14. In **Ready to install Microsoft Integration Runtime**, click on **Install**.
 
-   ![](media/Ex1-install-s5.png "Windows start menu search")
+    ![](media/Ex1-install-s5.png "Windows start menu search")
 
 15. Once the deployment is completed click on **Finish** and minimize the application.
 
-   ![](media/Ex1-install-s6.png "Windows start menu search")
+    ![](media/Ex1-install-s6.png "Windows start menu search")
       
 16. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
