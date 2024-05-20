@@ -281,9 +281,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/EX2-task6-s4.png)
    
-1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)**.
+1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)**.
 
-    ![](media/Ex1-Task1-S12.png) 
+    ![](media/new_query.png) 
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
