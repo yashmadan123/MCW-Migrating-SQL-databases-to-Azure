@@ -217,25 +217,45 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 10. Right Click on **IntegrationRuntime** and Click on install.
    
-      ![](media/windowc.png) 
+      ![](media/windowc.png)
+
+11. In **Welcome to the Microsoft Integration Runtime Setup Wizard**, click on **Next**.
+
+   ![](media/Ex1-install-s2.png "Windows start menu search")
+
+12. In **End-User License Agreement**, select the checkbox **I accept the terms in the License Agreement**, and click on **Next**.
+
+   ![](media/Ex1-install-s3.png "Windows start menu search")
+
+13. In **Destination Folder**, click on **Next**.
+
+   ![](media/Ex1-install-s4.png "Windows start menu search")
+
+14. In **Ready to install Microsoft Integration Runtime**, click on **Install**.
+
+   ![](media/Ex1-install-s5.png "Windows start menu search")
+
+15. Once the deployment is completed click on **Finish** and minimize the application.
+
+   ![](media/Ex1-install-s6.png "Windows start menu search")
       
-11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
+16. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
-12. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
+17. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
 
     ![](media/inr.png)
 
-13. Wait for the Integration Runtime to be successful to continue further.
+18. Wait for the Integration Runtime to be successful to continue further.
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
+19. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/azure-sql.png)
           
-15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
+20. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
@@ -249,19 +269,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
          ![](media/E2T5S15.png)
 
-16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
+21. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
       ![](media/Ex2-Task5-S14.png)
 
-17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
+22. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
       ![](media/Ex2-Task5-S15.png)
 
-18. In **Step 7: Summary** blade, click on **Start migration** .
+23. In **Step 7: Summary** blade, click on **Start migration** .
 
     ![](media/E2T5S18.png)
 
-19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
+24. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
     ![](media/data-migration-06.png)
 
