@@ -29,7 +29,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Virtual Network**: Select the `vnet-sqlmi--cus`.
    - **Subnet**: Select any existing subnet from the drop-down menu.
 
-      ![image](https://user-images.githubusercontent.com/45102602/171028272-b63fce6e-06fd-4f74-ba45-8bac755cb9d6.png)
+      ![Add VNet is highlighted on the VNet Configuration blade.](media/vnet.png "Vnet")
 
 6. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select Refresh to confirm whether the Vnet is connected or not.
 
