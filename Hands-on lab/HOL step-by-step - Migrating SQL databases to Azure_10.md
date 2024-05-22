@@ -99,4 +99,10 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
 
+>**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
+> - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+> - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
 ## You have successfully completed the lab.

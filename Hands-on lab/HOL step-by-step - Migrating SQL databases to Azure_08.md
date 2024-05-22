@@ -55,4 +55,11 @@ In this task, you verify your web application now loads, and you can see the hom
 
 4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** as you need this database name for upcoming lab.
 
+ 
+>**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
+ > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+ > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+ > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+ > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
    > **Importent**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** that was created in this lab, as you will require this specific database name for Lab 2, **Data Modernization: Implementing Data Discovery & Classification**.
