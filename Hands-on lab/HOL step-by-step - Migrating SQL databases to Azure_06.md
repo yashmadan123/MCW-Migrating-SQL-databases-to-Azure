@@ -216,24 +216,25 @@ In this task, you create a new online data migration project in DMS for the `Wid
 9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
    
       ![](media/irt.png)
-      
-10. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
+   > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from C:\CloudLabs location in the VM.
+   
+11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
     ![](media/Ex2-Task5-S10.png)
 
-11. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
+12. In the New Integration Runtime (Self-hosted) Node leave default and click on **Finish**.
 
     ![](media/inr.png)
 
-12. Wait for the Integration Runtime to be successful to continue further.
+13. Wait for the Integration Runtime to be successful to continue further.
 
     ![](media/Ex2-Task5-S11b.png)
 
-13. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
+14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/azure-sql.png)
           
-14. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
+15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
@@ -247,19 +248,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
          ![](media/E2T5S15.png)
 
-15. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
+16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
       ![](media/Ex2-Task5-S14.png)
 
-16. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
+17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
       ![](media/Ex2-Task5-S15.png)
 
-17. In **Step 7: Summary** blade, click on **Start migration** .
+18. In **Step 7: Summary** blade, click on **Start migration** .
 
     ![](media/enn-1.png)
 
-18. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
+19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
     ![](media/data-migration-06.png)
 
