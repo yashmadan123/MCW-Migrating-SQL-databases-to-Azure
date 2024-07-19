@@ -216,7 +216,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
    
       ![](media/irt.png)
-   > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from C:\CloudLabs location in the VM.
+   > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:/** drive location in the VM.
    
 11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
 
