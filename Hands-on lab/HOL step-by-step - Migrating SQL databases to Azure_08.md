@@ -26,7 +26,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 5. On the Network Feature Status dialog, enter the following and click **Connect**.
 
-   - **Virtual Network**: Select the `vnet-sqlmi--cus`.
+   - **Virtual Network**: Select the `sqlmi-vnet`.
    - **Subnet**: Select any existing subnet from the drop-down menu.
 
       ![Add VNet is highlighted on the VNet Configuration blade.](media/vnet.png "Vnet")
