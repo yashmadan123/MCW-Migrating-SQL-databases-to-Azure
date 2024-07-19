@@ -1,6 +1,6 @@
-# **Getting Started with Your MCW-Migrating-SQL-databases-to-Azure Workshop**
+# **Getting Started with Your Migrating SQL Databases to Azure Workshop**
  
-Welcome to your MCW-Migrating-SQL-databases-to-Azure workshop! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
+Welcome to your Migrating SQL databases to Azure workshop! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
  
 ## **Accessing Your Lab Environment**
  
