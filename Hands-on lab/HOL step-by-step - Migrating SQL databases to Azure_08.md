@@ -53,7 +53,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
 
-4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** as you need this database name for upcoming lab.
+4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** and fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell as you need this database name for upcoming lab.
 
  
 >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
