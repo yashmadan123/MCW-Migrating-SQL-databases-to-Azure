@@ -128,3 +128,6 @@ In this task, you update the WWI gamer info web application to connect to and ut
 > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
+**Summary:**
+In this exercise you successfully deployed the WideWorldImporters web application to an Azure App Service and updated the connection strings to point to the SQL Managed Instance (SQL MI) database. The next step involves configuring the App Service to connect to the SQL MI database by ensuring proper network access, as SQL MI uses a private IP address within its own VNet.
