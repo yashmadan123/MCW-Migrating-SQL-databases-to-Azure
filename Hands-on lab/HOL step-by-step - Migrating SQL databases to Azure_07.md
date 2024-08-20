@@ -20,7 +20,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/datamod2.png "Visual Studio")
 
-1. Select **Sign in** and enter the following Azure account credentials when prompted:
+1. Select **Sign in** and click on Login through Work or education account and enter the following Azure account credentials when prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
