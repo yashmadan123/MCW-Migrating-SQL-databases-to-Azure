@@ -145,3 +145,6 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
 5. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
+
+**Summary:**
+By completing these tasks, you have assessed the WideWorldImporters database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying the most suitable migration path for your database.
