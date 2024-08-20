@@ -63,3 +63,5 @@ In this task, you verify your web application now loads, and you can see the hom
  > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
 
    > **Importent**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** that was created in this lab, as you will require this specific database name for Lab 2, **Data Modernization: Implementing Data Discovery & Classification**.
+**Summary**
+In this exercise, you successfully integrated the WWI App Service with the virtual network (VNet) that was created earlier. This integration allows the App Service to securely communicate with the SQL Managed Instance (SQL MI) within the VNet.
