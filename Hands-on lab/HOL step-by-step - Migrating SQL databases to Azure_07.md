@@ -1,8 +1,15 @@
-## Exercise 3: Update the web application to use the new SQL MI database
+# Exercise 3: Update the web application to use the new SQL MI database
 
-Duration: 30 minutes
+In this lab, you will deploy a web app to Azure and update its App Service configuration. This process involves setting up the web app in the Azure environment and configuring the necessary settings to ensure it runs smoothly. By the end of this lab, you will have a fully deployed and configured web app on Azure, ready for use.
 
-With the `WideWorldImporters` database now running on SQL MI in Azure, the next step is to make the required modifications to the WideWorldImporters gamer information web application.
+## Lab Objectives
+
+Lab Objectives
+
+In this lab, you will complete the following tasks:
+
+- Task 1: Deploy the web app to Azure
+- Task 2: Update App Service configuration
 
 > **Note**: Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where the Managed Instance is deployed. To learn more, read Connect your application to Azure SQL Managed Instance `https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance`.
 
@@ -124,3 +131,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 15. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
+
+## Summary
+
+In this hands-on lab, you will deploy a web app to Azure and update its App Service configuration.

@@ -1,11 +1,14 @@
-## Exercise 1: Perform database assessments
+# Exercise 1: Perform database assessments
 
-Duration: 20 minutes
+In this lab, you will connect to the WideWorldImporters database on the SqlServer2008 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
 
-In this exercise, you use the Azure Data Studio to perform assessments on the `WideWorldImporters` database. You create two assessments: one for SQL DB and a second for SQL MI. These assessments provide reports about any feature parity and compatibility issues between the on-premises database and the Azure-managed SQL database service options.
+## Lab Objective
 
-> Azure Data Studio helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. Azure Data Studio recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server.
+In this lab, you will complete the following tasks:
 
+- Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+- Task 2: Perform assessment for migration to Azure SQL Database
+- Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
 ### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 
