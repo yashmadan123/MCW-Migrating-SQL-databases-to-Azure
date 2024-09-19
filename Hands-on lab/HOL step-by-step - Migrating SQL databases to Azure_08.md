@@ -1,8 +1,15 @@
 ## Exercise 4: Integrate App Service with the virtual network
 
-Duration: 15 minutes
+## Duration: 15 minutes
 
-In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both resources are required to integrate App Service and connect to SQL MI.
+In this lab, you will configure VNet integration with Azure App Services and open the web application. This setup allows your web app to securely communicate with resources in your virtual network. By the end of this lab, your web application will be integrated with the VNet and accessible for use.
+
+## Lab objectives
+
+In this lab, you will perform the following:
+
+- Task 1: Configure VNet integration with App Services
+- Task 2: Open the web application
 
 ### Task 1: Configure VNet integration with App Services
 
@@ -64,5 +71,13 @@ In this task, you verify your web application now loads, and you can see the hom
 
    > **Important**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** and fully qualified domain name of your SQL-managed instance that was created in this lab, as you will require this specific database name for Lab 2, **Data Modernization: Implementing Data Discovery & Classification**.
 
-**Summary**
+## Summary
 In this exercise, you successfully integrated the WWI App Service with the virtual network (VNet) that was created earlier. This integration allows the App Service to securely communicate with the SQL Managed Instance (SQL MI) within the VNet.
+
+## Review
+In this lab, you have completed:
+
+- Configure VNet integration with App Services
+- Open the web application
+
+### You have successfully completed this lab.
