@@ -6,6 +6,18 @@ In this exercise, you use the **Azure Database Migration Service** here `https:/
 
 > The Business Critical service tier is designed for business applications with the highest performance and high availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
+
+# Lab Objectives
+In this lab, you will perform the following:
+
+- Task 1: Create an SMB network share on the VM
+- Task 2: Change MSSQLSERVER service to run under sqlmiuser account
+- Task 3: Create a backup of the WideWorldImporters database
+- Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
+- Task 5: Create and run an online data migration project
+- Task 6: Perform migration cutover
+- Task 7: Verify database and transaction log migration
+
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
 In this task, you create a new SMB network share on the <inject key="SQLVM Name" enableCopy="false"/> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
