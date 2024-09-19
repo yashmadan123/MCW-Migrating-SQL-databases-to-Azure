@@ -14,6 +14,8 @@ In this hands-on lab, you will follow a structured architecture that begins with
 
 ## Architecture Diagram:
 
+![](./media/preferred-solution-architecture1.png)
+
 ## Explanation of Components
 
 ## Getting Started with the Lab
