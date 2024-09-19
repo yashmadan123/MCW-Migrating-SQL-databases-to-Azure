@@ -18,23 +18,23 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
+   ![Resource groups is highlighted in the Azure services list.](media/new-image2.png)
 
 1. Select the **hands-on-lab-<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
+   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](media/new-image(3).png)
 
 1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
-   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
+    ![](media/new-image4.png)
 
-1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect**.
+1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect > Connect**.
 
-    ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod18.png "Passed")
+    ![](media/new-image5.png)
 
 1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
   
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/connect.png "Passed")
+   ![](media/new-image6.png)
 
 1. Click on **Keep**, on the Downloads pop-up. 
 
