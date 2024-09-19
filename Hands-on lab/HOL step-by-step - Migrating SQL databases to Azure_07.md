@@ -136,6 +136,6 @@ In this exercise you successfully deployed the WideWorldImporters web applicatio
 In this lab, you have completed:
 
 - Deploy the web app to Azure
-- Task 2: Update App Service configuration
+- Update App Service configuration
 
 ### You have successfully completed this lab.
