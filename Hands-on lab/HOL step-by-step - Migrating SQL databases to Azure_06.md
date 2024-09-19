@@ -426,13 +426,23 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
   
->**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
-> - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-> - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+>**Congratulations** on completing the Task! Now, it's time to validate it. 
 
 13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
-**Summary:**
+## Summary:
+
 In this exercise, you successfully migrated the WideWorldImporters database from an on-premises SQL Server 2008 R2 instance to an Azure SQL Managed Instance using the Azure Database Migration Service. You also learned how to create backups, set up an SMB network share, and use Azure Data Studio to manage the migration process, ensuring minimal downtime by utilizing an online migration strategy.
+
+## Review
+In this lab, you have completed:
+
+Create an SMB network share on the VM
+Change MSSQLSERVER service to run under sqlmiuser account
+Create a backup of the WideWorldImporters database
+Retrieve SQL MI and SQL Server 2008 VM connection information
+Create and run an online data migration project
+Perform migration cutover
+Verify database and transaction log migration
+
+### You have successfully completed this lab.
