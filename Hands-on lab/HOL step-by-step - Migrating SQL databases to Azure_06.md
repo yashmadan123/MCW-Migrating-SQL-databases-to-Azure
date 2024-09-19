@@ -7,7 +7,7 @@ In this exercise, you use the **Azure Database Migration Service** here `https:/
 > The Business Critical service tier is designed for business applications with the highest performance and high availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
 
-# Lab Objectives
+## Lab Objectives
 In this lab, you will perform the following:
 
 - Task 1: Create an SMB network share on the VM
