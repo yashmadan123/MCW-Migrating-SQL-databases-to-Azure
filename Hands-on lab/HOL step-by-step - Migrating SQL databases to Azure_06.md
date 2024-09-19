@@ -434,12 +434,12 @@ In this exercise, you successfully migrated the WideWorldImporters database from
 ## Review
 In this lab, you have completed:
 
-Create an SMB network share on the VM
-Change MSSQLSERVER service to run under sqlmiuser account
-Create a backup of the WideWorldImporters database
-Retrieve SQL MI and SQL Server 2008 VM connection information
-Create and run an online data migration project
-Perform migration cutover
-Verify database and transaction log migration
+- Create an SMB network share on the VM
+- Change MSSQLSERVER service to run under sqlmiuser account
+- Create a backup of the WideWorldImporters database
+- Retrieve SQL MI and SQL Server 2008 VM connection information
+- Create and run an online data migration project
+- Perform migration cutover
+- Verify database and transaction log migration
 
 ### You have successfully completed this lab.
