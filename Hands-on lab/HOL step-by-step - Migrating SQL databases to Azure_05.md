@@ -8,7 +8,7 @@ In this exercise, you use the Azure Data Studio to perform assessments on the `W
 
 ## Lab Objective
 
-In this lab, you will complete the following tasks:
+In this lab, you will perform the following:
 
 - Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 - Task 2: Perform assessment for migration to Azure SQL Database
