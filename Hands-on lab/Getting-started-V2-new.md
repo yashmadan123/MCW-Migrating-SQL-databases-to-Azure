@@ -40,47 +40,28 @@ For convenience, you can open the lab guide in a separate window by selecting th
 ## Managing Your Virtual Machine
 Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
 
-## Login to Azure Portal
-1. In the JumpVM, click on Azure portal shortcut of Microsoft Edge browser which is created on desktop.
-
-   ![](../media/azureportal_icon1.png "Lab Environment")
-   
-1. On **Sign into Microsoft Azure** tab you will see login screen, in that enter following email/username and then click on **Next**. 
-   * Email/Username: <inject key="AzureAdUserEmail"></inject>
-   
-     ![](../media/image7.png "Enter Email")
-     
-1. Now enter the following password and click on **Sign in**.
-   * Password: <inject key="AzureAdUserPassword"></inject>
-   
-     ![](../media/image8.png "Enter Password")
-     
-1. If you see the pop-up **Action Required**, click **Ask Later**.
-
-     ![](../media/asklater.png "Action required window")
-     
-    > If you are getting popup **save password**, then select **Save & Turn on** option.
-       
-1. If you see the pop-up **Stay Signed in?**, click **No**.
-
-1. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
-
-1. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
-
-1. Now you will see Azure Portal Dashboard, click on **Resource groups** from the Navigate panel to see the resource groups.
-
-     ![](../media/select-rg.png "Resource groups")
-
-1. Confirm you have a resource group **openai-<inject key="Deployment-id" enableCopy="false"/>** present as shown in the below screenshot. You need to use the **openai-<inject key="Deployment-id" enableCopy="false"/>** resource group throughout the entire process of lab execution.
-
-     ![](../media/rg.png "Resource groups")
-   
-1. Use **Next** button from lower right corner to move on to the next page.
-
-   ![](../media/next1.png "Resource groups")
-
-In this hands-on-lab, you will learn how Azure OpenAI models can generate and refine code and use the DALL-E model to create images from text prompts, showcasing AI's versatility in coding and creativity.
-
+## Let's Get Started with Azure Portal
+ 
+1.  In the JumpVM, click on Azure portal shortcut of Microsoft Edge browser which is created on desktop.
+ 
+     ![Launch Azure Portal](./media/sc900-image(1).png)
+ 
+2. You'll see the **Sign into Microsoft Azure** tab. Here, enter your credentials:
+ 
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+ 
+       ![Enter Your Username](./media/sc900-image-1.png)
+ 
+3. Next, provide your password:
+ 
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
+ 
+       ![Enter Your Password](./media/sc900-image-2.png)
+ 
+4. If prompted to stay signed in, you can click "No."
+ 
+5. If a **Welcome to Microsoft Azure** pop-up window appears, simply click "Maybe Later" to skip the tour.
+ 
 ## Support Contact
  
 The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.
