@@ -138,11 +138,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T3S4.png "New project settings")
 
   
->**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
-> - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-> - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+>**Congratulations** on completing the Task! Now, it's time to validate it.
 
 5. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
