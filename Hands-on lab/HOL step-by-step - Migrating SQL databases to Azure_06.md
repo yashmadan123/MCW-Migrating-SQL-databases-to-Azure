@@ -187,8 +187,6 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/data-migration-01.png "New DMA project")
-
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
