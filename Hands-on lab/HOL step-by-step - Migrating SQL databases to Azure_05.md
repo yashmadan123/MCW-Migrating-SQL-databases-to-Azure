@@ -6,6 +6,13 @@ In this exercise, you use the Azure Data Studio to perform assessments on the `W
 
 > Azure Data Studio helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. Azure Data Studio recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server.
 
+## Lab Objective
+
+In this lab, you will complete the following tasks:
+
+- Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+- Task 2: Perform assessment for migration to Azure SQL Database
+- Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
 ### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 
