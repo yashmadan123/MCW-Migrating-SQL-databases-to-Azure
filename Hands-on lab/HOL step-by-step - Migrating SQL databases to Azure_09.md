@@ -269,4 +269,4 @@ In this lab, you have completed:
 - Configure Data Discovery and Classification
 - Review an Azure Defender for SQL Vulnerability Assessment
 
-### You have successfully completed this lab.
+### Proceed with the next lab by clicking on Next>>.
