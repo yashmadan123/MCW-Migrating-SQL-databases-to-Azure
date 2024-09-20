@@ -94,35 +94,43 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 4. On the App Service blade, select **Environment variables** **(1)** under Settings on the left-hand side, select **Connection strings** **(2)** and click on **Advanced edit** **(3)**.
 
-   ![The Configuration item is selected under Settings.](media/app-service-configuration-menu.png "Configuration")
+   ![](media/new-image51.png)
 
-6. Replace the **value** of the connection string of `WwiContext` below and replace `your-sqlmi-host-fqdn-value` with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace the suffix with value: <inject key="suffix" />.
+6. Replace the **value** of the connection string of `WwiContext` with the below and replace **`your-sqlmi-host-fqdn-value`** with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace the suffix with value: <inject key="suffix" />.
     
     ``
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
+   >**Note**: Copy the name and value of `WwiContext` which will be used in later steps.
+
 7. Repeat **steps 5**, this time for the `WwiReadOnlyContext` connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
+    >**Note**: Copy the name and value of `WwiReadOnlyContext` which will be used in later steps.
+   
 8. Select **OK**.
 
-9. Select **Apply** at the top of the Environment variables blade.
+9. Select **Apply** at the top of the Environment variables blade then click on **confirm**. 
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContextapplay.png "Save")
 
-10. Repeat the **step 5** and **step 6** for **App setting** , Click on **Add** from the App settings
+   ![](media/new-image52.png)
+     
+10. Back on **wwi-web-<inject key="Suffix" enableCopy="false"/> | Environment variables**, Click on **Add** from the **App settings**.
+     
+      ![](media/new-image53.png)
+    
+11. Add the **Name** and **Value** of `WwiContext` and `WwiReadOnlyContext` which you recorded in notepade and click on **Apply**
 
-11. Add the **Name** and **Value** for `WwiContext` and `WwiReadOnlyContext` and click on **Apply**
+    ![](media/new-image54.png)
 
-    ![The save button on the Configuration blade is highlighted.](media/app-string.png "Save")
-
-    ![The save button on the Configuration blade is highlighted.](media/app-string-1.png "Save")
+    ![](media/new-image55.png)
 
 12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
 
-    ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/save_changes.png "Restart prompt")
+     ![](media/new-image52.png)
 
 13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
