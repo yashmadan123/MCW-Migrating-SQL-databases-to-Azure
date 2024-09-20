@@ -17,26 +17,30 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. You have already logged in to JumpBox VM, use this VM to continue with the lab. 
 
-1. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
+1. In the File Explorer dialog, navigate to the `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
 1. If prompted about how you want to open the file, select **Visual Studio 2022**, and then select **OK**.
 
-    ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/datamod2.png "Visual Studio")
+    ![](media/new-image38.png)
 
-1. Select **Sign in** and click on Login through Work or education account and enter the following Azure account credentials when prompted:
+1. Select **Sign in** and **select Work or school account** > **Continue** and enter the following Azure account credentials if prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
 
-        ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod3.png "Visual Studio")
+     ![](media/new-image39.png)
+
+     ![](media/new-image40.png)
 
 1. Once you signed in, Click on **Start Visual Studio**.
 
-    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod4.png "Visual Studio")
+    ![](media/new-image45.png)
 
-1. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
+1. On **Stay signed in to all your apps** click on **OK**. Then on **You're all set** page select **Done**. 
+
+1. If prompted at the security warning, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
@@ -46,23 +50,23 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. On the **Publish** dialog, select **Azure** in the Target box, and select **Next**.
 
-    ![In the Publish dialog, Azure is selected and highlighted in the Target box. The Next button is highlighted.](media/updated15.png "Publish API App to Azure")
+    ![](media/new-image46.png)
 
 1. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
 
-    ![In the Publish dialog, Azure App Service (Windows) is selected and highlighted in the Specific Target box. The Next button is highlighted.](media/datamod6.png "Publish API App to Azure")
+    ![](media/new-image47.png)
 
 1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App.
 
-    ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod7.png "Visual Studio")
+    ![](media/new-image48.png)
 
 1. Select **Close**.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab- resource group.](media/close.png "Publish API App to Azure")
+    ![](media/new-image49.png)
 
 1. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
-    ![The Publish button is highlighted on the Publish page in Visual Studio.](media/wwi-web-publish.png "Publish")
+    ![](media/new-image50.png)
 
 1. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
@@ -76,14 +80,14 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
-1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the Azure services list.
+1. Navigate back to Azure portal, search and select **Resource groups** from the Azure services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
+   ![](media/new-image2.png)
 
-2. Select the **hands-on-lab<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
+2. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
-
+     ![](media/new-image3.png)
+ 
 3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/datamod9.png "Resource group")
