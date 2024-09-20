@@ -337,11 +337,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
-    ![](media/EX2-task6-(s14).png)
+    ![](media/EX2-task6-s(14).png)
 
 1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
-    ![](media/EX2-task6-(s15).png)
+    ![](media/EX2-task6-s(15).png)
 
 1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You should refresh a couple of times to see the status as Succeeded.
 
