@@ -25,7 +25,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![](media/new-image38.png)
 
-1. Select **Sign in** and **select Work or school account** > **Continue** and enter the following Azure account credentials if prompted:
+1. Select **Sign in** and choose **Work or school account** > **Continue** and enter the following Azure account credentials if prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
@@ -86,7 +86,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 2. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-     ![](media/new-image3.png)
+     ![](media/new-image(3).png)
  
 3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
