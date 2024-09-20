@@ -180,9 +180,9 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In Azure Data Studio click on **Azure SQL Migration** and click on **+ New migration**.
+1. In Azure Data Studio click on >  **<inject key="SQLVM Name" /> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
-   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/data-migration-01.png "Data Migration Assistant")
+    ![](media/new-image16.png)
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
