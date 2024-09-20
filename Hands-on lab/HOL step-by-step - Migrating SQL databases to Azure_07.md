@@ -132,12 +132,10 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
      ![](media/new-image52.png)
 
-13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
+13. Select **Overview** from left menu to return to the overview blade of your App Service. Click on **Browse** on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
-    ![Overview is highlighted on the left-hand menu for App Service](media/app-service-overview-menu-item.png "Overview menu item")
-
-14. At this point, selecting the **URL** for the App Service on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
-
+    ![](media/new-image56.png)
+    
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
 
 >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
