@@ -65,7 +65,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
    
 1. In the Azure Data Studio select **Extensions (1)** from the Activity Bar, enter **SQL Migration (2)** into the search bar, select **Azure SQL Migration (3)**, and click on **Install (4)**.  
 
-   ![](media/Ex1-Task1-S9b.png)
+    ![](media/new-image8.png)
 
 1. In the Azure Data Studio select **Connections (1)** from the Activity Bar, click on **New Connection (1)** dialog, enter **<inject key="SQLVM Name" /> (2)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (3)**.
   
