@@ -102,13 +102,13 @@ In this task, you update the WWI gamer info web application to connect to and ut
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-   >**Note**: Copy the name and value of `WwiContext` which will be used in later steps.
+   >**Note**: Copy the **Name** and **Value** of **`WwiContext`** and paste text editor will be using in further step.
 
-7. Repeat **steps 5**, this time for the `WwiReadOnlyContext` connection string.
+7. Repeat **steps 5**, this time for the **`WwiReadOnlyContext`** connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
-    >**Note**: Copy the name and value of `WwiReadOnlyContext` which will be used in later steps.
+    >**Note**: Copy the name and value of **`WwiReadOnlyContext`** and paste text editor will be using in further step.
    
 8. Select **OK**.
 
@@ -122,17 +122,21 @@ In this task, you update the WWI gamer info web application to connect to and ut
      
       ![](media/new-image53.png)
     
-11. Add the **Name** and **Value** of `WwiContext` and `WwiReadOnlyContext` which you recorded in notepade and click on **Apply**
+11. Add the **Name** and **Value** of `WwiContext` which you recorded in notepade and click on **Apply**
 
     ![](media/new-image54.png)
 
-    ![](media/new-image55.png)
+12. Repeat above step for **`WwiReadOnlyContext`** and paste the **Name** and **Value** which you recorded in notepade and click on **Apply**
 
-12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
+      ![](media/new-image55.png)
+
+13. Click on **Apply**.
+
+14. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
 
      ![](media/new-image52.png)
 
-13. Select **Overview** from left menu to return to the overview blade of your App Service. Click on **Browse** on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
+15. Select **Overview** from left menu to return to the overview blade of your App Service. Click on **Browse** on the Overview blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
     ![](media/new-image56.png)
     
