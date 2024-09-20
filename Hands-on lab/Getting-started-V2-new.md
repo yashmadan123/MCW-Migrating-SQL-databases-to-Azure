@@ -9,7 +9,7 @@ In this hands-on lab, you will implement a proof of concept (PoC) for migrating 
 ## Objective
 
 
-- Perform database assessments : you experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
+- **Perform database assessments** : you experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
 
 
 ## Architecture
