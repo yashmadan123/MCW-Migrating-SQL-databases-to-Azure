@@ -33,7 +33,7 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-   ![In the File Sharing dialog, the sqlmiuser is highlighted and assigned a permission level of Read/Write.](media/file-sharing.png)
+   ![](media/new-image17.png)
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
@@ -47,34 +47,34 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter "SQL configuration" into the search bar, and then select **SQL Server Configuration Manager** from the search results.
+1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter **SQL configuration** into the search bar, and then select **SQL Server Configuration Manager** from the search results.
 
-   ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
+   ![](media/new-image18.png)
 
-   > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
+    > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
 
-2. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
+3. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
 
-   ![SQL Server Services is selected and highlighted in the tree view of the SQL Server Configuration Manager. In the Services pane, SQL Server (MSSQLSERVER) is selected and highlighted. Properties is highlighted in the context menu.](media/sql-server-configuration-manager-services.png "SQL Server Configuration Manager")
+    ![](media/new-image19.png)
 
-3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
+4. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
    - **Account name**: `sqlmiuser`
    - **Password**: `Password.1234567890`
 
-      ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
+      ![](media/new-image20.png)
 
-4. Select **OK**.
+5. Select **OK**.
 
-5. Select **Yes** in the Confirm Account Change dialog.
+6. Select **Yes** in the Confirm Account Change dialog.
 
    ![](media/new-image13.png)
 
-6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+7. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-7. Close the SQL Server Configuration Manager.
+8. Close the SQL Server Configuration Manager.
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
@@ -90,23 +90,23 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
 
-   ![In the SSMS Object Explorer, the context menu for the WideWorldImporters database is displayed, with Tasks and Back Up... highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm5.png "SSMS Backup")
+   ![](media/new-image22.png)
 
 4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This device is no longer needed, so select it and then select **Remove**.
 
-   ![In the General tab of the Back Up Database dialog, C:\WideWorldImporters.bak is selected, and the Remove button is highlighted under destinations.](media/ssms-back-up-database-general-remove.png)
+   ![](media/new-image23.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
-   ![In the General tab of the Back Up Database dialog, the Add button is highlighted under destinations.](media/ssms-back-up-database-general.png "Back Up Database")
+    ![](media/new-image24.png)
 
 6. In the Select Backup Destination dialog, select the Browse (`...`) button.
 
-   ![The Browse button is highlighted in the Select Backup Destination dialog.](media/ssms-select-backup-destination.png "Select Backup Destination")
+    ![](media/new-image25.png)
 
-7. In the Location Database Files dialog, select the `C:\dms-backups` folder, enter **WideWorldImporters.bak** into the File name field, and then select **OK**.
+7. In the Location Database Files dialog, select the **`C:\dms-backups`** folder, enter **WideWorldImporters.bak** into the File name field, and then select **OK**.
 
-   ![In the Select the file pane, the C:\dms-backups folder is selected and highlighted, and WideWorldImporters.bak is entered into the File name field.](media/ssms-locate-database-files.png "Location Database Files")
+   ![](media/new-image26.png)
 
 8. Select **OK** to close the Select Backup Destination dialog.
 
