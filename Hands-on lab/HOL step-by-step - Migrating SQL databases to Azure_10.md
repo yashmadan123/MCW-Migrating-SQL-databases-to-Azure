@@ -1,4 +1,4 @@
-## Exercise 2: Enable Dynamic Data Masking
+## Exercise 6: Enable Dynamic Data Masking
 
 ## Duration: 15 minutes
 
