@@ -25,11 +25,11 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 2. In the Windows Explorer window, expand **Computer** in the tree view, select **Windows (C:)**, and then select **New folder** in the top menu.
 
-   ![In Windows Explorer, Windows (C:) is selected under Computer in the left-hand tree view, and New folder is highlighted in the top menu.](media/windows-explorer-new-folder.png "Windows Explorer")
+   ![](media/new-image9.png)
 
 3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people...** in the context menu.
 
-   ![In Windows Explorer, the context menu for the dms-backups folder is displayed, with Share with and Specific people highlighted.](media/windows-explorer-folder-share-with.png "Windows Explorer")
+   ![](media/new-image10.png)
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
@@ -37,11 +37,11 @@ In this task, you create a new SMB network share on the <inject key="SQLVM Name"
 
 5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
 
-   ![In the Network discovery and file sharing dialog, No, make the network that I am connected to a private network is highlighted.](media/network-discovery-and-file-sharing.png "Network discovery and file sharing")
+   ![](media/new-image11.png)
 
 6. Back on the File Sharing dialog, note the shared folder's path, ```\\SQL2008-SUFFIX\dms-backups```, and select **Done** to complete the sharing process.
 
-   ![The Done button is highlighted on the File Sharing dialog.](media/dms-backup.png "File Sharing")
+   ![](media/new-image12.png)
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
@@ -68,7 +68,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 5. Select **Yes** in the Confirm Account Change dialog.
 
-   ![The Yes button is highlighted in the Confirm Account Change dialog.](media/confirm-account-change.png "Confirm Account Change")
+   ![](media/new-image13.png)
 
 6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
@@ -86,7 +86,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 2. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-   ![The SQL Server Connect to Search dialog is displayed, with SQL2008 entered into the Server name and Windows Authentication selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/ssms.png "Connect to Server")
+  ![](media/new-image(14).png)
 
 3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
 
