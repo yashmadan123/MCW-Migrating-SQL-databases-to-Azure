@@ -1,7 +1,5 @@
 ## Exercise 2: Migrate the database to SQL MI
 
-Duration: 60 minutes
-
 In this lab, you will migrate the WideWorldImporters database from a SQL Server 2008 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
 
 ## Lab Objectives
@@ -14,6 +12,8 @@ In this lab, you will perform the following:
 - Task 5: Create and run an online data migration project
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
+
+## Duration: 60 minutes
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
