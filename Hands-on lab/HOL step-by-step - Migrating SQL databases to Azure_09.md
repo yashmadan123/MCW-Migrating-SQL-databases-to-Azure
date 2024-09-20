@@ -1,22 +1,29 @@
-## Exercise 1: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL
+## Exercise 5: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL
 
-Duration: 30 minutes
+## Duration: 30 minutes
 
 In this exercise, you are able to set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
+
+## Lab objectives
+
+In this lab, you will perform the following:
+
+- Task 1: Configure Data Discovery and Classification
+- Task 2: Review an Azure Defender for SQL Vulnerability Assessment
 
 ### Task 1: Configure Data Discovery and Classification
 
 In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labelling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
 
-1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab select the Managed database named which you note down in Lab 1 Data Modernization: Migrate SQL DB to Azure SQL MI name start like **WideWorldImporters{suffix}**.
+1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab select the Managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
-1. On the **WideWorldImporters{suffix}** Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
+1. On the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
 
-   ![The Data Discovery & Classification tile is displayed.](media/ex9-task1-step2.png "Data Discovery & Classification Dashboard")
+   ![](media/new-image64.png)
 
 1. In the **Data Discovery & Classification** blade, select the info link with the message **Currently database is using SQL Information Protection policy. Found 35 columns with classification recommendations**.
 
-   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/datamod12.png "Data Discovery & Classification")
+   ![](media/new-image65.png)
 
 1. Look over the list of recommendations to get a better understanding of the types of data and classifications that can be assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the **Sales - CreditCard - CardNumber** field.
 
@@ -24,13 +31,13 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. Due to the risk of exposing credit card information, WWI would like a way to classify it as highly confidential, not just **Confidential**, as the recommendation suggests. To correct this, select **+ Add classification** at the top of the Data Discovery & Classification blade.
 
-   ![The +Add classification button is highlighted in the toolbar.](media/ex9-task1-step5.png "Data Discovery & Classification")
+   ![](media/new-image66.png)
 
 1. Quickly expand the **Sensitivity label** field and review the various built-in labels from which you can choose. You can also add custom labels, should you desire.
 
-   ![The list of built-in Sensitivity labels is displayed.](media/ads-data-discovery-and-classification-sensitivity-labels.png "Data Discovery & Classification")
+   ![](media/new-image67.png)
 
-1. In the Add classification dialog, enter the following:
+1. In the Add classification dialog, enter the following then select **Add classification**.
 
    - **Schema name**: Select **Sales**.
    - **Table name**: Select **CreditCard**.
@@ -38,7 +45,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
    - **Information type**: Select **Credit Card**.
    - **Sensitivity level**: Select **Highly Confidential**.
 
-      ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
+      ![](media/new-image68.png)
 
 1. Select **Add classification**.
 
@@ -46,7 +53,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
-   ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
+   ![](media/new-image69.png)
 
 1. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that the recommendation service flagged these fields as **Confidential - GDPR**. WWI maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
 
@@ -54,7 +61,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. Check the **Select all** checkbox at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
 
-    ![All the recommended classifications are checked, and the Accept selected recommendations button is highlighted.](media/ads-data-discovery-and-classification-accept-recommendations.png "Data Discovery & Classification")
+    ![](media/new-image70.png)
 
 1. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
@@ -74,11 +81,13 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 In this task, you review an assessment report generated by Azure Defender for the `WideWorldImporters` database and take action to remediate one of the findings in the `WideWorldImporters` database. The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is a service that provides visibility into your security state and includes actionable steps to resolve security issues and enhance your database security.
 
-1. Select **Microsoft Defender for Cloud** from the left hand navigation menu of the ****WideWorldImporters{suffix}**** Managed database.
+1. Select **Microsoft Defender for Cloud** from the left hand navigation menu of the **WideWorldImporters<inject key="Suffix" />** Managed database.
 
-1. On the **Microsoft Defender for Cloud** blade for the **WideWorldImporters{suffix}** Managed database, Scroll down and click on **View additional findings in Vulnerability Assessment** to open the Vulnerability Assessment blade.
+    ![](media/new-image71.png)
+   
+1. On the **Microsoft Defender for Cloud** blade for the **WideWorldImporters<inject key="Suffix" />** Managed database, Scroll down and click on **View additional findings in Vulnerability Assessment** to open the Vulnerability Assessment blade.
 
-   ![The Vulnerability tile is displayed.](media/Microsoft-Defender-for-Cloud.png "Azure Defender for SQL Vulnerability Assessment tile")
+   ![](media/new-image72.png)
 
    > **Note**: If you see Microsoft Defender for SQL is not enabled click on the **Enable** button, wait till it gets Succeeded and perform the step 2.
 
@@ -86,27 +95,27 @@ In this task, you review an assessment report generated by Azure Defender for th
       
 1. On the Vulnerability Assessment blade, select **Scan** on the toolbar.
 
-   ![The Vulnerability assessment scan button is selected in the toolbar.](media/scan.png "Scan")
+    ![](media/new-image73.png)
 
-   > **Note**: If you encounter an error "Failed to execute Vulnerability Assessment scan for **WideWorldImporters{suffix}**. Error message: The configured storage account was not found in the subscriptions", perform the following steps.
+    > **Note**: If you encounter an error "Failed to execute Vulnerability Assessment scan for **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**. Error message: The configured storage account was not found in the subscriptions", perform the following steps.
 
-   - Move back to the **Microsoft Defender for Cloud** blade.
+    - Move back to the **Microsoft Defender for Cloud** blade.
 
-   -  Once you are in the **Microsoft Defender for Cloud** blade, click on **Configure** of the Enablement Status: Enabled at the subscription level.
+    -  Once you are in the **Microsoft Defender for Cloud** blade, click on **Configure** of the Enablement Status: Enabled at the subscription level.
 
-      ![The Vulnerability assessment scan button is selected in the toolbar.](media/microsoft-defender-configure.png "microsoft-defender-configure")
+        ![](media/new-image74.png)
 
-   - On the **Server Settings** blade, click on **Select Storage acount** under Storage account.
+    - On the **Server Settings** blade, click on **Select Storage acount** under Storage account.
 
-      ![The Vulnerability assessment scan button is selected in the toolbar.](media/server-setting-storage-account.png "server-setting-storage-account")
+       ![The Vulnerability assessment scan button is selected in the toolbar.](media/server-setting-storage-account.png "server-setting-storage-account")
 
-   - On **Choose storage account** blade, select the storage account **sqlmistore<inject key="SUFFIX" enableCopy="false"/>**.
+    - On **Choose storage account** blade, select the storage account **sqlmistore<inject key="SUFFIX" enableCopy="false"/>**.
 
-      ![The Vulnerability assessment scan button is selected in the toolbar.](media/choose-storage-account.png "choose-storage-account")
+       ![The Vulnerability assessment scan button is selected in the toolbar.](media/choose-storage-account.png "choose-storage-account")
       
-   - On the **Server Settings** blade, click on **Save**.
+    - On the **Server Settings** blade, click on **Save**.
 
-      ![The Vulnerability assessment scan button is selected in the toolbar.](media/server-setting-save.png "server-setting-save")
+       ![The Vulnerability assessment scan button is selected in the toolbar.](media/server-setting-save.png "server-setting-save")
 
    - Re-perform the steps 2 and 3.
  
@@ -126,39 +135,12 @@ In this task, you review an assessment report generated by Azure Defender for th
 
 1. You will now act on the recommended remediation steps for the finding and enable [Transparent Data Encryption](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal) for the `WideWorldImporters` database. To accomplish this, switch over to using SSMS on your JumpBox VM for the next few steps.
 
-   > **Note**
-   >
-   > Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
+   > **Note**: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
-1. In the Azure portal `https://portal.azure.com`, select the Azure Cloud Shell icon from the top menu.
+1. In the Azure portal, select the Azure Cloud Shell icon from the top menu.
 
    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
 
-1. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
-
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
-
-1. On the Getting Started , Choose **mount a storage account (1)** select the **exisitng subscription (2)** then click on **Apply (3)**.
-
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/getting_started.png "Azure Cloud Shell")
-
-1. Choose **I want to create a storage account (1)** , Click on **Next (2)**.
-
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/mount-storage.png "Azure Cloud Shell")
-
-
-1. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
-  
-      - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
-      - **Storage account name**: **storage<inject key="Suffix" enableCopy="false"/>**
-      - **File Share**: **blob**
-      - **Region**: **Central US**
-
-         ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/create-storage-1.png "Azure Cloud Shell")
-
-1. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
-
-   ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
 1. At the prompt, retrieve information about SQL MI in the SQLMI-Shared-RG resource group by entering the following PowerShell command.
 
@@ -167,31 +149,29 @@ In this task, you review an assessment report generated by Azure Defender for th
    az sql mi list --resource-group $resourceGroup
    ```
 
-   > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run the `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription ID of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
-
-1. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
+1. Within the above command's output, locate and copy the value of the **`fullyQualifiedDomainName`** property. Paste the value into a text editor, such as Notepad.exe, for reference below.
 
    ![The output from the az sql mi list command is displayed in the Cloud Shell, and the fullyQualifiedDomainName property and value are highlighted.](media/cloud-shell-az-sql-mi-list-output.png "Azure Cloud Shell")
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+1. Navigate to the Azure portal and select **Resource groups** from the Azure services list.
 
-   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
+   ![](media/new-image2.png)
 
 1. Select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
 
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
+    ![](media/new-image(3).png)
 
 1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
 
-   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
+    ![](media/new-image4.png)
 
-1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect**.
+1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect > Connect**.
 
-    ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod18.png "Passed")
+    ![](media/new-image5.png)
 
 1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
   
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/connect.png "Passed")
+   ![](media/new-image6.png)
 
 1. Click on **Keep**, on the Downloads pop-up. 
 
@@ -224,10 +204,10 @@ In this task, you review an assessment report generated by Azure Defender for th
    - **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** **(5)** box.
 
-      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/data-migration-09.png "Connect to Server")
+      ![](media/new-image42.png)
 
 1. In SSMS, select **New Query** from the toolbar and paste the following SQL script into the new query window.
-   > **Note**: Make sure to replace the **{Managed-database-Name}** Lab 1 Data Modernization: Migrate SQL DB to Azure SQL MI name start like **WideWorldImporters{suffix}**.
+   > **Note**: Make sure to replace the **{Managed-database-Name}** with **WideWorldImporters<inject key="Suffix" />**.
 
    ```SQL
    USE {Managed-database-Name};
@@ -272,13 +252,21 @@ In this task, you review an assessment report generated by Azure Defender for th
 
     > Using the SQL Vulnerability Assessment, it is simple to identify and remediate potential database vulnerabilities, allowing you to improve your database security proactively.
 
-
-**Summary:**
-By completing this lab, you have successfully enhanced the security posture of your SQL Managed Instance by classifying sensitive data and identifying/remediating potential vulnerabilities. These steps are crucial for protecting data and ensuring compliance with regulations like GDPR
-
-
 >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
 > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
 > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
+## Summary:
+
+By completing this lab, you have successfully enhanced the security posture of your SQL Managed Instance by classifying sensitive data and identifying/remediating potential vulnerabilities. These steps are crucial for protecting data and ensuring compliance with regulations like GDPR.
+
+## Review
+
+In this lab, you have completed:
+
+- Configure Data Discovery and Classification
+- Review an Azure Defender for SQL Vulnerability Assessment
+
+### You have successfully completed this lab.

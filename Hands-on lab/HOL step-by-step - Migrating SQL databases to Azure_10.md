@@ -1,10 +1,18 @@
-## Exercise 2: Enable Dynamic Data Masking
+## Exercise 6: Enable Dynamic Data Masking
 
-Duration: 15 minutes
+## Duration: 15 minutes
 
 In this exercise, you enable **Dynamic Data Masking** `https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started` (DDM) on credit card numbers in the `WideWorldImporters` database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
 
 For example, a call centre's service representative may identify callers by several digits of their credit card number. However, the full credit card number should not be fully exposed to the service representative. A masking rule can be defined that obfuscates all but the last four digits of any credit card number in any query result. As another example, an appropriate data mask can be created to protect personally identifiable information (PII) data so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
+
+
+## Lab Objective
+
+In this lab, you will perform the following:
+
+- Task 1: Enable DDM on credit card numbers
+- Task 2: Apply DDM to email addresses
 
 ### Task 1: Enable DDM on credit card numbers
 
@@ -12,7 +20,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Database**, expand the Database which you used in the previous Exercise name starting like **WideWorldImporters{suffix}**. Expand **Tables** under the **WideWorldImporters{suffix}** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
@@ -99,13 +107,20 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
 
-**Summary:**
-You've successfully applied Dynamic Data Masking to both the **'CardNumber'** field in the **'Sales.CreditCard'** table and the **'LoginEmail'** field in the **'dbo.Gamer'** table. This ensures that sensitive information is not fully exposed to non-privileged users, improving the security posture of the WideWorldImporters database.
 
 >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
 > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
 > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
 > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
 > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+
+## Summary:
+You've successfully applied Dynamic Data Masking to both the **'CardNumber'** field in the **'Sales.CreditCard'** table and the **'LoginEmail'** field in the **'dbo.Gamer'** table. This ensures that sensitive information is not fully exposed to non-privileged users, improving the security posture of the WideWorldImporters database.
+
+## Review 
+In this lab, you have completed:
+
+- Enable DDM on credit card numbers
+- Apply DDM to email addresses
 
 ## You have successfully completed the lab.
