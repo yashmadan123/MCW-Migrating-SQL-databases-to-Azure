@@ -86,7 +86,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 2. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
-  ![](media/new-image(14).png)
+    ![](media/new-image(14).png)
 
 3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
 
