@@ -436,4 +436,4 @@ In this lab, you have completed:
 - Perform migration cutover
 - Verify database and transaction log migration
 
-### You have successfully completed this lab.
+### ### Proceed with the next lab by clicking on Next>>.
