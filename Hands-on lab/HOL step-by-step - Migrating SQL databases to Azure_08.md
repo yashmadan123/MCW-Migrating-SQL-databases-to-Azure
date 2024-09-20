@@ -79,4 +79,4 @@ In this lab, you have completed:
 - Configure VNet integration with App Services
 - Open the web application
 
-### You have successfully completed this lab.
+### Proceed with the next lab by clicking on Next>>.

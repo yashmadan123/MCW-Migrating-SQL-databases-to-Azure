@@ -9,18 +9,17 @@ In this hands-on lab, you will implement a proof of concept (PoC) for migrating 
 ## Objective
 
 
-- **Perform database assessments** : you experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
+- **Perform database assessments** : Experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
 
-- **Migrate the database to SQL MI** : you'll have experience in creating backups, managing services, and performing online database migrations using Azure SQL MI.
+- **Migrate the database to SQL MI** : Gain experience in creating backups, managing services, and performing online database migrations using Azure SQL MI.
 
-- **Update the web application to use the new SQL MI database**: you will have learned how to deploy a web application to Azure App Service, configure the app to connect to a SQL Managed Instance (SQL MI), and manage essential Azure settings, including connection strings and network configurations for secure database access.
+- **Update the web application to use the new SQL MI database**: Learned how to deploy a web application to Azure App Service, configure the app to connect to a SQL Managed Instance (SQL MI), and manage essential Azure settings, including connection strings and network configurations for secure database access.
 
-- **Integrate App Service with the virtual network** : you will have learned how to configure virtual network (VNet) integration with Azure App Services, allowing secure communication with resources inside the VNet. You will also validate that the web application loads correctly after the integration is complete.
+- **Integrate App Service with the virtual network** : Learned how to configure virtual network (VNet) integration with Azure App Services, allowing secure communication with resources inside the VNet. You will also validate that the web application loads correctly after the integration is complete.
 
-- **Improve database security posture with Data Discovery and Classification and Azure Defender for SQL** : you will have learned how to enhance the security posture of a SQL Managed Instance using Data Discovery and Classification to identify sensitive data, and Azure Defender for SQL to assess and mitigate potential vulnerabilities. This will help in securing your database and ensuring compliance with security regulations like GDPR.
+- **Improve database security posture with Data Discovery and Classification and Azure Defender for SQL** : Experienced on how to enhance the security posture of a SQL Managed Instance using Data Discovery and Classification to identify sensitive data, and Azure Defender for SQL to assess and mitigate potential vulnerabilities. This will help in securing your database and ensuring compliance with security regulations like GDPR.
 
-- **Enable Dynamic Data Masking** : you will have learned how to implement Dynamic Data Masking (DDM) in SQL Server to protect sensitive data by masking fields like credit card numbers and email addresses. This ensures that non-privileged users can only access obfuscated data, enhancing data security without altering the underlying database.
-
+- **Enable Dynamic Data Masking** : Experienced on how to implement Dynamic Data Masking (DDM) in SQL Server to protect sensitive data by masking fields like credit card numbers and email addresses. This ensures that non-privileged users can only access obfuscated data, enhancing data security without altering the underlying database.
 
 ## Architecture
 
@@ -32,9 +31,15 @@ In this hands-on lab, you will follow a structured architecture that begins with
 
 ## Explanation of Components
 
-- Azure Portal:  Centralized web interface for managing Azure resources. It allows users to provision services like SQL Managed Instances, configure networks, monitor performance, and troubleshoot issues. With its intuitive platform, users can easily manage and adjust settings for cloud resources, making it essential for efficient Azure operations.
+- **Azure Portal**:  Centralized web interface for managing Azure resources. It allows users to provision services like SQL Managed Instances, configure networks, monitor performance, and troubleshoot issues. With its intuitive platform, users can easily manage and adjust settings for cloud resources, making it essential for efficient Azure operations.
 
-- Visual Studio 2019: Visual Studio 2019 is used to deploy and publish the customer's web application to Azure. It supports continuous development and integration practices, enabling developers to push updates to the cloud-hosted web app that interacts with SQL MI.
+- **Visual Studio 2019**: It is Used to deploy and publish the customer's web application to Azure. It supports continuous development and integration practices, enabling developers to push updates to the cloud-hosted web app that interacts with SQL MI.
+
+- **SQL Server Configuration Manager**: A vital tool for managing SQL Server services, network configurations, and server-specific settings. It is primarily used to control the behavior of SQL Server instances and related services. 
+
+- **Microsoft SQL Server Management Studio 17**: SQL Server Management Studio (SSMS) 17 is a comprehensive tool for managing SQL Server infrastructure. It provides a user-friendly interface for connecting, querying, configuring, and managing SQL Server databases both on-premises and in the cloud
+
+- **Azure Data Studio**: A cross-platform data management and development tool designed for working with SQL Server, Azure SQL Database, and other data sources. It offers a modern, lightweight interface tailored for both developers and database administrators.
 
 ## Getting Started with the Lab
 Once the environment is provisioned, a virtual machine (JumpVM) and lab guide will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab. You can see the number on the bottom of the Lab guide to switch to different exercises of the lab guide.
@@ -80,7 +85,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
  
 4. If prompted to stay signed in, you can click "No."
  
-5. If a **Welcome to Microsoft Azure** pop-up window appears, simply click "Maybe Later" to skip the tour.
+5. If a **Welcome to Microsoft Azure** pop-up window appears, simply click "Cancel" to skip the tour.
  
 ## Support Contact
  

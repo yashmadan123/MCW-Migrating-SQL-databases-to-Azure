@@ -161,4 +161,4 @@ In this lab, you have completed:
 - Perform assessment for migration to Azure SQL Database
 - Perform assessment for migration to Azure SQL Managed Instance
 
-### You have successfully completed this lab.
+### Proceed with the next lab by clicking on Next>>.
