@@ -11,6 +11,16 @@ In this hands-on lab, you will implement a proof of concept (PoC) for migrating 
 
 - **Perform database assessments** : you experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
 
+- **Migrate the database to SQL MI** : you'll have experience in creating backups, managing services, and performing online database migrations using Azure SQL MI.
+
+- **Update the web application to use the new SQL MI database**: you will have learned how to deploy a web application to Azure App Service, configure the app to connect to a SQL Managed Instance (SQL MI), and manage essential Azure settings, including connection strings and network configurations for secure database access.
+
+- **Integrate App Service with the virtual network** : you will have learned how to configure virtual network (VNet) integration with Azure App Services, allowing secure communication with resources inside the VNet. You will also validate that the web application loads correctly after the integration is complete.
+
+- **Improve database security posture with Data Discovery and Classification and Azure Defender for SQL** : you will have learned how to enhance the security posture of a SQL Managed Instance using Data Discovery and Classification to identify sensitive data, and Azure Defender for SQL to assess and mitigate potential vulnerabilities. This will help in securing your database and ensuring compliance with security regulations like GDPR.
+
+- **Enable Dynamic Data Masking** : you will have learned how to implement Dynamic Data Masking (DDM) in SQL Server to protect sensitive data by masking fields like credit card numbers and email addresses. This ensures that non-privileged users can only access obfuscated data, enhancing data security without altering the underlying database.
+
 
 ## Architecture
 
