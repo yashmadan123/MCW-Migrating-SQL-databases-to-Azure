@@ -16,7 +16,7 @@ In this lab, you will perform the following:
 
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
+1. On Azure Portal page, in **Search resources, services and docs (G+/)** box at the top of the portal, enter **Resource groups**, and then select **Resource groups** under services.
 
    ![Resource groups is highlighted in the Azure services list.](media/new-image2.png)
 
