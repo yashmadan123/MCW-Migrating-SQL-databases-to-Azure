@@ -64,7 +64,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the Res
  
 1.  In the JumpVM, click on Azure portal shortcut of Microsoft Edge browser which is created on desktop.
  
-     ![Launch Azure Portal](./media/sc900-image(1).png)
+     ![Resource groups is highlighted in the Azure services list.](media/new-image1.png)
  
 2. You'll see the **Sign into Microsoft Azure** tab. Here, enter your credentials:
  
