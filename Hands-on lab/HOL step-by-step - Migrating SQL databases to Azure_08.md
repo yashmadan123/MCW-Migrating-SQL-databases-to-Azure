@@ -15,7 +15,7 @@ In this lab, you will perform the following:
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
-1. In the Azure portal `https://portal.azure.com`, select **Resource groups** from the left-hand menu, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" />** App Service from the list of resources.
+1. In the Azure portal, search and select **Resource groups** from the list select the **<inject key="Resource Group Name" enableCopy="false"/>** and then click on **wwi-web-<inject key="Suffix" />** App Service from the list of resources.
 
    ![](media/new-image57.png)
 
