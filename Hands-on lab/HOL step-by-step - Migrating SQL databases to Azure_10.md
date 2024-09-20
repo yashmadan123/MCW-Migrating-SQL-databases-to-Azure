@@ -20,7 +20,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Database**, expand the Database which you used in the previous Exercise name starting like **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
