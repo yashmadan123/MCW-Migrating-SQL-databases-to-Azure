@@ -135,16 +135,15 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
 
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
+   ![](media/new-image29.png)
 
 3. On the Getting Started , Choose **mount a storage account (1)** select the **exisitng subscription (2)** then click on **Apply (3)**.
 
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/getting_started.png "Azure Cloud Shell")
+   ![](media/new-image30.png)
 
 4. Choose **I want to create a storage account (1)** , Click on **Next (2)**.
 
-   ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/mount-storage.png "Azure Cloud Shell")
-
+   ![](media/new-image28.png)
 
 5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
   
@@ -153,7 +152,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
       - **File Share**: **blob**
       - **Region**: **Central US**
 
-         ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/create-storage-1.png "Azure Cloud Shell")
+         ![](media/new-image27.png)
 
 6. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
 
@@ -173,7 +172,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 8. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
 
-   ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the Sql2008VM is highlighted.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/vmip.png "Azure Cloud Shell")
+   ![](media/new-image31.png)
 
 9. Leave the Azure Cloud Shell open for the next task.
 
