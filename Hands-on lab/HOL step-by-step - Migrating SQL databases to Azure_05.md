@@ -73,7 +73,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
     
     > **Note**: If you see **Connection error** pop-up click on **Enable Trust server certificate**.
 
-      ![](media/ex1-note.png "Connect issue")
+      ![](media/new-image15.png)
 
 1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
 
@@ -104,9 +104,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against the Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. In Azure Data Studio click on **Azure SQL migration** and click on **+ New migration**.
+1. In Azure Data Studio click on >  **<inject key="SQLVM Name" /> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
-   ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/Ex1-Task2-S1.png "Data Migration Assistant")
+    ![](media/new-image15.png)
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
