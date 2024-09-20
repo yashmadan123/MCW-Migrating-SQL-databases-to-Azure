@@ -160,10 +160,9 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 7. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with <inject key="SQLVM Name" />. 
 
-
     ```PowerShell
-    $resourceGroup = "<inject key="Resource Group Name" />"
-    az vm list-ip-addresses -g $resourceGroup -n <inject key="SQLVM Name" /> --output table
+     $resourceGroup = "<inject key="Resource Group Name" />"
+     az vm list-ip-addresses -g $resourceGroup -n <inject key="SQLVM Name" /> --output table
     ```
 
 8. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
