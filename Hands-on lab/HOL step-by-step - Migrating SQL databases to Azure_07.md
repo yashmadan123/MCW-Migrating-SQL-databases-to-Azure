@@ -159,4 +159,4 @@ In this lab, you have completed:
 - Deploy the web app to Azure
 - Update App Service configuration
 
-### You have successfully completed this lab.
+### Proceed with the next lab by clicking on Next>>.
