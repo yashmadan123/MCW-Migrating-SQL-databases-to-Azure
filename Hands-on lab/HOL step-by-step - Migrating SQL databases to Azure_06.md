@@ -179,6 +179,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
+     ![](media/new-image77.png)
+
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
@@ -187,16 +189,20 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account**.
+
+      ![](media/new-image81.png)
+   
+6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
   
-6. The field will be populated with the details and click on **Next**. 
+7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04.png)
    
-7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
+8. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
    - **Online migration** **(1)**, 
    - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
@@ -206,13 +212,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/Ex2-Task5-S7.png) 
    
-8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
+9. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
    ![](media/data-migration-05.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
+10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
    
       ![](media/irt.png)
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
