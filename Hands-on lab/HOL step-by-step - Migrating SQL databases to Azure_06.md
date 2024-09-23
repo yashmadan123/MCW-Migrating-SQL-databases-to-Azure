@@ -112,18 +112,16 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The OK button is highlighted on the Select Backup Destination dialog and C:\dms-backups\WideWorldImporters.bak is entered in the File name textbox.](media/ssms-backup-destination.png "Backup Destination")
 
-9. In the Back Up Database dialog, select **Media Options** in the Select a page pane, and then set the following:
+9. In the Back Up Database dialog, select **Media Options (1)** in the Select a page pane, and then set the following:
 
-   - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**.
-   - Under Reliability, check the box for **Perform checksum before writing to media**. A checksum is required by DMS when using the backup to restore the database to SQL MI.
+   - Select **Back up to the existing media set** and then choose **Overwrite all existing backup sets (2)**.
+   - Under **Reliability**, check the box for **Perform checksum before writing to media (3)**. A checksum is required by DMS when using the backup to restore the database to SQL MI. then Select **OK (4)** to perform the backup.
 
-      ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
+      ![](media/new-image75.png)
 
-10. Select **OK** to perform the backup.
+10. You will receive a message when the backup is complete. Select **OK**.
 
-11. You will receive a message when the backup is complete. Select **OK**.
-
-    ![Screenshot of the dialog confirming the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
+     ![](media/new-image76.png)
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
