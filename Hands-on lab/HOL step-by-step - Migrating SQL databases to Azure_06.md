@@ -145,13 +145,13 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![](media/new-image28.png)
 
-5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
-  
+5. Specify the following values and click on **Create** to create storage account: 
+      - **Subscription**: Accept the default
       - **Resource Group**: Select <inject key="Resource Group Name" enableCopy="false"/>
+      - **Region**: **Central US**
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
-      - **Region**: **Central US**
-
+      
          ![](media/new-image27.png)
 
 6. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
