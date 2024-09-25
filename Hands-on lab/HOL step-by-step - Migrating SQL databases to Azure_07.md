@@ -126,7 +126,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![](media/new-image54.png)
 
-12. Repeat above step for **`WwiReadOnlyContext`** and paste the **Name** and **Value** which you recorded in notepade and click on **Apply**
+12. Repeat above step for **`WwiReadOnlyContext`** and paste the **Name** and **Value** which you recorded in notepad and click on **Apply**
 
       ![](media/new-image55.png)
 
