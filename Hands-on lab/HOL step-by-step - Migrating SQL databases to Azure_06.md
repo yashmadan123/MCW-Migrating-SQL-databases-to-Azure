@@ -68,13 +68,17 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 6. Select **Yes** in the Confirm Account Change dialog.
 
-   ![](media/new-image13.png)
-
-7. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+   ![](media/new-image13.png
+   
+7. Again click on **OK**.
+ 
+8. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-8. Close the SQL Server Configuration Manager.
+    >**Note**: Wait for 1 0r 2 mins to observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+    
+9. Close the SQL Server Configuration Manager.
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
@@ -200,11 +204,15 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/new-image81.png)
    
-6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
-  
+6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
+   click on **close**. 
+
+   >**Note**: When you redirect to web page kindly click on **OK** on **Internet Explorer** page to avoid the pop up's and select sign in tab then enter the above below 
+      mentioned **Azure credentials**.
+
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
-  
+
 7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04.png)
@@ -225,7 +233,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
+10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Microsoft Integration Runtime`
    
       ![](media/irt.png)
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
@@ -242,7 +250,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![](media/Ex2-Task5-S11b.png)
 
-14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refersh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
+14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refresh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
     ![](media/azure-sql.png)
           

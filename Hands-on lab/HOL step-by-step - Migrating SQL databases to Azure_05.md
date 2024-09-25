@@ -79,7 +79,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/Ex1-Task1-S11.png "WideWorldImporters database")
 
-1. Right click on **<inject key="SQLVM Name" /> (1)**, click on **Manage (2)**, and select **New Query (3)** from the Azure Data Studio toolbar.
+1. Right click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, click on **Manage (2)**, and select **New Query (3)** from the Azure Data Studio toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S12.png "SSMS Toolbar")
 
@@ -104,7 +104,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against the Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. In Azure Data Studio click on **<inject key="SQLVM Name" /> (1)** > **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on **<inject key="SQLVM Name" enableCopy="false"/> (1)** > **Azure SQL migration (2)** and select **+ New migration (3)**.
 
     ![](media/new-image16.png)
 
@@ -126,7 +126,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
-1. In Azure Data Studio click on >  **<inject key="SQLVM Name" /> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **<inject key="SQLVM Name" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
     ![](media/new-image16.png)
 
