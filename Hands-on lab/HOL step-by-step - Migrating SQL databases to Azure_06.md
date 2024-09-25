@@ -213,7 +213,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
 
-       ![](media/new-image61.png)
+       ![](media/new-image63.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
