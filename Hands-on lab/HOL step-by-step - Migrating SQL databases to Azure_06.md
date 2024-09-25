@@ -68,15 +68,15 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 6. Select **Yes** in the Confirm Account Change dialog.
 
-   ![](media/new-image13.png
+    ![](media/new-image13.png)
    
-7. Again click on **OK**.
+7. Click on **OK**.
  
 8. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-    >**Note**: Wait for 1 0r 2 mins to observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+    >**Note**: If the change doesn't occur immediately, wait 1 to 2 minutes for the Log On As value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
     
 9. Close the SQL Server Configuration Manager.
 
@@ -207,11 +207,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
    click on **close**. 
 
-   >**Note**: When you redirect to web page kindly click on **OK** on **Internet Explorer** page to avoid the pop up's and select sign in tab then enter the above below 
-      mentioned **Azure credentials**.
+   >**Note**: When redirected to the web page, click **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the 
+    **Azure credentials** mentioned below.
 
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
+
+       ![](media/new-image61.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
@@ -236,6 +238,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Microsoft Integration Runtime`
    
       ![](media/irt.png)
+   
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
    
 11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
@@ -263,7 +266,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
       - **Password**: Enter **Password.1234567890** **(3)**
       - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
-      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**, make sure to Add **SUFFIX** at the end.
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**.
       - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
