@@ -233,7 +233,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
+10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Microsoft Integration Runtime`
    
       ![](media/irt.png)
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
