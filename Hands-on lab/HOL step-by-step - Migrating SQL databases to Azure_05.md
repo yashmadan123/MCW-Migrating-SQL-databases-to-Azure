@@ -24,11 +24,11 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](media/new-image(3).png)
 
-1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
+1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** Virtual Machine.
 
     ![](media/new-image4.png)
 
-1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect > Connect**.
+1. From the overview page of the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect > Connect**.
 
     ![](media/new-image5.png)
 
@@ -75,7 +75,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
       ![](media/new-image15.png)
 
-1. Once connected, verify you see the `WideWorldImporters` database listed under databases.
+1. Once connected, verify you see the **WideWorldImporters** database listed under databases.
 
     ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/Ex1-Task1-S11.png "WideWorldImporters database")
 
