@@ -20,15 +20,18 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
-   ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
+3. Expand **Tables** under the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** database and locate the `Sales.CreditCard` table. Expand the table 
+   columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
 
-3. In the query window that opens review the Results, including the `CardNumber` field. Notice it is displayed in plain text, making the data available to anyone with access to query the database.
+     ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png)
+
+4. In the query window that opens review the Results, including the `CardNumber` field. Notice it is displayed in plain text, making the data available to anyone with access to query the database.
 
    ![Plain text credit card numbers are highlighted in the query results.](media/ssms-sql-mi-credit-card-table-select-results.png "Results")
 
-4. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, In the same **Query** window replace the script with the following script:
+5. To be able to test the mask being applied to the `CardNumber` field, you first create a user in the database to use for testing the masked field. In SSMS, In the same **Query** window replace the script with the following script:
 
    ```SQL
    CREATE USER DDMUser WITHOUT LOGIN;
@@ -37,9 +40,9 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    > The SQL script above creates a new user in the database named `DDMUser` and grants that user `SELECT` rights on the `Sales.CreditCard` table.
 
-5. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.
+6. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.
 
-6. With the new user created, run a quick query to observe the results. In the same **Query** window replace the script with the following script:
+7. With the new user created, run a quick query to observe the results. In the same **Query** window replace the script with the following script:
 
    ```SQL
    EXECUTE AS USER = 'DDMUser';
@@ -47,24 +50,25 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    REVERT;
    ```
 
-7. Select **Execute** from the toolbar and examine the Results pane. Notice the credit card number, as above, is visible in plain text.
+8. Select **Execute** from the toolbar and examine the Results pane. Notice the credit card number, as above, is visible in plain text.
 
    ![The credit card number is unmasked in the query results.](media/ssms-sql-mi-ddm-results-unmasked.png "Query results")
 
-8. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. In the same **Query** window replace the script with the following script to apply a mask to the `CardNumber` field and then select **Execute**.
+9. You now apply DDM on the `CardNumber` field to prevent it from being viewed in query results. In the same **Query** window replace the script with the following script to apply a mask to the `CardNumber` field and then select **Execute**.
 
    ```SQL
    ALTER TABLE [Sales].[CreditCard]
    ALTER COLUMN [CardNumber] NVARCHAR(25) MASKED WITH (FUNCTION = 'partial(0,"xxx-xxx-xxx-",4)')
    ```
 
-9. Run the `SELECT` in the same **Query** window again replace the query with the below query, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
+10. Run the `SELECT` in the same **Query** window again replace the query with the below query, and observe the results. Specifically, inspect the output in the 
+    `CardNumber` field. For reference, the query is below.
 
-   ```SQL
-   EXECUTE AS USER = 'DDMUser';
-   SELECT TOP 10 * FROM [Sales].[CreditCard];
-   REVERT;
-   ```
+    ```SQL
+    EXECUTE AS USER = 'DDMUser';
+    SELECT TOP 10 * FROM [Sales].[CreditCard];
+    REVERT;
+    ```
 
    ![The credit card number is masked in the query results.](media/ssms-sql-mi-ddm-results-masked.png "Query results")
 
