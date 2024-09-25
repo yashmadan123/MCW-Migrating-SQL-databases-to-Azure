@@ -307,7 +307,7 @@ Since you performed an "online data migration," the migration wizard continuousl
    
 1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)**.
 
-    ![](media/New-image101png) 
+    ![](media/New-image101.png)  
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
@@ -323,7 +323,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to migration service. Click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window:
+1. Click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
+   transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
+   Migration Service (DMS) to detect the new backup for potential transfer and migration.
 
    ```SQL
    USE master;
@@ -425,6 +427,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 10. With the **<inject key="Database Name" enableCopy="false"/>** database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
+
     > **Note**: Make sure to replace the SUFFIX value with **<inject key="Suffix" />**
 
       ```SQL
@@ -434,11 +437,10 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
          SELECT * FROM Game
       ```  
 
-12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
+13. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
-  
     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
     - If you receive a success message, you can proceed to the next task.
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
