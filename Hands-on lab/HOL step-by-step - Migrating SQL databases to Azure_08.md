@@ -64,11 +64,12 @@ In this task, you verify your web application now loads, and you can see the hom
 
     > **Important**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** and fully qualified domain name of your SQL-managed instance that was created in this lab, as you will require in next lab.
  
->**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
- > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
- > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
- > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
- > - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+    - If you receive a success message, you can proceed to the next task.
+    - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+    
+<validation step="9cb677b1-ac46-4dcd-8bcb-dd0e9b141ea5" />
 
 ## Summary
 In this exercise, you successfully integrated the WWI App Service with the virtual network (VNet) that was created earlier. This integration allows the App Service to securely communicate with the SQL Managed Instance (SQL MI) within the VNet.

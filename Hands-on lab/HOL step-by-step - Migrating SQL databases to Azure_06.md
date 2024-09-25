@@ -112,18 +112,23 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
    ![The OK button is highlighted on the Select Backup Destination dialog and C:\dms-backups\WideWorldImporters.bak is entered in the File name textbox.](media/ssms-backup-destination.png "Backup Destination")
 
-9. In the Back Up Database dialog, select **Media Options** in the Select a page pane, and then set the following:
+9. In the Back Up Database dialog, select **Media Options (1)** in the Select a page pane, and then set the following:
 
-   - Select **Back up to the existing media set** and then select **Overwrite all existing backup sets**.
-   - Under Reliability, check the box for **Perform checksum before writing to media**. A checksum is required by DMS when using the backup to restore the database to SQL MI.
+   - Select **Back up to the existing media set** and then choose **Overwrite all existing backup sets (2)**.
+   - Under **Reliability**, check the box for **Perform checksum before writing to media (3)**. A checksum is required by DMS when using the backup to restore the database to SQL MI. then Select **OK (4)** to perform the backup.
 
-      ![In the Back Up Database dialog, the Media Options page is selected, and Overwrite all existing backup sets and Perform checksum before writing to media are selected and highlighted.](media/ssms-back-up-database-media-options.png "Back Up Database")
+      ![](media/new-image75.png)
 
-10. Select **OK** to perform the backup.
+10. You will receive a message when the backup is complete. Select **OK**.
 
-11. You will receive a message when the backup is complete. Select **OK**.
+     ![](media/new-image76.png)
 
-    ![Screenshot of the dialog confirming the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
+    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+    - If you receive a success message, you can proceed to the next task.
+    - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+    
+<validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
@@ -145,13 +150,13 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![](media/new-image28.png)
 
-5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
-  
+5. Specify the following values and click on **Create** to create storage account: 
+      - **Subscription**: Accept the default
       - **Resource Group**: Select <inject key="Resource Group Name" enableCopy="false"/>
+      - **Region**: **Central US**
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
-      - **Region**: **Central US**
-
+      
          ![](media/new-image27.png)
 
 6. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
@@ -181,6 +186,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
+     ![](media/new-image77.png)
+
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
@@ -189,16 +196,20 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account** it will redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
+5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account**.
+
+      ![](media/new-image81.png)
+   
+6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
   
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
   
-6. The field will be populated with the details and click on **Next**. 
+7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04.png)
    
-7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
+8. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
    - **Online migration** **(1)**, 
    - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
@@ -208,13 +219,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/Ex2-Task5-S7.png) 
    
-8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
+9. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
    ![](media/data-migration-05.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
+10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Mircosoft Integration Runtime`
    
       ![](media/irt.png)
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
@@ -417,7 +428,15 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
   
->**Congratulations** on completing the Task! Now, it's time to validate it. 
+    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+    - If you receive a success message, you can proceed to the next task.
+    - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+    
+<validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
+
+<validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
+
 
 13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
