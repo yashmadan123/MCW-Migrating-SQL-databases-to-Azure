@@ -123,6 +123,13 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
      ![](media/new-image76.png)
 
+    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+    - If you receive a success message, you can proceed to the next task.
+    - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+    
+<validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
+
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
 In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your <inject key="SQLVM Name" enableCopy="false"/> VM from DMS.
@@ -421,7 +428,15 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
   
->**Congratulations** on completing the Task! Now, it's time to validate it. 
+    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+    - If you receive a success message, you can proceed to the next task.
+    - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
+    
+<validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
+
+<validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
+
 
 13. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
