@@ -70,15 +70,16 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
     REVERT;
     ```
 
-   ![The credit card number is masked in the query results.](media/ssms-sql-mi-ddm-results-masked.png "Query results")
+    ![The credit card number is masked in the query results.](media/ssms-sql-mi-ddm-results-masked.png "Query results")
 
-   > The `CardNumber` is now displayed using the mask applied to it, so only the card number's last four digits are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
+    > The `CardNumber` is now displayed using the mask applied to it, so only the card number's last four digits are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
 
 ### Task 2: Apply DDM to email addresses
 
 From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labelled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
 
-1. For this, you target the `LoginEmail` field in the `[dbo].[Gamer]` table. In the same **Query** window replace the script with the following script and select **Execute** the following script:
+1. For this, you will target the `LoginEmail` field in the `[dbo].[Gamer]` table. In the same **Query** window replace the existing script with the following and select 
+   **Execute**:
 
    ```SQL
    SELECT TOP 10 * FROM [dbo].[Gamer]
@@ -86,13 +87,15 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
    ![In the query results, full email addresses are visible.](media/ddm-select-gamer-results.png "Query results")
 
-2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In the same **Query** window replace the script with the following script, and then select **Execute**:
+2. Now, as you did above, grant the `DDMUser` `SELECT` rights on the [dbo].[Gamer]. In the same **Query** window replace the existing script with the following script, 
+   and then select **Execute**:
 
    ```SQL
    GRANT SELECT ON [dbo].[Gamer] to DDMUser;
    ```
 
-3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. In the same **Query** window replace the script with the following script to apply a mask to the `LoginEmail` field, and then select **Execute**.
+3. Next, apply DDM on the `LoginEmail` field to prevent it from being viewed in full in query results. In the same **Query** window replace the script with the following 
+   script to apply a mask to the `LoginEmail` field, and then select **Execute**.
 
    ```SQL
    ALTER TABLE [dbo].[Gamer]
@@ -101,7 +104,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
 
    > **Note**: Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
-4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
+4. Run the `SELECT` query below and examine the results. Specifically, inspect the output in the LoginEmail field. The email addresses should now appear partially masked, ensuring the protection of confidential information.
 
    ```SQL
    EXECUTE AS USER = 'DDMUser';
