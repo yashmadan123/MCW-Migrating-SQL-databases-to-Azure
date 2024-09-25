@@ -62,7 +62,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 1. Click on **start (1)** , type **Azure Data Studio (2)** into the search bar and select **Azure Data Studio (3)** from the search results.
 
    ![](media/new-image7.png)
-   
+
+   >**Note**: Within **Azure Data Studio**, if prompted with any pop-ups related to updates, kindly disregard them and proceed with tasks.
+    
 1. In the Azure Data Studio select **Extensions (1)** from the Activity Bar, enter **SQL Migration (2)** into the search bar, select **Azure SQL Migration (3)**, and click on **Install (4)**.  
 
     ![](media/new-image8.png)
