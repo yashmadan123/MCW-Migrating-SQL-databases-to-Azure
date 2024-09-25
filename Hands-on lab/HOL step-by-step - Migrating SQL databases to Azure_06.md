@@ -200,11 +200,15 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
       ![](media/new-image81.png)
    
-6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and click on **close**. 
-  
+6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
+   click on **close**. 
+
+   >**Note**: When you redirect to web page kindly click on **OK** on **Internet Explorer** page to avoid the pop up's and select sign in tab then enter the above below 
+      mentioned **Azure credentials**.
+
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
-  
+
 7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04.png)
