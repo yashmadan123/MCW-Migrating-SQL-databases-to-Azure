@@ -213,7 +213,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
 
-       ![](media/new-image100.png)
+       ![](media/New-image100.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
@@ -307,7 +307,7 @@ Since you performed an "online data migration," the migration wizard continuousl
    
 1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)**.
 
-    ![](media/new_query.png) 
+    ![](media/New-image101png) 
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
@@ -323,7 +323,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
+1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to migration service. Click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window:
 
    ```SQL
    USE master;
