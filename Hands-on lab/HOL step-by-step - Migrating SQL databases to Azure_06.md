@@ -68,13 +68,17 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 6. Select **Yes** in the Confirm Account Change dialog.
 
-   ![](media/new-image13.png)
-
-7. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+   ![](media/new-image13.png
+   
+7. Again click on **OK**.
+ 
+8. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-8. Close the SQL Server Configuration Manager.
+    >**Note**: Wait for 1 0r 2 mins to observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+    
+9. Close the SQL Server Configuration Manager.
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
