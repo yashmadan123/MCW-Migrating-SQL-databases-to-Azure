@@ -17,7 +17,7 @@ In this lab, you will perform the following:
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
-In this task, you create a new SMB network share on the <inject key="SQLVM Name" enableCopy="false"/> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
@@ -156,7 +156,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 5. Specify the following values and click on **Create** to create storage account: 
       - **Subscription**: Accept the default
-      - **Resource Group**: Select <inject key="Resource Group Name" enableCopy="false"/>
+      - **Resource Group**: Select **<inject key="Resource Group Name" enableCopy="false"/>**
       - **Region**: **Central US**
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
@@ -184,7 +184,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In Azure Data Studio click on >  **<inject key="SQLVM Name" /> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **<inject key="SQLVM Name" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
     ![](media/new-image16.png)
 
@@ -293,11 +293,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-dms** Database Migration Services and select.
+1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group and search for **wwi-dms** Database Migration Services and select.
 
    ![](media/dms1.png)
 
-1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" />** under **Source name**.
+1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
   
    ![](media/dms2.png)
 
@@ -305,7 +305,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/EX2-task6-(s4).png)
    
-1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)**.
+1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)**.
 
     ![](media/New-image101.png)  
 
@@ -323,7 +323,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-1. Click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
+1. Click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
    transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
    Migration Service (DMS) to detect the new backup for potential transfer and migration.
 
