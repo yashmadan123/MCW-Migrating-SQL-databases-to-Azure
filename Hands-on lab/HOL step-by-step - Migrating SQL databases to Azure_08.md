@@ -19,11 +19,11 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![](media/new-image57.png)
 
-2. On the App Service blade, select **Networking** from the left-hand menu.
+2. On the **App Service** blade, select **Networking** from the left-hand menu under the **Settings** section.
 
    ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/web-app-network.png "App Service")
 
-3. On the **Networking** page, click on the **Not Configured** next to **Virtual network integration** under **Outbound Traffic configuration**.
+3. On the **Networking** page, under **Outbound Traffic Configuration**, click **Not Configured** under **Virtual Network Integration**.
 
     ![](media/new-image58.png)
 
@@ -62,8 +62,6 @@ In this task, you verify your web application now loads, and you can see the hom
 
 4. Please note down the Managed database name **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** and fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell as you need this database name for upcoming lab.
 
-    > **Important**: Please make a note of the managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** and fully qualified domain name of your SQL-managed instance that was created in this lab, as you will require in next lab.
- 
     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
     - If you receive a success message, you can proceed to the next task.
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
