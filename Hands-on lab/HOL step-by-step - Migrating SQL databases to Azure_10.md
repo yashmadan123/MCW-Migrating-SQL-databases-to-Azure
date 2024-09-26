@@ -1,11 +1,6 @@
 ## Exercise 6: Enable Dynamic Data Masking
 
-## Duration: 15 minutes
-
-In this exercise, you enable **Dynamic Data Masking** `https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started` (DDM) on credit card numbers in the `WideWorldImporters` database. DDM limits sensitive data exposure by masking it to non-privileged users. This feature helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It is a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
-
-For example, a call centre's service representative may identify callers by several digits of their credit card number. However, the full credit card number should not be fully exposed to the service representative. A masking rule can be defined that obfuscates all but the last four digits of any credit card number in any query result. As another example, an appropriate data mask can be created to protect personally identifiable information (PII) data so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
-
+In this lab, you'll work on enabling Dynamic Data Masking (DDM) to enhance the security of sensitive data in the WideWorldImporters database. You'll begin by applying DDM to mask credit card numbers in the Sales.CreditCard table, ensuring that only the last four digits of the card numbers are visible to non-privileged users. Then, you'll extend this approach to protect email addresses in the LoginEmail field of the dbo.Gamer table by partially masking them. This exercise demonstrates how DDM helps limit sensitive data exposure without altering the underlying data in the database.
 
 ## Lab Objective
 
@@ -13,6 +8,8 @@ In this lab, you will perform the following:
 
 - Task 1: Enable DDM on credit card numbers
 - Task 2: Apply DDM to email addresses
+
+## Duration: 15 minutes
 
 ### Task 1: Enable DDM on credit card numbers
 
