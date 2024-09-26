@@ -40,7 +40,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 6. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select Refresh to confirm whether the Vnet is connected or not.
 
-    ![](media/new-image61.png)
+    ![](media/new-image61(2).png)
 
    > **Note**: If you receive a message adding the Virtual Network to the Web App fails, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 
