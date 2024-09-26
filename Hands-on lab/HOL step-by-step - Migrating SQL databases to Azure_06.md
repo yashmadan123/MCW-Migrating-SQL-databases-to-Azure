@@ -385,7 +385,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 1. In the Connect to Server dialog, enter the following and click on **Connect** **(6)**:
 
-   - **Server name** **(1)**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
+   - **Server name** **(1)**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous Task 4.
    - **Authentication** **(2)**: Select **SQL Server Authentication**.
    - **Login** **(3)**: Enter `contosoadmin`
    -  **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
