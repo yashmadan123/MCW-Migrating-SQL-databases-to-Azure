@@ -17,7 +17,7 @@ In this lab, you will perform the following:
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
-In this task, you create a new SMB network share on the <inject key="SQLVM Name" enableCopy="false"/> VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
@@ -68,15 +68,15 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 6. Select **Yes** in the Confirm Account Change dialog.
 
-   ![](media/new-image13.png
+    ![](media/new-image13.png)
    
-7. Again click on **OK**.
+7. Click on **OK**.
  
 8. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-    >**Note**: Wait for 1 0r 2 mins to observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+    >**Note**: If the change doesn't occur immediately, wait 1 to 2 minutes for the Log On As value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
     
 9. Close the SQL Server Configuration Manager.
 
@@ -156,7 +156,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 5. Specify the following values and click on **Create** to create storage account: 
       - **Subscription**: Accept the default
-      - **Resource Group**: Select <inject key="Resource Group Name" enableCopy="false"/>
+      - **Resource Group**: Select **<inject key="Resource Group Name" enableCopy="false"/>**
       - **Region**: **Central US**
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
       - **File Share**: **blob**
@@ -184,7 +184,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In Azure Data Studio click on >  **<inject key="SQLVM Name" /> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **<inject key="SQLVM Name" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
     ![](media/new-image16.png)
 
@@ -207,11 +207,13 @@ In this task, you create a new online data migration project in DMS for the `Wid
 6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
    click on **close**. 
 
-   >**Note**: When you redirect to web page kindly click on **OK** on **Internet Explorer** page to avoid the pop up's and select sign in tab then enter the above below 
-      mentioned **Azure credentials**.
+   >**Note**: When redirected to the web page, click **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the 
+    **Azure credentials** mentioned below.
 
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
+
+       ![](media/New-image100.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
@@ -236,6 +238,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM , in the search bar next to start search for `Microsoft Integration Runtime`
    
       ![](media/irt.png)
+   
    > **Note**: If you do not find Integration Runtime in the Jumpbox VM, you can install it from **C:** drive location in the VM.
    
 11. Paste the **Authentication key** in the box that you coped in earlier in the task and click on **Register**.
@@ -263,7 +266,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
       - **Password**: Enter **Password.1234567890** **(3)**
       - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
-      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**, make sure to Add **SUFFIX** at the end.
+      - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**.
       - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
@@ -290,11 +293,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" />** resource group and search for **wwi-dms** Database Migration Services and select.
+1. From the **Azure portal**, navigate to **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group and search for **wwi-dms** Database Migration Services and select.
 
    ![](media/dms1.png)
 
-1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" />** under **Source name**.
+1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
   
    ![](media/dms2.png)
 
@@ -302,9 +305,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/EX2-task6-(s4).png)
    
-1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" /> (1)**, select **New Query (2)**.
+1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)**.
 
-    ![](media/new_query.png) 
+    ![](media/New-image101.png)  
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
@@ -320,7 +323,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
-1. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
+1. Click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
+   transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
+   Migration Service (DMS) to detect the new backup for potential transfer and migration.
 
    ```SQL
    USE master;
@@ -422,6 +427,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 10. With the **<inject key="Database Name" enableCopy="false"/>** database selected, select **New Query** on the SSMS toolbar to open a new query window.
 
 11. In the new query window, enter the following SQL script:
+
     > **Note**: Make sure to replace the SUFFIX value with **<inject key="Suffix" />**
 
       ```SQL
@@ -431,11 +437,10 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
          SELECT * FROM Game
       ```  
 
-12. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
+13. Select **Execute** on the SSMS toolbar to run the query. Observe the records contained within the `Game` table, including the new `Space Adventure` game you added after initiating the migration process.
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/datamod8.png "SSMS Query")
 
-  
     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
     - If you receive a success message, you can proceed to the next task.
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.

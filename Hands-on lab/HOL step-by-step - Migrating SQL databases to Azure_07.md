@@ -21,11 +21,11 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
    ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
-1. If prompted about how you want to open the file, select **Visual Studio 2022**, and then select **OK**.
+1. If prompted about **How you want to open the file?**, select **Visual Studio 2022**, and then select **OK**.
 
     ![](media/new-image38.png)
 
-1. Select **Sign in** and choose **Work or school account** > **Continue** and enter the following Azure account credentials if prompted:
+1. Select **Sign in** and choose **Work or school account** > **Continue** and enter the following **Azure account** credentials if prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
    * Password: <inject key="AzureAdUserPassword"></inject>
@@ -44,19 +44,19 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
-1. Once logged into Visual Studio, right-click the `WideWorldImporters.Web` project in the Solution Explorer, and then select **Publish**.
+1. Once logged into **Visual Studio**, right-click the **`WideWorldImporters.Web`** project in the **Solution Explorer**, and then select **Publish**.
 
     ![In the Solution Explorer, the context menu for the WideWorldImporters.Web project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
-1. On the **Publish** dialog, select **Azure** in the Target box, and select **Next**.
+1. On the **Publish** dialog, select **Azure** in the **Target** box, and click **Next**.
 
     ![](media/new-image46.png)
 
-1. Next, in the **Specific target** box, select **Azure App Service (Windows)**.
+1. Next, in the **Specific target** box, select **Azure App Service (Windows)** and click **Next**.
 
     ![](media/new-image47.png)
 
-1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App.
+1. Finally, in the **App Service** box, select your subscription, expand the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group, and select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** Web App then click on **Finish**
 
     ![](media/new-image48.png)
 
@@ -102,13 +102,13 @@ In this task, you update the WWI gamer info web application to connect to and ut
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-   >**Note**: Copy the **Name** and **Value** of **`WwiContext`** and paste it in text editor will be using in further step.
+   >**Note**: Copy the name and value of **`WwiContext`** and paste them into a text editor they will be used in a later step.
 
 7. Repeat **steps 5**, this time for the **`WwiReadOnlyContext`** connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
-    >**Note**: Copy the name and value of **`WwiReadOnlyContext`** and paste it in text editor will be using in further step.
+    >**Note**: Copy the name and value of **`WwiReadOnlyContext`** and paste them into a text editor they will be used in a later step.
    
 8. Select **OK**.
 
@@ -136,7 +136,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
      ![](media/new-image52.png)
 
-15. Select **Overview** from left menu to return to the overview blade of your App Service. Click on **Default domain** on the **Overview** blade still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
+15. From the left menu, select **Overview** to return to the **Overview** blade of your **App Service**. Then, click on **Default Domain** in the Overview blade. still results in an error being returned. The error occurs because the SQL Managed Instance has a private IP address in its VNet. To connect an application, you need to configure access to the VNet where the Managed Instance is deployed, which you handle in the next exercise.
 
     ![](media/new-image62.png)
     
