@@ -13,7 +13,7 @@ In this lab, you will perform the following:
 
 ### Task 1: Enable DDM on credit card numbers
 
-When inspecting the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
+In this task, the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
 1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
@@ -73,7 +73,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 ### Task 2: Apply DDM to email addresses
 
-From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labelled Confidential. In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information.
+In this task, you use one of the built-in functions for making email addresses using DDM to help protect this information. From the findings of the Data Discovery & Classification report in ADS, you saw that email addresses are labelled Confidential
 
 1. For this, you will target the `LoginEmail` field in the `[dbo].[Gamer]` table. In the same **Query** window replace the existing script with the following and select 
    **Execute**:
