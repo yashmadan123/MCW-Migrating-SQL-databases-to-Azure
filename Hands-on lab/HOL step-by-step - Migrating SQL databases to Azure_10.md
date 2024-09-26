@@ -111,7 +111,6 @@ In this task, you use one of the built-in functions for making email addresses u
 
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
 
-
     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
     - If you receive a success message, you can proceed to the next task.
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
