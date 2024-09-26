@@ -167,18 +167,14 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
-7. At the prompt, run the below command to retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. 
+7. At the prompt, run the below command to retrieve and view the public IP address of the SqlSerer2008 VM.
 
     ```PowerShell
      $resourceGroup = "<inject key="Resource Group Name" />"
      az vm list-ip-addresses -g $resourceGroup -n <inject key="SQLVM Name" /> --output table
     ```
 
-8. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
-
-   ![](media/new-image31.png)
-
-9. Leave the Azure Cloud Shell open for the next task.
+8. Leave the Azure Cloud Shell open for the next task.
 
 ### Task 5: Create and run an online data migration project
 
