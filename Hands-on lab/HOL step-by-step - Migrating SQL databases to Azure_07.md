@@ -102,13 +102,13 @@ In this task, you update the WWI gamer info web application to connect to and ut
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-   >**Note**: Copy the **Name** and **Value** of **`WwiContext`** and paste it in text editor will be using in further step.
+   >**Note**: Copy the name and value of **`WwiContext`** and paste them into a text editor they will be used in a later step.
 
 7. Repeat **steps 5**, this time for the **`WwiReadOnlyContext`** connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
-    >**Note**: Copy the name and value of **`WwiReadOnlyContext`** and paste it in text editor will be using in further step.
+    >**Note**: Copy the name and value of **`WwiReadOnlyContext`** and paste them into a text editor they will be used in a later step.
    
 8. Select **OK**.
 
