@@ -17,7 +17,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab search and select the Managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
-    ![](media/new-image62.png)
+    ![](media/New-image62.png)
    
 1. On the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
 
