@@ -15,8 +15,10 @@ In this lab, you will perform the following:
 
 In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labelling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
 
-1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab select the Managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
+1. Navigate to **SQLMI-Shared-RG** resource group and select the SQL Managed instance named **sqlmi--cus**. Now, from the **Overview** tab search and select the Managed database named **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
+    ![](media/New-image62.png)
+   
 1. On the **WideWorldImporters<inject key="Suffix" enableCopy="false"/>** Managed database blade, select **Data Discovery & Classification** from the left-hand menu.
 
    ![](media/new-image64.png)
