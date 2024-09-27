@@ -423,9 +423,6 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
 <validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
 
-
-1. You are done using the **<inject key="SQLVM Name" enableCopy="false"/>** VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
-
 ## Summary:
 
 In this exercise, you successfully migrated the WideWorldImporters database from an on-premises SQL Server 2008 R2 instance to an Azure SQL Managed Instance using the Azure Database Migration Service. You also learned how to create backups, set up an SMB network share, and use Azure Data Studio to manage the migration process, ensuring minimal downtime by utilizing an online migration strategy.
