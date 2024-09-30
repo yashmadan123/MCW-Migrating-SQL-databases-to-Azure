@@ -1,4 +1,4 @@
-## Exercise 6: Enable Dynamic Data Masking
+## Exercise 7: Enable Dynamic Data Masking
 
 In this lab, you'll work on enabling Dynamic Data Masking (DDM) to enhance the security of sensitive data in the WideWorldImporters database. You'll begin by applying DDM to mask credit card numbers in the Sales.CreditCard table, ensuring that only the last four digits of the card numbers are visible to non-privileged users. Then, you'll extend this approach to protect email addresses in the LoginEmail field of the dbo.Gamer table by partially masking them. This exercise demonstrates how DDM helps limit sensitive data exposure without altering the underlying data in the database.
 
