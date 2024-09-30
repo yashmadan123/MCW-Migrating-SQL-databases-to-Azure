@@ -1,4 +1,4 @@
-## Exercise 4: Integrate App Service with the virtual network
+## Exercise 5: Integrate App Service with the virtual network
 
 ## Duration: 15 minutes
 
