@@ -1,4 +1,4 @@
-# Secure SQL with Microsoft defender
+# Secure SQL with Microsoft Defender
 
 ## Overall Estimated Duration: 4 hours
 
