@@ -153,7 +153,7 @@ By completing these tasks, you have assessed the WideWorldImporters database for
 ## Review 
 In this lab, you have completed:
 
-- Connect to the WideWorldImporters database on the SqlServer2008 VMTask 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+- Connect to the WideWorldImporters database on the SqlServer2008 VM
 - Perform assessment for migration to Azure SQL Database
 - Perform assessment for migration to Azure SQL Managed Instance
 
