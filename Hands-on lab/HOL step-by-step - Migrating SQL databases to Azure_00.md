@@ -39,7 +39,7 @@ In this task, you will enable and configure Microsoft Defender for Cloud.
 
 1. Select Enable all (to the right of Select Defender plan) and then select Save. Wait for the "Microsoft Defender plan for workspace uniquenameDefender was saved successfully!" notification to appear.
 
-    ![](media/new-image83.png)
+    ![](media/new-image(83).png)
    
    >**Note** : If the page is not being displayed, refresh your Edge browser and try again.
 
