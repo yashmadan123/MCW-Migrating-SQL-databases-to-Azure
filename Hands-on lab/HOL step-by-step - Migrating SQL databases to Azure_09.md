@@ -222,6 +222,6 @@ By completing this lab, you have successfully enhanced the security posture of y
 In this lab, you have completed:
 
 - Configure Data Discovery and Classification
-- Review an Azure Defender for SQL Vulnerability Assessment
+- Review an Microsoft Defender for SQL Vulnerability Assessment
 
 ### Proceed with the next lab by clicking on Next>>.
