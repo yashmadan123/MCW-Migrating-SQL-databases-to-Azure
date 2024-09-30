@@ -17,6 +17,8 @@ In this task, you will enable and configure Microsoft Defender for Cloud.
 
 1. In the Search bar of the Azure portal, type Defender, then select Microsoft Defender for Cloud.
 
+      ![](media/new-image82.png)
+     
 1. Click the left menu and click on Getting started
 
 1. On the Getting Started page, under the Upgrade tab, make sure your subscription is selected, and then select the Upgrade button at the bottom of the page. Wait for the Trial started notification to appear, it takes about 2 minutes. Hint: You can click the bell button on the top bar to review your Azure portal notifications.
@@ -37,6 +39,8 @@ In this task, you will enable and configure Microsoft Defender for Cloud.
 
 1. Select Enable all (to the right of Select Defender plan) and then select Save. Wait for the "Microsoft Defender plan for workspace uniquenameDefender was saved successfully!" notification to appear.
 
+    ![](media/new-image83.png)
+   
    >**Note** : If the page is not being displayed, refresh your Edge browser and try again.
 
 1. Close the Defender plans page by selecting the 'X' on the upper right of the page to go back to the Environment settings.
