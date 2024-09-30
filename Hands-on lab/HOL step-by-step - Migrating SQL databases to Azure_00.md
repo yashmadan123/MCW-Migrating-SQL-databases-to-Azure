@@ -1,4 +1,4 @@
-## Exercise 1 : Enable Microsoft Defender for Cloud
+## Exercise 1 : Enable Microsoft Defender for Cloud (READ ONLY)
 
 In this Exercise, you enable Microsoft Defender for Cloud by upgrading your Azure subscription and reviewing protected resources. You then configure the Defender plan for your Log Analytics workspace, enabling all available security features. After confirming monitoring extensions and Defender settings, the protection is applied to your environment. 
 
