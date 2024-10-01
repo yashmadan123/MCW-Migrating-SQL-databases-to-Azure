@@ -1,4 +1,4 @@
-## Exercise 3: Update the web application to use the new SQL MI database
+## Exercise 4: Update the web application to use the new SQL MI database
 
 ## Duration: 30 minutes
 

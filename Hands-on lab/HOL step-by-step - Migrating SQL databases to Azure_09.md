@@ -1,4 +1,4 @@
-## Exercise 5: Improve database security posture with Data Discovery and Classification and Microsoft Defender for SQL
+## Exercise 6: Improve database security posture with Data Discovery and Classification and Microsoft Defender for SQL
 
 ## Duration: 30 minutes
 
