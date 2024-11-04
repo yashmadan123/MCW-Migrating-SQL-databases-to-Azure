@@ -10,16 +10,16 @@ In this hands-on lab, you will learn how to perform a comprehensive database mig
 
 Understand how to perform comprehensive database assessments, migrate databases to Azure SQL Managed Instance (SQL MI), update web applications to utilize the new SQL MI database, and integrate Azure App Service with a virtual network. By the end of this lab, you will be able to:
 
-- Perform Database Assessments: Conduct detailed assessments to identify compatibility issues and ensure a smooth migration process.
-- Migrate the Database to SQL MI: Execute the migration of an on-premises database to Azure SQL Managed Instance, ensuring minimal downtime and data integrity.
-- Update the Web Application: Modify the web application to connect and interact with the newly migrated SQL MI database.
-- Integrate App Service with Virtual Network: Configure Azure App Service to integrate with a virtual network, enhancing security and connectivity.
+- **Perform Database Assessments:** Conduct detailed assessments to identify compatibility issues and ensure a smooth migration process.
+- **Migrate the Database to SQL MI:** Execute the migration of an on-premises database to Azure SQL Managed Instance, ensuring minimal downtime and data integrity.
+- **Update the Web Application:** Modify the web application to connect and interact with the newly migrated SQL MI database.
+- **Integrate App Service with Virtual Network:** Configure Azure App Service to integrate with a virtual network, enhancing security and connectivity.
 
 ## Pre requisites
 
-- Basic Knowledge of Azure Services: Familiarity with Azure SQL Managed Instance, Azure App Service, and virtual networks.
-- SQL Server Experience: Basic understanding of SQL Server management and database migration concepts
-- Web Application Development: Experience in developing and managing web applications, particularly those that interact with SQL databases.
+- **Basic Knowledge of Azure Services:** Familiarity with Azure SQL Managed Instance, Azure App Service, and virtual networks.
+- **SQL Server Experience:** Basic understanding of SQL Server management and database migration concepts
+- **Web Application Development:** Experience in developing and managing web applications, particularly those that interact with SQL databases.
 
 ## Architecture
 
@@ -39,35 +39,39 @@ This architectural diagram illustrates the integration of various Azure services
 - **Visual Studio 2019** : This development environment is used for publishing web applications that may interact with the migrated data.
 - **Web App** : This component represents the web applications that are integrated with the virtual network and can access the migrated data for various operations.
 
-## **Accessing Your Lab Environment**
+## Getting Started with the Lab
+ 
+Welcome to your Data Modernization Workshop! We've prepared a seamless environment for you to explore and learn about Azure services. Let's begin by making the most of this experience:
+
+## Accessing Your Lab Environment
  
 Once you're ready to dive in, your virtual machine and **Lab Guide** will be right at your fingertips within your web browser.
 
    ![](./media/GS6.png)
 
-### **Virtual Machine & Lab Guide**
+### Virtual Machine & Lab Guide
  
 Your virtual machine is your workhorse throughout the workshop. The lab guide is your roadmap to success.
  
-## **Exploring Your Lab Resources**
+## Exploring Your Lab Resources
  
-To get a better understanding of your lab resources and credentials, navigate to the **Environment Details** tab.
+To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
 
    ![](./media/GS7.png)
  
-## **Utilizing the Split Window Feature**
+## Utilizing the Split Window Feature
  
 For convenience, you can open the lab guide in a separate window by selecting the **Split Window** button from the Top right corner.
  
    ![](./media/GS8.png)
  
-## **Managing Your Virtual Machine**
+## Managing Your Virtual Machine
  
 Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
  
   ![](./media/GS5.png)
  
-## **Let's Get Started with Azure Portal**
+## Let's Get Started with Azure Portal
  
 1. On your virtual machine, click on the Azure Portal icon as shown below:
  
@@ -84,19 +88,21 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
    - **Password:** <inject key="AzureAdUserPassword"></inject>
  
       ![](./media/GS3.png "Enter Password")
- 
-4. If you see the pop-up **Stay Signed in?**, click **No**.
+
+4. On **Action Required** pop-up, click on **Ask later**.
+
+   ![](./media/ask-later.png "Ask Later")
+
+   >**NOTE:** Do not enable MFA, select **Ask Later**.
+   
+5. If you see the pop-up **Stay Signed in?**, click **No**.
 
    ![](./media/GS9.png)
 
-5. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
+6. If you see the pop-up **You have free Azure Advisor recommendations!**, close the window to continue the lab.
 
-6. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
+7. If a **Welcome to Microsoft Azure** popup window appears, click **Maybe Later** to skip the tour.
    
-7. Now, click on the **Next** from the lower right corner to move to the next page.
-
-   ![](./media/GS4.png)
- 
 ## Support Contact
 
 The CloudLabs support team is available 24/7, 365 days a year, via email and live chat to ensure seamless assistance at any time. We offer dedicated support channels tailored specifically for both learners and instructors, ensuring that all your needs are promptly and efficiently addressed.
@@ -106,4 +112,8 @@ Learner Support Contacts:
 - Email Support: cloudlabs-support@spektrasystems.com
 - Live Chat Support: https://cloudlabs.ai/labs-support
 
-Now, click on Next from the lower right corner to move on to the next page.
+Now, click on **Next** from the lower right corner to move on to the next page.
+
+![](./media/GS4.png)
+
+### Happy Learning!!
