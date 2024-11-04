@@ -57,7 +57,7 @@ Your virtual machine is your workhorse throughout the workshop. The lab guide is
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
 
-   ![](./media/GS7.png)
+   ![](./media/env-01.png)
  
 ## Utilizing the Split Window Feature
  
@@ -91,7 +91,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
 
 4. On **Action Required** pop-up, click on **Ask later**.
 
-   ![](./media/ask-later.png "Ask Later")
+   ![](./media/asklater.png "Ask Later")
 
    >**NOTE:** Do not enable MFA, select **Ask Later**.
    
