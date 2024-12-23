@@ -1,4 +1,6 @@
-## Exercise 2: Perform database assessments
+# Exercise 2: Perform database assessments
+
+## Estimated Duration: 20 minutes
 
 In this lab, you will connect to the WideWorldImporters database on the SqlServer2008 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
 
@@ -10,11 +12,7 @@ In this lab, you will perform the following:
 - Task 2: Perform assessment for migration to Azure SQL Database
 - Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
-## Duration: 20 minutes
-
 ### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
-
-In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
 1. On Azure Portal page, in **Search resources, services and docs (G+/)** box at the top of the portal, enter **Resource groups**, and then select **Resource groups** under services.
 
