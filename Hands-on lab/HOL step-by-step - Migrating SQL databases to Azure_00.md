@@ -8,11 +8,9 @@ In this Exercise, you will enable Microsoft Defender for Cloud by upgrading your
 
 In this lab, you will perform the following:
 
-Task 1 : Enable Microsoft Defender for Cloud
+- Task 1 : Enable Microsoft Defender for Cloud
 
 ### Task 1: Enable Microsoft Defender for Cloud
-
-In this task, you will enable and configure Microsoft Defender for Cloud.
 
 1. In the Search bar of the Azure portal, type Defender, then select Microsoft Defender for Cloud.
 
