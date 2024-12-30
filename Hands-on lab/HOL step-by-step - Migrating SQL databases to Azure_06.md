@@ -20,116 +20,119 @@ In this lab, you will perform the following:
 
 In this task, you create a new SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
+1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
-2. In the Windows Explorer window, expand **This PC** in the tree view, select **Windows (C:)**, and then select **dms-backups**.
+   ![](media/sql8.png)
+
+2. In the Windows Explorer window, expand **This PC** in the tree view, select **Windows (C:) (1)**, and then select **dms-backups (2)**. Right-click on the folder and select **Give access to (3)** and **Specific people... (4)** in the context menu.
 
       > **Note:** If the folder doesn't exist, please create a new folder with the name **dms-backups**.
 
-3. Right-click on the folder and select **Give access to** and **Specific people...** in the context menu.
+   ![](media/sql9.png)
 
-4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
+3. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
-   ![](media/new-image17.png)
+   ![](media/sql10.png)
 
-5. Back on the File Sharing dialog, note the shared folder's path, ```\\SQLVM2022\dms-backups```, and select **Done** to complete the sharing process.
+4. Back on the File Sharing dialog, note the shared folder's path, ```\\SQLVM2022\dms-backups```, and select **Done** to complete the sharing process.
+
+   ![](media/sql11.png)
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter **SQL Server** into the search bar, and then select **SQL Server 2022 Configuration Manager** from the search results.
+1. On your **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, select the **Start menu**, enter **SQL Server** into the search bar, and then select **SQL Server 2022 Configuration Manager** from the search results.
 
-   ![](media/new-image18.png)
+     ![](media/sql16-1.png)
 
-3. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
+1. In the SQL Server Configuration Managed dialog, select **SQL Server Services (1)** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER) (2)** in the list of services and select **Properties (3)** from the context menu.
 
-    ![](media/new-image19.png)
+     ![](media/sql12.png)
 
-4. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
+1. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following and click on **OK (4)**:
 
-   - **Account name**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Account name**: `sqlmiuser` **(1)**
+   - **Password**: `Password.1234567890` **(2)**
+   - **Confirm Password**: `Password.1234567890` **(3)**
 
-      ![](media/new-image20.png)
+     ![](media/sql13.png)
 
-5. Select **OK**.
+1. Select **Yes** in the Confirm Account Change dialog.
 
-6. Select **Yes** in the Confirm Account Change dialog.
-
-    ![](media/new-image13.png)
+   ![](media/sql14.png)
    
-7. Click on **OK**.
+1. Click on **OK**.
  
-8. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+1. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
-   ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
+   ![](media/sql15.png)
 
     >**Note**: If the change doesn't occur immediately, wait 1 to 2 minutes for the Log On As value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
     
-9. Close the SQL Server Configuration Manager.
+1. Close the SQL Server Configuration Manager.
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
 To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2022\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
-1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
+1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **SQL Server Management Studio 20** by entering "sql server" into the search bar in the Windows Start menu.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+    ![](media/sql17.png)
 
-2. In the SSMS **Connect to Server** dialog, enter <inject key="SQLVM Name" /> into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+2. In the SSMS **Connect to Server** dialog, enter **SQLVM2022 (1)** into the Server name box, ensure **Windows Authentication (2)** is selected, check the box for **Trust server certificate (3)** and then select **Connect (4)**.
 
-    ![](media/new-image(14).png)
+    ![](media/sql18.png)
 
-3. Once connected, expand **Databases** under **<inject key="SQLVM Name" enableCopy="false"/>** in the Object Explorer, and then right-click the **WideWorldImporters** database. In the context menu, select **Tasks** and then **Back Up...**
+3. Once connected, expand **Databases** under **SQLVM2022** in the Object Explorer, and then right-click the **WideWorldImporters (1)** database. In the context menu, select **Tasks (2)** and then **Back Up... (3)**
 
-   ![](media/new-image22.png)
+    ![](media/sql70.png)
 
 4. In the Back Up Database dialog, you should see `C:\WideWorldImporters.bak` listed in the Destinations box. This device is no longer needed, so select it and then select **Remove**.
 
-   ![](media/new-image23.png)
+    ![](media/sql19.png)
 
 5. Next, select **Add** to add the SMB network share as a backup destination.
 
-    ![](media/new-image24.png)
+    ![](media/sql20.png)
 
 6. In the Select Backup Destination dialog, select the Browse (`...`) button.
 
-    ![](media/new-image25.png)
+    ![](media/sql21.png)
 
-7. In the Location Database Files dialog, select the **`C:\dms-backups`** folder, enter **WideWorldImporters.bak** into the File name field, and then select **OK**.
+7. In the Location Database Files dialog, select the **`C:\dms-backups` (1)** folder, enter **WideWorldImporters.bak (2)** into the File name field, and then select **OK (3)**.
 
-   ![](media/new-image26.png)
+    ![](media/sql22.png)
 
 8. Select **OK** to close the Select Backup Destination dialog.
 
-   ![The OK button is highlighted on the Select Backup Destination dialog and C:\dms-backups\WideWorldImporters.bak is entered in the File name textbox.](media/ssms-backup-destination.png "Backup Destination")
+    ![](media/sql23.png)
 
-9. In the Back Up Database dialog, select **Media Options (1)** in the Select a page pane, and then set the following:
+9. In the Back Up Database dialog box, select **Media Options (1)** in the Select a page pane, and then set the following:
 
    - Select **Back up to the existing media set** and then choose **Overwrite all existing backup sets (2)**.
    - Under **Reliability**, check the box for **Perform checksum before writing to media (3)**. A checksum is required by DMS when using the backup to restore the database to SQL MI. then Select **OK (4)** to perform the backup.
 
-      ![](media/new-image75.png)
+       ![](media/sql24.png)
 
 10. You will receive a message when the backup is complete. Select **OK**.
 
-     ![](media/new-image76.png)
+    ![](media/sql25.png)
 
     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
     - If you receive a success message, you can proceed to the next task.
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
     - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
     
-<validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
+      <validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
 
 ### Task 4: Retrieve SQL MI and SQL Server 2022 VM connection information
 
-In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your <inject key="SQLVM Name" enableCopy="false"/> VM from DMS.
+In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your sql2022-<inject key="Suffix" enableCopy="false"/> VM from DMS.
 
 1. In the Azure portal `https://portal.azure.com`, select the Azure Cloud Shell icon from the top menu.
 
-   ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
+    ![](media/sql26.png)
 
 2. In the Cloud Shell window that opens at the bottom of your browser window, select **PowerShell**.
 
@@ -171,13 +174,13 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, you create a new online data migration project in DMS for the `WideWorldImporters` database.
 
-1. In Azure Data Studio click on >  **<inject key="SQLVM Name" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **SQLVM2022 (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
 
-    ![](media/new-image16.png)
+    ![](media/sql6.png)
 
 2. In **Step 1: Database for assessment** blade, select **widewordimporters**, click on **Next**. 
 
-     ![](media/new-image77.png)
+     ![](media/new-image77-1.png)
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
@@ -288,11 +291,11 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
-   ![](media/EX2-task6-(s4).png)
+    ![](media/sql28.png)
    
-1. Navigate back to the **Azure Data studio**, right click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)**.
+1. Navigate back to the **Azure Data studio**, right click on **SQLVM2022 (1)**, select **New Query (2)**.
 
-    ![](media/New-image101.png)  
+    ![](media/sql29.png)
 
 1. Paste the following SQL script, which inserts a record into the `Game` table, into the new query window:
 
@@ -305,8 +308,6 @@ Since you performed an "online data migration," the migration wizard continuousl
    ```
 
 1. To run the script, select **Run** from the Azure Data Studio toolbar.
-
-    ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
 1. Click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
    transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
@@ -323,8 +324,6 @@ Since you performed an "online data migration," the migration wizard continuousl
    ```
 
 1. To run the script, select **Run** from the Azure Data Studio toolbar.
-
-    ![](media/Ex1-Task1-S14.png "SSMS Toolbar")
 
 1. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
 
@@ -358,7 +357,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. You can also view the migration status in the Azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
 
-    ![](media/EX2-task6-(s17).png)
+    ![](media/sql30.png)
 
 1. You have successfully migrated the `WideWorldImporters` database to Azure SQL Managed Instance.
 
@@ -378,7 +377,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    -  **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
    - Check the **Remember password** **(5)** box.
 
-      ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/data-migration-09.png "Connect to Server")
+    ![](media/sql31.png)
  
 1. The SQL MI connection appears below the <inject key="SQLVM Name" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
