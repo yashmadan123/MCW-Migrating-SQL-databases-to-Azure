@@ -75,4 +75,4 @@ In this task, you verify your web application now loads, and you can see the hom
 
 In this lab, you have configured VNet integration with App Services and opened the web application.
 
-### You have successfully completed the lab.
+### You have successfully completed the lab!
