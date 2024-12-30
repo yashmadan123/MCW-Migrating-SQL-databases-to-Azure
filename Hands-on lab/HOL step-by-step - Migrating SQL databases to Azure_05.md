@@ -73,9 +73,11 @@ In this lab, you will perform the following:
 
 1. Enter **SQLVM2022(1)** into the Server name box, ensure **Windows Authentication (2)** is selected, and then click on **Connect (3)**.
 
+     ![](media/sql2.png)
+
      > **Note**: If you see **Connection error** pop-up click on **Enable Trust server certificate**.
 
-    ![](media/sql2.png)
+      ![](media/new-image15.png)
 
 1. Once connected, verify you see the **WideWorldImporters** database listed under databases.
 
