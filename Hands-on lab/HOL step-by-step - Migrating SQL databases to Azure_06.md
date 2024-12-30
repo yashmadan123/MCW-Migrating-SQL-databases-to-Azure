@@ -184,7 +184,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02-1.png "New project settings")
 
 4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
@@ -192,7 +192,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 5. In **Step 4: Azure SQL target** blade, click on **Link account (1)**, and click on **Add an account (2)**.
 
-      ![](media/new-image81.png)
+      ![](media/new-image81-1.png)
    
 6. You'll be redirect to a web page, log in using your below **Azure credentials**. Once your account has been added successfully. go back to the Azure Data Studio, and click on **close**. 
 
@@ -205,7 +205,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 7. The field will be populated with the details and click on **Next**. 
 
-   ![](media/data-migration-04.png)
+   ![](media/data-migration-04-1.png)
    
 8. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
@@ -265,15 +265,15 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
-      ![](media/Ex2-Task5-S15.png)
+      ![](media/Ex2-Task5-S15-1.png)
 
 18. In **Step 7: Summary** blade, click on **Start migration** .
 
-    ![](media/enn-1.png)
+    ![](media/enn-1-1.png)
 
 19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
-    ![](media/data-migration-06.png)
+    ![](media/data-migration-06-1.png)
 
 >**Note**: It may take a few minutes , please be patient.
 
@@ -341,7 +341,7 @@ Since you performed an "online data migration," the migration wizard continuousl
      
 1. Navigate back to the **Azure Data studio**, click on **Azure SQL Migration**, click on **Migrations** and select **WideWorldImporters** under source database. 
 
-      ![](media/data-migration-07-1.png)
+      ![](media/data-migration-07-1-1.png)
 
 1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
