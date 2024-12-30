@@ -247,12 +247,12 @@ In this task, you create a new online data migration project in DMS for the `Wid
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
       - **Password**: Enter **Password.1234567890** **(1)**
-      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
+      - **Windows user account with read access to the network share location**: Enter **SQL2022-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
       - **Password**: Enter **Password.1234567890** **(3)**
       - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
       - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**.
-      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
+      - **Network share path**: Enter **\\\SQLVM2022\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
 
