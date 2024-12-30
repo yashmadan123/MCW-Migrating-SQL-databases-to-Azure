@@ -23,6 +23,8 @@ In this task, you create a new SMB network share on the **<inject key="SQLVM Nam
 
 2. In the Windows Explorer window, expand **This PC** in the tree view, select **Windows (C:)**, and then select **dms-backups**.
 
+      > **Note:** If the folder doesn't exist, please create a new folder with the name **dms-backups**.
+
 3. Right-click on the folder and select **Give access to** and **Specific people...** in the context menu.
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
