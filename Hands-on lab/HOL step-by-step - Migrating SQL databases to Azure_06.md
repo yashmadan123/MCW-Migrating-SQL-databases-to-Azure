@@ -76,9 +76,9 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2022\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
-1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **SQL Server Management Studio 20** by entering "sql server" into the search bar in the Windows Start menu.
+1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **SQL Server Management Studio 20** by entering "sql server management" into the search bar in the Windows Start menu.
 
-    ![](media/sql17.png)
+    ![](media/sql17-1.png)
 
 2. In the SSMS **Connect to Server** dialog, enter **SQLVM2022 (1)** into the Server name box, ensure **Windows Authentication (2)** is selected, check the box for **Trust server certificate (3)** and then select **Connect (4)**.
 
@@ -184,11 +184,11 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02-1.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
 
 4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
-   ![](media/Ex2-Task5-S4-1.png)
+   ![](media/Ex2-Task5-S4.png)
 
 5. In **Step 4: Azure SQL target** blade, click on **Link account (1)**, and click on **Add an account (2)**.
 
