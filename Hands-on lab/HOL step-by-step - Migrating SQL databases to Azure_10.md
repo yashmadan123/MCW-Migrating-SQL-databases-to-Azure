@@ -125,4 +125,4 @@ You've successfully applied Dynamic Data Masking to both the **'CardNumber'** fi
 
 In this lab, you have enabled DDM on credit card numbers and applied DDM to email addresses.
 
-## You have successfully completed the lab.
+## You have successfully completed the lab!
