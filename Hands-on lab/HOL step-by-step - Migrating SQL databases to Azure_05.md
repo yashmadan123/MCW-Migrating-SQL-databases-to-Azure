@@ -59,7 +59,7 @@ In this lab, you will perform the following:
 
 1. Click on **Azure Data Studio** from the Desktop.
 
-    ![](media/sql.png)
+    ![](media/sql1.png)
 
    >**Note**: Within **Azure Data Studio**, if prompted with any pop-ups related to updates, kindly disregard them and proceed with tasks.
     
