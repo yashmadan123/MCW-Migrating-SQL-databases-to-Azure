@@ -2,7 +2,7 @@
 
 ### Estimated Duration: 60 minutes
 
-In this lab, you will migrate the WideWorldImporters database from a SQL Server 2008 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
+In this lab, you will migrate the WideWorldImporters database from a SQL Server 2022 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
 
 ## Lab Objectives
 
@@ -11,7 +11,7 @@ In this lab, you will perform the following:
 - Task 1: Create an SMB network share on the VM
 - Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 - Task 3: Create a backup of the WideWorldImporters database
-- Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
+- Task 4: Retrieve SQL MI and SQL Server 2022 VM connection information
 - Task 5: Create and run an online data migration project
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
@@ -71,7 +71,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
-To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2008-SUFFIX\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
+To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2022\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
@@ -123,7 +123,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
     
 <validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
 
-### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
+### Task 4: Retrieve SQL MI and SQL Server 2022 VM connection information
 
 In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your <inject key="SQLVM Name" enableCopy="false"/> VM from DMS.
 
@@ -282,7 +282,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/dms1.png)
 
-1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
+1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2022-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
   
    ![](media/dms2.png)
 
@@ -406,23 +406,12 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
     - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
     
-<validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
+      <validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
 
-<validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
-
-## Summary:
-
-In this exercise, you successfully migrated the WideWorldImporters database from an on-premises SQL Server 2008 R2 instance to an Azure SQL Managed Instance using the Azure Database Migration Service. You also learned how to create backups, set up an SMB network share, and use Azure Data Studio to manage the migration process, ensuring minimal downtime by utilizing an online migration strategy.
+      <validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
 
 ## Review
-In this lab, you have completed:
 
-- Create an SMB network share on the VM
-- Change MSSQLSERVER service to run under sqlmiuser account
-- Create a backup of the WideWorldImporters database
-- Retrieve SQL MI and SQL Server 2008 VM connection information
-- Create and run an online data migration project
-- Perform migration cutover
-- Verify database and transaction log migration
+In this lab, you have created a SMB network share on the VM, changed MSSQLSERVER service to run under sqlmiuser account, created a backup of the WideWorldImporters database, retrieved SQL MI and SQL Server 2022 VM connection information, created and ran an online data migration project, performed migration cutover and verified database and transaction log migration.
 
-### Proceed with the next lab by clicking on Next>>.
+### You have successfully completed the lab!
