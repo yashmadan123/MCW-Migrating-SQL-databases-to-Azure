@@ -188,7 +188,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
-   ![](media/Ex2-Task5-S4.png)
+   ![](media/Ex2-Task5-S4-1.png)
 
 5. In **Step 4: Azure SQL target** blade, click on **Link account (1)**, and click on **Add an account (2)**.
 
@@ -353,7 +353,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. Move back to the Migration blade, and verify that the migration status of WideWorldImporters has to change to **Succeeded**. You should refresh a couple of times to see the status as Succeeded.
 
-    ![](media/data-migration-(08).png)
+    ![](media/data-migration-(08)-1.png)
 
 1. You can also view the migration status in the Azure portal. Return to the wwi-sqldms blade of Azure Database Migration Service, click on **Migrations** ensure that Migration status is **Succeeded**. You might have to refresh to view the status.
 
