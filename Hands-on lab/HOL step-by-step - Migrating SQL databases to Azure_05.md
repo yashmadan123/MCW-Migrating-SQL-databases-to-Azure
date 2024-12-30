@@ -67,7 +67,7 @@ In this lab, you will perform the following:
 
     ![](media/new-image8.png)
 
-1. In the Azure Data Studio select **Connections (1)** from the Activity Bar and click on **New Connection (2)** dialog
+1. In the Azure Data Studio select **Connections (1)** from the Activity Bar and click on **New Connection (2)**.
   
     ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10-1.png "Connect to Server")
 
