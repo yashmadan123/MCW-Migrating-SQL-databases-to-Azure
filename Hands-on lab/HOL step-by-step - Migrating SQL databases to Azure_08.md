@@ -71,13 +71,8 @@ In this task, you verify your web application now loads, and you can see the hom
     
 <validation step="9cb677b1-ac46-4dcd-8bcb-dd0e9b141ea5" />
 
-## Summary
-In this exercise, you successfully integrated the WWI App Service with the virtual network (VNet) that was created earlier. This integration allows the App Service to securely communicate with the SQL Managed Instance (SQL MI) within the VNet.
-
 ## Review
-In this lab, you have completed:
 
-- Configure VNet integration with App Services
-- Open the web application
+In this lab, you have configured VNet integration with App Services and opened the web application.
 
-### Proceed with the next lab by clicking on Next>>.
+### You have successfully completed the lab.
