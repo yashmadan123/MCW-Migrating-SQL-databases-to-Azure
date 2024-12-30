@@ -1,8 +1,11 @@
-## Exercise 3: Migrate the database to SQL MI
+# Exercise 3: Migrate the database to SQL MI
+
+### Estimated Duration: 60 minutes
 
 In this lab, you will migrate the WideWorldImporters database from a SQL Server 2008 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
 
 ## Lab Objectives
+
 In this lab, you will perform the following:
 
 - Task 1: Create an SMB network share on the VM
@@ -12,8 +15,6 @@ In this lab, you will perform the following:
 - Task 5: Create and run an online data migration project
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
-
-## Duration: 60 minutes
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
@@ -142,12 +143,12 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![](media/new-image28.png)
 
-5. Specify the following values and click on **Create** to create storage account: 
-      - **Subscription**: Accept the default
-      - **Resource Group**: Select **<inject key="Resource Group Name" enableCopy="false"/>**
-      - **Region**: **Central US**
-      - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
-      - **File Share**: **blob**
+5. Specify the following values and click on **Create (6)** to create storage account: 
+      - Subscription: Accept the **default (1)**
+      - Resource Group: Select **<inject key="Resource Group Name" enableCopy="false"/>** **(2)**
+      - Region: **Central US (3)**
+      - Storage account: **storage<inject key="Suffix" enableCopy="false"/>** **(4)**
+      - File Share: **blob (5)**
       
          ![](media/new-image27.png)
 
@@ -182,24 +183,22 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
 
-4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database, and Click on the **Select** button.
+4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account**.
+5. In **Step 4: Azure SQL target** blade, click on **Link account (1)**, and click on **Add an account (2)**.
 
       ![](media/new-image81.png)
    
-6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
-   click on **close**. 
+6. You'll be redirect to a web page, log in using your below **Azure credentials**. Once your account has been added successfully. go back to the Azure Data Studio, and click on **close**. 
 
-   >**Note**: When redirected to the web page, click **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the 
-    **Azure credentials** mentioned below.
+   >**Note**: Click on **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the **Azure credentials** mentioned below.
+
+   ![](media/New-image100.png)
 
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
-
-       ![](media/New-image100.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
