@@ -2,17 +2,17 @@
 
 ## Estimated Duration: 20 minutes
 
-In this lab, you will connect to the WideWorldImporters database on the SqlServer2008 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
+In this lab, you will connect to the WideWorldImporters database on the SqlServer2022 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
 
 ## Lab Objective
 
 In this lab, you will perform the following:
 
-- Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+- Task 1: Connect to the WideWorldImporters database on the SqlServer2022 VM
 - Task 2: Perform assessment for migration to Azure SQL Database
 - Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
-### Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
+### Task 1: Connect to the WideWorldImporters database on the SqlServer2022 VM
 
 1. On Azure Portal page, in **Search resources, services and docs (G+/)** box at the top of the portal, enter **Resource groups**, and then select **Resource groups** under services.
 
@@ -30,7 +30,7 @@ In this lab, you will perform the following:
 
     ![](media/new-image5.png)
 
-1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
+1. On the **sql2022-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
   
    ![](media/new-image6.png)
 
@@ -144,15 +144,8 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 
    >**Note**: The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
-  
-## Summary
-By completing these tasks, you have assessed the WideWorldImporters database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying the most suitable migration path for your database.
 
 ## Review 
-In this lab, you have completed:
+In this lab, you have connected to the WideWorldImporters database on the SqlServer2022 VM, performed assessment for migration to Azure SQL Database and performed assessment for migration to Azure SQL Managed Instance.
 
-- Connect to the WideWorldImporters database on the SqlServer2008 VM
-- Perform assessment for migration to Azure SQL Database
-- Perform assessment for migration to Azure SQL Managed Instance
-
-### Proceed with the next lab by clicking on Next>>.
+### You have successfully completed the lab!
