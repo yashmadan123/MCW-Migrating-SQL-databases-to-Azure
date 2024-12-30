@@ -1,19 +1,20 @@
-## Exercise 3: Migrate the database to SQL MI
+# Exercise 3: Migrate the database to SQL MI
 
-In this lab, you will migrate the WideWorldImporters database from a SQL Server 2008 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
+### Estimated Duration: 60 minutes
+
+In this lab, you will migrate the WideWorldImporters database from a SQL Server 2022 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
 
 ## Lab Objectives
+
 In this lab, you will perform the following:
 
 - Task 1: Create an SMB network share on the VM
 - Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 - Task 3: Create a backup of the WideWorldImporters database
-- Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
+- Task 4: Retrieve SQL MI and SQL Server 2022 VM connection information
 - Task 5: Create and run an online data migration project
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
-
-## Duration: 60 minutes
 
 ### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
@@ -21,37 +22,25 @@ In this task, you create a new SMB network share on the **<inject key="SQLVM Nam
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
-   ![The Windows Explorer icon is highlighted in the Windows Taskbar.](media/windows-task-bar.png "Windows Taskbar")
+2. In the Windows Explorer window, expand **This PC** in the tree view, select **Windows (C:)**, and then select **dms-backups**.
 
-2. In the Windows Explorer window, expand **Computer** in the tree view, select **Windows (C:)**, and then select **New folder** in the top menu.
+      > **Note:** If the folder doesn't exist, please create a new folder with the name **dms-backups**.
 
-   ![](media/new-image9.png)
-
-3. Name the new folder **dms-backups**, then right-click the folder and select **Share with** and **Specific people...** in the context menu.
-
-   ![](media/new-image10.png)
+3. Right-click on the folder and select **Give access to** and **Specific people...** in the context menu.
 
 4. In the File Sharing dialog, ensure the **sqlmiuser** is listed with a **Read/Write** permission level, and then select **Share**.
 
    ![](media/new-image17.png)
 
-5. In the **Network discovery and file sharing** dialog, select the default value of **No, make the network that I am connected to a private network**.
-
-   ![](media/new-image11.png)
-
-6. Back on the File Sharing dialog, note the shared folder's path, ```\\SQL2008-SUFFIX\dms-backups```, and select **Done** to complete the sharing process.
-
-   ![](media/new-image12.png)
+5. Back on the File Sharing dialog, note the shared folder's path, ```\\SQLVM2022\dms-backups```, and select **Done** to complete the sharing process.
 
 ### Task 2: Change MSSQLSERVER service to run under sqlmiuser account
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter **SQL configuration** into the search bar, and then select **SQL Server Configuration Manager** from the search results.
+1. On your **<inject key="SQLVM Name" enableCopy="false"/>** VM, select the **Start menu**, enter **SQL Server** into the search bar, and then select **SQL Server 2022 Configuration Manager** from the search results.
 
    ![](media/new-image18.png)
-
-    > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
 
 3. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
 
@@ -82,7 +71,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
-To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2008-SUFFIX\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
+To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the ```\\SQL2022\dms-backups``` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
 1. On the **<inject key="SQLVM Name" enableCopy="false"/>** VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
 
@@ -134,7 +123,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
     
 <validation step="050bb3d9-aedd-4284-89b9-9fbf3a0ee6bb" />
 
-### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
+### Task 4: Retrieve SQL MI and SQL Server 2022 VM connection information
 
 In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your <inject key="SQLVM Name" enableCopy="false"/> VM from DMS.
 
@@ -154,12 +143,12 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![](media/new-image28.png)
 
-5. Specify the following values and click on **Create** to create storage account: 
-      - **Subscription**: Accept the default
-      - **Resource Group**: Select **<inject key="Resource Group Name" enableCopy="false"/>**
-      - **Region**: **Central US**
-      - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
-      - **File Share**: **blob**
+5. Specify the following values and click on **Create (6)** to create storage account: 
+      - Subscription: Accept the **default (1)**
+      - Resource Group: Select **<inject key="Resource Group Name" enableCopy="false"/>** **(2)**
+      - Region: **Central US (3)**
+      - Storage account: **storage<inject key="Suffix" enableCopy="false"/>** **(4)**
+      - File Share: **blob (5)**
       
          ![](media/new-image27.png)
 
@@ -194,24 +183,22 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
 
-4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Then select **WideWorldImporters** under database, checkbox the **WideWorldImporters** under database, and Click on the **Select** button.
+4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
    ![](media/Ex2-Task5-S4.png)
 
-5. In **Step 4: Azure SQL target** blade, click on **Link account**, and click on **Add an account**.
+5. In **Step 4: Azure SQL target** blade, click on **Link account (1)**, and click on **Add an account (2)**.
 
       ![](media/new-image81.png)
    
-6. You'll be redirect to a web page, log in using your below **Azure credentials** once your account has been added successfully! Go back to the Azure Data Studio, and 
-   click on **close**. 
+6. You'll be redirect to a web page, log in using your below **Azure credentials**. Once your account has been added successfully. go back to the Azure Data Studio, and click on **close**. 
 
-   >**Note**: When redirected to the web page, click **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the 
-    **Azure credentials** mentioned below.
+   >**Note**: Click on **OK** on the **Internet Explorer** page to dismiss any pop-ups. Then, select the **Sign In** tab and enter the **Azure credentials** mentioned below.
+
+   ![](media/New-image100.png)
 
    - **Email/Username**: <inject key="AzureAdUserEmail"></inject>
    - **Password**: <inject key="AzureAdUserPassword"></inject>
-
-       ![](media/New-image100.png)
 
 7. The field will be populated with the details and click on **Next**. 
 
@@ -260,12 +247,12 @@ In this task, you create a new online data migration project in DMS for the `Wid
       > **Note**: Make sure to replace the SUFFIX value with <inject key="Suffix" />   
  
       - **Password**: Enter **Password.1234567890** **(1)**
-      - **Windows user account with read access to the network share location**: Enter **SQL2008-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
+      - **Windows user account with read access to the network share location**: Enter **SQL2022-<inject key="Suffix"  enableCopy="false"/>\sqlmiuser** **(2)** 
       - **Password**: Enter **Password.1234567890** **(3)**
       - **Resource Group**: Select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**
       - **Storage account**: Select the **sqlmistore<inject key="Suffix"  enableCopy="false"/>** **(5)** storage account. 
       - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**.
-      - **Network share path**: Enter **\\\SQL2008-<inject key="Suffix"  enableCopy="false"/>\dms-backups** **(7)**.
+      - **Network share path**: Enter **\\\SQLVM2022\dms-backups** **(7)**.
 
          ![](media/E2T5S15.png)
 
@@ -295,7 +282,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![](media/dms1.png)
 
-1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2008-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
+1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2022-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
   
    ![](media/dms2.png)
 
@@ -361,7 +348,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/EX2-task6-s(14).png)
 
-1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialog box, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s(15).png)
 
@@ -419,23 +406,12 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
     - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
     - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
     
-<validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
+      <validation step="19094c70-fbca-4d58-87dd-3ff7d5a20eae" />
 
-<validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
-
-## Summary:
-
-In this exercise, you successfully migrated the WideWorldImporters database from an on-premises SQL Server 2008 R2 instance to an Azure SQL Managed Instance using the Azure Database Migration Service. You also learned how to create backups, set up an SMB network share, and use Azure Data Studio to manage the migration process, ensuring minimal downtime by utilizing an online migration strategy.
+      <validation step="413d413d-17c5-4298-ada0-dc777f97d7ec" />
 
 ## Review
-In this lab, you have completed:
 
-- Create an SMB network share on the VM
-- Change MSSQLSERVER service to run under sqlmiuser account
-- Create a backup of the WideWorldImporters database
-- Retrieve SQL MI and SQL Server 2008 VM connection information
-- Create and run an online data migration project
-- Perform migration cutover
-- Verify database and transaction log migration
+In this lab, you have created a SMB network share on the VM, changed MSSQLSERVER service to run under sqlmiuser account, created a backup of the WideWorldImporters database, retrieved SQL MI and SQL Server 2022 VM connection information, created and ran an online data migration project, performed migration cutover and verified database and transaction log migration.
 
-### Proceed with the next lab by clicking on Next>>.
+### You have successfully completed the lab!

@@ -1,4 +1,8 @@
-## Exercise 7: Enable Dynamic Data Masking
+# Exercise 7: Enable Dynamic Data Masking
+
+### Estimated Duration: 15 minutes
+
+## Overview
 
 In this lab, you'll work on enabling Dynamic Data Masking (DDM) to enhance the security of sensitive data in the WideWorldImporters database. You'll begin by applying DDM to mask credit card numbers in the Sales.CreditCard table, ensuring that only the last four digits of the card numbers are visible to non-privileged users. Then, you'll extend this approach to protect email addresses in the LoginEmail field of the dbo.Gamer table by partially masking them. This exercise demonstrates how DDM helps limit sensitive data exposure without altering the underlying data in the database.
 
@@ -9,13 +13,11 @@ In this lab, you will perform the following:
 - Task 1: Enable DDM on credit card numbers
 - Task 2: Apply DDM to email addresses
 
-## Duration: 15 minutes
-
 ### Task 1: Enable DDM on credit card numbers
 
 In this task, the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
-1. On your SQL2008-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
+1. On your SQL2022-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
 2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
@@ -112,19 +114,15 @@ In this task, you use one of the built-in functions for making email addresses u
    ![The email addresses are masked in the query results.](media/ddm-select-gamer-results-masked.png "Query results")
 
    > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-   - If you receive a success message, you can proceed to the next task.
-   - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+   - If the validation fails, carefully read the error message and retry the step, following the instructions in the lab guide.
    - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help you out.
     
-<validation step="1b4769fd-cfc8-47f0-b2a1-8f1790f17adc" />
+      <validation step="1b4769fd-cfc8-47f0-b2a1-8f1790f17adc" />
 
-## Summary:
 You've successfully applied Dynamic Data Masking to both the **'CardNumber'** field in the **'Sales.CreditCard'** table and the **'LoginEmail'** field in the **'dbo.Gamer'** table. This ensures that sensitive information is not fully exposed to non-privileged users, improving the security posture of the WideWorldImporters database.
 
 ## Review 
-In this lab, you have completed:
 
-- Enable DDM on credit card numbers
-- Apply DDM to email addresses
+In this lab, you have enabled DDM on credit card numbers and applied DDM to email addresses.
 
-## You have successfully completed the lab.
+### You have successfully completed the lab!

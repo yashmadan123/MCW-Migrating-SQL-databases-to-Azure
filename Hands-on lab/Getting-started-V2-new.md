@@ -1,13 +1,12 @@
 # Secure SQL with Microsoft Defender
 
-## Overall Estimated Duration: 4 hours
+### Overall Estimated Duration: 4 hours
 
 ## Overview
 
 In this hands-on lab, you will implement a proof of concept (PoC) for migrating an on-premises SQL Server 2008 R2 database to Azure SQL Managed Instance (SQL MI). You will conduct assessments to identify any feature parity or compatibility issues between the on-premises SQL Server 2008 R2 database and Azure's managed database offerings. Next, you will migrate the customer's on-premises gamer information web application and database to Azure with minimal downtime. Finally, you will enable advanced SQL MI features to enhance the security and performance of the customer's application.
 
 ## Objective
-
 
 - **Perform database assessments** : Experienced on how to assess an on-premises SQL Server database for compatibility with Azure SQL Database and Azure SQL Managed Instance, identifying potential migration issues and selecting the most suitable migration path. This ensures a smooth transition to Azure while leveraging its scalability and advanced cloud features.
 
@@ -64,6 +63,12 @@ For convenience, you can open the lab guide in a separate window by selecting th
  
 ## Managing Your Virtual Machine
 Feel free to start, stop, or restart your virtual machine as needed from the Resources tab. Your experience is in your hands!
+
+## Lab Guide Zoom In/Zoom Out
+ 
+To adjust the zoom level for the environment page, click the **A↕ : 100%** icon located next to the timer in the lab environment.
+
+ ![Use the Split Window Feature](./media/image177.png)
 
 ## Let's Get Started with Azure Portal
  
