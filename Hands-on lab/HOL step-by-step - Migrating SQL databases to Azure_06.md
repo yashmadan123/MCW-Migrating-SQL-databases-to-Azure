@@ -348,7 +348,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/EX2-task6-s(14).png)
 
-1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialog box, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/EX2-task6-s(15).png)
 
