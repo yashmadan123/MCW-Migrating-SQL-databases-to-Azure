@@ -153,4 +153,4 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 In this lab, you have deploy the web app to Azure and updated App Service configuration.
 
-### You have successfully completed the lab.
+### You have successfully completed the lab!
