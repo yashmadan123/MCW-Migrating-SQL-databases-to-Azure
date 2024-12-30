@@ -24,7 +24,7 @@ In this lab, you will perform the following:
 
 1. In the list of resources for your resource group, select the **sql2022-<inject key="Suffix" enableCopy="false"/>** Virtual Machine.
 
-    ![](media/sql50.png)
+    ![](media/sql50-1.png)
 
 1. From the overview page of the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, select **Connect > Connect**.
 
