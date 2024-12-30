@@ -1,10 +1,12 @@
-## Exercise 6: Improve database security posture with Data Discovery and Classification and Microsoft Defender for SQL
+# Exercise 6: Improve database security posture with Data Discovery and Classification and Microsoft Defender for SQL
 
-## Duration: 30 minutes
+### Estimated Duration: 30 minutes
+
+## Overview
 
 In this lab, you'll set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Microsoft Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
 
-## Lab objectives
+## Lab Objectives
 
 In this lab, you will perform the following:
 
