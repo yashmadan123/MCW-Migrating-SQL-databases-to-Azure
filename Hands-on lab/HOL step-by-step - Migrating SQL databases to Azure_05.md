@@ -24,23 +24,23 @@ In this lab, you will perform the following:
 
 1. In the list of resources for your resource group, select the **sql2022-<inject key="Suffix" enableCopy="false"/>** Virtual Machine.
 
-    ![](media/new-image4.png)
+    ![](media/sql50.png)
 
 1. From the overview page of the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, select **Connect > Connect**.
 
-    ![](media/new-image5.png)
+    ![](media/sql51.png)
 
 1. On the **sql2022-<inject key="Suffix" enableCopy="false"/> | Connect** page, click on **Download RDP file (2)**. 
   
-   ![](media/new-image6.png)
+    ![](media/sql52.png)
 
 1. Click on **Keep**, on the Downloads pop-up. 
 
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod15.png "Passed")
+    ![](media/sql53.png)
 
 1. Click on **Open file**.
 
-   ![](media/datamod16.png)
+    ![](media/sql55.png)
 
 1. Next, on the RDP tab click on **Connect**.
 
@@ -55,11 +55,11 @@ In this lab, you will perform the following:
 
 1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+    ![](media/sql56.png)
 
-1. Click on **start (1)** , type **Azure Data Studio (2)** into the search bar and select **Azure Data Studio (3)** from the search results.
+1. Click on **Azure Data Studio** from the Desktop.
 
-   ![](media/new-image7.png)
+    ![](media/sql.png)
 
    >**Note**: Within **Azure Data Studio**, if prompted with any pop-ups related to updates, kindly disregard them and proceed with tasks.
     
@@ -67,21 +67,23 @@ In this lab, you will perform the following:
 
     ![](media/new-image8.png)
 
-1. In the Azure Data Studio select **Connections (1)** from the Activity Bar, click on **New Connection (2)** dialog, enter **sql2022-<inject key="Suffix" enableCopy="false"/> (3)** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect (4)**.
+1. In the Azure Data Studio select **Connections (1)** from the Activity Bar and click on **New Connection (2)** dialog
   
-    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10.png "Connect to Server")
-    
-    > **Note**: If you see **Connection error** pop-up click on **Enable Trust server certificate**.
+    ![The SQL Server Connect to Search dialog is displayed, with SQL2008-entered into the Server name and Windows Authentication selected.](media/Ex1-Task1-S10-1.png "Connect to Server")
 
-      ![](media/new-image15.png)
+1. Enter **SQLVM2022(1)** into the Server name box, ensure **Windows Authentication (2)** is selected, and then click on **Connect (3)**.
+
+     > **Note**: If you see **Connection error** pop-up click on **Enable Trust server certificate**.
+
+    ![](media/sql2.png)
 
 1. Once connected, verify you see the **WideWorldImporters** database listed under databases.
 
-    ![The WideWorldImporters database is highlighted under Databases on the SQL2008-instance.](media/Ex1-Task1-S11.png "WideWorldImporters database")
+    ![](media/sql3.png)
 
-1. Right click on **sql2022-<inject key="Suffix" enableCopy="false"/> (1)**, click on **Manage (2)**, and select **New Query (3)** from the Azure Data Studio toolbar.
+1. Right click on **SQLVM2022**, click on **Manage**, and select **New Query** from the Azure Data Studio toolbar.
 
-    ![The New Query button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S12.png "SSMS Toolbar")
+    ![](media/sql4.png)
 
 1. Next, copy and paste the SQL script below into the new query window. This script enables the Service broker and changes the database recovery model to FULL.
 
@@ -98,15 +100,15 @@ In this lab, you will perform the following:
 
 1. To run the script, select **Run** from the Azure Data Studio toolbar.
 
-    ![The Execute button is highlighted in the SSMS toolbar.](media/Ex1-Task1-S14.png "SSMS Toolbar")
+    ![](media/sql5.png)
 
 ### Task 2: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against the Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. In Azure Data Studio click on **sql2022-<inject key="Suffix" enableCopy="false"/> (1)** > **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on **SQLVM2022** > **Azure SQL migration (1)** and select **+ New migration (2)**.
 
-    ![](media/new-image16.png)
+    ![](media/sql6.png)
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
@@ -120,7 +122,9 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T2S4.png "New project settings")
 
-    > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
+5. Click on **Yes** when prompted to Cancel Migration.
+
+    ![](media/sql7.png)
 
 ### Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
@@ -142,8 +146,11 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
      ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/E1T3S4.png "New project settings")
 
-
    >**Note**: The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
+
+5. Click on **Yes** when prompted to Cancel Migration.
+
+    ![](media/sql7.png)
 
 ## Review 
 In this lab, you have connected to the WideWorldImporters database on the SqlServer2022 VM, performed assessment for migration to Azure SQL Database and performed assessment for migration to Azure SQL Managed Instance.
