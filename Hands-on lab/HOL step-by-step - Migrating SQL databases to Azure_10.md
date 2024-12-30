@@ -120,13 +120,10 @@ In this task, you use one of the built-in functions for making email addresses u
     
 <validation step="1b4769fd-cfc8-47f0-b2a1-8f1790f17adc" />
 
-## Summary:
 You've successfully applied Dynamic Data Masking to both the **'CardNumber'** field in the **'Sales.CreditCard'** table and the **'LoginEmail'** field in the **'dbo.Gamer'** table. This ensures that sensitive information is not fully exposed to non-privileged users, improving the security posture of the WideWorldImporters database.
 
 ## Review 
-In this lab, you have completed:
 
-- Enable DDM on credit card numbers
-- Apply DDM to email addresses
+In this lab, you have enabled DDM on credit card numbers and applied DDM to email addresses.
 
 ## You have successfully completed the lab.
