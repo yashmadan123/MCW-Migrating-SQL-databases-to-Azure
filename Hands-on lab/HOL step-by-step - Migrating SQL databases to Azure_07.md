@@ -34,13 +34,13 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
      ![](media/new-image40.png)
 
+1. On the **Stay signed in to all your apps** pop-up, click on **OK**. Then on **You're all set** page, select **Done**. 
+
 1. Once you signed in, Click on **Start Visual Studio**.
 
     ![](media/new-image45.png)
 
-1. On **Stay signed in to all your apps** click on **OK**. Then on **You're all set** page select **Done**. 
-
-1. If prompted at the security warning, uncheck **Ask me for every project in this solution**, and then select **OK**.
+1. If you are prompted with a security warning, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
@@ -88,23 +88,23 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
      ![](media/new-image(3).png)
  
-3. In the list of resources for your resource group, select the **<inject key="Resource Group Name" enableCopy="false"/>** resource group and then select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
+3. Select the **wwi-web-<inject key="Suffix" enableCopy="false"/>** App Service from the list of resources.
 
    ![](media/new-image57.png)
 
-4. On the App Service blade, select **Environment variables** **(1)** under Settings on the left-hand side, select **Connection strings** **(2)** and click on **Advanced edit** **(3)**.
+4. On the App Service blade, select **Environment variables** **(1)** under Settings from the left-hand pane, select **Connection strings** **(2)** and click on **Advanced edit** **(3)**.
 
    ![](media/new-image51.png)
 
-6. Replace the **value** of the connection string of `WwiContext` with the below and replace **`your-sqlmi-host-fqdn-value`** with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace the suffix with value: <inject key="suffix" />.
+6. Replace the **value** of the connection string of `wwiContext` with the below and replace **`your-sqlmi-host-fqdn-value`** with the fully qualified domain name for your SQL MI that you copied to a text editor earlier from the Azure Cloud Shell and replace the suffix with value: <inject key="suffix" />.
     
     ``
     Server=tcp:your-sqlmi-host-fqdn-value,1433;Database=WideWorldImportersSuffix;User ID=contosoadmin;Password=IAE5fAijit0w^rDM;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;
     ``
 
-   >**Note**: Copy the name and value of **`WwiContext`** and paste them into a text editor they will be used in a later step.
+   >**Note**: Copy the name and value of **`wwiContext`** and paste them into a text editor they will be used in a later step.
 
-7. Repeat **steps 5**, this time for the **`WwiReadOnlyContext`** connection string.
+7. Repeat **steps 5**, this time for the **`wwiReadOnlyContext`** connection string.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContext1.png "Save")
 
@@ -112,7 +112,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
    
 8. Select **OK**.
 
-9. Select **Apply** at the top of the Environment variables blade then click on **confirm**. 
+9. Click on **Apply** and then select **confirm**. 
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContextapplay.png "Save")
 
@@ -122,11 +122,11 @@ In this task, you update the WWI gamer info web application to connect to and ut
      
       ![](media/new-image53.png)
     
-11. Add the **Name** and **Value** of `WwiContext` which you recorded in notepade and click on **Apply**
+11. Add the **Name** and **Value** of `wwiContext` which you recorded in notepad and click on **Apply**
 
     ![](media/new-image54.png)
 
-12. Repeat above step for **`WwiReadOnlyContext`** and paste the **Name** and **Value** which you recorded in notepad and click on **Apply**
+12. Repeat above step for **`wwiReadOnlyContext`** and paste the **Name** and **Value** which you recorded in notepad and click on **Apply**
 
       ![](media/new-image55.png)
 
