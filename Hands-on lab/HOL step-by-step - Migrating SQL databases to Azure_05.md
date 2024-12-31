@@ -114,7 +114,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2-1.png "New DMA project")
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
@@ -132,13 +132,13 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
-1. In Azure Data Studio click on >  **sql2022-<inject key="Suffix" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **SQLVM2022** > **Azure SQL migration (1)** and select **+ New migration (2)**.
 
-    ![](media/new-image16.png)
+    ![](media/sql6.png)
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2-1.png "New DMA project")
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
