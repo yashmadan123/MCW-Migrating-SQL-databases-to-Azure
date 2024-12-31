@@ -25,9 +25,9 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/web-app-network.png "App Service")
 
-3. On the **Networking** page, under **Outbound Traffic Configuration**, click **Not Configured** under **Virtual Network Integration**.
+3. On the **Networking (1)** page, under **Outbound Traffic Configuration**, click **Not Configured (2)** under **Virtual Network Integration**.
 
-    ![](media/new-image58.png)
+    ![](media/sql40.png)
 
 4. Now click on **Add virtual network integration** under **Virtual Network Integration**.
 
