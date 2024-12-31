@@ -1,6 +1,6 @@
 # Exercise 7: Enable Dynamic Data Masking
 
-### Estimated Duration: 15 minutes
+### Estimated Duration: 25 minutes
 
 ## Overview
 
