@@ -16,9 +16,9 @@ In this lab, you will perform the following:
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
 
-### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
+### Task 1: Create an SMB network share on the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM
 
-In this task, you create a new SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
 1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
@@ -206,6 +206,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04-1.png)
+
+      > **Note**: If you encounter an error indicating that the **Azure SQL Managed Instance** is in a stopped state, please navigate to the Azure Portal, search for **Azure SQL Managed Instance**, and start the instance.
    
 8. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
@@ -309,7 +311,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. To run the script, select **Run** from the Azure Data Studio toolbar.
 
-1. Click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
+1. Click on **SQLVM2022**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
    transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
    Migration Service (DMS) to detect the new backup for potential transfer and migration.
 
