@@ -311,7 +311,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. To run the script, select **Run** from the Azure Data Studio toolbar.
 
-1. Click on **<inject key="SQLVM Name" enableCopy="false"/> (1)**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
+1. Click on **SQLVM2022**, select **New Query (2)** again in the toolbar, and paste the following script into the new query window. It creates a backup of the 
    transaction logs for the WideWorldImporters database, verifies data integrity with a checksum, and stores the backup file at the specified location, while also allowing the Data 
    Migration Service (DMS) to detect the new backup for potential transfer and migration.
 
