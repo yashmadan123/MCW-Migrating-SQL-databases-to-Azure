@@ -70,7 +70,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
 1. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
 
-    ![The Publish Succeeded message is displayed in the Visual Studio Output pane.](media/visual-studio-output-publish-succeeded.png "Visual Studio")
+    ![](media/sql32.png)
 
 2. If you select the link of the published web app from the Visual Studio output window, an error page is returned because the database connection strings have not been updated to point to the SQL MI database. You address this in the next task.
 
