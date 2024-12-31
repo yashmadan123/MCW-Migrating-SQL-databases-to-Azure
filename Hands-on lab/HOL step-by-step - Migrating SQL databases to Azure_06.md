@@ -206,6 +206,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 7. The field will be populated with the details and click on **Next**. 
 
    ![](media/data-migration-04-1.png)
+
+      > **Note**: If you encounter an error indicating that the **Azure SQL Managed Instance** is in a stopped state, please navigate to the Azure Portal, search for **Azure SQL Managed Instance**, and start the instance.
    
 8. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **ConfigurelntegrationRuntime**
    
