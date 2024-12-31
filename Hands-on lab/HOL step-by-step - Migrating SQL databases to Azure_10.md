@@ -17,7 +17,7 @@ In this lab, you will perform the following:
 
 In this task, the data in the `WideWorldImporters` database using the ADS Data Discovery & Classification tool, you set the Sensitivity label for credit card numbers to Highly Confidential. In this task, you take another step to protect this information by enabling DDM on the `CardNumber` field in the `CreditCard` table. DDM prevents queries against that table from returning the full credit card number.
 
-1. On your SQL2022-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
+1. On your sql2022-<inject key="Suffix" enableCopy="false"/> VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
 2. Expand **Database** > **WideWorldImporters<inject key="Suffix" enableCopy="false"/>**.
 
