@@ -2,6 +2,8 @@
 
 ### Estimated Duration: 30 minutes
 
+## Overview
+
 In this lab, you will deploy a web app to Azure and update its App Service configuration. This process involves setting up the web app in the Azure environment and configuring the necessary settings to ensure it runs smoothly. By the end of this lab, you will have a fully deployed and configured web app on Azure, ready for use.
 
 ## Lab Objectives
