@@ -157,6 +157,6 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
     ![](media/sql7.png)
 
 ## Review 
-In this lab, you have connected to the WideWorldImporters database on the SqlServer2022 VM, performed assessment for migration to Azure SQL Database and performed assessment for migration to Azure SQL Managed Instance.
+In this lab, you have connected to the WideWorldImporters database on the SqlServer2022 VM, performed assessment for migration to Azure SQL Database and Azure SQL Managed Instance.
 
 ### You have successfully completed the lab!
