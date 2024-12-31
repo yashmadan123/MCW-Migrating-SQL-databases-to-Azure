@@ -1,6 +1,6 @@
 # Exercise 2: Perform database assessments
 
-### Estimated Duration: 20 minutes
+### Estimated Duration: 30 minutes
 
 ## Overview 
 
