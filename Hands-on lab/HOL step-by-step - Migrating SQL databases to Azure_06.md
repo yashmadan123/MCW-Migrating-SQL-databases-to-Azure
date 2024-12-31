@@ -16,9 +16,9 @@ In this lab, you will perform the following:
 - Task 6: Perform migration cutover
 - Task 7: Verify database and transaction log migration
 
-### Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
+### Task 1: Create an SMB network share on the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM
 
-In this task, you create a new SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
+In this task, you create a new SMB network share on the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM. DMS uses this shared folder for retrieving backups of the `WideWorldImporters` database during the database migration process.
 
 1. On the **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, open **Windows Explorer** by selecting its icon on the Windows Taskbar.
 
