@@ -38,13 +38,8 @@ In this lab, you will perform the following:
 
 1. Close the Defender plans page by selecting the 'X' on the upper right of the page to go back to the Environment settings.
 
-### Summary 
-By the end of this task, Microsoft Defender for Cloud will be fully configured to protect your subscription and resources.
-
 ### Review
 
-In this lab, you have completed:
+In this lab, you have enabled Microsoft Defender for Cloud.
 
-- Enable Microsoft Defender for Cloud
-
-### Proceed with the next lab by clicking on Next>>.
+### You have successfully completed the lab!
