@@ -1,6 +1,8 @@
 # Exercise 2: Perform database assessments
 
-## Estimated Duration: 20 minutes
+### Estimated Duration: 30 minutes
+
+## Overview 
 
 In this lab, you will connect to the WideWorldImporters database on the SqlServer2022 VM and perform assessments for migration to Azure SQL Database and Azure SQL Managed Instance. These assessments will help you understand the compatibility and readiness of your database for migration to Azure. You will evaluate the database schema, data, and performance to identify any potential issues and determine the best migration strategy. This process ensures a smooth transition to Azure’s cloud services, leveraging their scalability, security, and advanced features.
 
@@ -114,7 +116,7 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2-1.png "New DMA project")
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
@@ -132,13 +134,13 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
-1. In Azure Data Studio click on >  **sql2022-<inject key="Suffix" enableCopy="false"/> (1)** **Azure SQL migration (2)** and select **+ New migration (3)**.
+1. In Azure Data Studio click on >  **SQLVM2022** > **Azure SQL migration (1)** and select **+ New migration (2)**.
 
-    ![](media/new-image16.png)
+    ![](media/sql6.png)
 
 2. In **Step 1: Database for assessment**, select **widewordimplantation**, click on **Next**. 
 
-   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2.png "New DMA project")
+   ![The new project icon is highlighted in DMA.](media/Ex1-Task2-S2-1.png "New DMA project")
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 

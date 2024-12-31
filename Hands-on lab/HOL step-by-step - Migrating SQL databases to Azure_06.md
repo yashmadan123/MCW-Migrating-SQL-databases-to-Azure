@@ -1,6 +1,6 @@
 # Exercise 3: Migrate the database to SQL MI
 
-### Estimated Duration: 60 minutes
+### Estimated Duration: 90 minutes
 
 In this lab, you will migrate the WideWorldImporters database from a SQL Server 2022 VM to Azure SQL Managed Instance. You’ll start by setting up an SMB network share and configuring the MSSQLSERVER service to run under the sqlmiuser account. Then, you’ll back up the database, gather connection information, and create an online data migration project. Finally, you’ll perform the migration cutover and verify the database and transaction log migration. These steps ensure a smooth transition to Azure’s cloud services.
 
@@ -184,7 +184,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 3. In **Step 2: Assessment summary and SKU recommendation (1)**, you will view the summary and SKU recommendations for your SQL server. Click on **Next (2)**. 
 
-   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02.png "New project settings")
+   ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/data-migration-02-1.png "New project settings")
 
 4. In **Step 3: Target Platform and Assessment Results**, Select **Azure SQL Managed Instance (1)** from the drop down. Ensure **WideWorldImporters (2)** is selected under the Database option and click on the **Next**.
 
@@ -243,7 +243,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 14. Navigate back to the **Azure Data Studio**, close **Configure integration Runtime**, in the **Step 5: Azure Database Migration Service** click on **Refresh** **(1)** button you can view the **connected nodes** **(2)** and click on **Next** **(3)**. 
 
-    ![](media/azure-sql.png)
+    ![](media/azure-sql-1.png)
           
 15. In **Step 6: Data source configuration** blade, enter the following details and click on **Run Validation** **(8)**:
 
@@ -257,19 +257,19 @@ In this task, you create a new online data migration project in DMS for the `Wid
       - **Target database name**: Enter **WideWorldImporters<inject key="Suffix"  enableCopy="false"/>** **(6)**.
       - **Network share path**: Enter **\\\SQLVM2022\dms-backups** **(7)**.
 
-         ![](media/E2T5S15.png)
+         ![](media/E2T5S15-1.png)
 
 16. In the Run Validate page wait till all the validation steps are successful then click on **Done**.
 
-      ![](media/Ex2-Task5-S14.png)
+      ![](media/Ex2-Task5-S14-1.png)
 
 17. Once you back to **Step 6: Data source configuration** blade, click on **Next**.
 
-      ![](media/Ex2-Task5-S15-1.png)
+      ![](media/Ex2-Task5-S15-1-1.png)
 
 18. In **Step 7: Summary** blade, click on **Start migration** .
 
-    ![](media/enn-1-1.png)
+    ![](media/enn-1-1-1.png)
 
 19. Click on **Migrations (1)**, from the dropdown menu set Status to **Status: All (2)**, feel free to **Refresh (3)** till the migration status is **Ready for cutover (4)**. 
     
@@ -287,7 +287,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. In **wwi-dms** balde, click on **Migrations**, and selct **sql2022-<inject key="Suffix" enableCopy="false"/>** under **Source name**.
   
-   ![](media/dms2.png)
+   ![](media/dms2-1.png)
 
 1. On the WideWorldImporters screen, note the status of **Restored** for the `WideWorldImporters.bak` file.
 
@@ -327,7 +327,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. Return to the migration status page in the Azure portal. On the WideWorldImporters screen, select **Refresh**, and you should see the **WideWorldImportersLog.trn** file appear with a status of **Queued**.
 
-      ![](media/EX2-task6-s10.png)
+      ![](media/EX2-task6-s10-1.png)
 
    > **Note**: If you don't see it in the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
@@ -345,7 +345,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 1. After verifying the transaction log status of **Restored**, select **Complete cutover**.
 
-    ![](media/EX2-task6-s(14).png)
+    ![](media/EX2-task6-s(14)-1.png)
 
 1. On the Complete cutover dialog box, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
