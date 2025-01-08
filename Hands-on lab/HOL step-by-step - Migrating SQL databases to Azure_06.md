@@ -367,7 +367,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 In this task, you connect to the SQL MI database using SSMS and quickly verify the migration.
 
-1. Return to SSMS on your **<inject key="SQLVM Name" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine...** from the Object Explorer menu.
+1. Return to SSMS on your **sql2022-<inject key="Suffix" enableCopy="false"/>** VM, and then select **Connect** and **Database Engine...** from the Object Explorer menu.
 
    ![In the SSMS Object Explorer, Connect is highlighted in the menu, and Database Engine is highlighted in the Connect context menu.](media/ssms-object-explorer-connect.png "SSMS Connect")
 
@@ -381,7 +381,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
     ![](media/sql31.png)
  
-1. The SQL MI connection appears below the <inject key="SQLVM Name" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
+1. The SQL MI connection appears below the sql2022-<inject key="Suffix" enableCopy="false"/> connection. Expand Databases the SQL MI connection and select the <inject key="Database Name" /> database.
 
    ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/dm23.png "SSMS Object Explorer")
 
