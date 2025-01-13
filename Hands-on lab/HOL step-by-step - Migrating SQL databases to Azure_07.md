@@ -1,4 +1,4 @@
-## Exercise 3: Update the web application to use the new SQL MI database
+# Exercise 3: Update the web application to use the new SQL MI database
 
 Duration: 30 minutes
 
@@ -6,7 +6,7 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 > **Note**: Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where the Managed Instance is deployed. To learn more, read Connect your application to Azure SQL Managed Instance `https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance`.
 
-### Task 1: Deploy the web app to Azure
+## Task 1: Deploy the web app to Azure
 
 In this task, you will use JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
@@ -26,6 +26,10 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
    * Password: <inject key="AzureAdUserPassword"></inject>
 
         ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod3.png "Visual Studio")
+
+1. If the "Stay signed in to all your apps" pop-up appears, click **OK**.
+
+    ![](media/13125(10).png)    
 
 1. Once you signed in, Click on **Start Visual Studio**.
 
@@ -67,7 +71,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 
     ![An error screen is displayed because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
-### Task 2: Update App Service configuration
+## Task 2: Update App Service configuration
 
 In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
@@ -75,7 +79,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
    ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
 
-2. Select the **hands-on-lab<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
+2. Select the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group from the list.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab-< resource group is highlighted.](./media/resource-groups.png "Resource groups list")
 
@@ -99,11 +103,11 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 8. Select **OK**.
 
-9. Select **Apply** at the top of the Environment variables blade.
+9. Select **Apply** and **Confirm** at the top of the Environment variables blade.
 
     ![The save button on the Configuration blade is highlighted.](media/WwiReadOnlyContextapplay.png "Save")
 
-10. Repeat the **step 5** and **step 6** for **App setting** , Click on **Add** from the App settings
+10. Repeat the **step 5** and **step 6** for **App settings**, Click on **+ Add** from the App settings
 
 11. Add the **Name** and **Value** for `WwiContext` and `WwiReadOnlyContext` and click on **Apply**
 
@@ -123,11 +127,12 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
 
->**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
-> - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
-> - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
-> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-> - If you need any assistance, please contact us at labs-support@spektrasystems.com.
+    >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
+    > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
+    > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
+    > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+    > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
 **Summary:**
+
 In this exercise you successfully deployed the WideWorldImporters web application to an Azure App Service and updated the connection strings to point to the SQL Managed Instance (SQL MI) database. The next step involves configuring the App Service to connect to the SQL MI database by ensuring proper network access, as SQL MI uses a private IP address within its own VNet.
