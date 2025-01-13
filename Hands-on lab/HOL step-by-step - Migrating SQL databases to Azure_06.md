@@ -4,7 +4,7 @@ Duration: 60 minutes
 
 In this exercise, you use the **Azure Database Migration Service** here `https://azure.microsoft.com/services/database-migration/` (DMS) to migrate the `WideWorldImporters` database from an on-premises SQL Server 2008 R2 database into Azure SQL Managed Instance (SQL MI). WWI mentioned the importance of their gamer information web application in driving revenue, so for this migration, the online migration option is used to minimize downtime. Targeting the **Business Critical service tier** here `https://docs.microsoft.com/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#managed-instance-service-tiers` allows WWI to meet its customer's high-availability requirements.
 
-> The Business Critical service tier is designed for business applications with the highest performance and high availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
+The Business Critical service tier is designed for business applications with the highest performance and high availability (HA) requirements. To learn more, read the Managed Instance service tiers documentation.
 
 ## Task 1: Create an SMB network share on the **<inject key="SQLVM Name" enableCopy="false"/>** VM
 
@@ -51,21 +51,22 @@ In this task, you use the SQL Server Configuration Manager to update the service
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
    - **Account name**: `sqlmiuser`
+
    - **Password**: `Password.1234567890`
 
       ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
-4. Select **OK**.
+5. Select **OK**.
 
-5. Select **Yes** in the Confirm Account Change dialog.
+6. Select **Yes** in the Confirm Account Change dialog.
 
    ![The Yes button is highlighted in the Confirm Account Change dialog.](media/confirm-account-change.png "Confirm Account Change")
 
-6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `.\sqlmiuser`.
+7. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `.\sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-7. Close the SQL Server Configuration Manager.
+8. Close the SQL Server Configuration Manager.
 
 ## Task 3: Create a backup of the WideWorldImporters database
 
@@ -137,12 +138,14 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/mount-storage.png "Azure Cloud Shell")
 
-
 5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create New under Storage account and provide values as below: 
   
       - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
+      
       - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
+      
       - **File Share**: **blob**
+      
       - **Region**: **Central US**
 
          ![This is a screenshot of the cloud shell opened in a browser window. Powershell was selected.](media/create-storage-1.png "Azure Cloud Shell")
@@ -151,8 +154,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/13125(7).png "Azure Cloud Shell")
 
-7. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and vm name with <inject key="SQLVM Name" />. 
-
+7. At the prompt, retrieve the public IP address of the SqlSerer2008 VM. This IP address will be used to connect to the database on that server. Enter the following PowerShell command, **replacing `<your-resource-group-name>`** in the resource group name variable with the name of your resource group: <inject key="Resource Group Name" /> and VMNAME with <inject key="SQLVM Name" />. 
 
    ```PowerShell
    $resourceGroup = "<your-resource-group-name>"
@@ -199,23 +201,27 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![](media/data-migration-04.png)
    
-7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **Configure lntegration Runtime (6)**
+7. In **Step 5: Azure Database Migration Service** blade, select the following details and click on **Configure integration Runtime (6)**
    
    - **Online migration** **(1)**, 
+
    - Select the location of the database backups to use during migration: **My database backups are on a network share** **(2)**.
+
    - **Subscription**: Select the available Subscription **(3)**.
+
    - **Resource group**: From the drop-down search and select **hands-on-lab-<inject key="Suffix"  enableCopy="false"/>** **(4)**.
+
    - **Azure Database Migration Service**: Select **wwi-dms** **(5)**. 
 
       ![](media/Ex2-Task5-S7.png) 
    
-8. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
+9. In the **Configure integration Runtime** select **I want to set up self-hosted integration runtime on another Windows machine that is not my local machine** **(1)** scroll down till Configure manually expand **Configure manually** **(2)** Copy any of the **Authentication keys** **(3)** to the notepad as it will be used later in the task, and minimize the **Azure Data Studio**.  
 
    ![](media/data-migration-05.png)
    
    > **Note**: Don't close/cancel Azure Data Studio.
 
-9. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM, in the search bar next to start search for `Mircosoft Integration Runtime`
+10. On the **JumpBox-<inject key="Suffix"  enableCopy="false"/>** VM, in the search bar next to start search for `Mircosoft Integration Runtime`
    
    ![](media/irt.png)
 
@@ -267,7 +273,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
     
     ![](media/data-migration-06.png)
 
-    >**Note**: It may take a few minutes , please be patient.
+    >**Note**: It may take a few minutes, please be patient.
 
 ## Task 6: Perform migration cutover
 
@@ -339,7 +345,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![](media/EX2-task6-s14.png)
 
-1. On the Complete cutover dialogue, verify that log backups pending restore is `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
+1. On the Complete cutover dialogue, verify that log backups pending restore are `0`, check **I confirm there are no additional log backups to provide and want to complete cutover**, and then select **Complete cutover**.
 
     ![](media/13125(9).png)
 
@@ -389,9 +395,13 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 7. In the Connect to Server dialog, enter the following and click on **Connect** **(6)**:
 
    - **Server name** **(1)**: Enter the fully qualified domain name of your SQL-managed instance, which you copied from the Azure Cloud Shell in the previous steps.
+
    - **Authentication** **(2)**: Select **SQL Server Authentication**.
+
    - **Login** **(3)**: Enter `contosoadmin`
-   -  **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
+
+   - **Password** **(4)**: Enter `IAE5fAijit0w^rDM`
+
    - Check the **Remember password** **(5)** box.
 
       ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/data-migration-09.png "Connect to Server")
