@@ -48,7 +48,7 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
  
       ![](./media/GS3.png "Enter Password")
 
-4.If **Action Required** pop-up window appears, click on **Ask later**.
+4. If **Action Required** pop-up window appears, click on **Ask later**.
 
    ![](./media/ActionRequired.png)
  
