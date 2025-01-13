@@ -15,7 +15,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
 
-1. Select the **hands-on-lab-<inject key="Resource Group Name" enableCopy="false"/>** resource group from the list.
+1. Select the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group from the list.
 
    ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
 
