@@ -23,6 +23,7 @@ In this task, you will use JumpBox VM and then, using Visual Studio on the JumpB
 1. Select **Sign in** and click on Login through Work or education account and enter the following Azure account credentials when prompted:
    
    * Email/Username: <inject key="AzureAdUserEmail"></inject>
+
    * Password: <inject key="AzureAdUserPassword"></inject>
 
         ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/datamod3.png "Visual Studio")
@@ -115,7 +116,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![The save button on the Configuration blade is highlighted.](media/app-string-1.png "Save")
 
-12. When prompted that Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
+12. When prompted Your app may restart if you are updating connection strings. Are you sure you want to continue?, select **Confirm**.
 
     ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/save_changes.png "Restart prompt")
 
@@ -127,12 +128,12 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
     ![An error screen is displayed because the application cannot connect to SQL MI within its private virtual network.](media/web-app-error-screen.png "Web App error")
 
-    >**Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
+    > **Congratulations** on completing the Task! Now, it's time to validate it. Here are the steps:
     > - Navigate to the Lab Validation tab, from the upper right corner in the lab guide section.
     > - Hit the Validate button for the corresponding task. If you receive a success message, you have successfully validated the lab. 
     > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
     > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com.
 
-**Summary:**
+### **Summary:**
 
-In this exercise you successfully deployed the WideWorldImporters web application to an Azure App Service and updated the connection strings to point to the SQL Managed Instance (SQL MI) database. The next step involves configuring the App Service to connect to the SQL MI database by ensuring proper network access, as SQL MI uses a private IP address within its own VNet.
+In this exercise, you successfully deployed the WideWorldImporters web application to an Azure App Service and updated the connection strings to point to the SQL Managed Instance (SQL MI) database. The next step involves configuring the App Service to connect to the SQL MI database by ensuring proper network access, as SQL MI uses a private IP address within its own VNet.
