@@ -6,7 +6,6 @@ In this exercise, you use the Azure Data Studio to perform assessments on the `W
 
 > Azure Data Studio helps you upgrade to a modern data platform by detecting compatibility issues that can impact database functionality in your new version of SQL Server or Azure SQL Database. Azure Data Studio recommends performance and reliability improvements for your target environment and allows you to move your schema, data, and uncontained objects from your source server to your target server.
 
-
 ## Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM
 
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
@@ -46,6 +45,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 1. Enter the following credentials when prompted, and then select **OK**:
 
    - **Username**: `sqlmiuser`
+
    - **Password**: `Password.1234567890`
 
       ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
@@ -80,7 +80,7 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 1. Next, copy and paste the SQL script below into the new query window. This script enables the Service broker and changes the database recovery model to FULL.
 
-    ```sql
+    ```SQL
     USE master;
     GO
 
