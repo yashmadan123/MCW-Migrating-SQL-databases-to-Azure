@@ -10,51 +10,7 @@ In this exercise, you use the Azure Data Studio to perform assessments on the `W
 
 In this task, you perform some configuration for the `WideWorldImporters` database on the SQL Server 2008 R2 instance to prepare it for migration.
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select **Resource groups** from the Azure services list.
-
-   ![Resource groups is highlighted in the Azure services list.](media/datamod13.png "Azure services")
-
-1. Select the **hands-on-lab-<inject key="Suffix" enableCopy="false"/>** resource group from the list.
-
-   ![Resource groups is selected in the Azure navigation pane, and the "hands-on-lab resource group is highlighted.](./media/resource-groups1.png "Resource groups list")
-
-1. In the list of resources for your resource group, select the **<inject key="SQLVM Name" enableCopy="false"/>** VM.
-
-   ![The SqlServer2008 VM is highlighted in the list of resources.](https://raw.githubusercontent.com/Cloudlabs-MCW/MCW-Migrating-SQL-databases-to-Azure/fix/Hands-on%20lab/media/images/vmrg.png "Resource list")
-
-1. From the overview page of  the **<inject key="SQLVM Name" enableCopy="false"/>** VM, select **Connect -\> Connect**.
-
-    ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/13125(1).png "Passed")
-
-1. On the **sql2008-<inject key="Suffix" enableCopy="false"/> | Connect (1)** page, click on **Download RDP file (2)**. 
-  
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/connect.png "Passed")
-
-1. Click on **Keep**, on the Downloads pop-up. 
-
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod15.png "Passed")
-
-1. Click on **Open file**.
-
-   ![](media/datamod16.png)
-
-1. Next, on the RDP tab click on **Connect**.
-
-   ![The Passed tab is highlighted, and VA1219 is entered into the search filter. VA1219 with a status of PASS is highlighted in the results.](media/datamod17.png "Passed")
-
-1. Enter the following credentials when prompted, and then select **OK**:
-
-   - **Username**: `sqlmiuser`
-
-   - **Password**: `Password.1234567890`
-
-      ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
-
-1. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
-
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/13125(2).png "Remote Desktop Connection dialog")
-
-1. Click on **Start (1)**, type **Azure Data Studio (2)** into the search bar and select **Azure Data Studio (3)** from the search results.
+1. On the JumpVM, click **Start (1)**, enter **Azure Data Studio (2)** in the search bar, and choose **Azure Data Studio (3)** from the search results.
 
    ![](media/azuredata.png "Windows start menu search")
    
